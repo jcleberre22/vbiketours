@@ -9,10 +9,18 @@ package cindy.metier.comm;
 public interface IArmement {
 
 	/**
-	 * Recupere le nom de l'armement.
+	 * Retourne le nom de l'armement.
 	 * 
-	 * @return le nom de l'armement choisi sous forme de String
+	 * @param type
+	 *            de type entier
 	 */
-	String getNom();
+	public int getType();
+
+	/**
+	 * Retourne la description d'un armement.
+	 * 
+	 * @return la description associé à un armement
+	 */
+	public String getDescriptionArmement();
 
 }

@@ -28,7 +28,7 @@ public interface IPiece {
 	 * Permet d'ajouter des heures de vol à une piece.
 	 * 
 	 * @param nombre
-	 *            ssou forme d'entier
+	 *            sous forme d'entier
 	 */
 	void ajouterHeureDeVol(int nombre);
 }

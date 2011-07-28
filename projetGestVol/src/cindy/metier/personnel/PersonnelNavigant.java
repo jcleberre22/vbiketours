@@ -1,6 +1,6 @@
 package cindy.metier.personnel;
 
-import cindy.metier.comm.IPersonnelNaviguant;
+import cindy.metier.comm.IPersonnelNavigant;
 
 /**
  * Un pilote pilote 0 ou plusieurs avion. Un pilote possède un identifiant, un
@@ -9,7 +9,7 @@ import cindy.metier.comm.IPersonnelNaviguant;
  * @author Nicolas.tabuteaud
  * @version 1.0 du 25/07/2011 modifié le 26/07/2011
  */
-public class PersonnelNaviguant implements IPersonnelNaviguant {
+public class PersonnelNavigant implements IPersonnelNavigant {
 
 	// Attribut privé
 	private int id;
@@ -21,7 +21,7 @@ public class PersonnelNaviguant implements IPersonnelNaviguant {
 	private int heureVol;
 
 	// Constructeur
-	public PersonnelNaviguant(int id, String nom, String prenom, String grade,
+	public PersonnelNavigant(int id, String nom, String prenom, String grade,
 			String escadron, Qualification qualification, int heureVol) {
 		this.setId(id);
 		this.setNom(nom);
@@ -35,7 +35,7 @@ public class PersonnelNaviguant implements IPersonnelNaviguant {
 	/**
 	 * Constructeur necessaire pour les tests.
 	 */
-	public PersonnelNaviguant() {
+	public PersonnelNavigant() {
 
 	}
 
@@ -209,7 +209,7 @@ public class PersonnelNaviguant implements IPersonnelNaviguant {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonnelNaviguant other = (PersonnelNaviguant) obj;
+		PersonnelNavigant other = (PersonnelNavigant) obj;
 		if (nom == null) {
 			if (other.nom != null)
 				return false;

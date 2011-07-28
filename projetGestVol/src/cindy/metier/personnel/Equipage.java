@@ -1,8 +1,5 @@
 package cindy.metier.personnel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Un equipage possède un pilote et un naviguateur de type PersonnelNaviguant.
  * 
@@ -14,13 +11,10 @@ public class Equipage {
 
 	// Attribut
 	/** Le pilote d'un equipage */
-	private PersonnelNaviguant pilote;
+	private PersonnelNavigant pilote;
 
 	/** Le naviguateur d'un equipage */
-	private PersonnelNaviguant navigateur;
-
-	/** liste d'un equipage */
-	private List<Equipage> lst = new ArrayList<Equipage>();
+	private PersonnelNavigant navigateur;
 
 	// constructeur
 	/**
@@ -37,7 +31,7 @@ public class Equipage {
 	 * @param1 le pilote de type PersonnelNaviguant
 	 * @param2 le navigateur de type PersonnelNaviguant
 	 */
-	public Equipage(PersonnelNaviguant pilote, PersonnelNaviguant navigateur) {
+	public Equipage(PersonnelNavigant pilote, PersonnelNavigant navigateur) {
 		super();
 		this.setPilote(pilote);
 		this.setNavigateur(navigateur);
@@ -50,58 +44,50 @@ public class Equipage {
 	 * @param1 le pilote de type PersonnelNaviguant
 	 * 
 	 */
-	public Equipage(PersonnelNaviguant pilote) {
+	public Equipage(PersonnelNavigant pilote) {
 		super();
 		this.setPilote(pilote);
 		this.setNavigateur(null);
 	}
 
 	// Accesseurs
-	public PersonnelNaviguant getPilote() {
+	public PersonnelNavigant getPilote() {
 		return pilote;
 	}
 
-	private void setPilote(PersonnelNaviguant pilote) {
+	public void setPilote(PersonnelNavigant pilote) {
 		this.pilote = pilote;
 	}
 
-	public PersonnelNaviguant getNavigateur() {
+	public PersonnelNavigant getNavigateur() {
 		return navigateur;
 	}
 
-	private void setNavigateur(PersonnelNaviguant navigateur) {
+	private void setNavigateur(PersonnelNavigant navigateur) {
 		this.navigateur = navigateur;
 	}
 
 	// Méthode publique
 	/**
 	 * Méthode qui permet de mettre à jour le nombre d'heure de vol d'un pilote
-	 * ou d'un naviguateur. Il peut ne pas y avoir de naviguateur.
+	 * ou d'un naviguateur car il est possible d'avoir dans le constructeur un
+	 * navigateur null.
 	 */
 	public void majHeureVol(int nombre) {
 
-		getPilote().ajouterNbHeure(nombre);
-		if (getNavigateur() != null) {
-			getNavigateur().ajouterNbHeure(nombre);
-		}
-
-	}
-
-	/**
-	 * Méthode qui ajouter un equipage dans une liste d'equipage.
-	 * 
-	 * @param equipage
-	 *            de la classe equipage
-	 * @return false si l'ajout n'est pas fait
-	 */
-	public boolean ajouterEquipage(Equipage equipage) {
-		if (lst.contains(equipage) == false) {
-			lst.add(equipage);
+		if (getPilote() == null) {
+			throw new RuntimeException("nombre null");
 		} else {
-			new RuntimeException(
-					"Impossible d'ajouter l'equipage dans la liste car elle existe déjà");
+			this.getPilote().ajouterNbHeure(nombre);
+
 		}
-		return false;
+
+		if (getNavigateur() == null) {
+			throw new RuntimeException("navigateur null");
+		} else {
+			this.getNavigateur().ajouterNbHeure(nombre);
+		}
+
 	}
 
 }
