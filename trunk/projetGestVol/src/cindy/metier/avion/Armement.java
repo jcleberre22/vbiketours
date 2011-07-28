@@ -3,26 +3,26 @@ package cindy.metier.avion;
 import cindy.metier.comm.IArmement;
 
 /**
- * La classe armement permet de récupérer l'armement utilisé par un avion.
  * 
- * @author J.Martinez
- * @version 1.0 du 25/07/2011
- * 
+ * @author J.Martinez class : armement qui permet de récupérer l'armement
+ *         utilisé par un avion
  */
 public class Armement implements IArmement {
 
 	// attributs
-	private String nom;
+	private int type;
+	private String descriptionArmement;
 
 	// Constructeur
 	/**
 	 * constructeur de la classe. Celui-ci exige qu'un type d'armement soit
 	 * spécifié
 	 * 
-	 * @param name : nom de l'armement sous forme de String
+	 * @param name
 	 */
-	public Armement(String name) {
-		setNom(name);
+	public Armement(int typeEquipement) {
+		setType(typeEquipement);
+		setDescriptionArmement(typeEquipement);
 	}
 
 	/**
@@ -30,27 +30,64 @@ public class Armement implements IArmement {
 	 * pour un avion
 	 */
 	public Armement() {
-		nom = "Série";
+		type = 0;
 	}
 
 	// Accesseur
 	/**
 	 * Retourne le nom de l'armement.
 	 */
-	public String getNom() {
-		return nom;
+	public int getType() {
+		return type;
 	}
 
 	/**
-	 * Fixe un nom pour l'armement. 
-	 * Renvoi une exception si le nom est null
-	 * @param nom sous forme de String
+	 * @return la description associé à un armement
 	 */
-	private void setNom(String nom) {
-		if (nom == null || nom.trim().length() == 0) {
-			throw new RuntimeException("Armement: nom d'armement null");
+	public String getDescriptionArmement() {
+		return descriptionArmement;
+	}
+
+	/**
+	 * permet de donner la description de l'armement en fonction du pack choisi
+	 * 
+	 * @param descriptionArmement
+	 */
+	private void setDescriptionArmement(int packArmement) {
+		if (packArmement >= 0 || packArmement <= 5)
+			switch (packArmement) {
+			case 0:
+				this.descriptionArmement = "Série";
+				break;
+			case 1:
+				this.descriptionArmement = "Pack missiles tête chercheuse";
+				break;
+			case 2:
+				this.descriptionArmement = "Pack missiles courte portée";
+				break;
+			case 3:
+				this.descriptionArmement = "Pack missiles longue portée";
+				break;
+			case 4:
+				this.descriptionArmement = "Pack missiles lourd";
+				break;
+			case 5:
+				this.descriptionArmement = "Pack destruction massive + nucléaire";
+			}
+		else
+			throw new RuntimeException("le pack d'armement choisi n'existe pas");
+	}
+
+	/**
+	 * Fixe un nom pour l'armement. Renvoi une exception si le nom est null
+	 * 
+	 * @param nom
+	 */
+	private void setType(int letype) {
+		if (letype < 0 || letype > 5) {
+			throw new RuntimeException("Armement: numero d'armement incorrect");
 		}
-		this.nom = nom;
+		this.type = letype;
 	}
 
 }

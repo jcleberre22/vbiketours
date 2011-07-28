@@ -3,26 +3,30 @@ package cindy.metier.vol;
 import cindy.metier.comm.ICategorie;
 
 /**
- * Classe categorie. 
- * Elle va référencer une catégorie de vol.
- * @author J.Martinez 
- * @version 1.0 du 26/07/2011
+ * 
+ * 
+ * classe categorie. va référencer une catégorie de vol
+ * 
+ * @author J.Martinez
+ * @version 1.0 du 27/07/2011
  */
 public class Categorie implements ICategorie {
 
 	// attributs
-	private int numCategorie;
-	private String nom;
+	int numCategorie;
+	String description;
+	String[] nom = { "Mission logistique", "Vol d'entraînement",
+			"Vol d'entraînement tactique",
+			"Vol de contrôle ou d'expérimentation",
+			"Mission tactique réelles, de transport ou de combar" };
 
 	// constructeur
 	/**
 	 * constructeur de la classe. Obligation d'avoir une categorie
-	 * @param numero sous forme d'entier(1 à 5)
-	 * @param nom sous forme de String
 	 */
-	public Categorie(int numCategorie, String nom) {
-		setNumCategorie(numCategorie);
-		setCategorie(nom);
+	public Categorie(int numero) {
+		setNumCategorie(numero);
+		setCategorie(numero);
 	}
 
 	// accesseurs
@@ -30,19 +34,33 @@ public class Categorie implements ICategorie {
 	/**
 	 * Setter qui donne la catégorie. Renvoi une exception si la chaîne donnée
 	 * est nulle
-	 * @param categorie sous forme d'un String
 	 */
-	private void setCategorie(String categorie) {
-		if (categorie == null || categorie.trim().length() == 0){
-			throw new RuntimeException("Categorie : une valeur null a été inséré dans la catégorie");
+	private void setCategorie(int numCategorie) {
+		if (numCategorie > 0 && numCategorie <= 5) {
+			switch (numCategorie) {
+			case 1:
+				this.description = nom[numCategorie - 1];
+				break;
+			case 2:
+				this.description = nom[numCategorie - 1];
+				break;
+			case 3:
+				this.description = nom[numCategorie - 1];
+				break;
+			case 4:
+				this.description = nom[numCategorie - 1];
+				break;
+			case 5:
+				this.description = nom[numCategorie - 1];
+			}
+		} else {
+			throw new RuntimeException(
+					"Categorie : une valeur non permise a été inséré dans la catégorie");
 		}
-		this.nom = categorie;	
-		
 	}
 
 	/**
-	 * Retourne le numero de la categorie.
-	 * @return numCategorie sous forme d'un entier
+	 * @return numero de la categorie
 	 */
 	public int getNumCategorie() {
 		return numCategorie;
@@ -52,29 +70,20 @@ public class Categorie implements ICategorie {
 	 * @return nom de la categorie
 	 */
 	public String getNomCategorie() {
-		return nom;
+		return description;
 	}
 
 	/**
-	 * Fixe le numero de la categorie
-	 * @param numCategorie sous forme d'un entier
+	 * fixe le numero de la categorie
+	 * 
+	 * @param numCategorie
 	 */
 	public void setNumCategorie(int numCategorie) {
-		if (numCategorie <= 0 ){
-			throw new RuntimeException("Categorie : le numero ne peut pas être négatif ou egal à 0");
+		if (numCategorie <= 0) {
+			throw new RuntimeException(
+					"Categorie : le numero doit être compris entre 1 et 5");
 		}
 		this.numCategorie = numCategorie;
-	}
-
-	/**
-	 * Donne le nom de la categorie.
-	 * @param nom sous forme de String
-	 */
-	public void setNomCategorie(String nom) {
-		if (nom == null)
-			throw new RuntimeException(
-					"Categorie : il faut renseigner la catégorie");
-		this.nom = nom;
 	}
 
 }

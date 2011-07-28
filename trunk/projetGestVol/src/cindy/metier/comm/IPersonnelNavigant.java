@@ -8,7 +8,7 @@ import cindy.metier.personnel.Qualification;
  * @author nicolas.tabuteaud
  * @version 1.0 du 25/07/2011
  */
-public interface IPersonnelNaviguant {
+public interface IPersonnelNavigant {
 
 	/**
 	 * Méthode qui récupere l'identifiant du pilote.

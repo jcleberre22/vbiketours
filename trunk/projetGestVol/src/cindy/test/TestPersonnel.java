@@ -6,8 +6,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import cindy.metier.comm.IPersonnelNaviguant;
-import cindy.metier.personnel.PersonnelNaviguant;
+import cindy.metier.comm.IPersonnelNavigant;
+import cindy.metier.personnel.PersonnelNavigant;
 import cindy.metier.personnel.Qualification;
 
 /**
@@ -19,11 +19,11 @@ import cindy.metier.personnel.Qualification;
 
 public class TestPersonnel {
 
-	private IPersonnelNaviguant persNavi;
+	private IPersonnelNavigant persNavi;
 
 	@Before
 	public void setUp() throws Exception {
-		persNavi = new PersonnelNaviguant();
+		persNavi = new PersonnelNavigant();
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructor() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "Robert", "SGT", "deLaMort",
 					Qualification.PC, 12);
 			assertTrue("Paramètre constructeur ok", true);
 		} catch (Exception e) {
@@ -50,7 +50,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorIdNegatif() {
 		try {
-			new PersonnelNaviguant(-1, "Pignouf", "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(-1, "Pignouf", "Robert", "SGT", "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre ID à null non gérée");
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorNomNull() {
 		try {
-			new PersonnelNaviguant(23, null, "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(23, null, "Robert", "SGT", "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre nom à null non gérée");
 		} catch (Exception e) {
@@ -81,7 +81,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorPrenomNull() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", null, "SGT", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", null, "SGT", "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre prenom à null non gérée");
 		} catch (Exception e) {
@@ -97,7 +97,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorGradeNull() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", null, "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "Robert", null, "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre grade à null non gérée");
 		} catch (Exception e) {
@@ -113,7 +113,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorEscadronNull() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "SGT", null,
+			new PersonnelNavigant(23, "Pignouf", "Robert", "SGT", null,
 					Qualification.PC, 12);
 			fail("Paramètre escadron à null non gérée");
 		} catch (Exception e) {
@@ -129,7 +129,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorQualificationNull() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "Robert", "SGT", "deLaMort",
 					null, 12);
 			fail("Paramètre qualification à null non gérée");
 		} catch (Exception e) {
@@ -146,7 +146,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorHeureVolZero() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "Robert", "SGT", "deLaMort",
 					Qualification.PC, 0);
 			fail("Paramètre heure à 0 non gérée");
 		} catch (Exception e) {
@@ -162,7 +162,7 @@ public class TestPersonnel {
 	@Test
 	public void testConstructorHeureVolNegatif() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "Robert", "SGT", "deLaMort",
 					Qualification.PC, -1);
 			fail("Paramètre heure negatif non gérée");
 		} catch (Exception e) {
@@ -184,64 +184,73 @@ public class TestPersonnel {
 			fail("Ajout nombre heure FAILED :" + e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Méthode de test sur le paramètre prenom. Vérifie si le cas d'un champ vide
-	 * est géré. Englober dans un try catch, affichage du message de l'exception.
+	 * Méthode de test sur le paramètre prenom. Vérifie si le cas d'un champ
+	 * vide est géré. Englober dans un try catch, affichage du message de
+	 * l'exception.
 	 */
 	@Test
 	public void testConstructorNomVide() {
 		try {
-			new PersonnelNaviguant(23, "", "Robert", "SGT", "deLaMort",
+			new PersonnelNavigant(23, "", "Robert", "SGT", "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre nom non renseigné non gérée");
 		} catch (Exception e) {
-			assertTrue("Paramètre nom non renseigné gérée" + e.getMessage(), true);
+			assertTrue("Paramètre nom non renseigné gérée" + e.getMessage(),
+					true);
 		}
 	}
-	
+
 	/**
-	 * Méthode de test sur le paramètre prenom. Vérifie si le cas d'un champ vide
-	 * est géré. Englober dans un try catch, affichage du message de l'exception.
+	 * Méthode de test sur le paramètre prenom. Vérifie si le cas d'un champ
+	 * vide est géré. Englober dans un try catch, affichage du message de
+	 * l'exception.
 	 */
 	@Test
 	public void testConstructorPrenomVide() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "", "SGT", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "", "SGT", "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre prenom non renseigné non gérée");
 		} catch (Exception e) {
-			assertTrue("Paramètre prenom non renseigné gérée" + e.getMessage(), true);
+			assertTrue("Paramètre prenom non renseigné gérée" + e.getMessage(),
+					true);
 		}
 	}
-	
+
 	/**
 	 * Méthode de test sur le paramètre grade. Vérifie si le cas d'un champ vide
-	 * est géré. Englober dans un try catch, affichage du message de l'exception.
+	 * est géré. Englober dans un try catch, affichage du message de
+	 * l'exception.
 	 */
 	@Test
 	public void testConstructorGradeVide() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "", "deLaMort",
+			new PersonnelNavigant(23, "Pignouf", "Robert", "", "deLaMort",
 					Qualification.PC, 12);
 			fail("Paramètre grade non renseigné non gérée");
 		} catch (Exception e) {
-			assertTrue("Paramètre grade non renseigné gérée" + e.getMessage(), true);
+			assertTrue("Paramètre grade non renseigné gérée" + e.getMessage(),
+					true);
 		}
 	}
-	
+
 	/**
-	 * Méthode de test sur le paramètre escadron. Vérifie si le cas d'un champ vide
-	 * est géré. Englober dans un try catch, affichage du message de l'exception.
+	 * Méthode de test sur le paramètre escadron. Vérifie si le cas d'un champ
+	 * vide est géré. Englober dans un try catch, affichage du message de
+	 * l'exception.
 	 */
 	@Test
 	public void testConstructorEscadronVide() {
 		try {
-			new PersonnelNaviguant(23, "Pignouf", "Robert", "SGT", "",
+			new PersonnelNavigant(23, "Pignouf", "Robert", "SGT", "",
 					Qualification.PC, 12);
 			fail("Paramètre escadron non renseigné non gérée");
 		} catch (Exception e) {
-			assertTrue("Paramètre escadron non renseigné gérée" + e.getMessage(), true);
+			assertTrue(
+					"Paramètre escadron non renseigné gérée" + e.getMessage(),
+					true);
 		}
 	}
 

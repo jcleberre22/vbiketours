@@ -1,49 +1,83 @@
 package cindy.metier.vol;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
-import cindy.metier.comm.IArmement;
-import cindy.metier.comm.IAvion;
-import cindy.metier.comm.IMission;
+import java.util.GregorianCalendar;
+
+import cindy.metier.avion.Armement;
+import cindy.metier.avion.Avion;
 import cindy.metier.comm.ISortieAerienne;
 import cindy.metier.personnel.Equipage;
 
 /**
- * Classe des Sorties Aeriennes. Classe permettant de gerer les sorties
- * aeriennes
+ * Classe des Sorties Aeriennes. Classe permettant de gerer les SortiesAeriennes
  * 
  * @author LE BERRE J.Christophe
  * @version 1.0 du 25/07/2011
  */
-
-public class SortieAerienne implements ISortieAerienne, IAvion, IArmement {
-	private IAvion avion;
-	private IArmement arm;
+public class SortieAerienne implements ISortieAerienne {
+	/** Attribut avion */
+	private Avion avion;
+	/** Attribut armement */
+	private Armement arm;
+	/** Attribut debriefing */
 	private String debrief;
+	/** Attribut Equipage */
 	private Equipage equipage;
-	private IMission mission;
+	/** Attribut Mission */
+	private Mission mission;
+	/** Attribut liste d'evenement */
 	private List<Evenement> event;
+	/** Attribut heure decolage */
+	private GregorianCalendar decolage;
+	/** Attribut heure atterissage */
+	private GregorianCalendar atterissage;
 
 	/**
 	 * Constructeur de la classe SortieAerienne. liste des paramètres:
 	 * 
 	 * @param avion
+	 *            de type Avion
 	 * @param arm
+	 *            de type Armement
 	 * @param debriefing
+	 *            de type String
 	 * @param event
+	 *            de type Liste d'evenement
 	 * @param equipage
+	 *            de type Equipage
 	 * @param mission
+	 *            de type Mission
+	 * @param decolage
+	 *            de type GregorianCalendar
+	 * @param atterissage
+	 *            de type GregorianCalendar
 	 */
-	public SortieAerienne(IAvion avion, String debrief, IArmement arm,
-			List<Evenement> event, Equipage equipage, IMission mission) {
-		setIArm(arm);
-		setIAvion(avion);
+
+	public SortieAerienne(Avion avion, String debrief, Armement arm,
+			List<Evenement> event, Equipage equipage, Mission mission,
+			GregorianCalendar decolage, GregorianCalendar atterissage) {
+		setArm(arm);
+		setAvion(avion);
 		setDebriefing(debrief);
 		setEvent(event);
 		setEquipage(equipage);
-		setIMission(mission);
+		setMission(mission);
+		setDecolage(decolage);
+		setAtterissage(atterissage);
 	}
 
+	/**
+	 * Methode ajouterEvenement. Permet d'ajouter un evenement a la
+	 * SortieAerienne
+	 * 
+	 * @param ev
+	 *            sous forme d'evenement
+	 * @throws RuntimeException
+	 *             en cas de non respect de la regle de gestion relative à
+	 *             l'ajout d'un evenement
+	 */
 	public void ajouterEvenement(Evenement ev) {
 		if (ev == null) {
 			throw new RuntimeException("evenement null");
@@ -52,69 +86,142 @@ public class SortieAerienne implements ISortieAerienne, IAvion, IArmement {
 		}
 	}
 
-	//GETTERS PUBLIQUES
+	/**
+	 * Methode retirerEvenement. Permet d'enlever un evenement de la
+	 * SortieAerienne
+	 * 
+	 * @param ev
+	 *            sous forme d'evenement
+	 * @throws RuntimeException
+	 *             en cas de non respect de la regle de gestion relative à la
+	 *             suppression d'un evenement
+	 */
+	public void retirerEvenement(Evenement ev) {
+		for (Evenement evenement : event) {
+			if (ev != null) {
+				if (ev.equals(evenement)) {
+					event.remove(evenement);
+				} else {
+					throw new RuntimeException("evenement inconnu");
+				}
+			} else {
+				throw new RuntimeException("evenement null");
+			}
 
-	public IAvion getAvion() {
+		}
+	}
+
+	// GETTERS PUBLIQUES
+	/**
+	 * Recupere un avion.
+	 * 
+	 * @return avion sous forme Avion
+	 */
+	public Avion getAvion() {
 		return avion;
 	}
 
-	public IArmement getArm() {
+	/**
+	 * Recupere un armement d'un avion.
+	 * 
+	 * @return armement sous forme Armement
+	 */
+	public Armement getArm() {
 		return arm;
 	}
 
+	/**
+	 * Recupere un debriefing d'une sortie aérienne.
+	 * 
+	 * @return debriefing sous forme String
+	 */
 	public String getDebriefing() {
 		return debrief;
 	}
 
+	/**
+	 * Recupere une liste d'evenement.
+	 * 
+	 * @return list sous forme de Liste
+	 */
 	public List<Evenement> getEvent() {
 		return event;
 	}
 
-	public IMission getMission() {
+	/**
+	 * Recupere une mission d'un vol.
+	 * 
+	 * @return mission sous forme de Mission
+	 */
+	public Mission getMission() {
 		return mission;
 	}
 
+	/**
+	 * Recupere un Equipage d'un vol.
+	 * 
+	 * @return equipage sous forme d'equipage
+	 */
 	public Equipage getEquipage() {
 		return equipage;
 	}
 
+	/**
+	 * Recupere une heure de decollage d'un vol.
+	 * 
+	 * @return heure sous forme GregorianCalendar
+	 */
+	public GregorianCalendar getDecolage() {
+		return decolage;
+	}
+
+	/**
+	 * Recupere une heure d'atterissage d'un vol.
+	 * 
+	 * @return heure sous forme GregorianCalendar
+	 */
+	public GregorianCalendar getAtterissage() {
+		return atterissage;
+	}
+
 	// SETTERS PRIVEES
-	private void setIAvion(IAvion avion) {
+	public void setAvion(Avion avion) {
 		if (avion == null) {
 			throw new RuntimeException("avion null");
 		} else {
-
 			this.avion = avion;
 		}
 	}
 
-	private void setIArm(IArmement arm) {
+	public void setArm(Armement arm) {
 		if (arm == null) {
 			throw new RuntimeException("armement null");
 		} else {
-
 			this.arm = arm;
 		}
 	}
 
-	private void setEvent(List<Evenement> event) {
+	public void setEvent(List<Evenement> event) {
 		this.event = event;
 	}
 
-	private void setEquipage(Equipage equipage) {
+	public void setEquipage(Equipage equipage) {
 		if (equipage == null) {
 			throw new RuntimeException("equipage null");
 		} else {
-
 			this.equipage = equipage;
 		}
 	}
 
-	private void setDebriefing(String debrief) {
+	public void setDebriefing(String debrief) {
+		if (debrief == null || debrief.trim().length() == 0) {
+			throw new RuntimeException("debriefing null");
+		} else {
 			this.debrief = debrief;
+		}
 	}
 
-	private void setIMission(IMission mission) {
+	public void setMission(Mission mission) {
 		if (mission == null) {
 			throw new RuntimeException("mission null");
 		} else {
@@ -122,23 +229,19 @@ public class SortieAerienne implements ISortieAerienne, IAvion, IArmement {
 		}
 	}
 
-	@Override
-	public String getImmatriculation() {
-		// TODO Auto-generated method stub
-		return null;
+	private void setAtterissage(GregorianCalendar atterissage) {
+		if (atterissage == null) {
+			throw new RuntimeException("atterissage null");
+		} else {
+			this.atterissage = atterissage;
+		}
 	}
 
-	@Override
-	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
+	private void setDecolage(GregorianCalendar decolage) {
+		if (decolage == null) {
+			throw new RuntimeException("decolage null");
+		} else {
+			this.decolage = decolage;
+		}
 	}
-
-	@Override
-	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }

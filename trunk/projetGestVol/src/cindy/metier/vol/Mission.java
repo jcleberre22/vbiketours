@@ -1,37 +1,25 @@
 package cindy.metier.vol;
 
-import cindy.metier.comm.IMission;
-
 /**
  * 
- * class: Mission.
- * Va permettre d'indique le type de mission
- * exercée par le vol ou lors d'une sortie aérienne
- * @author J.Martinez 
- * @version 1.0 du 27/07/2011
+ * @author J.Martinez class: Mission. Va permettre d'indique le type de mission
+ *         exercée par le vol ou lors d'une sortie aérienne
  */
-public class Mission implements IMission {
+public class Mission {
 
 	// Attributs
 	private String type;
-
-	// Constructeur
-	// par défaut
-	/**
-	 * constructeur par défaut. Accepte que le nom de la mission ne soit pas
-	 * renseigner au préalable
-	 */
-	public Mission() {
-		type = " ";
-	}
+	@SuppressWarnings("unused")
+	private String description;
 
 	/**
 	 * second constructeur. Celui-ci exige que le nom de la mission soit donné
 	 * 
 	 * @param name
 	 */
-	public Mission(String type) {
+	public Mission(String type, String description) {
 		setType(type);
+		setDescription(description);
 	}
 
 	// Accesseurs
@@ -46,13 +34,22 @@ public class Mission implements IMission {
 	 * Fourni le nom de la mission. Règle spécifiant qu'il est impossible de
 	 * passer en paramètre une valeur nulle
 	 * 
-	 * @param nom sous forme de String
+	 * @param nom
 	 */
-	private void setType(String nom) {
-		if (nom == null || nom.trim().length() == 0){
-			throw new RuntimeException("Mission : [valeur nulle] le nom de la mission doit être donné");
+	public void setType(String nom) {
+		if (nom.equals(null) || nom.trim().length() == 0) {
+			throw new RuntimeException(
+					"Mission : [valeur nulle] le nom de la mission doit être donné");
+		} else {
+			this.type = nom;
 		}
-		this.type = nom;
 	}
 
+	public void setDescription(String description) {
+		if (description == null || description.trim().length() == 0) {
+			throw new RuntimeException("description null");
+		} else {
+			this.description = description;
+		}
+	}
 }
