@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import cindy.metier.avion.Armement;
 import cindy.metier.vol.Categorie;
 
 /**

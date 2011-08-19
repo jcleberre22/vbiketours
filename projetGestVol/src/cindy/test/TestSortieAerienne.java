@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.junit.Before;
@@ -27,7 +26,6 @@ import cindy.metier.vol.SortieAerienne;
  */
 public class TestSortieAerienne {
 
-	@SuppressWarnings("unused")
 	private ISortieAerienne sortie;
 	private GregorianCalendar dateAtterissage;
 	private GregorianCalendar dateDecollage;

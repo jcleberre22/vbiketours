@@ -49,12 +49,11 @@ public class Evenement implements IEvenement {
 	}
 
 	// SETTERS
-	@SuppressWarnings("unused")
 	public void setNomEvent(String nomEvent) {
 		this.nomEvent = nomEvent;
 	}
 
-	@SuppressWarnings("unused")
+
 	public void setTypeEvent(String typeEvent) {
 		this.typeEvent = typeEvent;
 	}

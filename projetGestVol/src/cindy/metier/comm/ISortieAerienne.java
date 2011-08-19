@@ -1,9 +1,8 @@
 package cindy.metier.comm;
 
-import java.util.Date;
+
 import java.util.GregorianCalendar;
 import java.util.List;
-
 import cindy.metier.avion.Armement;
 import cindy.metier.avion.Avion;
 import cindy.metier.personnel.Equipage;
