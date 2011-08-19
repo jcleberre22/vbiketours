@@ -2,9 +2,6 @@ package cindy.metier.vol;
 
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import java.util.GregorianCalendar;
-
 import cindy.metier.avion.Armement;
 import cindy.metier.avion.Avion;
 import cindy.metier.comm.ISortieAerienne;
