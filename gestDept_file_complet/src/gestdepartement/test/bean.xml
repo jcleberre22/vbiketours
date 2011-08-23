@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="region" class="gestdepartement.metier.Region">
+		<property name="nom" value="basse normandie">	</property>
+	</bean>
+	<bean id="departement" class="gestdepartement.metier.Departement">
+		<property name="nom" value="Manche">	</property>
+		<property name="code" value=";50"></property>
+		<property name="nombreHabitant" value="100">	</property>
+		<property name="superficie" value="10">	</property>
+	</bean>
+	<bean id="departementDoublons" class="gestdepartement.metier.Departement">
+		<property name="nom" value="clone">	</property>
+		<property name="code" value=";50"></property>
+		<property name="nombreHabitant" value="110">	</property>
+		<property name="superficie" value="100">	</property>
+	</bean>
+	<bean id="pays" class="gestdepartement.metier.Pays">
+	</bean>
+</beans>
