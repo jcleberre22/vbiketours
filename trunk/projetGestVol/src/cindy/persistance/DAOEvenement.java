@@ -135,7 +135,7 @@ if(obj2 instanceof String == false || obj instanceof Integer == false){
 	
 	public static void main(String[] args) throws Exception {
 		
-		DAOCategorie bdd = new DAOCategorie();
+		DAOEvenement bdd = new DAOEvenement();
 		
 		bdd.insererPersistance(1,"fdsf");
 		
