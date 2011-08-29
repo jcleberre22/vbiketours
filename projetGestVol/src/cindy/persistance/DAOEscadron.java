@@ -50,124 +50,124 @@ public class DAOEscadron implements IPersistance {
 	public void supprimerPersistance(Object obj) throws SQLException, Exception {
 		//idt est un entier donc il faut passer l'obj en entier.
 		if(obj instanceof Integer == false){
-			
+
 			throw new RuntimeException("Parametre incorrect");
-			
+
 		}
-		
+
 		int param = (Integer)obj;
-		
+
 		try{
 			AccesBDD bdd = AccesBDD.getInstance();
-		
+
 			String requete1 = "DELETE FROM escadron" + " WHERE idescadron=?";
-		
+
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
 			prSt1.setInt(1, param);
 			prSt1.executeUpdate();
 			prSt1.close();
-			
+
 		}catch(Exception e){
-			
+
 			e.printStackTrace();
-			
+
 		}
-		
+
 	}
 
 	@Override
 	public void modifierPersistance(Object obj, Object obj2) throws SQLException, Exception {
-if(obj2 instanceof String == false || obj instanceof Integer == false){
-			
+		if(obj2 instanceof String == false || obj instanceof Integer == false){
+
 			throw new RuntimeException("Parametre incorrect");
-			
+
 		}
-		
+
 		String param1 = (String)obj2;
 		int param2 = (Integer)obj;
-		
+
 		try {
-			
+
 			AccesBDD bdd = AccesBDD.getInstance();
 			String requete1 = "UPDATE escadron SET libelleescadron=?" + " WHERE idescadron=?";
-			
+
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
-			
+
 			prSt1.setString(1, param1);
 			prSt1.setInt(2, param2);
 			prSt1.executeUpdate();
 			prSt1.close();
-			
-			
+
+
 		} catch (Exception e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
 	public void insererPersistance(Object obj, Object obj2) throws SQLException, Exception {
 
 		if(obj instanceof Integer == false || obj2 instanceof String == false){
-			
+
 			throw new RuntimeException("Parametre incorrect");
-			
+
 		}
-		
+
 		int paramInt = (Integer)obj;
 		String paramStr = (String)obj2;
-		
+
 		try {
-			
+
 			AccesBDD bdd = AccesBDD.getInstance();
-			
+
 			String requete1 = "INSERT INTO escadron" + "(idescadron,libelleescadron)" + 
-								"VALUES(?,?)";
-			
+			"VALUES(?,?)";
+
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
-			
+
 			prSt1.setInt(1, paramInt);
 			prSt1.setString(2, paramStr);
 			prSt1.executeUpdate();
 			prSt1.close();
-			
-			
-			
+
+
+
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 
 	}
-	
+
 	public static void main(String[] args) throws Exception {
-		
+
 		DAOEscadron bdd = new DAOEscadron();
-		
+
 		bdd.insererPersistance(1,"fdsf");
-		
-		bdd.lire();
-		
-		System.out.println("******************************");
-		
-		bdd.modifierPersistance(1,"poulet");
-		
-		bdd.lire();
-		
-		System.out.println("******************************");
-		
-		bdd.insererPersistance(2, "Coq");
-		
+
 		bdd.lire();
 
-	
-	
+		System.out.println("******************************");
+
+		bdd.modifierPersistance(1,"poulet");
+
+		bdd.lire();
+
+		System.out.println("******************************");
+
+		bdd.insererPersistance(2, "Coq");
+
+		bdd.lire();
+
+
+
 		bdd.supprimerPersistance(1);
 		bdd.supprimerPersistance(2);
-	
-		
-		
+
+
+
 	}
 
 
