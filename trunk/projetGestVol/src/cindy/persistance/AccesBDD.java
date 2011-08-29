@@ -1,6 +1,7 @@
 package cindy.persistance;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -24,7 +25,7 @@ public final class AccesBDD {
 
 	private static AccesBDD instance;
 
-	private static String fileCnx = "gestnote/persistance/dataSourceBean.xml";
+	private static String fileCnx = "cindy/persistance/dataSourceBean.xml";
 	/**
 	 * interdit l'instanciation de sorte a obliger 
 	 * l'utilisation du singleton.
@@ -87,6 +88,15 @@ public final class AccesBDD {
 			return cnx.createStatement();
 		} catch (SQLException e) {
 			throw new RuntimeException("Impossible d'obtenir un statement!!.");
+		}
+	}
+	
+	public PreparedStatement getPrepareStatment(String sql) {
+		try {
+			return cnx.prepareStatement(sql);
+		} catch (SQLException e) {
+			logger.fatal(e.getMessage());
+			throw new RuntimeException("Probleme a l'obtention du preparedstatement " + sql+ " erreur:"+e.getMessage());
 		}
 	}
 }
