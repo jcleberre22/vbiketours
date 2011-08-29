@@ -159,10 +159,10 @@ public class DAOQualification implements IPersistance{
 		bdd.insererPersistance(2, "Coq");
 
 		bdd.lire();
-
+/*
 		bdd.supprimerPersistance(1);
 		bdd.supprimerPersistance(2);
-
+*/
 
 
 
