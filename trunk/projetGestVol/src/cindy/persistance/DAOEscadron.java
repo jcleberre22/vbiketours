@@ -161,11 +161,11 @@ public class DAOEscadron implements IPersistance {
 
 		bdd.lire();
 
-
+/*
 
 		bdd.supprimerPersistance(1);
 		bdd.supprimerPersistance(2);
-
+*/
 
 
 	}
