@@ -7,17 +7,17 @@ import java.sql.Statement;
 
 import cindy.metier.comm.IPersistance;
 
-
 /**
  * Lecture du fichier en vue d'exploiter 
- * les enregistrements d'une categorie sur la base HSQL
+ * les enregistrements d'une circulation sur la base HSQL
  * 
  * @author Nicolas.tabuteaud
  * @version 1.0 du 25/07/2011 modifié le 29/08/2011
  */
-public class DAOCategorie implements IPersistance {
 
-	public DAOCategorie(){}
+public class DAOCirculation implements IPersistance {
+
+	public DAOCirculation() {}
 
 	@Override
 	public void lire()throws SQLException,Exception{
@@ -26,7 +26,7 @@ public class DAOCategorie implements IPersistance {
 
 			AccesBDD bdd = AccesBDD.getInstance();
 
-			String requete = "SELECT * FROM categorie";
+			String requete = "SELECT * FROM circulation";
 
 			Statement stmt = bdd.getStatement();
 
@@ -60,7 +60,7 @@ public class DAOCategorie implements IPersistance {
 		try{
 			AccesBDD bdd = AccesBDD.getInstance();
 
-			String requete1 = "DELETE FROM categorie" + " WHERE idcategorie=?";
+			String requete1 = "DELETE FROM circulation" + " WHERE idcirculation=?";
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
 			prSt1.setInt(1, param);
@@ -89,7 +89,7 @@ public class DAOCategorie implements IPersistance {
 		try {
 
 			AccesBDD bdd = AccesBDD.getInstance();
-			String requete1 = "UPDATE categorie SET libellecategorie=?" + " WHERE idcategorie=?";
+			String requete1 = "UPDATE circulation SET libellecirculation=?" + " WHERE idcirculation=?";
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
 
@@ -121,7 +121,7 @@ public class DAOCategorie implements IPersistance {
 
 			AccesBDD bdd = AccesBDD.getInstance();
 
-			String requete1 = "INSERT INTO categorie" + "(idcategorie,libellecategorie)" + 
+			String requete1 = "INSERT INTO circulation" + "(idcirculation,libellecirculation)" + 
 			"VALUES(?,?)";
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
@@ -143,7 +143,7 @@ public class DAOCategorie implements IPersistance {
 
 	public static void main(String[] args) throws Exception {
 
-		DAOCategorie bdd = new DAOCategorie();
+		DAOCirculation bdd = new DAOCirculation();
 
 		bdd.insererPersistance(1,"fdsf");
 
@@ -168,6 +168,5 @@ public class DAOCategorie implements IPersistance {
 
 
 	}
-
 
 }
