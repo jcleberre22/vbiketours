@@ -201,28 +201,20 @@ public class DAOPilote implements IPilotePersistance{
 
 		DAOPilote bdd = new DAOPilote();
 
-	//	bdd.insererPersistance(1,"161SV4","AL25GJH","TABUTEAUD","Nicopops",1,1,1,"tireur au flanc",0,1,true);
+	//	bdd.insererPersistance(1,"161SV4","AL25GJH","TABUTEAUD","fff",1,1,1,"tireur au flanc",0,1,true);
 
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		bdd.modifierPersistance("161SV4","AL25GJH","TABUTEAUD","fdsf",1,1,1,"tireur au flanc",0,1,true,1);
+		bdd.modifierPersistance("161SV4","AL25GJH","TABUTEAUD","Nicopops",1,1,1,"tireur au flanc",0,1,true,1);
 
 		bdd.lire();
-/*
+
 		System.out.println("******************************");
-
-		bdd.insererPersistance(2, "Coq");
-
-		bdd.lire();
 
 		bdd.supprimerPersistance(1);
-		bdd.supprimerPersistance(2);
-
-*/
-
-
+		bdd.lire();
 
 	}
 	
