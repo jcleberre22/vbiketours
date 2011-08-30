@@ -23,7 +23,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 	public DAOSortieAerienne(){}
 
 	/**
-	 * Méthode qui permet la lecture de la table Armement.
+	 * Méthode qui permet la lecture de la table SortieAerienne.
 	 * La requete s'effectue à l'aide d'un SELECT.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -43,7 +43,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 			ResultSet rs = stmt.executeQuery(requete);
 
 			while (rs.next()){
-				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getInt(4)+"\t"+rs.getInt(5)+"\t"+rs.getInt(6)+"\t"+rs.getDate(7)+"\t"+rs.getDate(8)+"\t"+rs.getInt(9)+"\t"+rs.getString(10)+"\t"+rs.getString(11)+"\n");
+				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getInt(4)+"\t"+rs.getInt(5)+"\t"+rs.getInt(6)+"\t"+rs.getTimestamp(7)+"\t"+rs.getTimestamp(8)+"\t"+rs.getInt(9)+"\t"+rs.getString(10)+"\t"+rs.getString(11)+"\n");
 
 			}
 
@@ -56,7 +56,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 	}
 
 	/**
-	 * Méthode qui de supprimer un tuple de la table Armement.
+	 * Méthode qui de supprimer un tuple de la table SortieAerienne.
 	 * La requete s'effectue à l'aide d'un DELETE FROM.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -64,7 +64,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 	 */
 	@Override
 	public void supprimerPersistance(Object obj) throws SQLException, Exception {
-
+		//idt est un entier donc il faut passer l'obj en entier.
 		if(obj instanceof Integer == false){
 
 			throw new RuntimeException("Parametre incorrect");
@@ -92,7 +92,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 	}
 
 	/**
-	 * Méthode qui modifie un tuple de la table Categorie.
+	 * Méthode qui modifie un tuple de la table SortieAerienne.
 	 * La requete s'effectue à l'aide d'un UPDATE.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -100,7 +100,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 	 */
 	@Override
 	public void modifierPersistance(Object obj, Object obj2, Object obj3, Object obj4, Object obj5, Object obj6, Object obj7, Object obj8, Object obj9, Object obj10, Object obj11) throws SQLException, Exception {
-
+		//idt est un entier donc il faut passer l'obj en entier.
 		if(obj instanceof Integer == false || obj2 instanceof Integer == false || obj3 instanceof Integer == false || obj4 instanceof Integer == false || obj5 instanceof Integer == false || obj6 instanceof Integer == false || obj7 instanceof Date == false|| obj8 instanceof Date == false || obj9 instanceof Integer == false || obj10 instanceof String == false || obj11 instanceof String == false){
 
 			throw new RuntimeException("Parametre incorrect");
@@ -148,7 +148,7 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 	}
 
 	/**
-	 * Méthode qui insere un tuple dans la table Armement.
+	 * Méthode qui insere un tuple dans la table SortieAerienne.
 	 * La requete s'effectue à l'aide d'un UPDATE.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -213,40 +213,31 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 		DAOSortieAerienne bdd = new DAOSortieAerienne();
 		System.out.println("insert");
 
-		bdd.insererPersistance(7, 1, 1, 1, 1, 1,new GregorianCalendar(2011,8,29,10,00,00).getTime(), new GregorianCalendar(2011,8,30,14,00,00).getTime(), 1, "abc","def");
+		bdd.insererPersistance(7, 1, 1, 1, 1, 1,new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), 1, "abc","def");
 
 		System.out.println("******************************");
-		System.out.println("read");
+		System.out.println("read1");
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		//		System.out.println("update");
-		//		bdd.modifierPersistance(1, "56265ALH","chasseur",3,59,true,false);
-		//		
-		//		System.out.println("******************************");
-		//		System.out.println("read");
-		//		bdd.lire();
-		//		System.out.println("******************************");
-		//		
-		//		System.out.println("insert2");		
-		//		bdd.insererPersistance(2, "47857LKH","pêche",3,15,false,false);
-		//		System.out.println("insert3");
-		//		bdd.insererPersistance(3, "56286UJH","balade",3,110,false,false);
-		//		
-		//		System.out.println("******************************");
-		//		System.out.println("read");
-		//		bdd.lire();
-		//		System.out.println("******************************");
-		//		
-		//		//bdd.supprimerPersistance(1);
-		//		System.out.println("delete");
-		//		bdd.supprimerPersistance(2);
-		//		//bdd.supprimerPersistance(3);
-		//
-		//		System.out.println("******************************");
-		//		bdd.lire();
-		//		System.out.println("******************************");
+		System.out.println("update");
+		bdd.modifierPersistance(7, 1, 1, 1, 1, 1,new GregorianCalendar(2010,2,12,10,0,0).getTime(), new GregorianCalendar(2011,6,23,14,0,0).getTime(), 1, "abc","def");
+
+		System.out.println("******************************");
+		System.out.println("read2");
+		bdd.lire();
+		System.out.println("******************************");
+
+
+		System.out.println("delete");
+		bdd.supprimerPersistance(7);
+
+
+		System.out.println("******************************");
+		System.out.println("read3");
+		bdd.lire();
+		System.out.println("******************************");
 
 
 	}
