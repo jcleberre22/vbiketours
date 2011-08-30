@@ -30,8 +30,8 @@ public interface IPilotePersistance {
 	 */
 	void modifierPersistance(Object obj, Object obj2, Object obj3, Object obj4,
 			Object obj5, Object obj6, Object obj7, Object obj8, Object obj9,
-			Object obj10, Object obj11, Object obj12) throws SQLException,
-			Exception;
+			Object obj10, Object obj11, Object obj12, Object obj13)
+			throws SQLException, Exception;
 	
 	/**
 	 * Méthode pour inserer des objets gérer par les DAO.
@@ -42,8 +42,10 @@ public interface IPilotePersistance {
 	 */
 	void insererPersistance(Object obj, Object obj2, Object obj3, Object obj4,
 			Object obj5, Object obj6, Object obj7, Object obj8, Object obj9,
-			Object obj10, Object obj11, Object obj12) throws SQLException,
-			Exception;
+			Object obj10, Object obj11, Object obj12, Object obj13)
+			throws SQLException, Exception;
+
+
 
 	
 
