@@ -34,9 +34,10 @@ public class DAOPilote implements IPilotePersistance{
 
 			while (rs.next()){
 				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+
-						"\t"+rs.getString(4)+"\t"+rs.getString(5)+"\t"+rs.getInt(6)+
-						"\t"+rs.getInt(7)+"\t"+rs.getInt(8)+"\t"+rs.getString(9)+
-						"\t"+rs.getInt(10)+"\t"+rs.getInt(11)+"\t"+rs.getBoolean(12)+"\n");
+						"\t"+rs.getString(4)+"\t"+rs.getString(5)+"\t"+rs.getString(6)+
+						"\t"+rs.getInt(7)+"\t"+rs.getInt(8)+"\t"+rs.getInt(9)+
+						"\t"+rs.getString(10)+"\t"+rs.getInt(11)+"\t"+rs.getInt(12)+
+						"\t"+rs.getBoolean(13));
 
 			}
 
@@ -76,14 +77,16 @@ public class DAOPilote implements IPilotePersistance{
 		}
 
 	}
+	
 
 	@Override
 	public void modifierPersistance(Object obj, Object obj2, Object obj3, Object obj4, Object obj5, Object obj6,
-			Object obj7, Object obj8, Object obj9, Object obj10, Object obj11, Object obj12) throws SQLException, Exception {
+			Object obj7, Object obj8, Object obj9, Object obj10, Object obj11, Object obj12, Object obj13) throws SQLException, Exception {
 		if(obj instanceof String == false || obj2 instanceof String == false 
-				|| obj3 instanceof String == false || obj4 instanceof String == false || obj5 instanceof Integer == false
-				|| obj6 instanceof Integer == false || obj7 instanceof Integer == false || obj8 instanceof String == false
-				|| obj9 instanceof Integer == false || obj10 instanceof Integer == false || obj11 instanceof Boolean == false || obj12 instanceof Integer == false ){
+				|| obj3 instanceof String == false || obj4 instanceof String == false || obj5 instanceof String == false
+				|| obj6 instanceof Integer == false || obj7 instanceof Integer == false || obj8 instanceof Integer == false
+				|| obj9 instanceof String == false || obj10 instanceof Integer == false || obj11 instanceof Integer == false 
+				|| obj12 instanceof Boolean == false || obj13 instanceof Integer == false ){
 
 			throw new RuntimeException("Parametre incorrect");
 
@@ -94,15 +97,15 @@ public class DAOPilote implements IPilotePersistance{
 		String param2 = (String)obj2;
 		String param3 = (String)obj3;
 		String param4 = (String)obj4;
-		int param5 = (Integer)obj5;
+		String param5 = (String)obj5;
 		int param6 = (Integer)obj6;
 		int param7 = (Integer)obj7;
-		String param8 = (String)obj8;
-		int param9 = (Integer)obj9;
+		int param8 = (Integer)obj8;
+		String param9 = (String)obj9;
 		int param10 = (Integer)obj10;
-		Boolean param11 = (Boolean)obj11;
-		int param12 = (Integer)obj12;
-		
+		int param11 = (Integer)obj11;
+		Boolean param12 = (Boolean)obj12;
+		int param13 = (Integer)obj13;
 
 		try {
 
@@ -117,14 +120,15 @@ public class DAOPilote implements IPilotePersistance{
 			prSt1.setString(2, param2);
 			prSt1.setString(3, param3);
 			prSt1.setString(4, param4);
-			prSt1.setInt(5, param5);
+			prSt1.setString(5, param5);
 			prSt1.setInt(6, param6);
 			prSt1.setInt(7, param7);
-			prSt1.setString(8, param8);
-			prSt1.setInt(9, param9);
+			prSt1.setInt(8, param8);
+			prSt1.setString(9, param9);
 			prSt1.setInt(10, param10);
-			prSt1.setBoolean(11, param11);
-			prSt1.setInt(12, param12);
+			prSt1.setInt(11, param11);
+			prSt1.setBoolean(12, param12);
+			prSt1.setInt(13, param13);
 			
 			prSt1.executeUpdate();
 			prSt1.close();
@@ -138,12 +142,13 @@ public class DAOPilote implements IPilotePersistance{
 
 	@Override
 	public void insererPersistance(Object obj, Object obj2, Object obj3, Object obj4, Object obj5, Object obj6,
-			Object obj7, Object obj8, Object obj9, Object obj10, Object obj11, Object obj12) throws SQLException, Exception {
+			Object obj7, Object obj8, Object obj9, Object obj10, Object obj11, Object obj12, Object obj13) throws SQLException, Exception {
 
-		if(obj instanceof Integer == false || obj2 instanceof String == false || obj3 instanceof String == false 
-				|| obj4 instanceof String == false || obj5 instanceof String == false || obj6 instanceof Integer == false
-				|| obj7 instanceof Integer == false || obj8 instanceof Integer == false || obj9 instanceof String == false
-				|| obj10 instanceof Integer == false || obj11 instanceof Integer == false || obj12 instanceof Boolean == false){
+		if(obj instanceof Integer == false || obj2 instanceof String == false 
+				|| obj3 instanceof String == false || obj4 instanceof String == false || obj5 instanceof String == false
+				|| obj6 instanceof String == false || obj7 instanceof Integer == false || obj8 instanceof Integer == false
+				|| obj9 instanceof Integer == false || obj10 instanceof String == false || obj11 instanceof Integer == false 
+				|| obj12 instanceof Integer == false || obj13 instanceof Boolean == false){
 
 			throw new RuntimeException("Parametre incorrect");
 
@@ -154,13 +159,14 @@ public class DAOPilote implements IPilotePersistance{
 		String param3 = (String)obj3;
 		String param4 = (String)obj4;
 		String param5 = (String)obj5;
-		int param6 = (Integer)obj6;
+		String param6 = (String)obj6;
 		int param7 = (Integer)obj7;
 		int param8 = (Integer)obj8;
-		String param9 = (String)obj9;
-		int param10 = (Integer)obj10;
+		int param9 = (Integer)obj9;
+		String param10 = (String)obj10;
 		int param11 = (Integer)obj11;
-		Boolean param12 = (Boolean)obj12;
+		int param12 = (Integer)obj12;
+		Boolean param13 = (Boolean)obj13;
 
 		try {
 
@@ -177,13 +183,14 @@ public class DAOPilote implements IPilotePersistance{
 			prSt1.setString(3, param3);
 			prSt1.setString(4, param4);
 			prSt1.setString(5, param5);
-			prSt1.setInt(6, param6);
+			prSt1.setString(6, param6);
 			prSt1.setInt(7, param7);
 			prSt1.setInt(8, param8);
-			prSt1.setString(9, param9);
-			prSt1.setInt(10, param10);
+			prSt1.setInt(9, param9);
+			prSt1.setString(10, param10);
 			prSt1.setInt(11, param11);
-			prSt1.setBoolean(12, param12);
+			prSt1.setInt(12, param12);
+			prSt1.setBoolean(13, param13);
 			prSt1.executeUpdate();
 			prSt1.close();
 
@@ -201,13 +208,13 @@ public class DAOPilote implements IPilotePersistance{
 
 		DAOPilote bdd = new DAOPilote();
 
-	//	bdd.insererPersistance(1,"161SV4","AL25GJH","TABUTEAUD","fff",1,1,1,"tireur au flanc",0,1,true);
+	//	bdd.insererPersistance(1,"161SV4","AL25GJH","TABUTEAUD","fff","SGT",1,1,1,"tireur au flanc",0,1,true);
 
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		bdd.modifierPersistance("161SV4","AL25GJH","TABUTEAUD","Nicopops",1,1,1,"tireur au flanc",0,1,true,1);
+		bdd.modifierPersistance("161SV4","AL25GJH","TABUTEAUD","Nicopops","SGT",1,1,1,"tireur au flanc",0,1,true,1);
 
 		bdd.lire();
 
