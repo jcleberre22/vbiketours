@@ -23,6 +23,10 @@ public class TestPersistanceEquipage {
 		daoe = new DAOEquipage();
 	}
 
+	/**
+	 * Méthode de test qui va permettre la bonne instanciation du constructeur. 
+	 * Englober dans un try catch, affichage du message de l'exception.
+	 */
 	@Test
 	public void testConstructor() {
 		try {
@@ -33,6 +37,10 @@ public class TestPersistanceEquipage {
 		}
 	}
 
+	/**
+	 * Méthode de test sur la lecture de la table Equipage de la BDD.
+	 * Utilise une requete avec un SELECT.
+	 */
 	@Test
 	public void testLectureDAOEquipage() {
 		try {
@@ -44,6 +52,10 @@ public class TestPersistanceEquipage {
 		}
 	}
 
+	/**
+	 * Méthode de test sur l'insertion des données de la table Equipage de la BDD.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testInsertionDAOEquipage() {
 		try {
@@ -55,17 +67,25 @@ public class TestPersistanceEquipage {
 		}
 	}
 
+	/**
+	 * Méthode de test sur la modification des données de la table Equipage de la BDD.
+	 * Utilise une requete avec un UPDATE.
+	 */
 	@Test
 	public void testModificationDAOEquipage() {
 		try {
 			setUp();
-			daoe.insererPersistance(1, "Equipage de coq");
+			daoe.modifierPersistance(1, "Equipage de coq");
 			assertTrue("Modification des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}	
 
+	/**
+	 * Méthode de test sur un cas où une mauvaise insertion des données de la table Equipage s'effectue.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testMauvaiseInsertionDAOEquipage() {
 		try {
@@ -73,10 +93,29 @@ public class TestPersistanceEquipage {
 			daoe.insererPersistance("coq", "Equipage de poulet");
 			fail("Données inserer non correct non geré ");
 		} catch (Exception e) {
-			assertTrue("Modification des données geré"+ e.getMessage(), true);
+			assertTrue("Mauvaise insertion des données geré"+ e.getMessage(), true);
+		}
+	}	
+	
+	/**
+	 * Méthode de test sur un cas où une mauvaise modification des données de la table Equipage s'effectue.
+	 * Utilise une requete avec un UPDATE.
+	 */
+	@Test
+	public void testMauvaiseModificationDAOEquipage() {
+		try {
+			setUp();
+			daoe.modifierPersistance(1,23);
+			fail("Données modifer non correct non geré ");
+		} catch (Exception e) {
+			assertTrue("Mauvaise modification des données geré"+ e.getMessage(), true);
 		}
 	}	
 
+	/**
+	 * Méthode de test sur la suppression des données de la table Equipage de la BDD.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testSuppressionDAOEquipage() {
 		try {
@@ -88,6 +127,11 @@ public class TestPersistanceEquipage {
 		}
 	}
 
+
+	/**
+	 * Méthode de test sur un cas où une mauvaise suppression des données de la table Equipage s'effectue.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testMauvaiseSuppressionDAOEquipage() {
 		try {

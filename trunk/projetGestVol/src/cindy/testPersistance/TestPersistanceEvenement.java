@@ -34,6 +34,10 @@ public class TestPersistanceEvenement {
 		}
 	}
 
+	/**
+	 * Méthode de test qui va permettre la bonne instanciation du constructeur. 
+	 * Englober dans un try catch, affichage du message de l'exception.
+	 */
 	@Test
 	public void testLectureDAOEvenement() {
 		try {
@@ -45,6 +49,10 @@ public class TestPersistanceEvenement {
 		}
 	}
 
+	/**
+	 * Méthode de test sur la lecture de la table Evenement de la BDD.
+	 * Utilise une requete avec un SELECT.
+	 */
 	@Test
 	public void testInsertionDAOEvenement() {
 		try {
@@ -56,17 +64,25 @@ public class TestPersistanceEvenement {
 		}
 	}
 
+	/**
+	 * Méthode de test sur l'insertion des données de la table Evenement de la BDD.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testModificationDAOEvenement() {
 		try {
 			setUp();
-			daoe.insererPersistance(1, "Plumage de coq");
+			daoe.modifierPersistance(1, "Plumage de coq");
 			assertTrue("Modification des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}	
 
+	/**
+	 * Méthode de test sur la modification des données de la table Evenement de la BDD.
+	 * Utilise une requete avec un UPDATE.
+	 */
 	@Test
 	public void testMauvaiseInsertionDAOEvenement() {
 		try {
@@ -74,10 +90,29 @@ public class TestPersistanceEvenement {
 			daoe.insererPersistance("Tueur de coq", "Plumage de poulet");
 			fail("Données inserer non correct non geré ");
 		} catch (Exception e) {
+			assertTrue("Mauvaise insertion des données geré"+ e.getMessage(), true);
+		}
+	}	
+	
+	/**
+	 * Méthode de test sur un cas où une mauvaise insertion des données de la table Evenement s'effectue.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
+	@Test
+	public void testMauvaiseModificationDAOEvenement() {
+		try {
+			setUp();
+			daoe.modifierPersistance(1,23);
+			fail("Données modifié non correct non geré ");
+		} catch (Exception e) {
 			assertTrue("Modification des données geré"+ e.getMessage(), true);
 		}
 	}	
 
+	/**
+	 * Méthode de test sur la suppression des données de la table Evenement de la BDD.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testSuppressionDAOEvenement() {
 		try {
@@ -89,6 +124,10 @@ public class TestPersistanceEvenement {
 		}
 	}
 
+	/**
+	 * Méthode de test sur un cas où une mauvaise suppression des données de la table Evenement s'effectue.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testMauvaiseSuppressionDAOEvenement() {
 		try {
