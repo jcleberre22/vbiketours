@@ -13,6 +13,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * 
  */
 @RunWith(Suite.class)
-@SuiteClasses({  })
-public class AllTests {
+@SuiteClasses({ TestPersitanceCategorie.class, TestPersistanceCirculation.class, TestPersistanceEquipage.class,
+				TestPersistanceEscadron.class, TestPersistanceEvenement.class, TestPersistanceMission.class,
+				TestPersistanceQualification.class})
+public class AllTestsPersistance {
 }

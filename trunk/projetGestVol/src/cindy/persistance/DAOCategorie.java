@@ -125,7 +125,7 @@ public class DAOCategorie implements IPersistance {
 			"VALUES(?,?)";
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
-
+			
 			prSt1.setInt(1, paramInt);
 			prSt1.setString(2, paramStr);
 			prSt1.executeUpdate();
