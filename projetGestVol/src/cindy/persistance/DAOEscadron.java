@@ -17,8 +17,17 @@ import cindy.metier.comm.IPersistance;
  */
 public class DAOEscadron implements IPersistance {
 
+	/**
+	 * Constructeur par defaut
+	 */
 	public DAOEscadron(){}
 
+	/**
+	 * Méthode qui permet la lecture de la table Escadron.
+	 * La requete s'effectue à l'aide d'un SELECT.
+	 * La méthode est englobé dans un try catch.
+	 * @throws SQLException, Exception 
+	 */
 	@Override
 	public void lire()throws SQLException,Exception{
 
@@ -30,7 +39,6 @@ public class DAOEscadron implements IPersistance {
 
 			Statement stmt = bdd.getStatement();
 
-			//executeQuery quand c'est un select
 			ResultSet rs = stmt.executeQuery(requete);
 
 			while (rs.next()){
@@ -46,9 +54,15 @@ public class DAOEscadron implements IPersistance {
 
 	}
 
+	/**
+	 * Méthode qui de supprimer un tuple de la table Escadron.
+	 * La requete s'effectue à l'aide d'un DELETE FROM.
+	 * La méthode est englobé dans un try catch.
+	 * @throws SQLException, Exception
+	 * @param obj[n] 
+	 */
 	@Override
 	public void supprimerPersistance(Object obj) throws SQLException, Exception {
-		//idt est un entier donc il faut passer l'obj en entier.
 		if(obj instanceof Integer == false){
 
 			throw new RuntimeException("Parametre incorrect");
@@ -75,6 +89,13 @@ public class DAOEscadron implements IPersistance {
 
 	}
 
+	/**
+	 * Méthode qui modifie un tuple de la table Escadron.
+	 * La requete s'effectue à l'aide d'un UPDATE.
+	 * La méthode est englobé dans un try catch.
+	 * @throws SQLException, Exception 
+	 * @param obj[n]
+	 */
 	@Override
 	public void modifierPersistance(Object obj, Object obj2) throws SQLException, Exception {
 		if(obj2 instanceof String == false || obj instanceof Integer == false){
@@ -105,6 +126,13 @@ public class DAOEscadron implements IPersistance {
 
 	}
 
+	/**
+	 * Méthode qui insere un tuple dans la table Escadron.
+	 * La requete s'effectue à l'aide d'un UPDATE.
+	 * La méthode est englobé dans un try catch.
+	 * @throws SQLException, Exception 
+	 * @param obj[n]
+	 */
 	@Override
 	public void insererPersistance(Object obj, Object obj2) throws SQLException, Exception {
 
@@ -141,6 +169,11 @@ public class DAOEscadron implements IPersistance {
 
 	}
 
+	/**
+	 * Méthode de Test.
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 
 		DAOEscadron bdd = new DAOEscadron();
@@ -161,11 +194,8 @@ public class DAOEscadron implements IPersistance {
 
 		bdd.lire();
 
-/*
-
 		bdd.supprimerPersistance(1);
 		bdd.supprimerPersistance(2);
-*/
 
 
 	}

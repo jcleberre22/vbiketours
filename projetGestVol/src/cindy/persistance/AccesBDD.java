@@ -80,6 +80,10 @@ public final class AccesBDD {
 		AccesBDD.fermer();
 	}
 
+	/**
+	 * Création d'un statement
+	 * @return la connexion
+	 */
 	public Statement getStatement() {
 		if (cnx == null){
 			throw new RuntimeException("Aucune connexion a la base de données n'est active.");
@@ -91,6 +95,11 @@ public final class AccesBDD {
 		}
 	}
 	
+	/**
+	 * Création d'un prepare Statement qui renvoie les parametres SQL de la database.
+	 * @param sql
+	 * @return cnx
+	 */
 	public PreparedStatement getPrepareStatment(String sql) {
 		try {
 			return cnx.prepareStatement(sql);
