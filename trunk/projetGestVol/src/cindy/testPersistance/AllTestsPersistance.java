@@ -15,6 +15,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ TestPersitanceCategorie.class, TestPersistanceCirculation.class, TestPersistanceEquipage.class,
 				TestPersistanceEscadron.class, TestPersistanceEvenement.class, TestPersistanceMission.class,
-				TestPersistanceQualification.class, TestPersistancePilote.class})
+				TestPersistanceQualification.class, TestPersistancePilote.class, TestPersistanceArmement.class,
+				TestPersistanceAvion.class})
 public class AllTestsPersistance {
 }

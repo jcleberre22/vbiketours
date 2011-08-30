@@ -23,7 +23,7 @@ public class DAOVol implements IVolPersistant{
 	public DAOVol(){}
 
 	/**
-	 * Méthode qui permet la lecture de la table Armement.
+	 * Méthode qui permet la lecture de la table Vol.
 	 * La requete s'effectue à l'aide d'un SELECT.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -43,7 +43,7 @@ public class DAOVol implements IVolPersistant{
 			ResultSet rs = stmt.executeQuery(requete);
 
 			while (rs.next()){
-				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getDate(4)+" "+rs.getDate(4).getTime()+"\t"+rs.getDate(5)+"\t"+rs.getBoolean(6)+"\n");
+				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getTimestamp(4)+"\t"+rs.getTimestamp(5)+"\t"+rs.getBoolean(6)+"\n");
 
 			}
 
@@ -56,7 +56,7 @@ public class DAOVol implements IVolPersistant{
 	}
 
 	/**
-	 * Méthode qui de supprimer un tuple de la table Armement.
+	 * Méthode qui de supprimer un tuple de la table Vol.
 	 * La requete s'effectue à l'aide d'un DELETE FROM.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -64,6 +64,7 @@ public class DAOVol implements IVolPersistant{
 	 */
 	@Override
 	public void supprimerPersistance(Object obj) throws SQLException, Exception {
+		//idt est un entier donc il faut passer l'obj en entier.
 		if(obj instanceof Integer == false){
 
 			throw new RuntimeException("Parametre incorrect");
@@ -91,7 +92,7 @@ public class DAOVol implements IVolPersistant{
 	}
 
 	/**
-	 * Méthode qui modifie un tuple de la table Categorie.
+	 * Méthode qui modifie un tuple de la table Vol.
 	 * La requete s'effectue à l'aide d'un UPDATE.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -99,6 +100,7 @@ public class DAOVol implements IVolPersistant{
 	 */
 	@Override
 	public void modifierPersistance(Object obj, Object obj2, Object obj3, Object obj4, Object obj5, Object obj6) throws SQLException, Exception {
+		//idt est un entier donc il faut passer l'obj en entier.
 		if(obj instanceof Integer == false || obj2 instanceof Integer == false || obj3 instanceof Integer == false || obj4 instanceof Date == false || obj5 instanceof Date == false || obj6 instanceof Boolean == false){
 
 			throw new RuntimeException("Parametre incorrect");
@@ -110,6 +112,9 @@ public class DAOVol implements IVolPersistant{
 		Date paramDate2= (Date)obj5;
 		Boolean paramBool= (Boolean)obj6;
 		int paramInt= (Integer)obj;
+
+
+
 
 		try {
 
@@ -135,7 +140,7 @@ public class DAOVol implements IVolPersistant{
 	}
 
 	/**
-	 * Méthode qui insere un tuple dans la table Armement.
+	 * Méthode qui insere un tuple dans la table Vol.
 	 * La requete s'effectue à l'aide d'un UPDATE.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
@@ -194,40 +199,30 @@ public class DAOVol implements IVolPersistant{
 
 		DAOVol bdd = new DAOVol();
 		System.out.println("insert");
-		bdd.insererPersistance(12, 1, 1, new GregorianCalendar(2011,8,29,10,00,00).getTime(), new GregorianCalendar(2011,8,30,14,00,00).getTime(), true);
+		bdd.insererPersistance(11, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
 
 		System.out.println("******************************");
-		System.out.println("read");
+		System.out.println("read1");
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		//		System.out.println("update");
-		//		bdd.modifierPersistance(1, "56265ALH","chasseur",3,59,true,false);
-		//		
-		//		System.out.println("******************************");
-		//		System.out.println("read");
-		//		bdd.lire();
-		//		System.out.println("******************************");
-		//		
-		//		System.out.println("insert2");		
-		//		bdd.insererPersistance(2, "47857LKH","pêche",3,15,false,false);
-		//		System.out.println("insert3");
-		//		bdd.insererPersistance(3, "56286UJH","balade",3,110,false,false);
-		//		
-		//		System.out.println("******************************");
-		//		System.out.println("read");
-		//		bdd.lire();
-		//		System.out.println("******************************");
-		//		
-		//		//bdd.supprimerPersistance(1);
-		//		System.out.println("delete");
-		//		bdd.supprimerPersistance(2);
-		//		//bdd.supprimerPersistance(3);
-		//
-		//		System.out.println("******************************");
-		//		bdd.lire();
-		//		System.out.println("******************************");
+		System.out.println("update");
+		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
+
+		System.out.println("******************************");
+		System.out.println("read2");
+		bdd.lire();
+		System.out.println("******************************");
+
+		System.out.println("delete");
+		bdd.supprimerPersistance(11);
+
+
+		System.out.println("******************************");
+		System.out.println("read3");
+		bdd.lire();
+		System.out.println("******************************");
 
 
 	}
