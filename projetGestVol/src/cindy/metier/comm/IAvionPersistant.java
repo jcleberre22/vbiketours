@@ -4,14 +4,13 @@ import java.sql.SQLException;
 
 /**
  * 
- * Interface permettant de récuperer des méthodes de la DAO Pilote.
+ * Interface permettant de récuperer des méthodes de la DAO Avion.
  * 
- * @author nicolas.tabuteaud
+ * @author jc.leberre
  * @version 1.0 du 30/08/2011
  * 
  */
-public interface IPilotePersistance {
-
+public interface IAvionPersistant {
 
 	/**
 	 * Méthode pour supprimer des objets gérer par les DAO.
@@ -20,7 +19,7 @@ public interface IPilotePersistance {
 	 * @throws SQLException 
 	 */
 	void lire() throws SQLException, Exception;
-	
+
 	/**
 	 * Méthode pour supprimer des objets gérer par les DAO.
 	 * @param obj
@@ -28,19 +27,17 @@ public interface IPilotePersistance {
 	 * @throws SQLException 
 	 */
 	void supprimerPersistance(Object obj) throws SQLException, Exception;
-	
+
 	/**
-	 * Méthode pour modifier des objets gérer par les DAO.
+	 * Méthode pour supprimer des objets gérer par les DAO.
 	 * @param obj
-	 * @param obj[n]
 	 * @throws Exception 
 	 * @throws SQLException 
 	 */
 	void modifierPersistance(Object obj, Object obj2, Object obj3, Object obj4,
-			Object obj5, Object obj6, Object obj7, Object obj8, Object obj9,
-			Object obj10, Object obj11, Object obj12, Object obj13)
-			throws SQLException, Exception;
-	
+			Object obj5, Object obj6, Object obj7) throws SQLException,
+			Exception;
+
 	/**
 	 * Méthode pour inserer des objets gérer par les DAO.
 	 * @param obj
@@ -49,15 +46,7 @@ public interface IPilotePersistance {
 	 * @throws SQLException 
 	 */
 	void insererPersistance(Object obj, Object obj2, Object obj3, Object obj4,
-			Object obj5, Object obj6, Object obj7, Object obj8, Object obj9,
-			Object obj10, Object obj11, Object obj12, Object obj13)
-			throws SQLException, Exception;
-
-
-
-	
-
-	
+			Object obj5, Object obj6, Object obj7) throws SQLException,
+			Exception;
 
 }
-

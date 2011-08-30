@@ -2,6 +2,14 @@ package cindy.metier.comm;
 
 import java.sql.SQLException;
 
+/**
+ * 
+ * Interface permettant de récuperer des méthodes des DAOs.
+ * 
+ * @author nicolas.tabuteaud
+ * @version 1.0 du 30/08/2011
+ * 
+ */
 public interface IPersistance {
 
 
