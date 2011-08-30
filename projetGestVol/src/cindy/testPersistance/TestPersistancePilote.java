@@ -6,24 +6,24 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import cindy.persistance.DAOCategorie;
+import cindy.persistance.DAOPilote;
 
 /**
  * Test sur l'utilisation des methodes publiques de la persitance
- * d'une categorie de vol.
+ * d'un pilote.
  * 
  * @author nicolas.tabuteaud
  * @version 1.0 du 30/08/2011
  */
-public class TestPersitanceCategorie {
+public class TestPersistancePilote {
 
-	private DAOCategorie daoc;
+	private DAOPilote daop;
 	
 	@Before
 	public void setUp() throws Exception {
-		daoc = new DAOCategorie();
+		daop = new DAOPilote();
 	}
-
+	
 	/**
 	 * Méthode de test qui va permettre la bonne instanciation du constructeur. 
 	 * Englober dans un try catch, affichage du message de l'exception.
@@ -31,7 +31,7 @@ public class TestPersitanceCategorie {
 	@Test
 	public void testConstructor() {
 		try {
-			new DAOCategorie();
+			new DAOPilote();
 			assertTrue("Instanciation constructeur ok", true);
 		} catch (Exception e) {
 			fail("Problème constructeur " + e.getMessage());
@@ -39,110 +39,112 @@ public class TestPersitanceCategorie {
 	}
 
 	/**
-	 * Méthode de test sur la lecture de la table Categorie de la BDD.
+	 * Méthode de test sur la lecture de la table Pilote de la BDD.
 	 * Utilise une requete avec un SELECT.
 	 */
 	@Test
-	public void testLectureDAOCategorie() {
+	public void testLectureDAOPilote(){
 		try {
 			setUp();
-			daoc.lire();
+			daop.lire();
 			assertTrue("Lecture des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Méthode de test sur l'insertion des données de la table Categorie de la BDD.
-	 * Utilise une requete avec un INSERT INTO.
+	 * Méthode de test sur la lecture de la table Pilote de la BDD.
+	 * Utilise une requete avec un SELECT.
 	 */
 	@Test
-	public void testInsertionDAOCategorie() {
+	public void testInsertionDAOPilote() {
 		try {
 			setUp();
-			daoc.insererPersistance(1, "poulet");
+			daop.insererPersistance(1,"161SV4","AL25GJH","TABUTEAUD","Nicopops","SGT",1,1,1,"tireur au flanc",0,1,true);
 			assertTrue("Insertion des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}
-	
+
+
 	/**
-	 * Méthode de test sur la modification des données de la table Categorie de la BDD.
+	 * Méthode de test sur la modification des données de la table Pilote de la BDD.
 	 * Utilise une requete avec un UPDATE.
 	 */
 	@Test
-	public void testModificationDAOCategorie() {
+	public void testModificationDAOPilote() {
 		try {
 			setUp();
-			daoc.modifierPersistance(1, "coq");
+			daop.modifierPersistance("161SV4","AL25GJH","TABUTEAUD","Nicopops","SGT",1,1,1,"tireur au flanc",0,1,true,1);
 			assertTrue("Modification des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}	
-	
+
 	/**
-	 * Méthode de test sur un cas où une mauvaise insertion des données de la table Categorie s'effectue.
+	 * Méthode de test sur l'insertion des données de la table Pilote de la BDD.
 	 * Utilise une requete avec un INSERT INTO.
 	 */
 	@Test
-	public void testMauvaiseInsertionDAOCategorie() {
+	public void testMauvaiseInsertionDAOPilote() {
 		try {
 			setUp();
-			daoc.insererPersistance("poulet", "poulet");
+			daop.insererPersistance(12,23,"TABUTEAUD","Nicopops","SGT","Enorme Poulet",1,1,"tireur au flanc",0,1,true,1);
 			fail("Données inserer non correct non geré ");
-		} catch (Exception e) {
-			assertTrue("Mauvaise insertion des données geré"+ e.getMessage(), true);
-		}
-	}	
-	
-	/**
-	 * Méthode de test sur un cas où une mauvaise modification des données de la table Categorie s'effectue.
-	 * Utilise une requete avec un UPDATE.
-	 */
-	@Test
-	public void testMauvaiseModificationDAOCategorie() {
-		try {
-			setUp();
-			daoc.modifierPersistance(1, 23);
-			fail("Données modifié non correct non geré ");
 		} catch (Exception e) {
 			assertTrue("Modification des données geré"+ e.getMessage(), true);
 		}
 	}	
 	
 	/**
-	 * Méthode de test sur la suppression des données de la table Categorie de la BDD.
+	 * Méthode de test sur un cas où une mauvaise modification des données de la table Pilote s'effectue.
+	 * Utilise une requete avec un UPDATE.
+	 */
+	@Test
+	public void testMauvaiseModificationDAOPilote() {
+		try {
+			setUp();
+			daop.modifierPersistance("Gros poulet",23,"TABUTEAUD","Nicopops","SGT","Enorme Poulet",1,1,"tireur au flanc",0,1,true,1);
+			fail("Données inserer non correct non geré ");
+		} catch (Exception e) {
+			assertTrue("Modification des données geré"+ e.getMessage(), true);
+		}
+	}	
+
+	/**
+	 * Méthode de test sur la suppression des données de la table Pilote de la BDD.
 	 * Utilise une requete avec un DELETE FROM.
 	 */
 	@Test
-	public void testSuppressionDAOCategorie() {
+	public void testSuppressionDAOPilote() {
 		try {
 			setUp();
-			daoc.supprimerPersistance(1);
+			daop.supprimerPersistance(1);
 			assertTrue("Suppression des données reussie", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Méthode de test sur un cas où une mauvaise suppression des données de la table Categorie s'effectue.
+	 * Méthode de test sur un cas où une mauvaise suppression des données de la table Circulation s'effectue.
 	 * Utilise une requete avec un DELETE FROM.
 	 */
 	@Test
-	public void testMauvaiseSuppressionDAOCategorie() {
+	public void testMauvaiseSuppressionDAOPilote() {
 		try {
 			setUp();
-			daoc.supprimerPersistance("poulet");
+			daop.supprimerPersistance("Grand Poulet");
 			fail("Données supprimer non correct non geré ");
 		} catch (Exception e) {
 			assertTrue("Mauvaise suppression des données geré"+ e.getMessage(), true);
 		}
 	}
 
-
+	
+	
 	
 }

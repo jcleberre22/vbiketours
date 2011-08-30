@@ -23,6 +23,10 @@ public class TestPersistanceCirculation {
 		daoc = new DAOCirculation();
 	}
 
+	/**
+	 * Méthode de test qui va permettre la bonne instanciation du constructeur. 
+	 * Englober dans un try catch, affichage du message de l'exception.
+	 */
 	@Test
 	public void testConstructor() {
 		try {
@@ -33,6 +37,10 @@ public class TestPersistanceCirculation {
 		}
 	}
 
+	/**
+	 * Méthode de test sur la lecture de la table Circulation de la BDD.
+	 * Utilise une requete avec un SELECT.
+	 */
 	@Test
 	public void testLectureDAOCirculation() {
 		try {
@@ -44,6 +52,10 @@ public class TestPersistanceCirculation {
 		}
 	}
 
+	/**
+	 * Méthode de test sur l'insertion des données de la table Circulation de la BDD.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testInsertionDAOCirculation() {
 		try {
@@ -55,17 +67,25 @@ public class TestPersistanceCirculation {
 		}
 	}
 
+	/**
+	 * Méthode de test sur la modification des données de la table Circulation de la BDD.
+	 * Utilise une requete avec un UPDATE.
+	 */
 	@Test
 	public void testModificationDAOCirculation() {
 		try {
 			setUp();
-			daoc.insererPersistance(1, "Vol de coq");
+			daoc.modifierPersistance(1, "Vol de coq");
 			assertTrue("Modification des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}	
 
+	/**
+	 * Méthode de test sur un cas où une mauvaise insertion des données de la table Circulation s'effectue.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testMauvaiseInsertionDAOCirculation() {
 		try {
@@ -73,10 +93,29 @@ public class TestPersistanceCirculation {
 			daoc.insererPersistance("coq", "poulet");
 			fail("Données inserer non correct non geré ");
 		} catch (Exception e) {
-			assertTrue("Modification des données geré"+ e.getMessage(), true);
+			assertTrue("Mauvaise insertion des données geré"+ e.getMessage(), true);
 		}
 	}	
+	
+	/**
+	 * Méthode de test sur un cas où une mauvaise modification des données de la table Circulation s'effectue.
+	 * Utilise une requete avec un UPDATE.
+	 */
+	@Test
+	public void testMauvaiseModificationDAOCirculation() {
+		try {
+			setUp();
+			daoc.modifierPersistance(1, 12);
+			fail("Données modifier non correct non geré ");
+		} catch (Exception e) {
+			assertTrue("Mauvaise modification des données geré"+ e.getMessage(), true);
+		}
+	}
 
+	/**
+	 * Méthode de test sur la suppression des données de la table Circulation de la BDD.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testSuppressionDAOCirculation() {
 		try {
@@ -88,6 +127,10 @@ public class TestPersistanceCirculation {
 		}
 	}
 
+	/**
+	 * Méthode de test sur un cas où une mauvaise suppression des données de la table Circulation s'effectue.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testMauvaiseSuppressionDAOCirculation() {
 		try {

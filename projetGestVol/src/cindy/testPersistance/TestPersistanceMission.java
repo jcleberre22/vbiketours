@@ -23,6 +23,10 @@ public class TestPersistanceMission {
 		daom = new DAOMission();
 	}
 
+	/**
+	 * Méthode de test qui va permettre la bonne instanciation du constructeur. 
+	 * Englober dans un try catch, affichage du message de l'exception.
+	 */
 	@Test
 	public void testConstructor() {
 		try {
@@ -33,6 +37,11 @@ public class TestPersistanceMission {
 		}
 	}
 
+
+	/**
+	 * Méthode de test sur la lecture de la table Mission de la BDD.
+	 * Utilise une requete avec un SELECT.
+	 */
 	@Test
 	public void testLectureDAOMission() {
 		try {
@@ -44,6 +53,10 @@ public class TestPersistanceMission {
 		}
 	}
 
+	/**
+	 * Méthode de test sur l'insertion des données de la table Mission de la BDD.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testInsertionDAOMission() {
 		try {
@@ -55,17 +68,25 @@ public class TestPersistanceMission {
 		}
 	}
 
+	/**
+	 * Méthode de test sur la modification des données de la table Mission de la BDD.
+	 * Utilise une requete avec un UPDATE.
+	 */
 	@Test
 	public void testModificationDAOMission() {
 		try {
 			setUp();
-			daom.insererPersistance(1, "Capturer des coqs");
+			daom.modifierPersistance(1, "Capturer des coqs");
 			assertTrue("Modification des données reussies", true);
 		} catch (Exception e) {
 			fail("Problème de requetes " + e.getMessage());
 		}
 	}	
-
+	
+	/**
+	 * Méthode de test sur un cas où une mauvaise insertion des données de la table Mission s'effectue.
+	 * Utilise une requete avec un INSERT INTO.
+	 */
 	@Test
 	public void testMauvaiseInsertionDAOMission() {
 		try {
@@ -73,10 +94,29 @@ public class TestPersistanceMission {
 			daom.insererPersistance("Capturer des coqs", "Capturer les poulets");
 			fail("Données inserer non correct non geré ");
 		} catch (Exception e) {
-			assertTrue("Modification des données geré"+ e.getMessage(), true);
+			assertTrue("Mauvaise insertion des données geré"+ e.getMessage(), true);
 		}
-	}	
+	}
+	
+	/**
+	 * Méthode de test sur un cas où une mauvaise modification des données de la table Mission s'effectue.
+	 * Utilise une requete avec un UPDATE.
+	 */
+	@Test
+	public void testMauvaiseModificationDAOMission() {
+		try {
+			setUp();
+			daom.insererPersistance(1, 12);
+			fail("Données modifié non correct non geré ");
+		} catch (Exception e) {
+			assertTrue("Mauvaise modification des données geré"+ e.getMessage(), true);
+		}
+	}
 
+	/**
+	 * Méthode de test sur la suppression des données de la table Mission de la BDD.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testSuppressionDAOMission() {
 		try {
@@ -88,6 +128,10 @@ public class TestPersistanceMission {
 		}
 	}
 
+	/**
+	 * Méthode de test sur un cas où une mauvaise suppression des données de la table Mission s'effectue.
+	 * Utilise une requete avec un DELETE FROM.
+	 */
 	@Test
 	public void testMauvaiseSuppressionDAOMission() {
 		try {
