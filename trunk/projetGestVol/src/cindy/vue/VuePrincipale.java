@@ -15,17 +15,20 @@ import javax.swing.border.EmptyBorder;
 import cindy.controleur.IControleur;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VuePrincipale extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private IControleur monControleur;
+	private IControleur controleur;
 	
 	/**
 	 * Creer la vue.
 	 */
 	public VuePrincipale(IControleur ctrl) {
+		this.controleur=ctrl;
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -42,7 +45,7 @@ public class VuePrincipale extends JFrame {
 		JMenuItem mntmAPropos = new JMenuItem("A Propos");
 		mntmAPropos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				monControleur.APropos();
+				controleur.APropos();
 			}
 		});
 		mnFichier.add(mntmAPropos);
@@ -61,10 +64,23 @@ public class VuePrincipale extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Gestion des Vols\r\n");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("bouton vols");
+				new VueVols(controleur);
+			}
+		});
 		btnNewButton.setBounds(10, 105, 160, 61);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Statistiques\r\n");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("bouton stats");
+			}
+		});
 		btnNewButton_1.setBounds(196, 105, 154, 61);
 		contentPane.add(btnNewButton_1);
 		
@@ -72,8 +88,5 @@ public class VuePrincipale extends JFrame {
 		lblBienvenue.setFont(new Font("Andalus", Font.PLAIN, 18));
 		lblBienvenue.setBounds(139, 27, 79, 33);
 		contentPane.add(lblBienvenue);
-		
-		this.monControleur=ctrl;
 	}
-
 }
