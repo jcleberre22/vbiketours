@@ -16,28 +16,29 @@ import cindy.metier.vol.Vol;
 import cindy.persistance.DAOVol;
 
 /**
- * Facade destinée à accéder aux différentes parties du métier pour garantir une meilleure
- * sécurité de l'application en couche
- * @author Loup
+ * Facade destinée à accéder aux différentes parties du métier pour garantir une
+ * meilleure sécurité de l'application en couche
+ * 
+ * @author J.Martinez
  * @version 1.0 du 29/08/2011
  */
-public class FacadeMetier{
+public class FacadeMetier {
 	private Vol leVol;
-	//la facade naturelle du metier
+	// la facade naturelle du metier
 	private List<Vol> lesVol;
-	//acces à la persistance
-	private IPersistance persistance;
+	// acces à la persistance
 	private DAOVol volPersistant;
-	
-	//on obtient une instance naturelle
-	public FacadeMetier(){
+
+	// on obtient une instance naturelle
+	public FacadeMetier() {
 		lesVol = new ArrayList<Vol>();
 		leVol = new Vol();
 	}
-	
+
 	/**
-	 * méthode qui sert a créer un vol puis de l'ajouter à la liste des vol
-	 * par l'appel de la méthode ajouterVol()
+	 * méthode qui sert a créer un vol puis de l'ajouter à la liste des vol par
+	 * l'appel de la méthode ajouterVol()
+	 * 
 	 * @param circulation
 	 * @param categorieDeVol
 	 * @param dateDecollage
@@ -45,53 +46,66 @@ public class FacadeMetier{
 	 */
 	public void creerVol(int reference, int circulation, int categorieDeVol,
 			GregorianCalendar dateDecollage,
-			GregorianCalendar dateAtterrissage,boolean annulation){
-		//ajout du vol créé
-		ajouterVol(new Vol(reference,circulation,categorieDeVol,dateDecollage,dateAtterrissage,annulation));
+			GregorianCalendar dateAtterrissage, boolean annulation) {
+		
+		// ajout du vol créé
+		ajouterVol(new Vol(reference, circulation, categorieDeVol,
+				dateDecollage, dateAtterrissage, annulation));
 	}
-	
+
 	/**
-	 * méthode ajouter vol qui permet d'ajouter le vol à la liste des vols
-	 * puis de créer ce vol dans la BDD
+	 * méthode ajouter vol qui permet d'ajouter le vol à la liste des vols puis
+	 * de créer ce vol dans la BDD
+	 * 
 	 * @param v
 	 */
-	public void ajouterVol(Vol v){
+	public void ajouterVol(Vol v) {
 		try {
-			if(v != null){
-				if(!lesVol.contains(v)){
+			if (v != null) {
+				if (!lesVol.contains(v)) {
 					lesVol.add(v);
 					try {
-						volPersistant.insererPersistance(leVol.getId(), leVol.getCirculation(), leVol.getLaCategorie(), leVol.getDecollage(), leVol.getAtterrissage(), leVol.isAnnulation());
+						volPersistant.insererPersistance(leVol.getId(),
+								leVol.getCirculation(), leVol.getLaCategorie(),
+								leVol.getDecollage(), leVol.getAtterrissage(),
+								leVol.isAnnulation());
 					} catch (SQLException e) {
 						e.printStackTrace();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
-				else{
-					throw new RuntimeException("FacadeMetier[ajouterVol] : le vol existe déjà");
+				} else {
+					throw new RuntimeException(
+							"FacadeMetier[ajouterVol] : le vol existe déjà");
 				}
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			throw new RuntimeException("FacadeMetier[ajouterVol] : le vol à ajouter est null ou existe déjà");
+			throw new RuntimeException(
+					"FacadeMetier[ajouterVol] : le vol à ajouter est null ou existe déjà");
 		}
 	}
-	
+
 	/**
-	 * cherche dans la liste si le vol à modifier existe, si c'est le cas il le remplace par le nouveau vol
-	 * puis il fais de même au niveau de la BDD
+	 * cherche dans la liste si le vol à modifier existe, si c'est le cas il le
+	 * remplace par le nouveau vol puis il fais de même au niveau de la BDD
+	 * 
 	 * @param ancien
 	 * @param nouveau
 	 */
-	public void modifierVol(Vol ancien,Vol nouveau){
+	public void modifierVol(Vol ancien, Vol nouveau) {
 		try {
-			if(ancien != null && nouveau != null){
-				if(lesVol.contains(ancien)){
+			if (ancien != null && nouveau != null) {
+				if (lesVol.contains(ancien)) {
 					int index = lesVol.indexOf(ancien);
-					lesVol.add(index,nouveau);
+					lesVol.add(index, nouveau);
 					try {
-						volPersistant.modifierPersistance(nouveau.getId(), nouveau.getCirculation(), nouveau.getLaCategorie(), nouveau.getDecollage(), nouveau.getAtterrissage(), nouveau.isAnnulation());
+						volPersistant.modifierPersistance(nouveau.getId(),
+								nouveau.getCirculation(),
+								nouveau.getLaCategorie(),
+								nouveau.getDecollage(),
+								nouveau.getAtterrissage(),
+								nouveau.isAnnulation());
 					} catch (SQLException e) {
 						e.printStackTrace();
 					} catch (Exception e) {
@@ -101,18 +115,20 @@ public class FacadeMetier{
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			throw new RuntimeException("FacadeMetier[modifierVol] : l'ancien ou le nouveau vol est null");
+			throw new RuntimeException(
+					"FacadeMetier[modifierVol] : l'ancien ou le nouveau vol est null");
 		}
 	}
-	
+
 	/**
 	 * recherche si le vol existe dans la liste puis le supprime
+	 * 
 	 * @param aSupprimer
 	 */
-	public void supprimerVol(Vol aSupprimer){
-		if(aSupprimer != null){
+	public void supprimerVol(Vol aSupprimer) {
+		if (aSupprimer != null) {
 			for (int i = 0; i < lesVol.size(); i++) {
-				if(lesVol.contains(aSupprimer)){
+				if (lesVol.contains(aSupprimer)) {
 					lesVol.remove(aSupprimer);
 				}
 			}
@@ -125,9 +141,11 @@ public class FacadeMetier{
 			}
 		}
 	}
-	
+
 	/**
-	 * permet de créer une sortie aérienne et de l'ajouter a la liste des sorties
+	 * permet de créer une sortie aérienne et de l'ajouter a la liste des
+	 * sorties
+	 * 
 	 * @param av
 	 * @param deb
 	 * @param arm
@@ -139,68 +157,74 @@ public class FacadeMetier{
 	 * @param att
 	 */
 	public void creerSortieAerienne(Avion av, String deb, Armement arm,
-			List<Evenement> ev, Equipage eq, Mission m,Vol v,
-			GregorianCalendar dec, GregorianCalendar att){
-		ajouterSortieAerienne(new SortieAerienne(av, deb, arm, ev, eq, m, v, dec, att));
+			List<Evenement> ev, Equipage eq, Mission m, Vol v,
+			GregorianCalendar dec, GregorianCalendar att) {
+		ajouterSortieAerienne(new SortieAerienne(av, deb, arm, ev, eq, m, v,
+				dec, att));
 	}
-	
+
 	/**
 	 * ajoute la sortie à la liste des sorties et créée la sortie dans la BDD
+	 * 
 	 * @param laSortie
 	 */
-	public void ajouterSortieAerienne(SortieAerienne laSortie){
+	public void ajouterSortieAerienne(SortieAerienne laSortie) {
 		try {
-			if(laSortie != null)
+			if (laSortie != null)
 				leVol.ajouterSortieAerienne(laSortie);
-				//TODO : appeler la DAO pour ajouter la sortie aerienne a la BDD
+			// TODO : appeler la DAO pour ajouter la sortie aerienne a la BDD
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			throw new RuntimeException("FacadeMetier[ajouterSortieAerienne] : la sortie à ajouter ne peut être nulle");
+			throw new RuntimeException(
+					"FacadeMetier[ajouterSortieAerienne] : la sortie à ajouter ne peut être nulle");
 		}
 	}
-	
+
 	/**
-	 * recherche si old existe et si c'est le cas le remplace par young
-	 * puis appelle la DAO pour modifier la sortie dans la BDD
+	 * recherche si old existe et si c'est le cas le remplace par young puis
+	 * appelle la DAO pour modifier la sortie dans la BDD
+	 * 
 	 * @param old
 	 * @param young
 	 */
-	public void modifierSortieAerienne(SortieAerienne old,SortieAerienne young){
+	public void modifierSortieAerienne(SortieAerienne old, SortieAerienne young) {
 		try {
-			if(young != null){
-				if(leVol.getLesSorties().contains(old)){
-					leVol.modifierSortieAerienne(old, young);				
-						//TODO : appeler une DAO pour modifier la sortie
+			if (young != null) {
+				if (leVol.getLesSorties().contains(old)) {
+					leVol.modifierSortieAerienne(old, young);
+					// TODO : appeler une DAO pour modifier la sortie
 				}
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			throw new RuntimeException("FacadeMetier[modifierSortieAerienne] : la nouvelle sortie ne peut être nulle");
+			throw new RuntimeException(
+					"FacadeMetier[modifierSortieAerienne] : la nouvelle sortie ne peut être nulle");
 		}
 	}
-	
+
 	/**
-	 * recherche dans la liste si la sortie à supprimer existe
-	 * puis la supprime
+	 * recherche dans la liste si la sortie à supprimer existe puis la supprime
+	 * 
 	 * @param aSupprimer
 	 */
-	public void supprimerSortieAerienne(SortieAerienne aSupprimer){
+	public void supprimerSortieAerienne(SortieAerienne aSupprimer) {
 		try {
-			if(!leVol.getLesSorties().contains(aSupprimer)){
-				throw new RuntimeException("FacadeMetier[supprimerSortieAerienne] : la sortie à supprimer n'existe pas");
-			}
-			else{
-				if(aSupprimer != null){
+			if (!leVol.getLesSorties().contains(aSupprimer)) {
+				throw new RuntimeException(
+						"FacadeMetier[supprimerSortieAerienne] : la sortie à supprimer n'existe pas");
+			} else {
+				if (aSupprimer != null) {
 					leVol.supprimerSortieAerienne(aSupprimer);
-					//TODO : appeler une DAO pour supprimer la sortie
+					// TODO : appeler une DAO pour supprimer la sortie
 				}
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			throw new RuntimeException("FacadeMetier[supprimerSortieAerienne]La sortie à supprimer est nulle");
+			throw new RuntimeException(
+					"FacadeMetier[supprimerSortieAerienne]La sortie à supprimer est nulle");
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		new FacadeMetier();
 	}
