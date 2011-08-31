@@ -54,13 +54,13 @@ public class APropos extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Cindy Application - Logiciel de Gestion des Escadrons");
-		lblNewLabel.setFont(new Font("Monotype Corsiva", Font.PLAIN, 14));
-		lblNewLabel.setBounds(63, 11, 264, 23);
+		lblNewLabel.setFont(new Font("Andalus", Font.PLAIN, 14));
+		lblNewLabel.setBounds(53, 11, 321, 23);
 		contentPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Créé par la PIF");
-		lblNewLabel_1.setFont(new Font("Monotype Corsiva", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(156, 45, 88, 14);
+		lblNewLabel_1.setFont(new Font("Andalus", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(156, 45, 95, 14);
 		contentPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("- -");
@@ -69,10 +69,10 @@ public class APropos extends JDialog {
 		
 		String id = "LEBERRE Jean-Christophe \n \n MARTINEZ Jean-Philippe \n \n TABUTEAUD Nicolas";
 		JTextPane lblNewLabel_3 = new JTextPane();
-		lblNewLabel_3.setFont(new Font("Monotype Corsiva", Font.PLAIN, 14));
+		lblNewLabel_3.setFont(new Font("Andalus", Font.PLAIN, 14));
 		lblNewLabel_3.setText(id);
 		lblNewLabel_3.setBackground(null);
-		lblNewLabel_3.setBounds(31, 91, 161, 91);
+		lblNewLabel_3.setBounds(31, 91, 161, 120);
 		contentPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
