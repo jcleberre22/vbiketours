@@ -21,7 +21,7 @@ public class VuePrincipale extends JFrame {
 	private IControleur monControleur;
 	
 	/**
-	 * Create the frame.
+	 * Creer la vue.
 	 */
 	public VuePrincipale(IControleur ctrl) {
 		setLocationRelativeTo(null);
