@@ -7,7 +7,6 @@ import java.util.List;
 
 import cindy.metier.avion.Armement;
 import cindy.metier.avion.Avion;
-import cindy.metier.comm.IPersistance;
 import cindy.metier.personnel.Equipage;
 import cindy.metier.vol.Evenement;
 import cindy.metier.vol.Mission;
