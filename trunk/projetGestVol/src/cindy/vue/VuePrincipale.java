@@ -13,6 +13,8 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import cindy.controleur.IControleur;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VuePrincipale extends JFrame {
 
@@ -38,6 +40,11 @@ public class VuePrincipale extends JFrame {
 		menuBar.add(mnFichier);
 		
 		JMenuItem mntmAPropos = new JMenuItem("A Propos");
+		mntmAPropos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				monControleur.APropos();
+			}
+		});
 		mnFichier.add(mntmAPropos);
 		
 		JMenuItem mntmQuitter = new JMenuItem("Quitter");
