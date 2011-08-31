@@ -3,6 +3,7 @@ package cindy.controleur;
 import java.util.GregorianCalendar;
 
 import cindy.metier.FacadeMetier;
+import cindy.metier.vol.Vol;
 import cindy.vue.VuePrincipale;
 
 public class Controleur implements IControleur{
@@ -13,7 +14,6 @@ public class Controleur implements IControleur{
 	public Controleur(){
 		f=new FacadeMetier();
 		ihm=new VuePrincipale(this);
-		ihm.setVisible(true);
 	}
 	
 	public void creerVol(int reference, int circulation, int categorieDeVol,
@@ -21,4 +21,14 @@ public class Controleur implements IControleur{
 			GregorianCalendar dateAtterrissage, boolean annulation) {
 		f.creerVol(reference, circulation, categorieDeVol, dateDecollage, dateAtterrissage, annulation);
 	}
+	
+	public void modifierVol(Vol ancien, Vol nouveau){
+		f.modifierVol(ancien, nouveau);
+	}
+
+	@Override
+	public void supprimerVol(Vol aSupprimer) {
+		
+	}
+	
 }
