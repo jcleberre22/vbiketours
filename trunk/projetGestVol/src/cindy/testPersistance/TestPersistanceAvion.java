@@ -2,12 +2,10 @@ package cindy.testPersistance;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import cindy.persistance.DAOAvion;
-import cindy.persistance.DAOPilote;
+
 
 /**
  * Test sur l'utilisation des methodes publiques de la persitance
