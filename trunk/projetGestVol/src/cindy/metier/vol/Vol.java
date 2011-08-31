@@ -7,40 +7,38 @@ import java.util.List;
 import cindy.metier.comm.IVol;
 
 /**
+ * Dans cette classe nous allon vol possède une
+ * liste de sorties aériennesns pouvoir déclarer un
+ * vol. Appeler tous les renseignement dont il a besoin  ajouter
+ * une sortie aérienne à un vol il est à noter qu'upour
  * @author J.Martinez
- * @version 1.0 du 26.07.2011 Dans cette classe nous allons pouvoir déclarer un
- *          vol. Appeler tous les renseignement dont il a besoin pour ajouter
- *          une sortie aérienne à un vol il est à noter qu'un vol possède une
- *          liste de sorties aériennes
+ * @version 1.0 du 26.07.2011 
  */
 public class Vol implements IVol {
 	// attributs
-	private String reference;
-	private String circulation;
+	private int id;
+	private int circulation;
 	private int laCategorie;
 	private List<SortieAerienne> lesSorties;
 	private GregorianCalendar decollage;
 	private GregorianCalendar atterrissage;
+	private boolean annulation;
 
 	// constructeur
 	/**
 	 * constructeur de la classe. Celui-ci oblige à ce que tous les champs soit
 	 * remplis
-	 * 
-	 * @param reference
 	 * @param circulation
 	 * @param categorieDeVol
 	 * @param laliste
 	 * @param dateDecollage
 	 * @param dateAtterrissage
 	 */
-	public Vol(String reference, String circulation, int categorieDeVol,
-			List<SortieAerienne> laliste, GregorianCalendar dateDecollage,
-			GregorianCalendar dateAtterrissage) {
-		setReference(reference);
+	public Vol(int id,int circulation, int categorieDeVol, GregorianCalendar dateDecollage,
+			GregorianCalendar dateAtterrissage,boolean annulation) {
+		setId(id);
 		setCirculation(circulation);
 		setLaCategorie(categorieDeVol);
-		setLesSorties(laliste);
 		setDecollage(dateDecollage);
 		setAtterrissage(dateAtterrissage);
 	}
@@ -54,25 +52,27 @@ public class Vol implements IVol {
 	 * @param circulation
 	 * @param categorieDeVol
 	 */
-	public Vol(String reference, String circulation, int categorieDeVol) {
-		setReference(reference);
+	public Vol(int circulation, int categorieDeVol) {		
 		setCirculation(circulation);
 		setLaCategorie(categorieDeVol);
 		setLesSorties(new ArrayList<SortieAerienne>());
 	}
 
-	// accesseurs
-	/**
-	 * @return la reference de l'avion.
-	 */
-	public String getReference() {
-		return reference;
+	public Vol() {
+		circulation = 1;
+		laCategorie  = 1;
+		decollage = new GregorianCalendar(2011,05,20,8,30);
+		atterrissage = new GregorianCalendar(2011, 05, 20, 15, 0);
 	}
 
+	// accesseurs
+	public int getId(){
+		return id;
+	}
 	/**
 	 * @return la circulation choisie pour le vol.
 	 */
-	public String getCirculation() {
+	public int getCirculation() {
 		return circulation;
 	}
 
@@ -81,13 +81,6 @@ public class Vol implements IVol {
 	 */
 	public int getLaCategorie() {
 		return laCategorie;
-	}
-
-	/**
-	 * @return la liste des sorties aériennes programmées pour un vol
-	 */
-	public List<SortieAerienne> getLesSorties() {
-		return lesSorties;
 	}
 
 	/**
@@ -103,7 +96,30 @@ public class Vol implements IVol {
 	public GregorianCalendar getAtterrissage() {
 		return atterrissage;
 	}
-
+	
+	/**
+	 * @return la liste des sorties Aeriennes
+	 */
+	public List<SortieAerienne> getLesSorties(){
+		return lesSorties;
+	}
+	
+	public boolean isAnnulation() {
+		return annulation;
+	}
+	
+	/**
+	 * initialise l'id du vol
+	 * @param id2
+	 */
+	private void setId(int id2) {
+		if(id2 < 0){
+			throw new RuntimeException("Vol[setId] :'id ne peut être null");
+		}
+		else
+			this.id = id2;
+	}
+	
 	/**
 	 * fixe la date de decollage
 	 * 
@@ -139,45 +155,43 @@ public class Vol implements IVol {
 		if (categorieDeVol < 0)
 			throw new RuntimeException(
 					"les catégories de vol négatives ne sont pas acceptées");
-		this.laCategorie = categorieDeVol;
+		else
+			this.laCategorie = categorieDeVol;
 	}
-
-	/**
-	 * donne la liste des sorties aeriennes programmées pour un vol
-	 * 
-	 * @param lesSorties
-	 */
-	private void setLesSorties(List<SortieAerienne> lesSorties) {
-		this.lesSorties = lesSorties;
-	}
-
-	/**
-	 * fourni la référence du vol.
-	 * 
-	 * @param reference
-	 */
-	private void setReference(String reference) {
-		if (reference == null || reference.trim().length() <= 0)
-			throw new RuntimeException(
-					"Vol : impossible de passer une référence null");
-		this.reference = reference;
-	}
-
 	/**
 	 * donne la circulation choisie pour le vol.
 	 * 
 	 * @param circulation
 	 */
-	private void setCirculation(String circulation) {
-		circulation = circulation.toLowerCase();
-		if (circulation == null || circulation.trim().length() <= 0)
-			throw new RuntimeException(
-					"Vol : le type de circulation doit être fourni");
-		if (!circulation.equals("civile") && !circulation.equals("militaire"))
-			throw new RuntimeException(
-					"Vol : il ne peut y avoir que deux types de circulation pour la sortie");
+	private void setCirculation(int circulation) {
+		try{
+			if(circulation < 0)
+				throw new RuntimeException("le nombre entré ne peut être inférieur à 0");
+		}catch(Exception e){
+			e.getMessage();
+		}
 		this.circulation = circulation;
 	}
+	
+	/**
+	 * initialise la variable d'annulation
+	 * @param annulation
+	 */
+	public void setAnnulation(boolean annulation) {
+		this.annulation = annulation;
+	}
+	
+	/**
+	 * permet d'initialiser la liste des sorties
+	 * @param arrayList
+	 */
+	private void setLesSorties(ArrayList<SortieAerienne> arrayList) {
+		if(arrayList == null)
+			throw new RuntimeException("la sortie aerienne ne peut être nulle");
+		else
+			this.lesSorties = arrayList;		
+	}
+
 
 	@Override
 	public void ajouterCategorie(String nomCategorie) {
@@ -198,7 +212,8 @@ public class Vol implements IVol {
 		if (lesSorties.contains(laSortie)) {
 			throw new RuntimeException("Vol : la sortie existe déjà");
 		}
-		lesSorties.add(laSortie);
+		else
+			lesSorties.add(laSortie);
 	}
 
 	/**
@@ -223,6 +238,10 @@ public class Vol implements IVol {
 		}
 	}
 
+	/**
+	 * supprime une sortie aerienne de la liste
+	 * @param aSupprimer
+	 */
 	public void supprimerSortieAerienne(SortieAerienne aSupprimer) {
 		if (aSupprimer == null)
 			throw new RuntimeException(
@@ -234,6 +253,13 @@ public class Vol implements IVol {
 					"Vol : vous essayez de supprimer une sortie aerienne qui n'existe pas");
 	}
 
+	/**
+	 * permet de consulter une sortie aerienne en fonction
+	 * de la date sélectionnée
+	 * @param debut
+	 * @param fin
+	 * @return
+	 */
 	public List<SortieAerienne> consulterSortieAerienne(
 			GregorianCalendar debut, GregorianCalendar fin) {
 		List<SortieAerienne> filtre = new ArrayList<SortieAerienne>();
@@ -246,8 +272,67 @@ public class Vol implements IVol {
 		return filtre;
 	}
 
+	/**
+	 * méthode compareTo qui compare l'atterrissage avec le paramètre
+	 * @param arg0
+	 * @return
+	 */
 	public int compareTo(GregorianCalendar arg0) {
 		return atterrissage.compareTo(arg0);
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((atterrissage == null) ? 0 : atterrissage.hashCode());
+		result = prime * result + circulation;
+		result = prime * result
+				+ ((decollage == null) ? 0 : decollage.hashCode());
+		result = prime * result + laCategorie;
+		result = prime * result
+				+ ((lesSorties == null) ? 0 : lesSorties.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vol other = (Vol) obj;
+		if (atterrissage == null) {
+			if (other.atterrissage != null)
+				return false;
+		} else if (!atterrissage.equals(other.atterrissage))
+			return false;
+		if (circulation != other.circulation)
+			return false;
+		if (decollage == null) {
+			if (other.decollage != null)
+				return false;
+		} else if (!decollage.equals(other.decollage))
+			return false;
+		if (laCategorie != other.laCategorie)
+			return false;
+		if (lesSorties == null) {
+			if (other.lesSorties != null)
+				return false;
+		} else if (!lesSorties.equals(other.lesSorties))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String getReference() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 }

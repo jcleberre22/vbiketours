@@ -17,6 +17,7 @@ import cindy.metier.personnel.PersonnelNavigant;
 import cindy.metier.vol.Evenement;
 import cindy.metier.vol.Mission;
 import cindy.metier.vol.SortieAerienne;
+import cindy.metier.vol.Vol;
 
 /**
  * Test de la sortie aérienne.
@@ -29,6 +30,7 @@ public class TestSortieAerienne {
 	private ISortieAerienne sortie;
 	private GregorianCalendar dateAtterissage;
 	private GregorianCalendar dateDecollage;
+	private Vol vol = new Vol();
 	private Evenement ev = new Evenement("nomEvent", "typeEvent");
 
 	@Before
@@ -38,7 +40,7 @@ public class TestSortieAerienne {
 		sortie = new SortieAerienne(new Avion("immat", "nom", "type", true),
 				"debrief", new Armement(), new ArrayList<Evenement>(),
 				new Equipage(new PersonnelNavigant()), new Mission("type",
-						"description"), dateDecollage, dateAtterissage);
+						"description"), vol, dateDecollage, dateAtterissage);
 	}
 
 	@Test
@@ -48,7 +50,7 @@ public class TestSortieAerienne {
 					new Avion("immat", "nom", "type", true), "debrief",
 					new Armement(), new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), dateDecollage, dateAtterissage);
+							"description"), vol, dateDecollage, dateAtterissage);
 			assertTrue("instanciation reussi", true);
 		} catch (Exception e) {
 			fail("erreur d'instanciation" + e.getMessage());
@@ -61,7 +63,7 @@ public class TestSortieAerienne {
 			sortie = new SortieAerienne(null, "debrief", new Armement(),
 					new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), dateDecollage, dateAtterissage);
+							"description"), vol, dateDecollage, dateAtterissage);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
 			assertTrue("instanciation reussi" + e.getMessage(), true);
@@ -75,7 +77,7 @@ public class TestSortieAerienne {
 					new Avion("immat", "nom", "type", true), null,
 					new Armement(), new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), dateDecollage, dateAtterissage);
+							"description"), vol, dateDecollage, dateAtterissage);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
 			assertTrue("instanciation reussi" + e.getMessage(), true);
@@ -89,7 +91,7 @@ public class TestSortieAerienne {
 					new Avion("immat", "nom", "type", true), "",
 					new Armement(), new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), dateDecollage, dateAtterissage);
+							"description"), vol, dateDecollage, dateAtterissage);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
 			assertTrue("instanciation reussi" + e.getMessage(), true);
@@ -103,7 +105,7 @@ public class TestSortieAerienne {
 					new Avion("immat", "nom", "type", true), "debrief", null,
 					new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), dateDecollage, dateAtterissage);
+							"description"), vol, dateDecollage, dateAtterissage);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
 			assertTrue("instanciation reussi" + e.getMessage(), true);
@@ -116,7 +118,7 @@ public class TestSortieAerienne {
 			sortie = new SortieAerienne(
 					new Avion("immat", "nom", "type", true), "debrief",
 					new Armement(), new ArrayList<Evenement>(), null,
-					new Mission("test", "description"), dateDecollage,
+					new Mission("test", "description"), vol, dateDecollage,
 					dateAtterissage);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
@@ -131,7 +133,7 @@ public class TestSortieAerienne {
 					new Avion("immat", "nom", "type", true), "debrief",
 					new Armement(), new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), null, dateAtterissage);
+							"description"), vol, null, dateAtterissage);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
 			assertTrue("instanciation reussi" + e.getMessage(), true);
@@ -145,7 +147,7 @@ public class TestSortieAerienne {
 					new Avion("immat", "nom", "type", true), "debrief",
 					new Armement(), new ArrayList<Evenement>(), new Equipage(
 							new PersonnelNavigant()), new Mission("test",
-							"description"), dateDecollage, null);
+							"description"), vol, dateDecollage, null);
 			fail("erreur d'instanciation");
 		} catch (Exception e) {
 			assertTrue("instanciation reussi" + e.getMessage(), true);
