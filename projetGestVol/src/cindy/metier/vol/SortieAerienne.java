@@ -24,6 +24,8 @@ public class SortieAerienne implements ISortieAerienne {
 	private Equipage equipage;
 	/** Attribut Mission */
 	private Mission mission;
+	/** Attribut Vol */
+	private Vol leVol;
 	/** Attribut liste d'evenement */
 	private List<Evenement> event;
 	/** Attribut heure decolage */
@@ -46,6 +48,8 @@ public class SortieAerienne implements ISortieAerienne {
 	 *            de type Equipage
 	 * @param mission
 	 *            de type Mission
+	 * @param leVol
+	 * 			  de type Vol
 	 * @param decolage
 	 *            de type GregorianCalendar
 	 * @param atterissage
@@ -53,7 +57,7 @@ public class SortieAerienne implements ISortieAerienne {
 	 */
 
 	public SortieAerienne(Avion avion, String debrief, Armement arm,
-			List<Evenement> event, Equipage equipage, Mission mission,
+			List<Evenement> event, Equipage equipage, Mission mission,Vol leVol,
 			GregorianCalendar decolage, GregorianCalendar atterissage) {
 		setArm(arm);
 		setAvion(avion);
@@ -61,6 +65,7 @@ public class SortieAerienne implements ISortieAerienne {
 		setEvent(event);
 		setEquipage(equipage);
 		setMission(mission);
+		setVol(leVol);
 		setDecolage(decolage);
 		setAtterissage(atterissage);
 	}
@@ -155,6 +160,12 @@ public class SortieAerienne implements ISortieAerienne {
 	}
 
 	/**
+	 * @return 
+	 */
+	public Vol getVol(){
+		return leVol;
+	}
+	/**
 	 * Recupere un Equipage d'un vol.
 	 * 
 	 * @return equipage sous forme d'equipage
@@ -225,6 +236,13 @@ public class SortieAerienne implements ISortieAerienne {
 			this.mission = mission;
 		}
 	}
+	
+	private void setVol(Vol leVol2) {
+		if(leVol2 == null)
+			throw new RuntimeException("SortieAerienne[setVol] : le vol a initialiser ne peut être null");
+		else
+			this.leVol = leVol2;
+	}
 
 	private void setAtterissage(GregorianCalendar atterissage) {
 		if (atterissage == null) {
@@ -241,4 +259,77 @@ public class SortieAerienne implements ISortieAerienne {
 			this.decolage = decolage;
 		}
 	}
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((arm == null) ? 0 : arm.hashCode());
+		result = prime * result
+				+ ((atterissage == null) ? 0 : atterissage.hashCode());
+		result = prime * result + ((avion == null) ? 0 : avion.hashCode());
+		result = prime * result + ((debrief == null) ? 0 : debrief.hashCode());
+		result = prime * result
+				+ ((decolage == null) ? 0 : decolage.hashCode());
+		result = prime * result
+				+ ((equipage == null) ? 0 : equipage.hashCode());
+		result = prime * result + ((event == null) ? 0 : event.hashCode());
+		result = prime * result + ((mission == null) ? 0 : mission.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SortieAerienne other = (SortieAerienne) obj;
+		if (arm == null) {
+			if (other.arm != null)
+				return false;
+		} else if (!arm.equals(other.arm))
+			return false;
+		if (atterissage == null) {
+			if (other.atterissage != null)
+				return false;
+		} else if (!atterissage.equals(other.atterissage))
+			return false;
+		if (avion == null) {
+			if (other.avion != null)
+				return false;
+		} else if (!avion.equals(other.avion))
+			return false;
+		if (debrief == null) {
+			if (other.debrief != null)
+				return false;
+		} else if (!debrief.equals(other.debrief))
+			return false;
+		if (decolage == null) {
+			if (other.decolage != null)
+				return false;
+		} else if (!decolage.equals(other.decolage))
+			return false;
+		if (equipage == null) {
+			if (other.equipage != null)
+				return false;
+		} else if (!equipage.equals(other.equipage))
+			return false;
+		if (event == null) {
+			if (other.event != null)
+				return false;
+		} else if (!event.equals(other.event))
+			return false;
+		if (mission == null) {
+			if (other.mission != null)
+				return false;
+		} else if (!mission.equals(other.mission))
+			return false;
+		return true;
+	}
+	
+	
 }

@@ -22,7 +22,7 @@ public interface IVol {
 	 * 
 	 * @return circulation sous forme de String
 	 */
-	String getCirculation();
+	int getCirculation();
 
 	/**
 	 * ajoute une sortie aerienne au vol

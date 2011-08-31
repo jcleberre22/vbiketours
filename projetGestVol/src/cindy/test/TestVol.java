@@ -34,7 +34,6 @@ public class TestVol extends TestCase {
 	Mission mission = new Mission("combat", "description");
 	List<Evenement> lst = new ArrayList<Evenement>();
 	String chaine = "test";
-	List<SortieAerienne> listSortiesAeriennes = new ArrayList<SortieAerienne>();
 	SortieAerienne sa;
 	Vol monVol;
 
@@ -42,12 +41,8 @@ public class TestVol extends TestCase {
 	 * méthode appelée au démarrage du test
 	 */
 	protected void setUp() throws Exception {
-		monVol = new Vol("A41D", "civile", 1, listSortiesAeriennes,
-				new GregorianCalendar(2011, 5, 12), new GregorianCalendar(2011,
-						5, 28));
-		sa = new SortieAerienne(avion, chaine, arm, lst, equipage, mission,
-				new GregorianCalendar(2011, 5, 12), new GregorianCalendar(2011,
-						5, 28));
+		monVol = new Vol(123, 12, 1, new GregorianCalendar(2011, 5, 12), new GregorianCalendar(2011,
+						5, 28),true);
 	}
 
 	/**
@@ -56,14 +51,12 @@ public class TestVol extends TestCase {
 	@Test
 	public void testerConstructeurVol() {
 		try {
-			new Vol("A56GF", "transport", 1, listSortiesAeriennes,
-					new GregorianCalendar(2011, 5, 12), new GregorianCalendar(
-							2011, 5, 28));
-			fail("le test de la classe vol a échoué : transport n'exsite pas");
+			new Vol(123, 12, 1, new GregorianCalendar(2011, 5, 12), new GregorianCalendar(2011,
+					5, 28),true);
+			assertTrue("l'instanciation du vol est correcte : ",true);
+			
 		} catch (Exception e) {
-			assertTrue(
-					"l'instanciation du vol est correcte : " + e.getMessage(),
-					true);
+			fail("Problème d'instanciation"+ e.getMessage());
 		}
 	}
 
@@ -74,7 +67,7 @@ public class TestVol extends TestCase {
 	@Test
 	public void testConstructeurVolErr() {
 		try {
-			new Vol(null, null, -1, null, null, null);
+			new Vol(-1,-1,-1,null,null,false);
 			fail("déclaration d'un vol sans référence non géré");
 		} catch (Exception e) {
 			assertTrue(
@@ -95,34 +88,6 @@ public class TestVol extends TestCase {
 		} catch (Exception e) {
 			assertTrue("Le test de la methode du vol est concluante", true);
 		}
-	}
-
-	@Test
-	public void testerModifierSortie() {
-		try {
-			SortieAerienne newSortie = new SortieAerienne(new Avion("75df4",
-					"combat", "Mirage2000N", true), null, new Armement(), null,
-					new Equipage(new PersonnelNavigant()), new Mission("type",
-							"description"), new GregorianCalendar(),
-					new GregorianCalendar());
-			monVol.modifierSortieAerienne(newSortie, sa);
-			fail("la modification a echoué car tentative de modifier une sortie qui n'existe pas");
-		} catch (Exception e) {
-			assertTrue("la modification a reussi", true);
-		}
-	}
-
-	@Test
-	public void testerModifierSortieErr() {
-		try {
-			SortieAerienne sortieNull = new SortieAerienne(null, "mon debrif",
-					null, lst, null, null, null, null);
-			monVol.modifierSortieAerienne(sa, sortieNull);
-			fail("Impossible de modifier une sortie aerienne avec ses paramètres null");
-		} catch (Exception e) {
-			assertTrue("la modification est un succés" + e.getMessage(), true);
-		}
-
 	}
 
 	@Test
