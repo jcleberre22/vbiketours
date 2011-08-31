@@ -69,7 +69,7 @@ public class VuePrincipale extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblBienvenue = new JLabel("Bienvenue");
-		lblBienvenue.setFont(new Font("Monotype Corsiva", Font.PLAIN, 18));
+		lblBienvenue.setFont(new Font("Andalus", Font.PLAIN, 18));
 		lblBienvenue.setBounds(139, 27, 79, 33);
 		contentPane.add(lblBienvenue);
 		
