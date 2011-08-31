@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -131,8 +132,8 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 			prSt1.setInt(3, paramInt4);
 			prSt1.setInt(4, paramInt5);
 			prSt1.setInt(5, paramInt6);
-			prSt1.setDate(6, new java.sql.Date(paramDate.getTime()));
-			prSt1.setDate(7, new java.sql.Date(paramDate2.getTime()));
+			prSt1.setTimestamp(6, new Timestamp(paramDate.getTime()));
+			prSt1.setTimestamp(7, new Timestamp(paramDate2.getTime()));
 			prSt1.setInt(8, paramInt7);
 			prSt1.setString(9, paramString);
 			prSt1.setString(10, paramString2);
@@ -190,8 +191,8 @@ public class DAOSortieAerienne implements ISortieAeriennePersistant{
 			prSt1.setInt(4, paramInt4);
 			prSt1.setInt(5, paramInt5);
 			prSt1.setInt(6, paramInt6);
-			prSt1.setDate(7, new java.sql.Date(paramDate.getTime()));
-			prSt1.setDate(8, new java.sql.Date(paramDate2.getTime()));
+			prSt1.setTimestamp(7, new Timestamp(paramDate.getTime()));
+			prSt1.setTimestamp(8, new Timestamp(paramDate2.getTime()));
 			prSt1.setInt(9, paramInt7);
 			prSt1.setString(10, paramString);
 			prSt1.setString(11, paramString2);	

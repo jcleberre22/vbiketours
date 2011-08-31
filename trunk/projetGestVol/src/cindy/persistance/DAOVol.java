@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -125,8 +126,8 @@ public class DAOVol implements IVolPersistant{
 
 			prSt1.setInt(1, paramInt2);
 			prSt1.setInt(2, paramInt3);
-			prSt1.setDate(3, new java.sql.Date(paramDate.getTime()));
-			prSt1.setDate(4, new java.sql.Date(paramDate2.getTime()));
+			prSt1.setTimestamp(3, new Timestamp(paramDate.getTime()));
+			prSt1.setTimestamp(4, new Timestamp(paramDate2.getTime()));
 			prSt1.setBoolean(5, paramBool);
 			prSt1.setInt(6, paramInt);
 			prSt1.executeUpdate();
@@ -174,8 +175,8 @@ public class DAOVol implements IVolPersistant{
 			prSt1.setInt(1, paramInt);
 			prSt1.setInt(2, paramInt2);
 			prSt1.setInt(3, paramInt3);
-			prSt1.setDate(4, new java.sql.Date(paramDate.getTime()));
-			prSt1.setDate(5, new java.sql.Date(paramDate2.getTime()));
+			prSt1.setTimestamp(4, new Timestamp(paramDate.getTime()));
+			prSt1.setTimestamp(5, new Timestamp(paramDate2.getTime()));
 			prSt1.setBoolean(6, paramBool);
 			prSt1.executeUpdate();
 			prSt1.close();
