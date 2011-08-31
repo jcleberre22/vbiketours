@@ -23,8 +23,7 @@ public class BuilderVue implements ActionListener {
 	
 	public BuilderVue(Controleur ctl) {
 		controleur = ctl;
-		principal = new VuePrincipale();
-		//principal.addActionListener(this);
+		principal = new VuePrincipale(controleur);
 		//associerMenu();
 	}
 	
@@ -36,11 +35,15 @@ public class BuilderVue implements ActionListener {
 		//	controleur.quitter();
 			principal.dispose();
 		}
-		/*
-		if ("Consulter Region".equals(command)){
-			new EcouteurRegion(controleur,principal);
+		
+		if ("A Propos".equals(command)){
+			new APropos();
 		}
-		*/
+	}
+	
+	public void associerAPropos(){
+		
+		APropos app = new APropos();
 		
 	}
 	
