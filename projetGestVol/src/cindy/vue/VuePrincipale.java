@@ -24,6 +24,7 @@ public class VuePrincipale extends JFrame {
 	 * Creer la vue.
 	 */
 	public VuePrincipale(IControleur ctrl) {
+		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
