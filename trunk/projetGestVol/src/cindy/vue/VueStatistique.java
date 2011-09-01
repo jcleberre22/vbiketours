@@ -13,6 +13,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTable;
 import javax.swing.JSplitPane;
+
+import cindy.controleur.IControleur;
+
 import java.awt.Component;
 
 
@@ -24,6 +27,7 @@ public class VueStatistique extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable nombreVol;
+	private IControleur controleur;
 
 	/**
 	 * Launch the application.
@@ -32,7 +36,7 @@ public class VueStatistique extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VueStatistique frame = new VueStatistique();
+					VueStatistique frame = new VueStatistique(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +48,7 @@ public class VueStatistique extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public VueStatistique() {
+	public VueStatistique(IControleur controleur) {
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,14 +94,11 @@ public class VueStatistique extends JFrame{
 		layeredPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel2 = new JPanel();
-		JPanel panel3 = new JPanel();
-		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panel2,panel3);
-//		ProblemeVol pv = new ProblemeVol("Probleme Vol");
-//		/*splitPane.setLeftComponent(cam);
-//		splitPane.setRightComponent(null);*/
-//		splitPane.setLeftComponent(null);
-//		splitPane.setRightComponent(null);
+		JPanel panelHaut = new JPanel();
+		JPanel panelBas = new JPanel();
+		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panelHaut,panelBas);
+		splitPane.setLeftComponent(panelHaut); 
+		splitPane.setRightComponent(panelBas);
 		panel.add(splitPane, BorderLayout.CENTER);
 		
 
