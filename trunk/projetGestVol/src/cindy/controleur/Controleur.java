@@ -1,11 +1,14 @@
 package cindy.controleur;
 
+import java.sql.SQLException;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import cindy.metier.FacadeMetier;
 
 import cindy.vue.*;
 
+import cindy.metier.comm.IVol;
 import cindy.metier.vol.Vol;
 import cindy.vue.VuePrincipale;
 
@@ -16,7 +19,7 @@ public class Controleur implements IControleur{
 	private VuePrincipale ihm;
 	private APropos app;
 	
-	public Controleur(){
+	public Controleur() throws SQLException, Exception{
 		f=new FacadeMetier();
 		ihm=new VuePrincipale(this);
 		APropos();
@@ -41,6 +44,11 @@ public class Controleur implements IControleur{
 	@Override
 	public void supprimerVol(Vol aSupprimer) {
 		
+	}
+
+	@Override
+	public List<IVol> getListeVols() throws SQLException, Exception {
+		return f.getListeVols();
 	}
 
 }

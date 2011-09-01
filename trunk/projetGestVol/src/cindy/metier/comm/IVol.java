@@ -1,5 +1,7 @@
 package cindy.metier.comm;
 
+import java.util.GregorianCalendar;
+
 /**
  * 
  * Interface permettant de récuperer des méthodes de la classe Vol.
@@ -23,6 +25,16 @@ public interface IVol {
 	 * @return circulation sous forme de String
 	 */
 	int getCirculation();
+	
+	public int getId();
+	
+	public int getLaCategorie();
+	
+	public GregorianCalendar getDecollage();
+	
+	public GregorianCalendar getAtterrissage();
+	
+	public boolean isAnnulation();
 
 	/**
 	 * ajoute une sortie aerienne au vol

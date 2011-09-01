@@ -1,6 +1,7 @@
 package cindy.metier.comm;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 
@@ -49,5 +50,6 @@ public interface IVolPersistant {
 	void insererPersistance(Object obj, Object obj2, Object obj3, Object obj4,
 			Object obj5, Object obj6) throws SQLException, Exception;
 
+	public List<IVol> getListeVols()throws SQLException, Exception;
 
 }
