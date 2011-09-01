@@ -1,5 +1,7 @@
 package cindy;
 
+import java.sql.SQLException;
+
 import cindy.controleur.Controleur;
 
 /**
@@ -14,8 +16,10 @@ public class Lanceur {
 
 	/**
 	 * @param args
+	 * @throws Exception 
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, Exception {
 		new Controleur();
 	}
 

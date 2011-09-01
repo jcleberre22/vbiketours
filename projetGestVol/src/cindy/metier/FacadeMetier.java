@@ -7,6 +7,8 @@ import java.util.List;
 
 import cindy.metier.avion.Armement;
 import cindy.metier.avion.Avion;
+import cindy.metier.comm.IVol;
+import cindy.metier.comm.IVolPersistant;
 import cindy.metier.personnel.Equipage;
 import cindy.metier.vol.Evenement;
 import cindy.metier.vol.Mission;
@@ -24,13 +26,14 @@ import cindy.persistance.DAOVol;
 public class FacadeMetier {
 	private Vol leVol;
 	// la facade naturelle du metier
-	private List<Vol> lesVol;
+	private List<IVol> listeVols;
 	// acces à la persistance
-	private DAOVol volPersistant;
+	private IVolPersistant volPersistant;
 
 	// on obtient une instance naturelle
-	public FacadeMetier() {
-		lesVol = new ArrayList<Vol>();
+	public FacadeMetier() throws SQLException, Exception {
+		volPersistant=new DAOVol();
+		listeVols = new ArrayList<IVol>();
 		leVol = new Vol();
 	}
 
@@ -61,8 +64,8 @@ public class FacadeMetier {
 	public void ajouterVol(Vol v) {
 		try {
 			if (v != null) {
-				if (!lesVol.contains(v)) {
-					lesVol.add(v);
+				if (!listeVols.contains(v)) {
+					listeVols.add(v);
 					try {
 						volPersistant.insererPersistance(leVol.getId(),
 								leVol.getCirculation(), leVol.getLaCategorie(),
@@ -95,9 +98,9 @@ public class FacadeMetier {
 	public void modifierVol(Vol ancien, Vol nouveau) {
 		try {
 			if (ancien != null && nouveau != null) {
-				if (lesVol.contains(ancien)) {
-					int index = lesVol.indexOf(ancien);
-					lesVol.add(index, nouveau);
+				if (listeVols.contains(ancien)) {
+					int index = listeVols.indexOf(ancien);
+					listeVols.add(index, nouveau);
 					try {
 						volPersistant.modifierPersistance(nouveau.getId(),
 								nouveau.getCirculation(),
@@ -126,9 +129,9 @@ public class FacadeMetier {
 	 */
 	public void supprimerVol(Vol aSupprimer) {
 		if (aSupprimer != null) {
-			for (int i = 0; i < lesVol.size(); i++) {
-				if (lesVol.contains(aSupprimer)) {
-					lesVol.remove(aSupprimer);
+			for (int i = 0; i < listeVols.size(); i++) {
+				if (listeVols.contains(aSupprimer)) {
+					listeVols.remove(aSupprimer);
 				}
 			}
 			try {
@@ -139,6 +142,21 @@ public class FacadeMetier {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * permet de récuperer la liste des vols
+	 * @return
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public void lireVols() throws SQLException, Exception{
+		listeVols=volPersistant.getListeVols();
+	}
+	
+	public List<IVol> getListeVols() throws SQLException, Exception {
+		lireVols();
+		return listeVols;
 	}
 
 	/**
@@ -154,7 +172,7 @@ public class FacadeMetier {
 	 * @param v
 	 * @param dec
 	 * @param att
-	 */
+	 */	
 	public void creerSortieAerienne(Avion av, String deb, Armement arm,
 			List<Evenement> ev, Equipage eq, Mission m, Vol v,
 			GregorianCalendar dec, GregorianCalendar att) {
@@ -224,7 +242,7 @@ public class FacadeMetier {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, Exception {
 		new FacadeMetier();
 	}
 }

@@ -1,8 +1,10 @@
 package cindy.metier.vol;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import cindy.metier.comm.IVol;
 
@@ -69,6 +71,8 @@ public class Vol implements IVol {
 	public int getId(){
 		return id;
 	}
+	
+
 	/**
 	 * @return la circulation choisie pour le vol.
 	 */
@@ -281,6 +285,13 @@ public class Vol implements IVol {
 		return atterrissage.compareTo(arg0);
 	}
 
+	public String toString() {
+		Date d1=decollage.getTime();
+		Date d2=atterrissage.getTime();
+		String s="id: "+id+"\n" +"circulation: "+ circulation+"\n" +"categorieDeVol: "+laCategorie+"\n" +"dateDecollage: " +d1+"\n" +"dateAtterrissage: "+d2+"\n" +"annulation: " +annulation+"\n";
+		return s;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -329,7 +340,7 @@ public class Vol implements IVol {
 
 	@Override
 	public String getReference() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

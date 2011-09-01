@@ -5,10 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
+import cindy.metier.comm.IVol;
 import cindy.metier.comm.IVolPersistant;
+import cindy.metier.vol.Vol;
+import cindy.outils.Outils;
 
 /**
  * Classe DAOVol. Classe permettant de gerer la persistance des vols 
@@ -18,11 +23,24 @@ import cindy.metier.comm.IVolPersistant;
  */
 public class DAOVol implements IVolPersistant{
 	
+	private List<IVol> listeVols;
+	
 	/**
 	 * Constructeur par defaut
 	 */
-	public DAOVol(){}
-
+	public DAOVol(){
+		listeVols=new ArrayList<IVol>();
+		try {
+			lire();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Méthode qui permet la lecture de la table Vol.
 	 * La requete s'effectue à l'aide d'un SELECT.
@@ -31,7 +49,8 @@ public class DAOVol implements IVolPersistant{
 	 */
 	@Override
 	public void lire()throws SQLException,Exception{
-
+		
+		List<IVol> listeVols=new ArrayList<IVol>();
 		try{
 
 			AccesBDD bdd = AccesBDD.getInstance();
@@ -42,19 +61,25 @@ public class DAOVol implements IVolPersistant{
 
 			//executeQuery quand c'est un select
 			ResultSet rs = stmt.executeQuery(requete);
-
+			
+			
+			
 			while (rs.next()){
 				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getTimestamp(4)+"\t"+rs.getTimestamp(5)+"\t"+rs.getBoolean(6)+"\n");
-
+				GregorianCalendar gCDecol=Outils.timestampToGregCal(rs.getTimestamp(4));
+				GregorianCalendar gCAtter=Outils.timestampToGregCal(rs.getTimestamp(5));
+				IVol vol=new Vol(rs.getInt(1),rs.getInt(2),rs.getInt(3),gCDecol,gCAtter,rs.getBoolean(6));
+				listeVols.add(vol);			
 			}
-
 		}catch(Exception e){
 
 			e.printStackTrace();
 
 		}
-
 	}
+	
+
+	
 
 	/**
 	 * Méthode qui de supprimer un tuple de la table Vol.
@@ -187,8 +212,11 @@ public class DAOVol implements IVolPersistant{
 
 			e.printStackTrace();
 		}
+	}
 
-
+	public List<IVol> getListeVols() throws SQLException, Exception {
+		lire();
+		return listeVols;
 	}
 
 	/**
@@ -199,31 +227,31 @@ public class DAOVol implements IVolPersistant{
 	public static void main(String[] args) throws Exception {
 
 		DAOVol bdd = new DAOVol();
-		System.out.println("insert");
-		bdd.insererPersistance(11, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
-
-		System.out.println("******************************");
-		System.out.println("read1");
+//		System.out.println("insert");
+//		bdd.insererPersistance(11, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
+//
+//		System.out.println("******************************");
+//		System.out.println("read1");
 		bdd.lire();
-
-		System.out.println("******************************");
-
-		System.out.println("update");
-		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
-
-		System.out.println("******************************");
-		System.out.println("read2");
-		bdd.lire();
-		System.out.println("******************************");
-
-		System.out.println("delete");
-		bdd.supprimerPersistance(11);
-
-
-		System.out.println("******************************");
-		System.out.println("read3");
-		bdd.lire();
-		System.out.println("******************************");
+//
+//		System.out.println("******************************");
+//
+//		System.out.println("update");
+//		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
+//
+//		System.out.println("******************************");
+//		System.out.println("read2");
+//		bdd.lire();
+//		System.out.println("******************************");
+//
+//		System.out.println("delete");
+//		bdd.supprimerPersistance(11);
+//
+//
+//		System.out.println("******************************");
+//		System.out.println("read3");
+//		bdd.lire();
+//		System.out.println("******************************");
 
 
 	}

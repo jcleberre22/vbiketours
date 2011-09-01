@@ -11,6 +11,13 @@ import cindy.controleur.IControleur;
 import javax.swing.JTabbedPane;
 import javax.swing.JLayeredPane;
 import java.awt.Color;
+import javax.swing.JTable;
+import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+import javax.swing.JScrollPane;
 
 public class VueVols extends JFrame {
 
@@ -20,6 +27,7 @@ public class VueVols extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private IControleur controleur;
+	private JTable table;
 
 	/**
 	 * Create the frame.
@@ -28,8 +36,8 @@ public class VueVols extends JFrame {
 		setTitle("Gestion des vols");
 		controleur=ctrl;
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 750, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -38,13 +46,19 @@ public class VueVols extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		JLayeredPane layeredPane_1 = new JLayeredPane();
-		tabbedPane.addTab("Consulter", null, layeredPane_1, null);
-		tabbedPane.setForegroundAt(0, Color.BLACK);
-		tabbedPane.setBackgroundAt(0, Color.WHITE);
-		tabbedPane.setEnabledAt(0, true);
-		
 		JLayeredPane layeredPane = new JLayeredPane();
 		tabbedPane.addTab("Creer un vol", null, layeredPane, null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 699, 155);
+		layeredPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		table.setModel(new ModeleJTableVol(controleur));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, tabbedPane}));
 	}
 }
