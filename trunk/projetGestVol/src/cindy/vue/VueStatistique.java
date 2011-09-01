@@ -51,7 +51,7 @@ public class VueStatistique extends JFrame{
 	public VueStatistique(IControleur controleur) {
 		setVisible(true);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Gestion des statistiques");
 		setBounds(100, 100, 659, 550);
 		
@@ -96,11 +96,10 @@ public class VueStatistique extends JFrame{
 		
 		JPanel panelHaut = new JPanel();
 		JPanel panelBas = new JPanel();
+		panelBas.add(new Camembert(controleur));
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panelHaut,panelBas);
-		splitPane.setLeftComponent(panelHaut); 
-		splitPane.setRightComponent(panelBas);
 		panel.add(splitPane, BorderLayout.CENTER);
-		
+		this.getContentPane().add(splitPane);
 
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		tabbedPane.addTab("Nombre de probleme/Secteur de vol", null, layeredPane_1, null);
