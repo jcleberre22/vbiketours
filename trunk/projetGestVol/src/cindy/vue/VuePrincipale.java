@@ -79,6 +79,7 @@ public class VuePrincipale extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("bouton stats");
+				new VueStatistique(controleur);
 			}
 		});
 		btnNewButton_1.setBounds(196, 105, 154, 61);
