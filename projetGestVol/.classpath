@@ -2,25 +2,20 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="lib/looks-2.1.4.jar"/>
-	<classpathentry kind="lib" path="lib/spring.jar"/>
-	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="lib/hsqldb.jar"/>
-	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/jfreechart-1.0.13-demo.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/gnujaxp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/iText-2.1.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/jcommon-1.0.16.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/jfreechart-1.0.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/jfreechart-1.0.13-experimental.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/jfreechart-1.0.13-swt.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/junit.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/servlet.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.13/lib/swtgraphics2d.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.0-rc1/lib/gnujaxp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.0-rc1/lib/junit.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/jfreechart-1.0.0-rc1/lib/servlet.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Nicolas/Desktop/Chart2D_1.9.6k/Chart2D.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/gnujaxp.jar"/>
+	<classpathentry kind="lib" path="lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib/iText-2.1.5.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.13-experimental.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.13-swt.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/looks-2.1.4.jar"/>
+	<classpathentry kind="lib" path="lib/servlet.jar"/>
+	<classpathentry kind="lib" path="lib/spring.jar"/>
+	<classpathentry kind="lib" path="lib/swtgraphics2d.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
