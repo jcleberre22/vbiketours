@@ -100,11 +100,13 @@ public class VueStatistique extends JFrame{
 //		splitPane.setRightComponent(null);
 		panel.add(splitPane, BorderLayout.CENTER);
 		
-		
+
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		tabbedPane.addTab("Nombre de probleme/Secteur de vol", null, layeredPane_1, null);
 		
-		JSplitPane splitPane_1 = new JSplitPane();
+		JPanel panel4 = new JPanel();
+		JPanel panel5 = new JPanel();
+		JSplitPane splitPane_1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panel4,panel5);
 		splitPane_1.setBounds(0, 0, 628, 453);
 		layeredPane_1.add(splitPane_1);
 	}
