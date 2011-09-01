@@ -13,8 +13,6 @@ import javax.swing.JLayeredPane;
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.border.MatteBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.ListSelectionModel;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import javax.swing.JScrollPane;
