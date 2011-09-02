@@ -30,15 +30,6 @@ public class DAOVol implements IVolPersistant{
 	 */
 	public DAOVol(){
 		listeVols=new ArrayList<IVol>();
-		try {
-			lire();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	/**
@@ -50,7 +41,7 @@ public class DAOVol implements IVolPersistant{
 	@Override
 	public void lire()throws SQLException,Exception{
 		
-		List<IVol> listeVols=new ArrayList<IVol>();
+		listeVols=new ArrayList<IVol>();
 		try{
 
 			AccesBDD bdd = AccesBDD.getInstance();
@@ -62,7 +53,7 @@ public class DAOVol implements IVolPersistant{
 			//executeQuery quand c'est un select
 			ResultSet rs = stmt.executeQuery(requete);
 			
-			
+			System.out.println("Obtention de la liste des vols");
 			
 			while (rs.next()){
 				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getTimestamp(4)+"\t"+rs.getTimestamp(5)+"\t"+rs.getBoolean(6)+"\n");
@@ -227,31 +218,31 @@ public class DAOVol implements IVolPersistant{
 	public static void main(String[] args) throws Exception {
 
 		DAOVol bdd = new DAOVol();
-//		System.out.println("insert");
-//		bdd.insererPersistance(11, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
-//
-//		System.out.println("******************************");
-//		System.out.println("read1");
+		System.out.println("insert");
+		bdd.insererPersistance(11, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
+
+		System.out.println("******************************");
+		System.out.println("read1");
 		bdd.lire();
-//
-//		System.out.println("******************************");
-//
-//		System.out.println("update");
-//		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
-//
-//		System.out.println("******************************");
-//		System.out.println("read2");
-//		bdd.lire();
-//		System.out.println("******************************");
-//
-//		System.out.println("delete");
-//		bdd.supprimerPersistance(11);
-//
-//
-//		System.out.println("******************************");
-//		System.out.println("read3");
-//		bdd.lire();
-//		System.out.println("******************************");
+
+		System.out.println("******************************");
+
+		System.out.println("update");
+		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
+
+		System.out.println("******************************");
+		System.out.println("read2");
+		bdd.lire();
+		System.out.println("******************************");
+
+		System.out.println("delete");
+		bdd.supprimerPersistance(11);
+
+
+		System.out.println("******************************");
+		System.out.println("read3");
+		bdd.lire();
+		System.out.println("******************************");
 
 
 	}

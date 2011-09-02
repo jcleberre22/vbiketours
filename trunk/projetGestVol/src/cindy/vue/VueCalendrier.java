@@ -1,0 +1,151 @@
+package cindy.vue;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JCalendar;
+
+public class VueCalendrier extends JDialog {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3820355815980650845L;
+	private final JPanel contentPanel = new JPanel();
+	private int heures;
+	private int minutes;
+	private int secondes;
+	private JCalendar calendrier;
+	private JSpinner spinner;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			VueCalendrier dialog = new VueCalendrier();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public VueCalendrier() {
+		setBounds(100, 100, 474, 240);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			JPanel panel = new JPanel();
+			panel.setBounds(22, 10, 221, 187);
+			contentPanel.add(panel);
+			panel.setLayout(null);
+			
+			calendrier=new JCalendar();
+			calendrier.setBounds(6, 6, 205, 176);
+			calendrier.setMaxDayCharacters(9);
+			calendrier.setTodayButtonVisible(true);
+			panel.add(calendrier);
+		}
+		
+		Box horizontalBox = Box.createHorizontalBox();
+		horizontalBox.setBounds(255, 69, 191, 20);
+		contentPanel.add(horizontalBox);
+		
+		JLabel label = new JLabel("\u00E0 :   ");
+		horizontalBox.add(label);
+		
+		final JSpinner spinnerH = new JSpinner();
+		spinnerH.setPreferredSize(new Dimension(35, 20));
+		spinnerH.setMinimumSize(new Dimension(20, 20));
+		spinnerH.setMaximumSize(new Dimension(50, 20));
+		spinnerH.setModel(new SpinnerNumberModel(0, 0, 23, 1));
+		horizontalBox.add(spinnerH);
+		
+		JLabel lblH = new JLabel(" H ");
+		horizontalBox.add(lblH);
+		
+		final JSpinner spinnerM = new JSpinner();
+		spinnerM.setPreferredSize(new Dimension(35, 20));
+		spinnerM.setMaximumSize(new Dimension(50, 20));
+		spinnerM.setModel(new SpinnerNumberModel(0, 0, 59, 1));
+		horizontalBox.add(spinnerM);
+		
+		JLabel lblM = new JLabel(" M ");
+		horizontalBox.add(lblM);
+		
+		final JSpinner spinnerS = new JSpinner();
+		spinnerS.setPreferredSize(new Dimension(35, 20));
+		spinnerS.setMaximumSize(new Dimension(50, 20));
+		spinnerS.setModel(new SpinnerNumberModel(0, 0, 59, 1));
+		horizontalBox.add(spinnerS);
+		
+		JLabel lblS = new JLabel(" S ");
+		horizontalBox.add(lblS);
+		
+		Box horizontalBox_1 = Box.createHorizontalBox();
+		horizontalBox_1.setBounds(322, 164, 124, 25);
+		contentPanel.add(horizontalBox_1);
+		
+		JButton btnOk = new JButton("OK");
+		btnOk.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				heures=(Integer)spinnerH.getValue();
+				minutes=(Integer)spinnerM.getValue();
+				secondes=(Integer)spinnerS.getValue();
+//				Date date = calendrier.getCalendar().getTime();
+
+				dispose();
+			}
+		});
+		horizontalBox_1.add(btnOk);
+		
+		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+		});
+		horizontalBox_1.add(btnAnnuler);
+	}
+
+	public VueCalendrier(JSpinner spinner) {
+		this.spinner=spinner;
+	}
+
+	public int getHeures() {
+		return heures;
+	}
+
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public int getSecondes() {
+		return secondes;
+	}
+}
