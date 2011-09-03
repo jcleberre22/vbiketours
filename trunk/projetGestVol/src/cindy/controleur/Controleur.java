@@ -22,7 +22,6 @@ public class Controleur implements IControleur{
 	public Controleur() throws SQLException, Exception{
 		f=new FacadeMetier();
 		ihm=new VuePrincipale(this);
-		APropos();
 		ihm.setVisible(true);
 
 	}
@@ -31,10 +30,6 @@ public class Controleur implements IControleur{
 			GregorianCalendar dateDecollage,
 			GregorianCalendar dateAtterrissage, boolean annulation) {
 		f.creerVol(reference, circulation, categorieDeVol, dateDecollage, dateAtterrissage, annulation);
-	}
-	
-	public void APropos(){
-		app = new APropos();
 	}
 	
 	public void modifierVol(Vol ancien, Vol nouveau){
