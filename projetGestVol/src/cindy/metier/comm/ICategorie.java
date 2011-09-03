@@ -14,12 +14,12 @@ public interface ICategorie {
 	 * 
 	 * @return la categorie de vol sous forme de String
 	 */
-	String getNomCategorie();
+	String getLibelleCategorie();
 
 	/**
 	 * Méthode qui retourne le num de la categorie.
 	 * 
 	 * @return le num de la categorie sous forme de String
 	 */
-	int getNumCategorie();
+	int getIdCategorie();
 }

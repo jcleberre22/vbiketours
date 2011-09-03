@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -87,8 +88,15 @@ public class VuePrincipale extends JFrame {
 		btnGestionDesVols.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				VueVols vol=new VueVols(controleur);
-				vol.setVisible(true);
+				VueVols vol;
+				try {
+					vol = new VueVols(controleur);
+					vol.setVisible(true);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		panel_1.add(btnGestionDesVols);

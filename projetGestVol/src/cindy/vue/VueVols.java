@@ -1,6 +1,7 @@
 package cindy.vue;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 
 
 import javax.swing.JFrame;
@@ -8,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import cindy.controleur.IControleur;
+import cindy.metier.comm.ICategorie;
+import cindy.metier.comm.IVol;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JLayeredPane;
 import java.awt.Color;
@@ -29,8 +33,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Calendar;
+import javax.swing.JComboBox;
 
 public class VueVols extends JFrame {
 
@@ -43,14 +50,14 @@ public class VueVols extends JFrame {
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
+	 * @throws SQLException 
 	 */
-	public VueVols(IControleur ctrl) {
+	public VueVols(IControleur ctrl) throws SQLException, Exception {
 		setTitle("Gestion des vols");
 		controleur=ctrl;
 		setVisible(true);
@@ -123,9 +130,16 @@ public class VueVols extends JFrame {
 		textField.setBounds(113, 7, 39, 20);
 		panel_4.add(textField);
 		textField.setColumns(10);
+		try {
+			textField.setText(String.valueOf((controleur.getListeVols().size()+1)));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(10, 79, 157, 34);
+		panel_9.setBounds(10, 79, 272, 34);
 		layeredPane_1.add(panel_9);
 		panel_9.setLayout(null);
 		
@@ -137,15 +151,13 @@ public class VueVols extends JFrame {
 		JLabel lblCirculation = new JLabel("Circulation : ");
 		panel_10.add(lblCirculation);
 		
-		textField_2 = new JTextField();
-		textField_2.setHorizontalAlignment(SwingConstants.TRAILING);
-		textField_2.setColumns(10);
-		textField_2.setBounds(113, 7, 39, 20);
-		panel_9.add(textField_2);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(102, 5, 164, 26);
+		panel_9.add(comboBox);
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setLayout(null);
-		panel_11.setBounds(10, 149, 157, 34);
+		panel_11.setBounds(10, 149, 272, 34);
 		layeredPane_1.add(panel_11);
 		
 		JPanel panel_12 = new JPanel();
@@ -157,15 +169,16 @@ public class VueVols extends JFrame {
 		lblCategorie.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_12.add(lblCategorie);
 		
-		textField_3 = new JTextField();
-		textField_3.setHorizontalAlignment(SwingConstants.TRAILING);
-		textField_3.setColumns(10);
-		textField_3.setBounds(113, 7, 39, 20);
-		panel_11.add(textField_3);
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(103, 5, 163, 26);
+		for (ICategorie cat : controleur.getListeCategories()) {
+			comboBox_1.addItem(cat.getLibelleCategorie());
+		}
+		panel_11.add(comboBox_1);
 		
 		JPanel panel_13 = new JPanel();
 		panel_13.setLayout(null);
-		panel_13.setBounds(217, 11, 306, 34);
+		panel_13.setBounds(317, 11, 306, 34);
 		layeredPane_1.add(panel_13);
 		
 		JPanel panel_14 = new JPanel();
@@ -193,7 +206,7 @@ public class VueVols extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBounds(217, 79, 306, 34);
+		panel.setBounds(317, 79, 306, 34);
 		layeredPane_1.add(panel);
 		
 		JPanel panel_1 = new JPanel();
@@ -220,7 +233,7 @@ public class VueVols extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
-		panel_2.setBounds(217, 149, 157, 34);
+		panel_2.setBounds(319, 149, 157, 34);
 		layeredPane_1.add(panel_2);
 
 		JPanel panel_15 = new JPanel();
