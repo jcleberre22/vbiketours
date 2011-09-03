@@ -2,21 +2,17 @@ package cindy.vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
@@ -29,9 +25,6 @@ public class VueCalendrier extends JDialog {
 	 */
 	private static final long serialVersionUID = 3820355815980650845L;
 	private final JPanel contentPanel = new JPanel();
-	private int heures;
-	private int minutes;
-	private int secondes;
 	private JCalendar calendrier;
 	private JSpinner spinner;
 	/**
@@ -39,7 +32,7 @@ public class VueCalendrier extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			VueCalendrier dialog = new VueCalendrier();
+			VueCalendrier dialog = new VueCalendrier(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 	
@@ -51,36 +44,37 @@ public class VueCalendrier extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public VueCalendrier() {
-		setBounds(100, 100, 474, 240);
+	public VueCalendrier(final JSpinner spinner) {
+		this.spinner=spinner;
+		setBounds(100, 100, 590, 305);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JPanel panel = new JPanel();
-			panel.setBounds(22, 10, 221, 187);
+			panel.setBounds(6, 30, 337, 239);
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
 			calendrier=new JCalendar();
-			calendrier.setBounds(6, 6, 205, 176);
-			calendrier.setMaxDayCharacters(9);
+			calendrier.setMaxDayCharacters(1);
+			calendrier.setBounds(6, 6, 320, 223);
 			calendrier.setTodayButtonVisible(true);
 			panel.add(calendrier);
 		}
 		
 		Box horizontalBox = Box.createHorizontalBox();
-		horizontalBox.setBounds(255, 69, 191, 20);
+		horizontalBox.setBounds(364, 54, 208, 35);
 		contentPanel.add(horizontalBox);
 		
 		JLabel label = new JLabel("\u00E0 :   ");
 		horizontalBox.add(label);
 		
 		final JSpinner spinnerH = new JSpinner();
-		spinnerH.setPreferredSize(new Dimension(35, 20));
+		spinnerH.setPreferredSize(new Dimension(30, 20));
 		spinnerH.setMinimumSize(new Dimension(20, 20));
-		spinnerH.setMaximumSize(new Dimension(50, 20));
+		spinnerH.setMaximumSize(new Dimension(50, 25));
 		spinnerH.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 		horizontalBox.add(spinnerH);
 		
@@ -88,8 +82,9 @@ public class VueCalendrier extends JDialog {
 		horizontalBox.add(lblH);
 		
 		final JSpinner spinnerM = new JSpinner();
-		spinnerM.setPreferredSize(new Dimension(35, 20));
-		spinnerM.setMaximumSize(new Dimension(50, 20));
+		spinnerM.setMinimumSize(new Dimension(20, 20));
+		spinnerM.setPreferredSize(new Dimension(30, 20));
+		spinnerM.setMaximumSize(new Dimension(50, 25));
 		spinnerM.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		horizontalBox.add(spinnerM);
 		
@@ -97,8 +92,9 @@ public class VueCalendrier extends JDialog {
 		horizontalBox.add(lblM);
 		
 		final JSpinner spinnerS = new JSpinner();
+		spinnerS.setMinimumSize(new Dimension(20, 20));
 		spinnerS.setPreferredSize(new Dimension(35, 20));
-		spinnerS.setMaximumSize(new Dimension(50, 20));
+		spinnerS.setMaximumSize(new Dimension(50, 25));
 		spinnerS.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		horizontalBox.add(spinnerS);
 		
@@ -106,18 +102,20 @@ public class VueCalendrier extends JDialog {
 		horizontalBox.add(lblS);
 		
 		Box horizontalBox_1 = Box.createHorizontalBox();
-		horizontalBox_1.setBounds(322, 164, 124, 25);
+		horizontalBox_1.setBounds(431, 231, 124, 25);
 		contentPanel.add(horizontalBox_1);
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				heures=(Integer)spinnerH.getValue();
-				minutes=(Integer)spinnerM.getValue();
-				secondes=(Integer)spinnerS.getValue();
-//				Date date = calendrier.getCalendar().getTime();
-
+				int heures=(Integer)spinnerH.getValue();
+				int minutes=(Integer)spinnerM.getValue();
+				int secondes=(Integer)spinnerS.getValue();
+				Calendar date = calendrier.getCalendar();
+				GregorianCalendar gc=new GregorianCalendar(date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH),heures,minutes,secondes);
+				spinner.setValue(gc.getTime());		
+				System.out.println("Date : "+calendrier.getCalendar().getTime());
 				dispose();
 			}
 		});
@@ -131,21 +129,5 @@ public class VueCalendrier extends JDialog {
 			}
 		});
 		horizontalBox_1.add(btnAnnuler);
-	}
-
-	public VueCalendrier(JSpinner spinner) {
-		this.spinner=spinner;
-	}
-
-	public int getHeures() {
-		return heures;
-	}
-
-	public int getMinutes() {
-		return minutes;
-	}
-
-	public int getSecondes() {
-		return secondes;
 	}
 }
