@@ -73,8 +73,7 @@ public class VueVols extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setColumnSelectionAllowed(true);
-		table.setCellSelectionEnabled(true);
+		table.setRowSelectionAllowed(true);
 		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		table.setModel(new ModeleJTableVol(controleur));
 		
@@ -205,7 +204,7 @@ public class VueVols extends JFrame {
 		JLabel lblDateAtterrissage = new JLabel("Date Atterrissage :");
 		panel_1.add(lblDateAtterrissage);
 		
-		JSpinner spinner_1 = new JSpinner();
+		final JSpinner spinner_1 = new JSpinner();
 		spinner_1.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_YEAR));
 		panel_1.add(spinner_1);
 		
@@ -213,7 +212,7 @@ public class VueVols extends JFrame {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				VueCalendrier cal=new VueCalendrier();
+				VueCalendrier cal=new VueCalendrier(spinner_1);
 				cal.setVisible(true);
 			}
 		});

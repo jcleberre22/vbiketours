@@ -12,6 +12,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.BoxLayout;
 
 /**
  * Fenetre JDialog A propos. Construit sur Windows Builder.
@@ -68,23 +71,35 @@ public class APropos extends JDialog {
 		contentPanel.add(lblNewLabel_2);
 		
 		String id = "LEBERRE Jean-Christophe \n \n MARTINEZ Jean-Philippe \n \n TABUTEAUD Nicolas";
-		JTextPane lblNewLabel_3 = new JTextPane();
-		lblNewLabel_3.setFont(new Font("Andalus", Font.PLAIN, 14));
-		lblNewLabel_3.setText(id);
-		lblNewLabel_3.setBackground(null);
-		lblNewLabel_3.setBounds(31, 91, 161, 120);
-		contentPanel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Nicolas\\Desktop\\ecusson.png"));
-		lblNewLabel_4.setBounds(236, 63, 155, 148);
-		contentPanel.add(lblNewLabel_4);
+		JPanel panel = new JPanel();
+		panel.setBounds(6, 88, 194, 133);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblLeberre = new JLabel(" LEBERRE Jean-Christophe");
+		lblLeberre.setBounds(10, 11, 174, 14);
+		panel.add(lblLeberre);
+		
+		JLabel lblMartinez = new JLabel(" MARTINEZ Jean-Philippe ");
+		lblMartinez.setBounds(10, 60, 174, 14);
+		panel.add(lblMartinez);
+		
+		JLabel lblTabuteaud = new JLabel(" TABUTEAUD Nicolas");
+		lblTabuteaud.setBounds(10, 108, 174, 14);
+		panel.add(lblTabuteaud);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

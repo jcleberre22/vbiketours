@@ -17,6 +17,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
+import java.awt.BorderLayout;
 
 public class VuePrincipale extends JFrame {
 
@@ -32,7 +35,7 @@ public class VuePrincipale extends JFrame {
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Cindy Application - Fenetre Principale");
 		setBounds(100, 100, 376, 266);
 		
@@ -45,7 +48,9 @@ public class VuePrincipale extends JFrame {
 		JMenuItem mntmAPropos = new JMenuItem("A Propos");
 		mntmAPropos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controleur.APropos();
+				APropos aPropos=new APropos();
+				aPropos.setVisible(true);
+				
 			}
 		});
 		mnFichier.add(mntmAPropos);
@@ -63,31 +68,45 @@ public class VuePrincipale extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Gestion des Vols\r\n");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("bouton vols");
-				new VueVols(controleur);
-			}
-		});
-		btnNewButton.setBounds(10, 105, 160, 61);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Statistiques\r\n");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("bouton stats");
-				new VueStatistique(controleur);
-			}
-		});
-		btnNewButton_1.setBounds(196, 105, 154, 61);
-		contentPane.add(btnNewButton_1);
+		JPanel panel = new JPanel();
+		panel.setBounds(6, 6, 358, 203);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		
 		JLabel lblBienvenue = new JLabel("Bienvenue");
-		lblBienvenue.setFont(new Font("Andalus", Font.PLAIN, 18));
-		lblBienvenue.setBounds(139, 27, 79, 33);
-		contentPane.add(lblBienvenue);
+		lblBienvenue.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBienvenue.setBounds(123, 24, 117, 40);
+		panel.add(lblBienvenue);
+		lblBienvenue.setFont(new Font("Andalus", Font.PLAIN, 22));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(6, 109, 159, 70);
+		panel.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JButton btnGestionDesVols = new JButton("Gestion des vols");
+		btnGestionDesVols.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				VueVols vol=new VueVols(controleur);
+				vol.setVisible(true);
+			}
+		});
+		panel_1.add(btnGestionDesVols);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(199, 109, 159, 70);
+		panel.add(panel_2);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		JButton btnStatistiques = new JButton("Statistiques");
+		btnStatistiques.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VueStatistique stat=new VueStatistique(controleur);
+				stat.setVisible(true);
+			}
+		});
+		panel_2.add(btnStatistiques, BorderLayout.CENTER);
 	}
 }
