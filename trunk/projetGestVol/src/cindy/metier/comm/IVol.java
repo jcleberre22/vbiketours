@@ -1,6 +1,9 @@
 package cindy.metier.comm;
 
 import java.util.GregorianCalendar;
+import java.util.List;
+
+import cindy.metier.vol.SortieAerienne;
 
 /**
  * 
@@ -35,12 +38,15 @@ public interface IVol {
 	public GregorianCalendar getAtterrissage();
 	
 	public boolean isAnnulation();
+	
+	public List<SortieAerienne> getLesSorties();
 
-	/**
-	 * ajoute une sortie aerienne au vol
-	 * 
-	 * @param laSortie
-	 */
 	void ajouterCategorie(String nomCategorie);
+
+	void modifierSortieAerienne(SortieAerienne old, SortieAerienne newSortie);
+
+	void ajouterSortieAerienne(SortieAerienne laSortie);
+
+	void supprimerSortieAerienne(SortieAerienne aSupprimer);
 
 }

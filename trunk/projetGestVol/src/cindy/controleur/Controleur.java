@@ -6,8 +6,7 @@ import java.util.List;
 
 import cindy.metier.FacadeMetier;
 
-import cindy.vue.*;
-
+import cindy.metier.comm.ICategorie;
 import cindy.metier.comm.IVol;
 import cindy.metier.vol.Vol;
 import cindy.vue.VuePrincipale;
@@ -17,7 +16,6 @@ public class Controleur implements IControleur{
 	
 	private FacadeMetier f;
 	private VuePrincipale ihm;
-	private APropos app;
 	
 	public Controleur() throws SQLException, Exception{
 		f=new FacadeMetier();
@@ -44,6 +42,11 @@ public class Controleur implements IControleur{
 	@Override
 	public List<IVol> getListeVols() throws SQLException, Exception {
 		return f.getListeVols();
+	}
+
+	@Override
+	public List<ICategorie> getListeCategories() throws SQLException, Exception {
+		return f.getListeCategories();
 	}
 
 }

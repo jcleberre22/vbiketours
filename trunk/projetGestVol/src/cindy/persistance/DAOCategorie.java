@@ -4,8 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import cindy.metier.comm.IPersistance;
+import cindy.metier.comm.ICategorie;
+import cindy.metier.comm.ICategoriePersistant;
+import cindy.metier.vol.Categorie;
 
 
 /**
@@ -15,12 +19,16 @@ import cindy.metier.comm.IPersistance;
  * @author Nicolas.tabuteaud
  * @version 1.0 du 25/07/2011 modifié le 29/08/2011
  */
-public class DAOCategorie implements IPersistance {
+public class DAOCategorie implements ICategoriePersistant {
+
+	private List<ICategorie> listeCategories;
 
 	/**
 	 * Constructeur par defaut
 	 */
-	public DAOCategorie(){}
+	public DAOCategorie(){
+		listeCategories= new ArrayList<ICategorie>();
+	}
 
 	/**
 	 * Méthode qui permet la lecture de la table Categorie.
@@ -28,11 +36,10 @@ public class DAOCategorie implements IPersistance {
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
 	 */
-	@Override
 	public void lire()throws SQLException,Exception{
 
 		try{
-
+			
 			AccesBDD bdd = AccesBDD.getInstance();
 
 			String requete = "SELECT * FROM categorie";
@@ -43,6 +50,8 @@ public class DAOCategorie implements IPersistance {
 
 			while (rs.next()){
 				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
+				ICategorie cat=new Categorie(rs.getInt(1),rs.getString(2));
+				listeCategories.add(cat);
 
 			}
 
@@ -97,16 +106,16 @@ public class DAOCategorie implements IPersistance {
 	 * @throws SQLException, Exception 
 	 * @param obj[n]
 	 */
-	@Override
 	public void modifierPersistance(Object obj, Object obj2) throws SQLException, Exception {
-		if(obj2 instanceof String == false || obj instanceof Integer == false){
+		if(obj instanceof Integer == false || obj2 instanceof String == false){
 
 			throw new RuntimeException("Parametre incorrect");
 
 		}
 
-		String param1 = (String)obj2;
-		int param2 = (Integer)obj;
+		int param1 = (Integer)obj;
+		String param2 = (String)obj2;
+		
 
 		try {
 
@@ -115,8 +124,8 @@ public class DAOCategorie implements IPersistance {
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
 
-			prSt1.setString(1, param1);
-			prSt1.setInt(2, param2);
+			prSt1.setString(1, param2);
+			prSt1.setInt(2, param1);
 			prSt1.executeUpdate();
 			prSt1.close();
 
@@ -134,7 +143,6 @@ public class DAOCategorie implements IPersistance {
 	 * @throws SQLException, Exception 
 	 * @param obj[n]
 	 */
-	@Override
 	public void insererPersistance(Object obj, Object obj2) throws SQLException, Exception {
 
 		if(obj instanceof Integer == false || obj2 instanceof String == false){
@@ -170,6 +178,11 @@ public class DAOCategorie implements IPersistance {
 
 	}
 
+	public List<ICategorie> getListeCategories() throws SQLException, Exception {
+		lire();
+		return listeCategories;
+	}
+
 	/**
 	 * Méthode de Test.
 	 * @param args
@@ -179,25 +192,23 @@ public class DAOCategorie implements IPersistance {
 
 		DAOCategorie bdd = new DAOCategorie();
 
-		bdd.insererPersistance(1,"fdsf");
+		bdd.insererPersistance(6,"insertion");
 
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		bdd.modifierPersistance(1,"poulet");
+		bdd.modifierPersistance(6,"modification");
 
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		bdd.insererPersistance(2, "Coq");
 
+		bdd.supprimerPersistance(6);
+		
 		bdd.lire();
-
-
-		bdd.supprimerPersistance(1);
-		bdd.supprimerPersistance(2);
+		
 
 
 

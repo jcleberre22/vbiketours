@@ -7,6 +7,8 @@ import java.util.List;
 
 import cindy.metier.avion.Armement;
 import cindy.metier.avion.Avion;
+import cindy.metier.comm.ICategorie;
+import cindy.metier.comm.ICategoriePersistant;
 import cindy.metier.comm.IVol;
 import cindy.metier.comm.IVolPersistant;
 import cindy.metier.personnel.Equipage;
@@ -14,8 +16,9 @@ import cindy.metier.vol.Evenement;
 import cindy.metier.vol.Mission;
 import cindy.metier.vol.SortieAerienne;
 import cindy.metier.vol.Vol;
+import cindy.persistance.DAOCategorie;
 import cindy.persistance.DAOVol;
-
+//FIXME javadoc
 /**
  * Facade destinée à accéder aux différentes parties du métier pour garantir une
  * meilleure sécurité de l'application en couche
@@ -24,16 +27,20 @@ import cindy.persistance.DAOVol;
  * @version 1.0 du 29/08/2011
  */
 public class FacadeMetier {
-	private Vol leVol;
-	// la facade naturelle du metier
+	private IVol leVol;
 	private List<IVol> listeVols;
+	private List<ICategorie> listeCategories;
 	// acces à la persistance
 	private IVolPersistant volPersistant;
+	private ICategoriePersistant categoriePersistant;
 
+	
 	// on obtient une instance naturelle
 	public FacadeMetier() throws SQLException, Exception {
 		volPersistant=new DAOVol();
+		categoriePersistant=new DAOCategorie();
 		listeVols = new ArrayList<IVol>();
+		listeCategories = new ArrayList<ICategorie>();
 		leVol = new Vol();
 	}
 
@@ -232,7 +239,6 @@ public class FacadeMetier {
 			} else {
 				if (aSupprimer != null) {
 					leVol.supprimerSortieAerienne(aSupprimer);
-					// TODO : appeler une DAO pour supprimer la sortie
 				}
 			}
 		} catch (NullPointerException e) {
@@ -240,6 +246,17 @@ public class FacadeMetier {
 			throw new RuntimeException(
 					"FacadeMetier[supprimerSortieAerienne]La sortie à supprimer est nulle");
 		}
+	}
+	
+	public List<ICategorie> getListeCategories() throws SQLException, Exception{
+		lireCategories();
+		return listeCategories;
+		
+	}
+
+	private void lireCategories() throws SQLException, Exception {
+		listeCategories=categoriePersistant.getListeCategories();
+		
 	}
 
 	public static void main(String[] args) throws SQLException, Exception {
