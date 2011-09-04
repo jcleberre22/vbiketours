@@ -28,13 +28,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 //import javax.swing.table.DefaultTableModel;
 
 
 public class VueStatistique extends JFrame implements ActionListener{
 
 	/**
-	 * 
+	 * les secteurs de vol n'etant pas prevus lors de l'analyse,
+	 * les données sont entrees en dur afin de tester la fonctionnalite
 	 */
 	private static final long serialVersionUID = 1L;
 	private IControleur ctl;
@@ -113,7 +115,6 @@ public class VueStatistique extends JFrame implements ActionListener{
 		//déclaration d'un nouveau conteneur
 		//pour contenir un jsplitpane
 		JPanel panel4 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel4.getLayout();
 		JPanel panel5 = new JPanel();
 		//Ce composant permet de répartir l'espace entre deux composants
 		JSplitPane splitPane_1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panel4,panel5);
@@ -187,17 +188,18 @@ public class VueStatistique extends JFrame implements ActionListener{
 								{"20 vols","40%"},
 								{"5 vols","10%"}}; 
 		nombreVol = new JTable(dataBidon,title);
-		/*nombreVol.setModel(new DefaultTableModel(
+		nombreVol.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"9 vols", "20%"},
-				{"15 vols", "30%"},
-				{"20 vols", "40%"},
-				{"5 vols", "10%"},
+				{"secteur 1", "9 vols", "20%"},
+				{"secteur 2", "15 vols", "30%"},
+				{"secteur 3", "20 vols", "40%"},
+				{"secteur 4", "5 vols", "10%"},
 			},
 			new String[] {
-				"Nombre de vol", "Pourcentage"
+				"Secteur", "Nombre de vol", "Pourcentage"
 			}
-		));*/
+		));
+
 		nombreVol.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		nombreVol.setBackground(new Color(255, 255, 255));
 		nombreVol.setPreferredScrollableViewportSize((new Dimension(400,150)));
