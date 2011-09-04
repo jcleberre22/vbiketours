@@ -18,5 +18,6 @@
 	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/jgoodies-looks-2.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/sinetfactory.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JC/Desktop/lib/hsqldb.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
