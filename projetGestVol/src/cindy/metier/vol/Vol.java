@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import cindy.metier.comm.ISortieAerienne;
 import cindy.metier.comm.IVol;
 
 /**
@@ -19,7 +21,7 @@ public class Vol implements IVol {
 	private int id;
 	private int circulation;
 	private int laCategorie;
-	private List<SortieAerienne> lesSorties;
+	private List<ISortieAerienne> lesSorties;
 	private GregorianCalendar decollage;
 	private GregorianCalendar atterrissage;
 	private boolean annulation;
@@ -89,7 +91,7 @@ public class Vol implements IVol {
 	/**
 	 * @return la liste des sorties Aeriennes
 	 */
-	public List<SortieAerienne> getLesSorties(){
+	public List<ISortieAerienne> getLesSorties(){
 		return lesSorties;
 	}
 	
@@ -174,11 +176,11 @@ public class Vol implements IVol {
 	 * permet d'initialiser la liste des sorties
 	 * @param arrayList
 	 */
-	private void setLesSorties(ArrayList<SortieAerienne> arrayList) {
-		if(arrayList == null)
+	private void setLesSorties(ArrayList<ISortieAerienne> sorties) {
+		if(sorties == null)
 			throw new RuntimeException("la sortie aerienne ne peut être nulle");
 		else
-			this.lesSorties = arrayList;		
+			this.lesSorties = sorties;		
 	}
 
 
@@ -249,9 +251,9 @@ public class Vol implements IVol {
 	 * @param fin
 	 * @return
 	 */
-	public List<SortieAerienne> consulterSortieAerienne(
+	public List<ISortieAerienne> consulterSortieAerienne(
 			GregorianCalendar debut, GregorianCalendar fin) {
-		List<SortieAerienne> filtre = new ArrayList<SortieAerienne>();
+		List<ISortieAerienne> filtre = new ArrayList<ISortieAerienne>();
 		for (int i = 0; i < lesSorties.size(); i++) {
 			if (lesSorties.get(i).getDecolage().after(debut)
 					|| lesSorties.get(i).getAtterissage().before(fin)) {
