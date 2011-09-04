@@ -62,6 +62,13 @@ public class VuePrincipale extends JFrame {
 		menuBar.add(mnMessagerie);
 		
 		JMenuItem mntmEnvoyerMail = new JMenuItem("Envoyer Mail");
+		mntmEnvoyerMail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VueMail mail= new VueMail();
+				mail.setVisible(true);
+			}
+		});
+
 		mnMessagerie.add(mntmEnvoyerMail);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
