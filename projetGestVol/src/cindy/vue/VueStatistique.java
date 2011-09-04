@@ -207,7 +207,8 @@ public class VueStatistique extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == mntmAPropos){
-			ctl.APropos();
+			APropos aPropos=new APropos();
+			aPropos.setVisible(true);
 		}
 		if(e.getSource() == mntmQuitter){
 			this.dispose();
