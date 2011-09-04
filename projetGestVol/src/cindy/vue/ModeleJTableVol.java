@@ -1,13 +1,16 @@
 package cindy.vue;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import cindy.controleur.IControleur;
+import cindy.metier.comm.ICategorie;
+import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
-
+//TODO(jc) probleme modif libelles 
 public class ModeleJTableVol extends AbstractTableModel {
 	/**
 	 * 
@@ -53,9 +56,24 @@ public class ModeleJTableVol extends AbstractTableModel {
 		case 0:
 			return " " + vol.getId();
 		case 1:
-			return vol.getCirculation();
+			try {
+				ICirculation circu=controleur.getListeCirculations().get(vol.getId());
+				return circu.getLibelleCirculation();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		case 2:
-			return vol.getLaCategorie();
+			try {
+				ICategorie cat = controleur.getListeCategories().get(vol.getId());
+				return cat.getLibelleCategorie();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		case 3:
 			return  vol.getDecollage().getTime();
 		case 4:

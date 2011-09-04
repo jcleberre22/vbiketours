@@ -3,6 +3,11 @@ package cindy.outils;
 import java.sql.Timestamp;
 import java.util.GregorianCalendar;
 
+import javax.swing.JTable;
+
+import cindy.controleur.IControleur;
+import cindy.vue.ModeleJTableVol;
+
 public class Outils {
 	public static GregorianCalendar timestampToGregCal(Timestamp ts) {
 		String t = ts.toString();
@@ -22,5 +27,9 @@ public class Outils {
 		return new GregorianCalendar(annees, mois, jours, heures, minutes,
 				secondes);
 
+	}
+	
+	public static void rafraichirTableau(JTable tab,IControleur ctrl){
+		tab.setModel(new ModeleJTableVol(ctrl));
 	}
 }

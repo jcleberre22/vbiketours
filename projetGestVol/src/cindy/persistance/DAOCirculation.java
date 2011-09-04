@@ -4,8 +4,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import cindy.metier.comm.IPersistance;
+import cindy.metier.comm.ICirculation;
+import cindy.metier.comm.ICirculationPersistant;
+import cindy.metier.vol.Circulation;
+
 
 /**
  * Lecture du fichier en vue d'exploiter 
@@ -14,25 +19,27 @@ import cindy.metier.comm.IPersistance;
  * @author Nicolas.tabuteaud
  * @version 1.0 du 25/07/2011 modifié le 29/08/2011
  */
+public class DAOCirculation implements ICirculationPersistant {
 
-public class DAOCirculation implements IPersistance {
+	private List<ICirculation> listeCirculations;
 
 	/**
 	 * Constructeur par defaut
 	 */
-	public DAOCirculation() {}
+	public DAOCirculation(){
+		listeCirculations= new ArrayList<ICirculation>();
+	}
 
 	/**
-	 * Méthode qui permet la lecture de la table Circulation
+	 * Méthode qui permet la lecture de la table Circulation.
 	 * La requete s'effectue à l'aide d'un SELECT.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
 	 */
-	@Override
 	public void lire()throws SQLException,Exception{
 
 		try{
-
+			
 			AccesBDD bdd = AccesBDD.getInstance();
 
 			String requete = "SELECT * FROM circulation";
@@ -43,6 +50,8 @@ public class DAOCirculation implements IPersistance {
 
 			while (rs.next()){
 				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
+				ICirculation cat=new Circulation(rs.getInt(1),rs.getString(2));
+				listeCirculations.add(cat);
 
 			}
 
@@ -63,6 +72,7 @@ public class DAOCirculation implements IPersistance {
 	 */
 	@Override
 	public void supprimerPersistance(Object obj) throws SQLException, Exception {
+
 		if(obj instanceof Integer == false){
 
 			throw new RuntimeException("Parametre incorrect");
@@ -90,22 +100,22 @@ public class DAOCirculation implements IPersistance {
 	}
 
 	/**
-	 * Méthode qui modifie un tuple de la table Categorie.
+	 * Méthode qui modifie un tuple de la table Circulation.
 	 * La requete s'effectue à l'aide d'un UPDATE.
 	 * La méthode est englobé dans un try catch.
 	 * @throws SQLException, Exception 
 	 * @param obj[n]
 	 */
-	@Override
 	public void modifierPersistance(Object obj, Object obj2) throws SQLException, Exception {
-		if(obj2 instanceof String == false || obj instanceof Integer == false){
+		if(obj instanceof Integer == false || obj2 instanceof String == false){
 
 			throw new RuntimeException("Parametre incorrect");
 
 		}
 
-		String param1 = (String)obj2;
-		int param2 = (Integer)obj;
+		int param1 = (Integer)obj;
+		String param2 = (String)obj2;
+		
 
 		try {
 
@@ -114,8 +124,8 @@ public class DAOCirculation implements IPersistance {
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
 
-			prSt1.setString(1, param1);
-			prSt1.setInt(2, param2);
+			prSt1.setString(1, param2);
+			prSt1.setInt(2, param1);
 			prSt1.executeUpdate();
 			prSt1.close();
 
@@ -127,13 +137,12 @@ public class DAOCirculation implements IPersistance {
 	}
 
 	/**
-	 * Méthode qui insere un tuple dans latable Categorie.
+	 * Méthode qui insere un tuple dans la table Circulation.
 	 * La requete s'effectue à l'aide d'un UPDATE.
 	 * La méthode est englobé dans un try catch.
-	 * @throws SQLException, Exception
-	 * @param obj[n] 
+	 * @throws SQLException, Exception 
+	 * @param obj[n]
 	 */
-	@Override
 	public void insererPersistance(Object obj, Object obj2) throws SQLException, Exception {
 
 		if(obj instanceof Integer == false || obj2 instanceof String == false){
@@ -153,7 +162,7 @@ public class DAOCirculation implements IPersistance {
 			"VALUES(?,?)";
 
 			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
-
+			
 			prSt1.setInt(1, paramInt);
 			prSt1.setString(2, paramStr);
 			prSt1.executeUpdate();
@@ -169,32 +178,41 @@ public class DAOCirculation implements IPersistance {
 
 	}
 
+	public List<ICirculation> getListeCirculations() throws SQLException, Exception {
+		lire();
+		return listeCirculations;
+	}
+
+	/**
+	 * Méthode de Test.
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 
 		DAOCirculation bdd = new DAOCirculation();
 
-		bdd.insererPersistance(1,"fdsf");
+		bdd.insererPersistance(6,"insertion");
 
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		bdd.modifierPersistance(1,"poulet");
+		bdd.modifierPersistance(6,"modification");
 
 		bdd.lire();
 
 		System.out.println("******************************");
 
-		bdd.insererPersistance(2, "Coq");
 
+		bdd.supprimerPersistance(6);
+		
 		bdd.lire();
-
-
-		bdd.supprimerPersistance(1);
-		bdd.supprimerPersistance(2);
+		
 
 
 
 	}
+
 
 }

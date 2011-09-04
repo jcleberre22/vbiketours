@@ -9,6 +9,8 @@ import cindy.metier.avion.Armement;
 import cindy.metier.avion.Avion;
 import cindy.metier.comm.ICategorie;
 import cindy.metier.comm.ICategoriePersistant;
+import cindy.metier.comm.ICirculation;
+import cindy.metier.comm.ICirculationPersistant;
 import cindy.metier.comm.IVol;
 import cindy.metier.comm.IVolPersistant;
 import cindy.metier.personnel.Equipage;
@@ -17,6 +19,7 @@ import cindy.metier.vol.Mission;
 import cindy.metier.vol.SortieAerienne;
 import cindy.metier.vol.Vol;
 import cindy.persistance.DAOCategorie;
+import cindy.persistance.DAOCirculation;
 import cindy.persistance.DAOVol;
 //FIXME javadoc
 /**
@@ -33,11 +36,14 @@ public class FacadeMetier {
 	// acces à la persistance
 	private IVolPersistant volPersistant;
 	private ICategoriePersistant categoriePersistant;
+	private List<ICirculation> listeCirculations;
+	private ICirculationPersistant circulationPersistant;
 
 	
 	// on obtient une instance naturelle
 	public FacadeMetier() throws SQLException, Exception {
 		volPersistant=new DAOVol();
+		circulationPersistant=new DAOCirculation();
 		categoriePersistant=new DAOCategorie();
 		listeVols = new ArrayList<IVol>();
 		listeCategories = new ArrayList<ICategorie>();
@@ -53,12 +59,12 @@ public class FacadeMetier {
 	 * @param dateDecollage
 	 * @param dateAtterrissage
 	 */
-	public void creerVol(int reference, int circulation, int categorieDeVol,
+	public void creerVol(int idVol, int circulation, int categorieDeVol,
 			GregorianCalendar dateDecollage,
 			GregorianCalendar dateAtterrissage, boolean annulation) {
 		
 		// ajout du vol créé
-		ajouterVol(new Vol(reference, circulation, categorieDeVol,
+		ajouterVol(new Vol(idVol, circulation, categorieDeVol,
 				dateDecollage, dateAtterrissage, annulation));
 	}
 
@@ -73,10 +79,11 @@ public class FacadeMetier {
 			if (v != null) {
 				if (!listeVols.contains(v)) {
 					listeVols.add(v);
+					leVol=v;
 					try {
 						volPersistant.insererPersistance(leVol.getId(),
 								leVol.getCirculation(), leVol.getLaCategorie(),
-								leVol.getDecollage(), leVol.getAtterrissage(),
+								leVol.getDecollage().getTime(), leVol.getAtterrissage().getTime(),
 								leVol.isAnnulation());
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -102,7 +109,7 @@ public class FacadeMetier {
 	 * @param ancien
 	 * @param nouveau
 	 */
-	public void modifierVol(Vol ancien, Vol nouveau) {
+	public void modifierVol(IVol ancien, IVol nouveau) {
 		try {
 			if (ancien != null && nouveau != null) {
 				if (listeVols.contains(ancien)) {
@@ -112,8 +119,8 @@ public class FacadeMetier {
 						volPersistant.modifierPersistance(nouveau.getId(),
 								nouveau.getCirculation(),
 								nouveau.getLaCategorie(),
-								nouveau.getDecollage(),
-								nouveau.getAtterrissage(),
+								nouveau.getDecollage().getTime(),
+								nouveau.getAtterrissage().getTime(),
 								nouveau.isAnnulation());
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -133,8 +140,11 @@ public class FacadeMetier {
 	 * recherche si le vol existe dans la liste puis le supprime
 	 * 
 	 * @param aSupprimer
+	 * @throws Exception 
+	 * @throws SQLException 
 	 */
-	public void supprimerVol(Vol aSupprimer) {
+	public void supprimerVol(IVol aSupprimer) throws SQLException, Exception {
+		listeVols=getListeVols();
 		if (aSupprimer != null) {
 			for (int i = 0; i < listeVols.size(); i++) {
 				if (listeVols.contains(aSupprimer)) {
@@ -142,7 +152,7 @@ public class FacadeMetier {
 				}
 			}
 			try {
-				volPersistant.supprimerPersistance(aSupprimer);
+				volPersistant.supprimerPersistance(aSupprimer.getId());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
@@ -257,6 +267,15 @@ public class FacadeMetier {
 	private void lireCategories() throws SQLException, Exception {
 		listeCategories=categoriePersistant.getListeCategories();
 		
+	}
+	
+	public List<ICirculation> getListeCirculations() throws SQLException, Exception {
+		lireCirculations();
+		return listeCirculations;
+	}
+	
+	private void lireCirculations() throws SQLException, Exception {
+		listeCirculations=circulationPersistant.getListeCirculations();
 	}
 
 	public static void main(String[] args) throws SQLException, Exception {

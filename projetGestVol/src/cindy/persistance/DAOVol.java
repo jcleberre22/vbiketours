@@ -218,31 +218,37 @@ public class DAOVol implements IVolPersistant{
 	public static void main(String[] args) throws Exception {
 
 		DAOVol bdd = new DAOVol();
-		System.out.println("insert");
-		bdd.insererPersistance(11, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
-
-		System.out.println("******************************");
-		System.out.println("read1");
-		bdd.lire();
-
-		System.out.println("******************************");
-
-		System.out.println("update");
-		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
-
-		System.out.println("******************************");
-		System.out.println("read2");
-		bdd.lire();
-		System.out.println("******************************");
-
-		System.out.println("delete");
-		bdd.supprimerPersistance(11);
-
-
-		System.out.println("******************************");
-		System.out.println("read3");
-		bdd.lire();
-		System.out.println("******************************");
+//		System.out.println("******************************");
+//		System.out.println("read1");
+//		bdd.lire();
+//
+//		System.out.println("******************************");
+//		
+//		System.out.println("insert");
+		//bdd.insererPersistance(15, 1, 1, new GregorianCalendar(2011,8,29,10,0,0).getTime(), new GregorianCalendar(2011,8,30,14,0,0).getTime(), true);
+//
+//		System.out.println("******************************");
+//		System.out.println("read1");
+//		bdd.lire();
+//
+//		System.out.println("******************************");
+//
+//		System.out.println("update");
+//		bdd.modifierPersistance(11, 1, 1, new GregorianCalendar(2010,8,29,14,0,0).getTime(), new GregorianCalendar(2011,8,30,12,0,0).getTime(), false);
+//
+//		System.out.println("******************************");
+//		System.out.println("read2");
+//		bdd.lire();
+//		System.out.println("******************************");
+//
+//		System.out.println("delete");
+		bdd.supprimerPersistance(0);
+//
+//
+//		System.out.println("******************************");
+//		System.out.println("read3");
+//		bdd.lire();
+//		System.out.println("******************************");
 
 
 	}
