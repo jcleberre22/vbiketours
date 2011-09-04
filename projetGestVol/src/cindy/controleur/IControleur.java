@@ -17,4 +17,5 @@ public interface IControleur {
 	public List<IVol> getListeVols() throws SQLException, Exception;
 	public List<ICategorie> getListeCategories() throws SQLException, Exception;
 	List<ICirculation> getListeCirculations() throws SQLException, Exception;
+	public void APropos();
 }

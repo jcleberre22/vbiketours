@@ -9,13 +9,14 @@ import cindy.metier.FacadeMetier;
 import cindy.metier.comm.ICategorie;
 import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
-import cindy.vue.VuePrincipale;
+import cindy.vue.*;
 
 
 public class Controleur implements IControleur{
 	
 	private FacadeMetier f;
 	private VuePrincipale ihm;
+	private APropos app;
 	
 	public Controleur() throws SQLException, Exception{
 		f=new FacadeMetier();
@@ -52,5 +53,11 @@ public class Controleur implements IControleur{
 	@Override
 	public List<ICirculation> getListeCirculations() throws SQLException, Exception {
 		return f.getListeCirculations();
+	}
+
+	@Override
+	public void APropos() {
+		app = new APropos();
+		
 	}
 }
