@@ -3,26 +3,29 @@ package cindy.vue;
 import java.awt.Color;
 import java.awt.Paint;
 
-import javax.swing.JPanel;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+import org.jfree.ui.TextAnchor;
 
 /**
  * A bar chart that uses a custom renderer to display different colors within a series.
  * No legend is displayed because there is only one series but the colors are not consistent.
  *
  */
-public class ProblemeVol extends JPanel {
+public class ProblemeVol extends ApplicationFrame {
 
 	/**
 	 * 
@@ -34,13 +37,9 @@ public class ProblemeVol extends JPanel {
 	 */
 	class CustomRenderer extends BarRenderer {
 
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
 		/** Tableau de couleurs. */
 		private Paint[] colors;
-	//	private String title = "Nombre de vol avec probleme";
+		private String title = "Nombre de vol avec probleme";
 
 		/**
 		 * Creates a new renderer.
@@ -71,11 +70,12 @@ public class ProblemeVol extends JPanel {
 	 * @param title  the frame title.
 	 */
 	public ProblemeVol(final String title) {
+		super(title);
 		final CategoryDataset dataset = createDataset();
 		final JFreeChart chart = createChart(dataset);
 		final ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
-		this.add(chartPanel);
+		setContentPane(chartPanel);
 	}
 
 	/**
@@ -84,10 +84,10 @@ public class ProblemeVol extends JPanel {
 	 * @return a sample dataset.
 	 */
 	private CategoryDataset createDataset() {
-		final double[][] data = new double[][] {{4.0, 3.0, 5.0, 3.0, 6.0}};
+		final double[][] data = new double[][] {{4.0, 3.0, -2.0, 3.0, 6.0}};
 		return DatasetUtilities.createCategoryDataset(
-				" ",
-				" ",
+				"Series ",
+				"Vol ",
 				data
 		);
 	}
@@ -102,9 +102,9 @@ public class ProblemeVol extends JPanel {
 	private JFreeChart createChart(final CategoryDataset dataset) {
 
 		final JFreeChart chart = ChartFactory.createBarChart(
-				"Nombre de problèmes par secteur de vol",       
-				"Secteur de vol",               
-				"Nb problèmes",                  
+				"Nombre de Vol/nombre de vol avec probleme",       
+				"Vol",               
+				"Value",                  
 				dataset,                  
 				PlotOrientation.VERTICAL, 
 				false,                    
@@ -123,9 +123,15 @@ public class ProblemeVol extends JPanel {
 						Color.yellow, Color.pink, Color.cyan,
 						Color.magenta, Color.blue}
 		);
-
+		// renderer.setLabelGenerator(new StandardCategoryLabelGenerator());
+		//renderer.setItemLabelsVisible(true);
+		final ItemLabelPosition p = new ItemLabelPosition(
+				ItemLabelAnchor.CENTER, TextAnchor.CENTER, TextAnchor.CENTER, 45.0
+		);
+		//renderer.setPositiveItemLabelPosition(p);
 		plot.setRenderer(renderer);
 
+		// change the margin at the top of the range axis...
 		final ValueAxis rangeAxis = plot.getRangeAxis();
 		rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		rangeAxis.setLowerMargin(0.15);
@@ -134,4 +140,19 @@ public class ProblemeVol extends JPanel {
 		return chart;
 
 	}
+	
+	/**
+	 * Starting point for the demonstration application.
+	 *
+	 * @param args  ignored.
+	 */
+	public static void main(final String[] args) {
+
+		final ProblemeVol demo = new ProblemeVol("Nombre de vol avec probleme");
+		demo.pack();
+		RefineryUtilities.centerFrameOnScreen(demo);
+		demo.setVisible(true);
+
+	}
+
 }

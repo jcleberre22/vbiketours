@@ -57,7 +57,7 @@ public class ModeleJTableVol extends AbstractTableModel {
 			return " " + vol.getId();
 		case 1:
 			try {
-				ICirculation circu=controleur.getListeCirculations().get(vol.getCirculation());
+				ICirculation circu=controleur.getListeCirculations().get(vol.getId());
 				return circu.getLibelleCirculation();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -66,7 +66,7 @@ public class ModeleJTableVol extends AbstractTableModel {
 			}
 		case 2:
 			try {
-				ICategorie cat = controleur.getListeCategories().get(vol.getLaCategorie());
+				ICategorie cat = controleur.getListeCategories().get(vol.getId());
 				return cat.getLibelleCategorie();
 			} catch (SQLException e) {
 				e.printStackTrace();

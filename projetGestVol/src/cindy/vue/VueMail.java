@@ -14,15 +14,21 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import cindy.controleur.Controleur;
+import cindy.controleur.IControleur;
 import cindy.outils.EnvoiMail;
 
-public class VueMail extends JDialog {
+public class VueMail extends JDialog{
 
 	/**
 	 * 
@@ -39,7 +45,7 @@ public class VueMail extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			VueMail dialog = new VueMail();
+			VueMail dialog = new VueMail("mdp");
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -50,14 +56,42 @@ public class VueMail extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public VueMail() {
-		LoginMail login=new LoginMail(this);
-		login.setVisible(true);
+	public VueMail(final String motDePasse) {
 		setBounds(100, 100, 450, 300);
+		setTitle("Cindy - Envoyer un mail");
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		{
+			JMenuBar menuEnvoyerMail = new JMenuBar();
+			
+			JMenu fichier = new JMenu("Fichier");
+			JMenuItem quitter = new JMenuItem("Quitter");
+			quitter.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					dispose();					
+				}
+			});
+			fichier.add(quitter);
+			
+			JMenu aide = new JMenu("Aide");
+			JMenuItem apropos = new JMenuItem("A Propos");
+			apropos.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new APropos();
+				}
+			});
+			aide.add(apropos);
+			
+			menuEnvoyerMail.add(fichier);
+			menuEnvoyerMail.add(aide);
+			setJMenuBar(menuEnvoyerMail);
+		}
 		{
 			JLabel label = new JLabel("\u00E0 :");
 			label.setBounds(10, 25, 21, 14);
@@ -65,13 +99,23 @@ public class VueMail extends JDialog {
 		}
 		{
 			txtA = new JTextField();
-			txtA.addMouseListener(new MouseAdapter() {
+			/*txtA.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if (txtA.getText().equals("Adresses separ\u00E9es d'un \";\"")) {
 						txtA.setText("");
 						txtA.setForeground(Color.BLACK);
 					}
+				}
+			});*/
+			txtA.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (txtA.getText().equals("Adresses separ\u00E9es d'un \";\"")) {
+						txtA.setText("");
+						txtA.setForeground(Color.BLACK);
+					}					
 				}
 			});
 			txtA.setBounds(58, 18, 340, 28);
@@ -124,6 +168,7 @@ public class VueMail extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		this.setVisible(true);
 	}
 
 	public void setMotDePasse(String motDePasse) {

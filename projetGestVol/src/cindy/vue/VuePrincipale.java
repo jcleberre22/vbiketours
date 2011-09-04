@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -30,7 +30,7 @@ public class VuePrincipale extends JFrame {
 	/**
 	 * Creer la vue.
 	 */
-	public VuePrincipale(IControleur ctrl) {
+	public VuePrincipale(final IControleur ctrl) {
 		this.controleur=ctrl;
 		setVisible(true);
 		setLocationRelativeTo(null);
@@ -64,8 +64,7 @@ public class VuePrincipale extends JFrame {
 		JMenuItem mntmEnvoyerMail = new JMenuItem("Envoyer Mail");
 		mntmEnvoyerMail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VueMail mail= new VueMail();
-				mail.setVisible(true);
+				LoginMail mail= new LoginMail();
 			}
 		});
 
@@ -92,9 +91,9 @@ public class VuePrincipale extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnGestionDesVols = new JButton("Gestion des vols");
-		btnGestionDesVols.addMouseListener(new MouseAdapter() {
+		btnGestionDesVols.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				VueVols vol;
 				try {
 					vol = new VueVols(controleur);
@@ -114,9 +113,9 @@ public class VuePrincipale extends JFrame {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnStatistiques = new JButton("Statistiques");
-		btnStatistiques.addMouseListener(new MouseAdapter() {
+		btnStatistiques.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				VueStatistique stat;
 				try {
 					stat = new VueStatistique(controleur);
