@@ -117,8 +117,15 @@ public class VuePrincipale extends JFrame {
 		btnStatistiques.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VueStatistique stat=new VueStatistique(controleur);
-				stat.setVisible(true);
+				VueStatistique stat;
+				try {
+					stat = new VueStatistique(controleur);
+					stat.setVisible(true);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel_2.add(btnStatistiques, BorderLayout.CENTER);
