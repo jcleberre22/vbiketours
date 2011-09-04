@@ -52,7 +52,6 @@ public class DAOCirculation implements ICirculationPersistant {
 				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
 				ICirculation cat=new Circulation(rs.getInt(1),rs.getString(2));
 				listeCirculations.add(cat);
-
 			}
 
 		}catch(Exception e){
