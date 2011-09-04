@@ -1,11 +1,18 @@
 package cindy.vue;
 
 import java.awt.BorderLayout;
+//import java.awt.Dimension;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+//import java.awt.GridBagLayout;
+//import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+//import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JLayeredPane;
 import javax.swing.JMenuBar;
@@ -15,19 +22,29 @@ import javax.swing.JTable;
 import javax.swing.JSplitPane;
 
 import cindy.controleur.IControleur;
+import javax.swing.UIManager;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.Component;
+import javax.swing.border.MatteBorder;
+//import javax.swing.table.DefaultTableModel;
 
 
-public class VueStatistique extends JFrame{
+public class VueStatistique extends JFrame implements ActionListener{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private IControleur ctl;
 	private JPanel contentPane;
 	private JTable nombreVol;
-	private IControleur controleur;
+	private JMenuItem mntmAPropos;
+	private JMenuItem mntmQuitter;
+	private JMenuItem mntmNewMenuItem;
+	private JMenuItem mntmNewMenuItem_1;
+	//private IControleur controleur;
 
 	/**
 	 * Launch the application.
@@ -49,65 +66,157 @@ public class VueStatistique extends JFrame{
 	 * Create the frame.
 	 */
 	public VueStatistique(IControleur controleur) {
-		setVisible(true);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setTitle("Gestion des statistiques");
-		setBounds(100, 100, 659, 550);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnNewMenu = new JMenu("Fichier");
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmAPropos = new JMenuItem("A Propos");
-		mnNewMenu.add(mntmAPropos);
-		
-		JMenuItem mntmQuitter = new JMenuItem("Quitter");
-		mnNewMenu.add(mntmQuitter);
-		
-		JMenu mnVol = new JMenu("Vol");
-		menuBar.add(mnVol);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Gerer");
-		mnVol.add(mntmNewMenuItem);
-		
-		JMenu mnStatistique = new JMenu("Statistique");
-		menuBar.add(mnStatistique);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Gerer\r\n");
-		mnStatistique.add(mntmNewMenuItem_1);
+		this.ctl = controleur;
+		initVue();
+		initialiserMenu();
+		//initialisation du conteneur de la frame
 		contentPane = new JPanel();
+		//attribution des layout au panel
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		//déclaration d'un conteneur d'onglet
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
+		/**Construction des JSplitPane */
+				/** Premier JSplitPane : les Problèmes de vol*/
+		//Ce conteneur permet de gérer des composants disposés sur plusieurs couches
 		JLayeredPane layeredPane = new JLayeredPane();
-		tabbedPane.addTab("Nombre de Vol/nombre vol avec probleme", null, layeredPane, null);
-		
+		tabbedPane.addTab("Nombre vol avec probleme", null, layeredPane, null);
+		//définition et ajout d'un nouveau conteneur
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 628, 453);
+		panel.setBounds(0, 0, 800, 600);
 		layeredPane.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		
+		panel.setLayout(null);
+		//déclaration d'un nouveau conteneur
+		//pour contenir un jsplitpane
 		JPanel panelHaut = new JPanel();
 		JPanel panelBas = new JPanel();
-		panelBas.add(new Camembert(controleur));
+		//Ce composant permet de répartir l'espace entre deux composants
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panelHaut,panelBas);
-		panel.add(splitPane, BorderLayout.CENTER);
-		this.getContentPane().add(splitPane);
-
+		splitPane.setBounds(0, 0, 800, 600);
+		splitPane.setLeftComponent(panelHaut); 
+		splitPane.setRightComponent(new Camembert(controleur));
+		panel.add(splitPane);
+		
+			/**Second JSplitPane : les pb par secteur de vol	*/
+		//Ce conteneur permet de gérer des composants disposés sur plusieurs couches
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		tabbedPane.addTab("Nombre de probleme/Secteur de vol", null, layeredPane_1, null);
-		
+		//définition et ajout d'un nouveau conteneur
+		JPanel pane2 = new JPanel();
+		pane2.setSize(800, 600);
+		layeredPane_1.add(pane2);
+		pane2.setLayout(null);
+		//déclaration d'un nouveau conteneur
+		//pour contenir un jsplitpane
 		JPanel panel4 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel4.getLayout();
 		JPanel panel5 = new JPanel();
+		//Ce composant permet de répartir l'espace entre deux composants
 		JSplitPane splitPane_1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panel4,panel5);
-		splitPane_1.setBounds(0, 0, 628, 453);
-		layeredPane_1.add(splitPane_1);
+		splitPane_1.setBounds(10, 11, 800, 600);
+		//construction du tableau
+		nombreVol = ConstruireTableau();
+		//panel4.add(nombreVol.getTableHeader(),BorderLayout.NORTH);
+		JScrollPane scrollPane = new JScrollPane(nombreVol);
+		scrollPane.setViewportBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
+		panel4.add(scrollPane,BorderLayout.CENTER);
+		splitPane_1.setLeftComponent(panel4); 
+		ProblemeVol problemeVol = new ProblemeVol("Problèmes de vol");
+		FlowLayout flowLayout_1 = (FlowLayout) problemeVol.getLayout();
+		flowLayout_1.setAlignOnBaseline(true);
+		splitPane_1.setRightComponent(problemeVol);
+		pane2.add(splitPane_1);
+		
+	}
+	
+	public void initVue(){
+		//elle st positionnée au centre de l'écran
+				setLocationRelativeTo(null);
+				//fermé l'application à la fermeture de la fenêtre
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				//titre de la fenêtre
+				setTitle("Gestion des statistiques");
+				//on définit les dimensions de cette fenêtre
+				setBounds(100, 100, 800, 600);
+				//elle ne peut pas etre redimensionnée
+				setResizable(false);
+	}
+	
+	public void initialiserMenu(){
+		//création de la barre de menu
+				JMenuBar menuBar = new JMenuBar();
+				//ajout de cette barre à la frame
+				setJMenuBar(menuBar);
+				
+				/**création de menus pour le MenuBar*/
+				JMenu mnNewMenu = new JMenu("Fichier");
+				menuBar.add(mnNewMenu);
+				//création d'objet qui seront insérés dans le menu
+				//puis ajout des objets dans les menus
+				mntmAPropos = new JMenuItem("A Propos");
+				mntmAPropos.addActionListener(this);
+				mnNewMenu.add(mntmAPropos);
+				
+				mntmQuitter = new JMenuItem("Quitter");
+				mntmQuitter.addActionListener(this);
+				mnNewMenu.add(mntmQuitter);
+				
+				JMenu mnVol = new JMenu("Vol");
+				menuBar.add(mnVol);
+				
+				mntmNewMenuItem = new JMenuItem("Gerer");
+				mntmNewMenuItem.addActionListener(this);
+				mnVol.add(mntmNewMenuItem);
+				
+				JMenu mnStatistique = new JMenu("Statistique");
+				menuBar.add(mnStatistique);
+				
+				mntmNewMenuItem_1 = new JMenuItem("Gerer\r\n");
+				mntmNewMenuItem_1.addActionListener(this);
+				mnStatistique.add(mntmNewMenuItem_1);
+	}
+	
+	public JTable ConstruireTableau(){
+		String[] title = {"Nombre de vol","Pourcentage"};
+		Object[][] dataBidon = {{"9 vols","20%"},
+								{"15 vols","30%"},
+								{"20 vols","40%"},
+								{"5 vols","10%"}}; 
+		nombreVol = new JTable(dataBidon,title);
+		/*nombreVol.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"9 vols", "20%"},
+				{"15 vols", "30%"},
+				{"20 vols", "40%"},
+				{"5 vols", "10%"},
+			},
+			new String[] {
+				"Nombre de vol", "Pourcentage"
+			}
+		));*/
+		nombreVol.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		nombreVol.setBackground(new Color(255, 255, 255));
+		nombreVol.setPreferredScrollableViewportSize((new Dimension(400,150)));
+		return nombreVol;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == mntmAPropos){
+			ctl.APropos();
+		}
+		if(e.getSource() == mntmQuitter){
+			this.dispose();
+		}
+		if(e.getSource() == mntmNewMenuItem){
+			//TODO : démarrer la frame correspondante
+		}
+		if(e.getSource() == mntmNewMenuItem_1){
+			//TODO : démarrer la frame correspondante
+		}
 	}
 }
