@@ -26,9 +26,11 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.BoxLayout;
 //import javax.swing.table.DefaultTableModel;
 
 
@@ -66,8 +68,10 @@ public class VueStatistique extends JFrame implements ActionListener{
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
+	 * @throws SQLException 
 	 */
-	public VueStatistique(IControleur controleur) {
+	public VueStatistique(IControleur controleur) throws SQLException, Exception {
 		this.ctl = controleur;
 		initVue();
 		initialiserMenu();
@@ -119,12 +123,13 @@ public class VueStatistique extends JFrame implements ActionListener{
 		//Ce composant permet de répartir l'espace entre deux composants
 		JSplitPane splitPane_1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,panel4,panel5);
 		splitPane_1.setBounds(10, 11, 800, 600);
+		panel4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		//construction du tableau
 		nombreVol = ConstruireTableau();
 		//panel4.add(nombreVol.getTableHeader(),BorderLayout.NORTH);
 		JScrollPane scrollPane = new JScrollPane(nombreVol);
 		scrollPane.setViewportBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
-		panel4.add(scrollPane,BorderLayout.CENTER);
+		panel4.add(scrollPane);
 		splitPane_1.setLeftComponent(panel4); 
 		ProblemeVol problemeVol = new ProblemeVol("Problèmes de vol");
 		FlowLayout flowLayout_1 = (FlowLayout) problemeVol.getLayout();
@@ -182,12 +187,7 @@ public class VueStatistique extends JFrame implements ActionListener{
 	}
 	
 	public JTable ConstruireTableau(){
-		String[] title = {"Nombre de vol","Pourcentage"};
-		Object[][] dataBidon = {{"9 vols","20%"},
-								{"15 vols","30%"},
-								{"20 vols","40%"},
-								{"5 vols","10%"}}; 
-		nombreVol = new JTable(dataBidon,title);
+		nombreVol = new JTable();
 		nombreVol.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"secteur 1", "9 vols", "20%"},
