@@ -10,15 +10,12 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.labels.ItemLabelAnchor;
-import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
-import org.jfree.ui.TextAnchor;
 
 /**
  * A bar chart that uses a custom renderer to display different colors within a series.
@@ -74,7 +71,6 @@ public class ProblemeVol extends JPanel {
 	 * @param title  the frame title.
 	 */
 	public ProblemeVol(final String title) {
-	//	super(title);
 		final CategoryDataset dataset = createDataset();
 		final JFreeChart chart = createChart(dataset);
 		final ChartPanel chartPanel = new ChartPanel(chart);
@@ -88,10 +84,10 @@ public class ProblemeVol extends JPanel {
 	 * @return a sample dataset.
 	 */
 	private CategoryDataset createDataset() {
-		final double[][] data = new double[][] {{4.0, 3.0, -2.0, 3.0, 6.0}};
+		final double[][] data = new double[][] {{4.0, 3.0, 5.0, 3.0, 6.0}};
 		return DatasetUtilities.createCategoryDataset(
-				"Series ",
-				"Vol ",
+				" ",
+				" ",
 				data
 		);
 	}
@@ -107,7 +103,7 @@ public class ProblemeVol extends JPanel {
 
 		final JFreeChart chart = ChartFactory.createBarChart(
 				"Nombre de problèmes par secteur de vol",       
-				"Secteur",               
+				"Secteur de vol",               
 				"Nb problèmes",                  
 				dataset,                  
 				PlotOrientation.VERTICAL, 
@@ -127,15 +123,9 @@ public class ProblemeVol extends JPanel {
 						Color.yellow, Color.pink, Color.cyan,
 						Color.magenta, Color.blue}
 		);
-		// renderer.setLabelGenerator(new StandardCategoryLabelGenerator());
-		//renderer.setItemLabelsVisible(true);
-		final ItemLabelPosition p = new ItemLabelPosition(
-				ItemLabelAnchor.CENTER, TextAnchor.CENTER, TextAnchor.CENTER, 45.0
-		);
-		//renderer.setPositiveItemLabelPosition(p);
+
 		plot.setRenderer(renderer);
 
-		// change the margin at the top of the range axis...
 		final ValueAxis rangeAxis = plot.getRangeAxis();
 		rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		rangeAxis.setLowerMargin(0.15);
@@ -144,19 +134,4 @@ public class ProblemeVol extends JPanel {
 		return chart;
 
 	}
-	
-	/**
-	 * Starting point for the demonstration application.
-	 *
-	 * @param args  ignored.
-	 */
-	/*public static void main(final String[] args) {
-
-		final ProblemeVol demo = new ProblemeVol("Nombre de vol avec probleme");
-		demo.pack();
-		RefineryUtilities.centerFrameOnScreen(demo);
-		demo.setVisible(true);
-
-	}*/
-
 }
