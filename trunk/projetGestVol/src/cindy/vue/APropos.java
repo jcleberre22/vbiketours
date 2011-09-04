@@ -2,18 +2,33 @@ package cindy.vue;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+<<<<<<< .mine
+=======
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+>>>>>>> .r97
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+<<<<<<< .mine
+=======
 import javax.swing.JLabel;
+>>>>>>> .r97
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
+<<<<<<< .mine
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+=======
+>>>>>>> .r97
+import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
 
 /**
  * Fenetre JDialog A propos. Construit sur Windows Builder.
@@ -21,7 +36,7 @@ import javax.swing.border.EmptyBorder;
  * @version 1.0 du 31/08/2011
  *
  */
-public class APropos extends JDialog implements ActionListener{
+public class APropos extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -43,23 +58,16 @@ public class APropos extends JDialog implements ActionListener{
 	 * Create the dialog.
 	 */
 	public APropos() {
-		//definition d'une taille pour le apropos
-		setSize(432, 293);
-		//titre de la fenetre
+		setBounds(100, 100, 432, 293);
 		setTitle("Cindy Application - A propos");
-		//position au centre de l'écran
-		setLocationRelativeTo(null);
-		//impossible de redimensionner la frame
-		setResizable(false);
-		//fermeture de l'application à la fermeture de la fenêtre
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		//attribution d'un conteneur a la frame
-		getContentPane().setLayout(new BorderLayout());
-		//définition des bords
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//ajout du conteneur principal a la frame
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
+		setLocationRelativeTo(null);
+		setResizable(false);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Cindy Application - Logiciel de Gestion des Escadrons");
@@ -77,34 +85,40 @@ public class APropos extends JDialog implements ActionListener{
 		contentPanel.add(lblNewLabel_2);
 		
 		String id = "LEBERRE Jean-Christophe \n \n MARTINEZ Jean-Philippe \n \n TABUTEAUD Nicolas";
-		JTextPane lblNewLabel_3 = new JTextPane();
-		lblNewLabel_3.setFont(new Font("Andalus", Font.PLAIN, 14));
-		lblNewLabel_3.setText(id);
-		lblNewLabel_3.setBackground(null);
-		lblNewLabel_3.setBounds(31, 91, 161, 120);
-		contentPanel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Nicolas\\Desktop\\ecusson.png"));
-		lblNewLabel_4.setBounds(236, 63, 155, 148);
-		contentPanel.add(lblNewLabel_4);
+		JPanel panel = new JPanel();
+		panel.setBounds(6, 88, 194, 133);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblLeberre = new JLabel(" LEBERRE Jean-Christophe");
+		lblLeberre.setBounds(10, 11, 174, 14);
+		panel.add(lblLeberre);
+		
+		JLabel lblMartinez = new JLabel(" MARTINEZ Jean-Philippe ");
+		lblMartinez.setBounds(10, 60, 174, 14);
+		panel.add(lblMartinez);
+		
+		JLabel lblTabuteaud = new JLabel(" TABUTEAUD Nicolas");
+		lblTabuteaud.setBounds(10, 108, 174, 14);
+		panel.add(lblTabuteaud);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
-				okButton.addActionListener(this);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
-		this.setVisible(true);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		this.dispose();
+		setVisible(true);
 	}
 }
