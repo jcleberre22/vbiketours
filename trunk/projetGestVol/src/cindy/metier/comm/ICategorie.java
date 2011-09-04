@@ -1,5 +1,6 @@
 package cindy.metier.comm;
 
+//FIXME remplacer "Avion" dans la javadoc vu que c pas une categorie d'avion mais de vol surement a faire dans d'autres classes vu que c'est du copier coller
 /**
  * Interface permettant de récuperer des méthodes de la classe Avion.
  * 

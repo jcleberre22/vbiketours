@@ -41,22 +41,9 @@ public class Vol implements IVol {
 		setLaCategorie(categorieDeVol);
 		setDecollage(dateDecollage);
 		setAtterrissage(dateAtterrissage);
+		setAnnulation(annulation);
 	}
 
-	// constructeur
-	/**
-	 * constructeur de la classe. Celui-ci oblige à ce que tous les champs soit
-	 * remplis
-	 * 
-	 * @param reference
-	 * @param circulation
-	 * @param categorieDeVol
-	 */
-	public Vol(int circulation, int categorieDeVol) {		
-		setCirculation(circulation);
-		setLaCategorie(categorieDeVol);
-		setLesSorties(new ArrayList<SortieAerienne>());
-	}
 
 	public Vol() {
 		circulation = 1;

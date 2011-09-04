@@ -1,43 +1,40 @@
 package cindy.vue;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import cindy.controleur.IControleur;
 import cindy.metier.comm.ICategorie;
+import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
-
-import javax.swing.JTabbedPane;
-import javax.swing.JLayeredPane;
-import java.awt.Color;
-import javax.swing.JTable;
-import javax.swing.border.MatteBorder;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-import com.toedter.calendar.JCalendar;
-
-import java.awt.Component;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.Calendar;
-import javax.swing.JComboBox;
+import cindy.outils.Outils;
 
 public class VueVols extends JFrame {
 
@@ -48,8 +45,9 @@ public class VueVols extends JFrame {
 	private JPanel contentPane;
 	private IControleur controleur;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textField_Id;
+	private JSpinner spinner_decol;
+	private JSpinner spinner_atter;
 
 
 	/**
@@ -58,6 +56,7 @@ public class VueVols extends JFrame {
 	 * @throws SQLException 
 	 */
 	public VueVols(IControleur ctrl) throws SQLException, Exception {
+		
 		setTitle("Gestion des vols");
 		controleur=ctrl;
 		setVisible(true);
@@ -67,7 +66,7 @@ public class VueVols extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		JLayeredPane layeredPane = new JLayeredPane();
@@ -84,169 +83,215 @@ public class VueVols extends JFrame {
 		table.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		table.setModel(new ModeleJTableVol(controleur));
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBounds(233, 182, 253, 34);
+		layeredPane.add(panel_1);
+		
+		JButton button_1 = new JButton("Modifier");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int idVol = table.getSelectedRow();
+				IVol vol;
+				try {
+					vol = controleur.getListeVols().get(idVol);
+					VueModifierVol modif=new VueModifierVol(controleur, table,vol);
+					modif.setVisible(true);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		button_1.setBounds(6, 5, 80, 28);
+		panel_1.add(button_1);
+		
+		JButton button_2 = new JButton("Supprimer");
+		button_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int idVol = table.getSelectedRow();
+				IVol vol;
+				try {
+					vol = controleur.getListeVols().get(idVol);
+					controleur.supprimerVol(vol);
+					Outils.rafraichirTableau(table, controleur);
+					textField_Id.setText(String.valueOf((idVol-1)));
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		button_2.setBounds(137, 5, 86, 28);
+		panel_1.add(button_2);
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		tabbedPane.addTab("Creer un vol", null, layeredPane_1, null);
 		layeredPane_1.setLayout(null);
 		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBounds(404, 21, 1, 1);
-		layeredPane_1.add(panel_8);
-		panel_8.setLayout(null);
+		JPanel panel_Id = new JPanel();
+		panel_Id.setBounds(10, 11, 272, 34);
+		layeredPane_1.add(panel_Id);
+		panel_Id.setLayout(null);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBounds(475, 21, 1, 1);
-		layeredPane_1.add(panel_7);
-		panel_7.setLayout(null);
-		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBounds(0, 0, 207, 40);
-		panel_7.add(panel_5);
-		
-		JLabel lblAaaaaaaaaaaaaaaa = new JLabel("aaaaaaaaaaaaaaaa");
-		panel_5.add(lblAaaaaaaaaaaaaaaa);
-		
-		JPanel panel_6 = new JPanel();
-		panel_5.add(panel_6);
-		
-		textField_1 = new JTextField();
-		panel_6.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(10, 11, 157, 34);
-		layeredPane_1.add(panel_4);
-		panel_4.setLayout(null);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(5, 5, 98, 24);
-		panel_4.add(panel_3);
-		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
+		JPanel panel_lblId = new JPanel();
+		panel_lblId.setBounds(5, 5, 98, 24);
+		panel_Id.add(panel_lblId);
+		panel_lblId.setLayout(new BoxLayout(panel_lblId, BoxLayout.X_AXIS));
 		
 		JLabel lblNewLabel_1 = new JLabel("IDVol : ");
-		panel_3.add(lblNewLabel_1);
+		panel_lblId.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.TRAILING);
-		textField.setBounds(113, 7, 39, 20);
-		panel_4.add(textField);
-		textField.setColumns(10);
+		textField_Id = new JTextField();
+		textField_Id.setEditable(false);
+		textField_Id.setHorizontalAlignment(SwingConstants.TRAILING);
+		textField_Id.setBounds(102, 5, 37, 24);
+		panel_Id.add(textField_Id);
+		textField_Id.setColumns(10);
 		try {
-			textField.setText(String.valueOf((controleur.getListeVols().size()+1)));
+			textField_Id.setText(String.valueOf((controleur.getListeVols().size()+1)));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(10, 79, 272, 34);
-		layeredPane_1.add(panel_9);
-		panel_9.setLayout(null);
+		JPanel panel_circu = new JPanel();
+		panel_circu.setBounds(10, 79, 272, 34);
+		layeredPane_1.add(panel_circu);
+		panel_circu.setLayout(null);
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setBounds(5, 5, 98, 24);
-		panel_9.add(panel_10);
+		panel_circu.add(panel_10);
 		panel_10.setLayout(new BoxLayout(panel_10, BoxLayout.X_AXIS));
 		
 		JLabel lblCirculation = new JLabel("Circulation : ");
 		panel_10.add(lblCirculation);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(102, 5, 164, 26);
-		panel_9.add(comboBox);
+		final JComboBox comboBox_circu = new JComboBox();
+		comboBox_circu.setBounds(102, 5, 164, 26);
+		for (ICirculation cat : controleur.getListeCirculations()) {
+			comboBox_circu.addItem(cat.getLibelleCirculation());
+		}
+		panel_circu.add(comboBox_circu);
 		
-		JPanel panel_11 = new JPanel();
-		panel_11.setLayout(null);
-		panel_11.setBounds(10, 149, 272, 34);
-		layeredPane_1.add(panel_11);
+		JPanel panel_cat = new JPanel();
+		panel_cat.setLayout(null);
+		panel_cat.setBounds(10, 149, 272, 34);
+		layeredPane_1.add(panel_cat);
 		
 		JPanel panel_12 = new JPanel();
 		panel_12.setBounds(5, 5, 98, 24);
-		panel_11.add(panel_12);
+		panel_cat.add(panel_12);
 		panel_12.setLayout(new BoxLayout(panel_12, BoxLayout.X_AXIS));
 		
 		JLabel lblCategorie = new JLabel("Categorie : ");
 		lblCategorie.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_12.add(lblCategorie);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(103, 5, 163, 26);
+		final JComboBox comboBox_cat = new JComboBox();
+		comboBox_cat.setBounds(103, 5, 163, 26);
 		for (ICategorie cat : controleur.getListeCategories()) {
-			comboBox_1.addItem(cat.getLibelleCategorie());
+			comboBox_cat.addItem(cat.getLibelleCategorie());
 		}
-		panel_11.add(comboBox_1);
+		panel_cat.add(comboBox_cat);
 		
-		JPanel panel_13 = new JPanel();
-		panel_13.setLayout(null);
-		panel_13.setBounds(317, 11, 306, 34);
-		layeredPane_1.add(panel_13);
+		JPanel panel_boutons = new JPanel();
+		panel_boutons.setBounds(568, 182, 150, 34);
+		layeredPane_1.add(panel_boutons);
+		panel_boutons.setLayout(null);
 		
-		JPanel panel_14 = new JPanel();
-		panel_14.setBounds(5, 5, 295, 29);
-		panel_13.add(panel_14);
-		panel_14.setLayout(new BoxLayout(panel_14, BoxLayout.X_AXIS));
+		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+		});
+		btnAnnuler.setBounds(6, 5, 70, 28);
+		panel_boutons.add(btnAnnuler);
 		
-		JLabel lblDateDecollage = new JLabel("Date Decollage :   ");
-		panel_14.add(lblDateDecollage);
+		JButton btnCreer = new JButton("Creer");
+		btnCreer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int idVol=Integer.parseInt(textField_Id.getText());
+				System.out.println("IDVOL:"+idVol);
+				int circulation=comboBox_circu.getSelectedIndex()+1;
+				int categorieDeVol=comboBox_cat.getSelectedIndex()+1;
+				Date date = (Date)spinner_decol.getValue();
+				GregorianCalendar dateDecollage=new GregorianCalendar();
+				dateDecollage.setTime(date);
+				GregorianCalendar dateAtterrissage = new GregorianCalendar();
+				date=(Date)spinner_atter.getValue();
+				dateAtterrissage.setTime(date);
+				controleur.creerVol(idVol, circulation, categorieDeVol, dateDecollage, dateAtterrissage, false);
+				Outils.rafraichirTableau(table, controleur);
+				textField_Id.setText(String.valueOf((idVol+1)));
+				tabbedPane.setSelectedIndex(0);
+				
+			}
+		});
+		btnCreer.setBounds(88, 5, 59, 28);
+		panel_boutons.add(btnCreer);
 		
-		final JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_YEAR));
-		panel_14.add(spinner);
+		JPanel panel = new JPanel();
+		panel.setBounds(318, 11, 331, 140);
+		layeredPane_1.add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_decol = new JPanel();
+		panel_decol.setBounds(15, 6, 310, 34);
+		panel.add(panel_decol);
+		panel_decol.setLayout(new BoxLayout(panel_decol, BoxLayout.X_AXIS));
+		
+		JLabel lblDateDecollage = new JLabel("Date Decollage :     ");
+		panel_decol.add(lblDateDecollage);
+		
+		spinner_decol = new JSpinner();
+		spinner_decol.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		spinner_decol.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_YEAR));
+		panel_decol.add(spinner_decol);
 		
 		JButton btnDefinir = new JButton("Definir");
 		btnDefinir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				VueCalendrier cal=new VueCalendrier(spinner);
+				VueCalendrier cal=new VueCalendrier(spinner_decol);
 				
 				cal.setVisible(true);
 			}
 		});
-		panel_14.add(btnDefinir);
+		panel_decol.add(btnDefinir);
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBounds(317, 79, 306, 34);
-		layeredPane_1.add(panel);
+		JPanel panel_atter = new JPanel();
+		panel_atter.setBounds(15, 67, 310, 34);
+		panel.add(panel_atter);
+		panel_atter.setLayout(new BoxLayout(panel_atter, BoxLayout.X_AXIS));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(5, 5, 295, 29);
-		panel.add(panel_1);
-		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
+		JLabel lblDateAtterrissage = new JLabel("Date Atterrissage :  ");
+		panel_atter.add(lblDateAtterrissage);
 		
-		JLabel lblDateAtterrissage = new JLabel("Date Atterrissage :");
-		panel_1.add(lblDateAtterrissage);
-		
-		final JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_YEAR));
-		panel_1.add(spinner_1);
+		spinner_atter = new JSpinner();
+		spinner_atter.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_YEAR));
+		panel_atter.add(spinner_atter);
 		
 		JButton button = new JButton("Definir");
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				VueCalendrier cal=new VueCalendrier(spinner_1);
+				VueCalendrier cal=new VueCalendrier(spinner_atter);
 				cal.setVisible(true);
 			}
 		});
-		panel_1.add(button);
+		panel_atter.add(button);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setLayout(null);
-		panel_2.setBounds(319, 149, 157, 34);
-		layeredPane_1.add(panel_2);
-
-		JPanel panel_15 = new JPanel();
-		panel_15.setBounds(5, 5, 98, 24);
-		panel_2.add(panel_15);
-		panel_15.setLayout(new BoxLayout(panel_15, BoxLayout.X_AXIS));
-		
-		JLabel label_4 = new JLabel("Annulation : ");
-		panel_15.add(label_4);
-		
-		JCheckBox checkBox = new JCheckBox("");
-		checkBox.setBounds(115, 5, 21, 23);
-		panel_2.add(checkBox);
+		JLayeredPane layeredPane_2 = new JLayeredPane();
+		tabbedPane.addTab("New tab", null, layeredPane_2, null);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, tabbedPane}));
 	}
 }

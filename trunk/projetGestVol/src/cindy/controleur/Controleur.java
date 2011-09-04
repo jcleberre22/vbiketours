@@ -7,8 +7,8 @@ import java.util.List;
 import cindy.metier.FacadeMetier;
 
 import cindy.metier.comm.ICategorie;
+import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
-import cindy.metier.vol.Vol;
 import cindy.vue.VuePrincipale;
 
 
@@ -24,19 +24,19 @@ public class Controleur implements IControleur{
 
 	}
 	
-	public void creerVol(int reference, int circulation, int categorieDeVol,
+	public void creerVol(int idVol, int circulation, int categorieDeVol,
 			GregorianCalendar dateDecollage,
 			GregorianCalendar dateAtterrissage, boolean annulation) {
-		f.creerVol(reference, circulation, categorieDeVol, dateDecollage, dateAtterrissage, annulation);
+		f.creerVol(idVol, circulation, categorieDeVol, dateDecollage, dateAtterrissage, annulation);
 	}
 	
-	public void modifierVol(Vol ancien, Vol nouveau){
+	public void modifierVol(IVol ancien, IVol nouveau){
 		f.modifierVol(ancien, nouveau);
 	}
 
 	@Override
-	public void supprimerVol(Vol aSupprimer) {
-		
+	public void supprimerVol(IVol aSupprimer) throws SQLException, Exception {
+		f.supprimerVol(aSupprimer);
 	}
 
 	@Override
@@ -48,5 +48,9 @@ public class Controleur implements IControleur{
 	public List<ICategorie> getListeCategories() throws SQLException, Exception {
 		return f.getListeCategories();
 	}
-
+	
+	@Override
+	public List<ICirculation> getListeCirculations() throws SQLException, Exception {
+		return f.getListeCirculations();
+	}
 }
