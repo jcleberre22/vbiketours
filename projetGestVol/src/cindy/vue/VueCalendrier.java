@@ -26,6 +26,7 @@ public class VueCalendrier extends JDialog {
 	private static final long serialVersionUID = 3820355815980650845L;
 	private final JPanel contentPanel = new JPanel();
 	private JCalendar calendrier;
+	@SuppressWarnings("unused")
 	private JSpinner spinner;
 	/**
 	 * Launch the application.

@@ -176,7 +176,8 @@ public class Vol implements IVol {
 	 * permet d'initialiser la liste des sorties
 	 * @param arrayList
 	 */
-	private void setLesSorties(ArrayList<ISortieAerienne> sorties) {
+	@SuppressWarnings("unused")
+	private void setLesSorties(final ArrayList<ISortieAerienne> sorties) {
 		if(sorties == null)
 			throw new RuntimeException("la sortie aerienne ne peut être nulle");
 		else

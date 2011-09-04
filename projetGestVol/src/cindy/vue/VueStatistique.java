@@ -1,37 +1,30 @@
 package cindy.vue;
 
 import java.awt.BorderLayout;
-//import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
-//import java.awt.GridBagLayout;
-//import java.awt.GridLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-//import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JLayeredPane;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JTable;
-import javax.swing.JSplitPane;
-
-import cindy.controleur.IControleur;
-import javax.swing.UIManager;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.BoxLayout;
-//import javax.swing.table.DefaultTableModel;
+
+import cindy.controleur.IControleur;
 
 
 public class VueStatistique extends JFrame implements ActionListener{
@@ -41,6 +34,7 @@ public class VueStatistique extends JFrame implements ActionListener{
 	 * les données sont entrees en dur afin de tester la fonctionnalite
 	 */
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private IControleur ctl;
 	private JPanel contentPane;
 	private JTable nombreVol;

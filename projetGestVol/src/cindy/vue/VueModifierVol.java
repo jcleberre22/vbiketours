@@ -40,9 +40,11 @@ public class VueModifierVol extends JFrame {
 	private static final long serialVersionUID = -4843299780878635525L;
 	private final JPanel contentPanel = new JPanel();
 	private JSpinner spinner_decol;
+	@SuppressWarnings("unused")
 	private IControleur controleur;
 	private JTextField textField_Id;
 	private JSpinner spinner_atter;
+	@SuppressWarnings("unused")
 	private JTable table;
 	private JCheckBox checkBox;
 
