@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
@@ -12,6 +14,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
+import cindy.controleur.Controleur;
+import cindy.controleur.IControleur;
 
 public class LoginMail extends JDialog {
 
@@ -21,16 +26,18 @@ public class LoginMail extends JDialog {
 	private static final long serialVersionUID = -8948312729868282822L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
+	private JLabel lblLogin;
+	private JLabel lblMotDePasse;
 	private JPasswordField passwordField;
 	private String mdp;
+	private String login;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			LoginMail dialog = new LoginMail(null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			LoginMail dialog = new LoginMail();
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,19 +47,21 @@ public class LoginMail extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public LoginMail(VueMail vueMail) {
+	public LoginMail() {
 		setBounds(100, 100, 246, 219);
+		setTitle("Cindy - Loggin Mail"); 
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblLogin = new JLabel("Login : ");
+			lblLogin = new JLabel("Login : ");
 			lblLogin.setBounds(10, 31, 46, 14);
 			contentPanel.add(lblLogin);
 		}
 		{
-			JLabel lblMotDePasse = new JLabel("Mot de passe :");
+			lblMotDePasse = new JLabel("Mot de passe :");
 			lblMotDePasse.setBounds(10, 100, 94, 14);
 			contentPanel.add(lblMotDePasse);
 		}
@@ -75,14 +84,26 @@ public class LoginMail extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						mdp=new String(passwordField.getPassword());
-						dispose();
+						//mdp = lblMotDePasse.getText();
+						login = lblLogin.getText();
+						if(mdp != null){
+							if(!mdp.equals("Mot de passe :")){
+								if(!mdp.trim().equals("")){
+									dispose();
+									new VueMail(mdp);
+								}
+							}
+						}
+						else
+							System.out.println("le mot de passe est null : " + mdp);
 					}
 				});
-				vueMail.setMotDePasse(mdp);
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
+		
+		this.setVisible(true);
 	}
 }

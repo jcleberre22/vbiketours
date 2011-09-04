@@ -2,8 +2,8 @@ package cindy.vue;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
@@ -157,9 +157,9 @@ public class VueModifierVol extends JFrame {
 		panel_decol.add(spinner_decol);
 		
 		JButton btnDefinir = new JButton("Definir");
-		btnDefinir.addMouseListener(new MouseAdapter() {
+		btnDefinir.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				VueCalendrier cal=new VueCalendrier(spinner_decol);
 				
 				cal.setVisible(true);
@@ -180,9 +180,9 @@ public class VueModifierVol extends JFrame {
 		panel_atter.add(spinner_atter);
 		
 		JButton button = new JButton("Definir");
-		button.addMouseListener(new MouseAdapter() {
+		button.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				VueCalendrier cal=new VueCalendrier(spinner_atter);
 				cal.setVisible(true);
 			}
@@ -195,9 +195,9 @@ public class VueModifierVol extends JFrame {
 		contentPanel.add(panel_1);
 		
 		JButton button_1 = new JButton("Annuler");
-		button_1.addMouseListener(new MouseAdapter() {
+		button_1.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
@@ -205,9 +205,9 @@ public class VueModifierVol extends JFrame {
 		panel_1.add(button_1);
 		
 		JButton button_2 = new JButton("Modifier");
-		button_2.addMouseListener(new MouseAdapter() {
+		button_2.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				int idVol=Integer.parseInt(textField_Id.getText());
 				System.out.println("IDVOL:"+idVol);
 				int circulation=comboBox_circu.getSelectedIndex()+1;

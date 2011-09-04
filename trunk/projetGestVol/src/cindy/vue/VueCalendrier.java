@@ -2,8 +2,8 @@ package cindy.vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -107,9 +107,9 @@ public class VueCalendrier extends JDialog {
 		contentPanel.add(horizontalBox_1);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.addMouseListener(new MouseAdapter() {
+		btnOk.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				int heures=(Integer)spinnerH.getValue();
 				int minutes=(Integer)spinnerM.getValue();
 				int secondes=(Integer)spinnerS.getValue();
@@ -123,9 +123,9 @@ public class VueCalendrier extends JDialog {
 		horizontalBox_1.add(btnOk);
 		
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.addMouseListener(new MouseAdapter() {
+		btnAnnuler.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});

@@ -2,31 +2,17 @@ package cindy.vue;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-<<<<<<< .mine
-=======
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
->>>>>>> .r97
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-<<<<<<< .mine
-=======
-import javax.swing.JLabel;
->>>>>>> .r97
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
-<<<<<<< .mine
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
-=======
->>>>>>> .r97
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 
