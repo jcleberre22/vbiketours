@@ -34,7 +34,9 @@ public class Camembert extends JPanel{
 	private IControleur controleur;
 	private List<IVol> listeVols;
 	List<ISortieAerienne> listeSortie;
+	@SuppressWarnings("unused")
 	private int nbVolAProbleme;
+	@SuppressWarnings("unused")
 	private int nbVolTotal;
 
 	/**

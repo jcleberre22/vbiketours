@@ -35,7 +35,6 @@ import cindy.metier.comm.ICategorie;
 import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
 import cindy.outils.Outils;
-import javax.swing.ListSelectionModel;
 
 public class VueVols extends JFrame {
 

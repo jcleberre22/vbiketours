@@ -6,8 +6,6 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import cindy.metier.vol.Categorie;
-
 //FIXME REFAIRE LES TESTS
 /**
  * Test sur l'utilisation des methodes publiques d'une categorie de vol.
