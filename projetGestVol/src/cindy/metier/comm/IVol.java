@@ -39,7 +39,7 @@ public interface IVol {
 	
 	public boolean isAnnulation();
 	
-	public List<SortieAerienne> getLesSorties();
+	public List<ISortieAerienne> getLesSorties();
 
 	void ajouterCategorie(String nomCategorie);
 
