@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 
 /**
  * Fenetre JDialog A propos. Construit sur Windows Builder.
+ * @exte
  * @author Nicolas.Tabuteaud
  * @version 1.0 du 31/08/2011
  *
@@ -28,7 +29,7 @@ public class APropos extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the application.
+	 * Lanceur de l'application
 	 */
 	public static void main(String[] args) {
 		try {
@@ -88,6 +89,11 @@ public class APropos extends JDialog {
 		JLabel lblTabuteaud = new JLabel(" TABUTEAUD Nicolas");
 		lblTabuteaud.setBounds(10, 108, 174, 14);
 		panel.add(lblTabuteaud);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setIcon(new ImageIcon(APropos.class.getResource("/cindy/vue/ecusson.png")));
+		lblNewLabel_3.setBounds(230, 70, 152, 151);
+		contentPanel.add(lblNewLabel_3);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
