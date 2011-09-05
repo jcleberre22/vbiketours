@@ -63,6 +63,7 @@ public class LoginMail extends JDialog {
 	 */
 	public LoginMail() {
 		setBounds(100, 100, 259, 219);
+		setLocationRelativeTo(null);
 		setTitle("Cindy - Loggin Mail");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
