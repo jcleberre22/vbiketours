@@ -18,47 +18,48 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
 
 /**
- * A bar chart that uses a custom renderer to display different colors within a series.
- * No legend is displayed because there is only one series but the colors are not consistent.
+ * Classe generant un graphique. Celui ci est en forme de bar chart(Histogramme)
+ * et se base sur une librairie JFreeChart (librairie libre).
+ * @author nicolas.tabuteaud
+ * @version 1.0 du 05/09/2011
  *
  */
 public class ProblemeVol extends JPanel {
 
 	/**
-	 * 
+	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * A custom renderer that returns a different color for each item in a single series.
+	 * Méthode de personnalisation qui retourne une couleur différente 
+	 * pour chaque élément dans une série unique.
 	 */
 	class CustomRenderer extends BarRenderer {
 
 		/**
-		 * 
+		 * Serial Version UID
 		 */
 		private static final long serialVersionUID = 1L;
 		/** Tableau de couleurs. */
 		private Paint[] colors;
-	//	private String title = "Nombre de vol avec probleme";
 
 		/**
-		 * Creates a new renderer.
+		 * Creation d'un nouveau rendu
 		 *
-		 * @param colors  the colors.
+		 * @param couleurs
 		 */
 		public CustomRenderer(final Paint[] colors) {
 			this.colors = colors;
 		}
 
 		/**
-		 * Returns the paint for an item.  Overrides the default behaviour inherited from
-		 * AbstractSeriesRenderer.
+		 * Renvoie la peinture d'un élément. 
+		 * Remplace le comportement par défaut hérité d'AbstractSeriesRenderer.
 		 *
-		 * @param row  the series.
-		 * @param column  the category.
-		 *
-		 * @return The item color.
+		 * @param ligne
+		 * @param colonne
+		 * @return l'item couleur
 		 */
 		public Paint getItemPaint(final int row, final int column) {
 			return this.colors[column % this.colors.length];
@@ -66,9 +67,8 @@ public class ProblemeVol extends JPanel {
 	}
 
 	/**
-	 * Creates a new demo.
-	 *
-	 * @param title  the frame title.
+	 * Constructeur  du Bart Chart.
+	 * @param titre 
 	 */
 	public ProblemeVol(final String title) {
 		final CategoryDataset dataset = createDataset();
@@ -79,9 +79,9 @@ public class ProblemeVol extends JPanel {
 	}
 
 	/**
-	 * Creates a sample dataset.
+	 *Creation d'un datasetUtilities.
 	 * 
-	 * @return a sample dataset.
+	 * @return le dataset
 	 */
 	private CategoryDataset createDataset() {
 		final double[][] data = new double[][] {{4.0, 3.0, 5.0, 3.0, 6.0}};
@@ -93,11 +93,11 @@ public class ProblemeVol extends JPanel {
 	}
 
 	/**
-	 * Creates a sample chart.
+	 * Creation du chart.
 	 * 
-	 * @param dataset  the dataset.
+	 * @param dataset  
 	 * 
-	 * @return a sample chart.
+	 * @return le chart
 	 */
 	private JFreeChart createChart(final CategoryDataset dataset) {
 

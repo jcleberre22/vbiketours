@@ -10,10 +10,16 @@ import cindy.controleur.IControleur;
 import cindy.metier.comm.ICategorie;
 import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
-//TODO(jc) probleme modif libelles 
+
+/**
+ * Modele de la JTable du vol.
+ * @author jc.Leberre
+ * @version 1.0 du 05/09/2011
+ *
+ */
 public class ModeleJTableVol extends AbstractTableModel {
 	/**
-	 * 
+	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = 1683885302458627679L;
 
@@ -26,10 +32,9 @@ public class ModeleJTableVol extends AbstractTableModel {
 			"DATE DECOLLAGE", "DATE ATTERISSAGE", "ANNULATION" };
 
 	/**
-	 * Recupere l'acces au metier, puis chrage la liste.
+	 * Recupere l'acces au metier, puis charge la liste.
 	 * 
-	 * @param ctl
-	 *            acces au metier
+	 * @param ctl   acces au metier
 	 */
 	public ModeleJTableVol(IControleur ctl) {
 		controleur = ctl;
