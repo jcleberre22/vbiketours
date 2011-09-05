@@ -59,6 +59,7 @@ public class VueCalendrier extends JDialog {
 		setTitle("Cindy - Calendrier");
 		this.spinner=spinner;
 		setBounds(100, 100, 590, 305);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

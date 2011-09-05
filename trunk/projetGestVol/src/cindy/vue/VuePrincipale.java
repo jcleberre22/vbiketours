@@ -45,11 +45,11 @@ public class VuePrincipale extends JFrame {
 	public VuePrincipale(IControleur ctrl) {
 		this.controleur=ctrl;
 		setVisible(true);
-		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Cindy Application - Fenetre Principale");
 		setBounds(100, 100, 376, 266);
+		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

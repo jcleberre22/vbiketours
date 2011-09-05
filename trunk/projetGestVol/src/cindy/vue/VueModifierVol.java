@@ -82,6 +82,7 @@ public class VueModifierVol extends JFrame {
 		this.controleur=controleur;
 		this.table=table;
 		setBounds(100, 100, 677, 290);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

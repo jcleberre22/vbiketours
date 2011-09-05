@@ -134,8 +134,7 @@ public class VueStatistique extends JFrame implements ActionListener{
 	}
 	
 	public void initVue(){
-		//elle st positionnée au centre de l'écran
-				setLocationRelativeTo(null);
+
 				//fermé l'application à la fermeture de la fenêtre
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				//titre de la fenêtre
@@ -144,6 +143,8 @@ public class VueStatistique extends JFrame implements ActionListener{
 				setBounds(100, 100, 800, 600);
 				//elle ne peut pas etre redimensionnée
 				setResizable(false);
+				//elle st positionnée au centre de l'écran
+				setLocationRelativeTo(null);
 	}
 	
 	public void initialiserMenu(){
@@ -162,7 +163,6 @@ public class VueStatistique extends JFrame implements ActionListener{
 				mntmAPropos = new JMenuItem("A Propos");
 				mntmAPropos.addActionListener(this);
 				aide.add(mntmAPropos);
-				
 				mntmQuitter = new JMenuItem("Quitter");
 				mntmQuitter.addActionListener(this);
 				mnNewMenu.add(mntmQuitter);

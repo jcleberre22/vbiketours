@@ -62,6 +62,7 @@ public class VueMail extends JDialog{
 	 */
 	public VueMail(final String motDePasse,final String login) {
 		setBounds(100, 100, 450, 300);
+		setLocationRelativeTo(null);
 		setTitle("Cindy - Envoyer un mail");
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
