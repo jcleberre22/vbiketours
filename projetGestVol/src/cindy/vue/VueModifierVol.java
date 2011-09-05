@@ -40,11 +40,9 @@ public class VueModifierVol extends JFrame {
 	private static final long serialVersionUID = -4843299780878635525L;
 	private final JPanel contentPanel = new JPanel();
 	private JSpinner spinner_decol;
-	@SuppressWarnings("unused")
 	private IControleur controleur;
 	private JTextField textField_Id;
 	private JSpinner spinner_atter;
-	@SuppressWarnings("unused")
 	private JTable table;
 	private JCheckBox checkBox;
 
@@ -67,6 +65,7 @@ public class VueModifierVol extends JFrame {
 	 * @throws SQLException 
 	 */
 	public VueModifierVol(final IControleur controleur,final JTable table, final IVol vol) throws SQLException, Exception {
+		setTitle("Cindy - Modifier un vol");
 		this.controleur=controleur;
 		this.table=table;
 		setBounds(100, 100, 677, 290);

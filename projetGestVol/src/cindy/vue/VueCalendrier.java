@@ -18,18 +18,27 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JCalendar;
 
+/**
+ * Fenetre de vue du calendrier.
+ * @author jc.leberre
+ * @version 1.0 du 05/09/2011
+ *
+ */
 public class VueCalendrier extends JDialog {
 
 	/**
-	 * 
+	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = 3820355815980650845L;
+	/**	Conteneur du calendrier */
 	private final JPanel contentPanel = new JPanel();
+	/** Calendrier de type JCalendar */
 	private JCalendar calendrier;
-	@SuppressWarnings("unused")
+	/** Champs pour les dates */
 	private JSpinner spinner;
+	
 	/**
-	 * Launch the application.
+	 * Lanceur de l'application
 	 */
 	public static void main(String[] args) {
 		try {
@@ -43,9 +52,11 @@ public class VueCalendrier extends JDialog {
 	}
 
 	/**
-	 * Create the dialog.
+	 * Creation de la dialog.
+	 * @param spinner
 	 */
 	public VueCalendrier(final JSpinner spinner) {
+		setTitle("Cindy - Calendrier");
 		this.spinner=spinner;
 		setBounds(100, 100, 590, 305);
 		getContentPane().setLayout(new BorderLayout());
