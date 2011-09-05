@@ -1,6 +1,10 @@
 package cindy.outils;
 
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+
+import javax.swing.JOptionPane;
 
 import com.jscape.inet.smtp.SmtpException;
 import com.jscape.inet.smtpssl.SmtpSsl;
@@ -52,6 +56,7 @@ public class EnvoiMail {
 			message.setFrom(username);
 			message.setSubject(cSujet);
 			message.setBody(cCorps);
+			
 
 			// On précise qu'on peut utiliser le format HTML
 			message.setContentType("text/html");
@@ -76,23 +81,22 @@ public class EnvoiMail {
 			try {
 				smtp.connect();
 			} catch (SmtpException e) {
-				new RuntimeException("probleme de connexion au serveur smtp");
-				return false;
+				JOptionPane.showMessageDialog(null, "probleme de connexion au serveur smtp,\n veuillez verifier votre connection internet");
+				throw new RuntimeException("probleme de connexion au serveur smtp");
 			}
 
 			// les cordonnées du compte mail
 			try {
 				smtp.login(username, password);
 			} catch (SmtpException e) {
-				new RuntimeException("Utilisateur ou mot de passe incorrect");
-				return false;
+				JOptionPane.showMessageDialog(null, "utilisateur ou mot de passe incorrect!");
+				throw new RuntimeException("Utilisateur ou mot de passe incorrect");
 			}
 			
 			try {
 				smtp.disconnect();
 			} catch (SmtpException e) {
-				new RuntimeException("problème lors de la deconnection");
-				return false;
+				throw new RuntimeException("problème lors de la deconnection");
 			}
 			return true;
 	}

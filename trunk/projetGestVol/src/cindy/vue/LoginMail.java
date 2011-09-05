@@ -3,10 +3,13 @@ package cindy.vue;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.lang.model.type.ErrorType;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
@@ -34,6 +37,7 @@ public class LoginMail extends JDialog {
 	private JPasswordField passwordField;
 	private String mdp;
 	private String login;
+	private JButton btnAnnuler;
 
 	/**
 	 * Launch the application.
@@ -90,21 +94,45 @@ public class LoginMail extends JDialog {
 						mdp = new String(passwordField.getPassword());
 						login = txtgmailcom.getText();
 						if (mdp != null) {
-							if (!mdp.equals("Mot de passe :")) {
-								if (!mdp.trim().equals("")) {
-									if (EnvoiMail.verifierAuthentification(
-											login, mdp)) {
-										dispose();
-										new VueMail(mdp, login);
-									}else{
-										new RuntimeException("probleme d'authentification");
+							if (!login.equals("@gmail.com")) {
+								if (login.endsWith("@gmail.com")) {
+									if (!mdp.trim().equals("")) {
+										if (EnvoiMail.verifierAuthentification(
+												login, mdp)) {
+											dispose();
+											new VueMail(mdp, login);
+										} else {
+											
+										}
+									} else {
+										JOptionPane
+												.showMessageDialog(null,
+														"Le mot de passe ne peut pas etre vide!");
 									}
+								} else {
+									JOptionPane
+											.showMessageDialog(null,
+													"Adresse non prise en charge,\nL'adresse doit etre de type gmail!");
 								}
+							} else {
+								JOptionPane
+										.showMessageDialog(null,
+												"Veuillez remplir une adresse de type gmail!");
 							}
-						} else
-							new RuntimeException("le mot de passe est null! ");
+						} else {
+							throw new RuntimeException("mot de passe null! ");
+						}
 					}
 				});
+				{
+					btnAnnuler = new JButton("Annuler");
+					btnAnnuler.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							dispose();
+						}
+					});
+					buttonPane.add(btnAnnuler);
+				}
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

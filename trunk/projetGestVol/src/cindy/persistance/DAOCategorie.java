@@ -57,7 +57,7 @@ public class DAOCategorie implements ICategoriePersistant {
 
 		}catch(Exception e){
 
-			e.printStackTrace();
+			
 
 		}
 
