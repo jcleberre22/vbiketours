@@ -14,12 +14,12 @@ import cindy.controleur.Controleur;
 
 public class Lanceur {
 
-	/**
-	 * @param args
-	 * @throws Exception 
-	 * @throws SQLException 
-	 */
-	public static void main(String[] args) throws SQLException, Exception {
+        /**
+         * @param args
+         * @throws Exception 
+         * @throws SQLException 
+         */
+        public static void main(String[] args) throws SQLException, Exception {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -37,6 +37,6 @@ public class Lanceur {
             java.util.logging.Logger.getLogger(Lanceur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         new Controleur();
-	}
+        }
 
 }
