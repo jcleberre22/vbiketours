@@ -35,7 +35,8 @@ import javax.swing.JCheckBox;
 /**
  * Fenetre modifier un vol. JFrame appelé par la classe VueVols.
  * @author jc.leberre
- * @version 1.0 du 05/09/2011
+ * @version 1.0 du 04/09/2011 modifié le 05/09/2001 par jp.martinez
+ * 
  *
  */
 public class VueModifierVol extends JFrame {
