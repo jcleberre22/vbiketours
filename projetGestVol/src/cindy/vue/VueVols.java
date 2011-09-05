@@ -6,8 +6,6 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,24 +39,36 @@ import cindy.metier.comm.ICirculation;
 import cindy.metier.comm.IVol;
 import cindy.outils.Outils;
 
+/**
+ * Fenetre de vue du vol.
+ * Creation - modification - suppression seront
+ * via cette vue.
+ * @author jp.martinez
+ * @version 1.0 du 05/08/2011
+ */
 public class VueVols extends JFrame {
 
-	/**
-	 * 
-	 */
+	/**	Serial Version UID */
 	private static final long serialVersionUID = 1L;
+	/** Conteneur de la fenetre */
 	private JPanel contentPane;
+	/** Interface du controleur */
 	private IControleur controleur;
+	/** Jtable des vols - contient toutes les données */
 	private JTable table;
+	/** Champs de texte de l'id */
 	private JTextField textField_Id;
+	/** Champs pour les dates decollage */
 	private JSpinner spinner_decol;
+	/** Champs pour les dates d'atterissage */
 	private JSpinner spinner_atter;
 
 
 	/**
-	 * Create the frame.
+	 * Creation de la vue.
 	 * @throws Exception 
 	 * @throws SQLException 
+	 * @param interface du controleur
 	 */
 	public VueVols(IControleur ctrl) throws SQLException, Exception {
 		

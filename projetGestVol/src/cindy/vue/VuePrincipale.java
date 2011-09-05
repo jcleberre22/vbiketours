@@ -23,6 +23,8 @@ import cindy.controleur.IControleur;
 
 /**
  * Fenetre principale.
+ * Elle proposera 2 boutons - Gestion des vols
+ * et gestion des statistiques.
  * @author JP.martinez
  * @version 1.0 du 05/09/2011
  *
