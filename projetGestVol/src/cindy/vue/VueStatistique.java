@@ -155,29 +155,18 @@ public class VueStatistique extends JFrame implements ActionListener{
 				/**création de menus pour le MenuBar*/
 				JMenu mnNewMenu = new JMenu("Fichier");
 				menuBar.add(mnNewMenu);
+				JMenu aide = new JMenu("Aide");
+				menuBar.add(aide);
 				//création d'objet qui seront insérés dans le menu
 				//puis ajout des objets dans les menus
 				mntmAPropos = new JMenuItem("A Propos");
 				mntmAPropos.addActionListener(this);
-				mnNewMenu.add(mntmAPropos);
+				aide.add(mntmAPropos);
 				
 				mntmQuitter = new JMenuItem("Quitter");
 				mntmQuitter.addActionListener(this);
 				mnNewMenu.add(mntmQuitter);
 				
-				JMenu mnVol = new JMenu("Vol");
-				menuBar.add(mnVol);
-				
-				mntmNewMenuItem = new JMenuItem("Gerer");
-				mntmNewMenuItem.addActionListener(this);
-				mnVol.add(mntmNewMenuItem);
-				
-				JMenu mnStatistique = new JMenu("Statistique");
-				menuBar.add(mnStatistique);
-				
-				mntmNewMenuItem_1 = new JMenuItem("Gerer\r\n");
-				mntmNewMenuItem_1.addActionListener(this);
-				mnStatistique.add(mntmNewMenuItem_1);
 	}
 	
 	public JTable ConstruireTableau(){
@@ -208,12 +197,6 @@ public class VueStatistique extends JFrame implements ActionListener{
 		}
 		if(e.getSource() == mntmQuitter){
 			this.dispose();
-		}
-		if(e.getSource() == mntmNewMenuItem){
-			//TODO : démarrer la frame correspondante
-		}
-		if(e.getSource() == mntmNewMenuItem_1){
-			//TODO : démarrer la frame correspondante
 		}
 	}
 }
