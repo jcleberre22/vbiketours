@@ -49,7 +49,6 @@ public class DAOCirculation implements ICirculationPersistant {
 			ResultSet rs = stmt.executeQuery(requete);
 			
 			while (rs.next()){
-				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
 				ICirculation circu=new Circulation(rs.getInt(1),rs.getString(2));
 				listeCirculations.add(circu);
 			}

@@ -49,7 +49,6 @@ public class DAOCategorie implements ICategoriePersistant {
 			ResultSet rs = stmt.executeQuery(requete);
 
 			while (rs.next()){
-				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
 				ICategorie cat=new Categorie(rs.getInt(1),rs.getString(2));
 				listeCategories.add(cat);
 			}

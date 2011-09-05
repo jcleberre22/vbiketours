@@ -56,7 +56,6 @@ public class DAOVol implements IVolPersistant{
 			System.out.println("Obtention de la liste des vols");
 			
 			while (rs.next()){
-				System.out.print(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3)+"\t"+rs.getTimestamp(4)+"\t"+rs.getTimestamp(5)+"\t"+rs.getBoolean(6)+"\n");
 				GregorianCalendar gCDecol=Outils.timestampToGregCal(rs.getTimestamp(4));
 				GregorianCalendar gCAtter=Outils.timestampToGregCal(rs.getTimestamp(5));
 				IVol vol=new Vol(rs.getInt(1),rs.getInt(2),rs.getInt(3),gCDecol,gCAtter,rs.getBoolean(6));
