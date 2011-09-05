@@ -22,15 +22,25 @@ import javax.swing.border.EmptyBorder;
 
 import cindy.outils.EnvoiMail;
 
+/**
+ * Vue de la fenetre
+ * @author jc.leberre
+ * @version 1.0 du 05/09/2011
+ *
+ */
 public class VueMail extends JDialog{
 
 	/**
-	 * 
+	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = 822236182020094669L;
+	/** Conteneur JPanel */
 	private final JPanel contentPanel = new JPanel();
+	/** Champs de texte du texte */
 	private JTextField txtA;
+	/** Champs de texte du texte Objet d'un mail */
 	private JTextField textObjet;
+	/** Zone de texte pour la saisie des mails */
 	private JTextArea textArea;
 	private String motDePasse;
 

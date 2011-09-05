@@ -32,22 +32,35 @@ import cindy.outils.Outils;
 
 import javax.swing.JCheckBox;
 
+/**
+ * Fenetre modifier un vol. JFrame appelé par la classe VueVols.
+ * @author jc.leberre
+ * @version 1.0 du 05/09/2011
+ *
+ */
 public class VueModifierVol extends JFrame {
 
 	/**
-	 * 
+	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = -4843299780878635525L;
+	/** Conteneur du JPanel */
 	private final JPanel contentPanel = new JPanel();
+	/** Champs pour les dates de decollage */
 	private JSpinner spinner_decol;
+	/** Interface du controleur */
 	private IControleur controleur;
+	/** Champs de texte de l'ID */
 	private JTextField textField_Id;
+	/** Champs pour les dates d'atterissage */
 	private JSpinner spinner_atter;
+	/** Tableau contenant les données de la table */
 	private JTable table;
+	/** Bouton Box annuler un vol */
 	private JCheckBox checkBox;
 
 	/**
-	 * Launch the application.
+	 * Lanceur de l'application pour les tests.
 	 */
 	public static void main(String[] args) {
 		try {

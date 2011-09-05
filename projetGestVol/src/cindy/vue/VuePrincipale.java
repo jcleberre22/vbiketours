@@ -21,14 +21,26 @@ import javax.swing.border.EmptyBorder;
 
 import cindy.controleur.IControleur;
 
+/**
+ * Fenetre principale.
+ * @author JP.martinez
+ * @version 1.0 du 05/09/2011
+ *
+ */
 public class VuePrincipale extends JFrame {
 
+	/**
+	 * Serial Version UID
+	 */
 	private static final long serialVersionUID = 1L;
+	/** Conteneur d'un panel */
 	private JPanel contentPane;
+	/** Interfance du controleur */
 	private IControleur controleur;
 	
 	/**
-	 * Creer la vue.
+	 * Creation de la fenetre principale.
+	 * @param interface du controleur
 	 */
 	public VuePrincipale(IControleur ctrl) {
 		this.controleur=ctrl;
