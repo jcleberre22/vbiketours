@@ -29,13 +29,21 @@ public class LoginMail extends JDialog {
 	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = -8948312729868282822L;
+	/** conteneneur panel */
 	private final JPanel contentPanel = new JPanel();
+	/** Zone de texte */
 	private JTextField txtgmailcom;
+	/** Label du login */
 	private JLabel lblLogin;
+	/** Label du mdp */
 	private JLabel lblMotDePasse;
+	/** Zone de texte crypté */
 	private JPasswordField passwordField;
+	/** String du mdp */
 	private String mdp;
+	/** String du login */
 	private String login;
+	/** String du annuler */
 	private JButton btnAnnuler;
 
 	/**
