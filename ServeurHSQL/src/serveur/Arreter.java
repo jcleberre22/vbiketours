@@ -2,13 +2,13 @@ package serveur;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import org.hsqldb.jdbc.JDBCDataSource;
 
-import org.hsqldb.jdbc.jdbcDataSource;
 
 public class Arreter {
 	public static void main(String[] args) {
 		Connection cnx;
-		jdbcDataSource dataSource= new jdbcDataSource();
+		JDBCDataSource dataSource= new JDBCDataSource();
 		dataSource.setDatabase("jdbc:hsqldb:hsql://127.0.0.1");
 		dataSource.setUser("sa");
 		dataSource.setPassword("");
