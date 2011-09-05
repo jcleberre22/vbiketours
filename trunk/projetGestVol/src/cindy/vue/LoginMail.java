@@ -1,14 +1,11 @@
 package cindy.vue;
 
 import java.awt.BorderLayout;
+
 import java.awt.FlowLayout;
 
-import javax.lang.model.type.ErrorType;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -18,16 +15,18 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-import cindy.controleur.Controleur;
-import cindy.controleur.IControleur;
 import cindy.outils.EnvoiMail;
 
-import javax.swing.SwingConstants;
-
+/**
+ * Fenetre de vue 
+ * @author jc.leberre
+ * @version 1.0 du 05/09/2011
+ *
+ */
 public class LoginMail extends JDialog {
 
 	/**
-	 * 
+	 * Serial Version UID
 	 */
 	private static final long serialVersionUID = -8948312729868282822L;
 	private final JPanel contentPanel = new JPanel();
@@ -40,7 +39,7 @@ public class LoginMail extends JDialog {
 	private JButton btnAnnuler;
 
 	/**
-	 * Launch the application.
+	 * Lanceur de l'application
 	 */
 	public static void main(String[] args) {
 		try {
@@ -52,7 +51,7 @@ public class LoginMail extends JDialog {
 	}
 
 	/**
-	 * Create the dialog.
+	 * Creation de la fenetre.
 	 */
 	public LoginMail() {
 		setBounds(100, 100, 259, 219);

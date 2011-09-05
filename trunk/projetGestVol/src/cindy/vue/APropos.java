@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -14,7 +13,6 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
 
 /**
  * Fenetre JDialog A propos. Construit sur Windows Builder.
@@ -26,6 +24,8 @@ import javax.swing.BoxLayout;
 public class APropos extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	
+	/** Conteneur de la JDialog */
 	private final JPanel contentPanel = new JPanel();
 
 	/**
@@ -42,7 +42,8 @@ public class APropos extends JDialog {
 	}
 
 	/**
-	 * Create the dialog.
+	 * Creation d'un panel. Fenetre generant une JDialog.
+	 * 
 	 */
 	public APropos() {
 		setBounds(100, 100, 432, 293);
@@ -90,7 +91,7 @@ public class APropos extends JDialog {
 		lblTabuteaud.setBounds(10, 108, 174, 14);
 		panel.add(lblTabuteaud);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(APropos.class.getResource("/cindy/vue/ecusson.png")));
 		lblNewLabel_3.setBounds(230, 70, 152, 151);
 		contentPanel.add(lblNewLabel_3);

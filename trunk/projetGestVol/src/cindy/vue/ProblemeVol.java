@@ -21,43 +21,46 @@ import org.jfree.ui.RefineryUtilities;
 import org.jfree.ui.TextAnchor;
 
 /**
- * A bar chart that uses a custom renderer to display different colors within a series.
- * No legend is displayed because there is only one series but the colors are not consistent.
+ * Classe generant un graphique. Celui ci est en forme de bar chart(histogrammes).
+ * et se base sur la librairie JFreeChart (librairie libre).
+ * @author nicolas.tabuteaud
+ * @version 1.0 du 05/09/2011
  *
  */
 public class ProblemeVol extends ApplicationFrame {
 
 	/**
-	 * 
+	 * Serial Version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * A custom renderer that returns a different color for each item in a single series.
+	 * Une costume de rendu qui retourne une couleur différente pour chaque élément.
 	 */
 	class CustomRenderer extends BarRenderer {
 
 		/** Tableau de couleurs. */
 		private Paint[] colors;
+		/** Titre du bar chart. */
 		private String title = "Nombre de vol avec probleme";
 
 		/**
 		 * Creates a new renderer.
 		 *
-		 * @param colors  the colors.
+		 * @param couleurs.
 		 */
 		public CustomRenderer(final Paint[] colors) {
 			this.colors = colors;
 		}
 
 		/**
-		 * Returns the paint for an item.  Overrides the default behaviour inherited from
-		 * AbstractSeriesRenderer.
+		 * Renvoie la peinture d'un élément. 
+		 * Remplace le comportement par défaut hérité de AbstractSeriesRenderer	
 		 *
-		 * @param row  the series.
-		 * @param column  the category.
+		 * @param ligne.
+		 * @param colonne.
 		 *
-		 * @return The item color.
+		 * @return l'item de la couleur
 		 */
 		public Paint getItemPaint(final int row, final int column) {
 			return this.colors[column % this.colors.length];
@@ -65,7 +68,7 @@ public class ProblemeVol extends ApplicationFrame {
 	}
 
 	/**
-	 * Creates a new demo.
+	 * Test de la classe.
 	 *
 	 * @param title  the frame title.
 	 */
@@ -78,11 +81,11 @@ public class ProblemeVol extends ApplicationFrame {
 		setContentPane(chartPanel);
 	}
 
-	/**
-	 * Creates a sample dataset.
-	 * 
-	 * @return a sample dataset.
-	 */
+    /**
+     * Creation d'un dataset.
+     * On insere des données dans le dataset. 
+     * @return le datasetUtilities
+     */
 	private CategoryDataset createDataset() {
 		final double[][] data = new double[][] {{4.0, 3.0, -2.0, 3.0, 6.0}};
 		return DatasetUtilities.createCategoryDataset(
@@ -92,13 +95,10 @@ public class ProblemeVol extends ApplicationFrame {
 		);
 	}
 
-	/**
-	 * Creates a sample chart.
-	 * 
-	 * @param dataset  the dataset.
-	 * 
-	 * @return a sample chart.
-	 */
+    /**
+     * Creation du chart.
+	 * @return un dataset.
+     */
 	private JFreeChart createChart(final CategoryDataset dataset) {
 
 		final JFreeChart chart = ChartFactory.createBarChart(
@@ -114,7 +114,6 @@ public class ProblemeVol extends ApplicationFrame {
 
 		chart.setBackgroundPaint(Color.lightGray);
 
-		// get a reference to the plot for further customisation...
 		final CategoryPlot plot = chart.getCategoryPlot();
 		plot.setNoDataMessage("NO DATA!");
 
@@ -123,15 +122,11 @@ public class ProblemeVol extends ApplicationFrame {
 						Color.yellow, Color.pink, Color.cyan,
 						Color.magenta, Color.blue}
 		);
-		// renderer.setLabelGenerator(new StandardCategoryLabelGenerator());
-		//renderer.setItemLabelsVisible(true);
 		final ItemLabelPosition p = new ItemLabelPosition(
 				ItemLabelAnchor.CENTER, TextAnchor.CENTER, TextAnchor.CENTER, 45.0
 		);
-		//renderer.setPositiveItemLabelPosition(p);
 		plot.setRenderer(renderer);
 
-		// change the margin at the top of the range axis...
 		final ValueAxis rangeAxis = plot.getRangeAxis();
 		rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		rangeAxis.setLowerMargin(0.15);
@@ -140,12 +135,7 @@ public class ProblemeVol extends ApplicationFrame {
 		return chart;
 
 	}
-	
-	/**
-	 * Starting point for the demonstration application.
-	 *
-	 * @param args  ignored.
-	 */
+
 	public static void main(final String[] args) {
 
 		final ProblemeVol demo = new ProblemeVol("Nombre de vol avec probleme");

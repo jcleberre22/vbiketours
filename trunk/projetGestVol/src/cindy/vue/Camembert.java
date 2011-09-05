@@ -1,4 +1,3 @@
-
 package cindy.vue;
 
 import java.sql.SQLException;
@@ -14,23 +13,24 @@ import cindy.controleur.Controleur;
 import cindy.controleur.IControleur;
 
 /**
- * A simple demonstration application showing how to create a pie chart using data from a
- * {@link DefaultPieDataset}.  This demo also shows an "exploded" section in the chart.
+ * Classe generant un graphique. Celui ci est en forme de camembert
+ * et se base sur une librairie JFreeChart (librairie libre).
+ * @author nicolas.tabuteaud
+ * @version 1.0 du 05/09/2011
  *
  */
 public class Camembert extends JPanel{
 
     /**
-	 * 
+	 * Serial Version IUD.
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel jpanel;
 	private static IControleur controleur;
 
 	/**
-     * Default constructor.
-     *
-     * @param title  the frame title.
+     * Constructeur par defaut.
+     * @param l'interface IControleur du package controleur.
      */
     public Camembert(IControleur controleur) {
     	try {
@@ -44,32 +44,32 @@ public class Camembert extends JPanel{
       this.setVisible(true);
     }
     /**
-     * Creates a sample dataset.
-     * 
-     * @return a sample dataset.
+     * Creation d'un dataset et du chart.
+     * On insere des données dans le dataset. Et on integre le chart dans un panel.
+	 * @return un dataset.
      */
     private void createDataset() {
-    	//création du schéma
         final DefaultPieDataset dataset = new DefaultPieDataset();
-        //insertion des données dansle cmember
         dataset.setValue("Secteur 1(43,2%)", new Double(43.2));
         dataset.setValue("Secteur 2", new Double(10.0));
         dataset.setValue("Secteur 3", new Double(27.5));
         dataset.setValue("Secteur 4", new Double(17.5));
         dataset.setValue("Secteur 5", new Double(11.0));
         dataset.setValue("Secteur 6", new Double(19.4));
-        //création d'un chart
         final JFreeChart chart = ChartFactory.createPieChart(
-                "Nombre de problème par secteur de vol", 	 // chart title
-                dataset,             						// dataset
-                true,               						// include legend
+                "Nombre de problème par secteur de vol", 	
+                dataset,             						
+                true,               					
                 true,
                 false
             );
-        //intégration du chart au panel
         jpanel = new ChartPanel(chart);
     }
-
+    
+    /**
+     * Méthode de test du camembert.
+     * @param args
+     */
     public static void main(String[] args) {
 		new Camembert(controleur);
 	}
