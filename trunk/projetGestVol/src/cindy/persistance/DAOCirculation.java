@@ -37,7 +37,7 @@ public class DAOCirculation implements ICirculationPersistant {
 	 * @throws SQLException, Exception 
 	 */
 	public void lire()throws SQLException,Exception{
-
+			listeCirculations.clear();
 		try{
 			
 			AccesBDD bdd = AccesBDD.getInstance();
@@ -47,11 +47,11 @@ public class DAOCirculation implements ICirculationPersistant {
 			Statement stmt = bdd.getStatement();
 
 			ResultSet rs = stmt.executeQuery(requete);
-
+			
 			while (rs.next()){
 				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
-				ICirculation cat=new Circulation(rs.getInt(1),rs.getString(2));
-				listeCirculations.add(cat);
+				ICirculation circu=new Circulation(rs.getInt(1),rs.getString(2));
+				listeCirculations.add(circu);
 			}
 
 		}catch(Exception e){

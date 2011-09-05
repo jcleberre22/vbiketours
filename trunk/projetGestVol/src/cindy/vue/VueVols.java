@@ -222,7 +222,6 @@ public class VueVols extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int idVol=Integer.parseInt(textField_Id.getText());
-				System.out.println("IDVOL:"+idVol);
 				int circulation=comboBox_circu.getSelectedIndex()+1;
 				int categorieDeVol=comboBox_cat.getSelectedIndex()+1;
 				Date date = (Date)spinner_decol.getValue();

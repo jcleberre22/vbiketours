@@ -37,7 +37,7 @@ public class DAOCategorie implements ICategoriePersistant {
 	 * @throws SQLException, Exception 
 	 */
 	public void lire()throws SQLException,Exception{
-
+			listeCategories.clear();
 		try{
 			
 			AccesBDD bdd = AccesBDD.getInstance();
@@ -52,7 +52,6 @@ public class DAOCategorie implements ICategoriePersistant {
 				System.out.print(rs.getInt(1)+"\t"+rs.getString(2)+"\n");
 				ICategorie cat=new Categorie(rs.getInt(1),rs.getString(2));
 				listeCategories.add(cat);
-
 			}
 
 		}catch(Exception e){
