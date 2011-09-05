@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="datasource" class="org.hsqldb.jdbc.jdbcDataSource">
+	<bean id="datasource" class="org.hsqldb.jdbc.JDBCDataSource">
 		<property name="database" value="jdbc:hsqldb:hsql://127.0.0.1"></property>
 		<property name="user" value="sa">	</property>
 		<property name="password" value="">	</property>

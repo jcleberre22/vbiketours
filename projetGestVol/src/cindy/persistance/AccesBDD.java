@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.apache.log4j.Logger;
-import org.hsqldb.jdbc.jdbcDataSource;
+import org.hsqldb.jdbc.JDBCDataSource;
+
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
@@ -50,7 +51,7 @@ public final class AccesBDD {
 			try {
 				BeanFactory beanFactory = new XmlBeanFactory(
 						new ClassPathResource(fileCnx));
-				jdbcDataSource dataSource = (jdbcDataSource) beanFactory
+				JDBCDataSource dataSource = (JDBCDataSource) beanFactory
 						.getBean("datasource");
 				cnx = dataSource.getConnection();
 				logger.info("connexion réussi");
