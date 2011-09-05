@@ -17,6 +17,9 @@ import javax.swing.JPasswordField;
 
 import cindy.controleur.Controleur;
 import cindy.controleur.IControleur;
+import cindy.outils.EnvoiMail;
+
+import javax.swing.SwingConstants;
 
 public class LoginMail extends JDialog {
 
@@ -25,7 +28,7 @@ public class LoginMail extends JDialog {
 	 */
 	private static final long serialVersionUID = -8948312729868282822L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField txtgmailcom;
 	private JLabel lblLogin;
 	private JLabel lblMotDePasse;
 	private JPasswordField passwordField;
@@ -48,16 +51,16 @@ public class LoginMail extends JDialog {
 	 * Create the dialog.
 	 */
 	public LoginMail() {
-		setBounds(100, 100, 246, 219);
-		setTitle("Cindy - Loggin Mail"); 
+		setBounds(100, 100, 259, 219);
+		setTitle("Cindy - Loggin Mail");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			lblLogin = new JLabel("Login : ");
-			lblLogin.setBounds(10, 31, 46, 14);
+			lblLogin = new JLabel("Adresse Gmail : ");
+			lblLogin.setBounds(10, 31, 94, 14);
 			contentPanel.add(lblLogin);
 		}
 		{
@@ -66,14 +69,15 @@ public class LoginMail extends JDialog {
 			contentPanel.add(lblMotDePasse);
 		}
 		{
-			textField = new JTextField();
-			textField.setBounds(96, 24, 122, 28);
-			contentPanel.add(textField);
-			textField.setColumns(10);
+			txtgmailcom = new JTextField();
+			txtgmailcom.setText("@gmail.com");
+			txtgmailcom.setBounds(116, 24, 122, 28);
+			contentPanel.add(txtgmailcom);
+			txtgmailcom.setColumns(10);
 		}
-		
+
 		passwordField = new JPasswordField();
-		passwordField.setBounds(96, 93, 122, 28);
+		passwordField.setBounds(116, 93, 122, 28);
 		contentPanel.add(passwordField);
 		{
 			JPanel buttonPane = new JPanel();
@@ -83,19 +87,22 @@ public class LoginMail extends JDialog {
 				JButton okButton = new JButton("Valider");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						mdp=new String(passwordField.getPassword());
-						//mdp = lblMotDePasse.getText();
-						login = lblLogin.getText();
-						if(mdp != null){
-							if(!mdp.equals("Mot de passe :")){
-								if(!mdp.trim().equals("")){
-									dispose();
-									new VueMail(mdp);
+						mdp = new String(passwordField.getPassword());
+						login = txtgmailcom.getText();
+						if (mdp != null) {
+							if (!mdp.equals("Mot de passe :")) {
+								if (!mdp.trim().equals("")) {
+									if (EnvoiMail.verifierAuthentification(
+											login, mdp)) {
+										dispose();
+										new VueMail(mdp, login);
+									}else{
+										new RuntimeException("probleme d'authentification");
+									}
 								}
 							}
-						}
-						else
-							System.out.println("le mot de passe est null : " + mdp);
+						} else
+							new RuntimeException("le mot de passe est null! ");
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -103,7 +110,7 @@ public class LoginMail extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
-		
+
 		this.setVisible(true);
 	}
 }

@@ -45,7 +45,7 @@ public class VueMail extends JDialog{
 	 */
 	public static void main(String[] args) {
 		try {
-			VueMail dialog = new VueMail("mdp");
+			VueMail dialog = new VueMail("mdp","login");
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -56,7 +56,10 @@ public class VueMail extends JDialog{
 	/**
 	 * Create the dialog.
 	 */
-	public VueMail(final String motDePasse) {
+	public VueMail(final String motDePasse,final String login) {
+		System.out.println(motDePasse);
+		System.out.println(login);
+		
 		setBounds(100, 100, 450, 300);
 		setTitle("Cindy - Envoyer un mail");
 		getContentPane().setLayout(new BorderLayout());
@@ -99,28 +102,28 @@ public class VueMail extends JDialog{
 		}
 		{
 			txtA = new JTextField();
-			/*txtA.addMouseListener(new MouseAdapter() {
+			txtA.addMouseListener(new MouseAdapter() {
 				@Override
-				public void mouseClicked(MouseEvent e) {
+				public void mouseClicked(MouseEvent arg0) {
 					if (txtA.getText().equals("Adresses separ\u00E9es d'un \";\"")) {
 						txtA.setText("");
 						txtA.setForeground(Color.BLACK);
-					}
-				}
-			});*/
-			txtA.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (txtA.getText().equals("Adresses separ\u00E9es d'un \";\"")) {
-						txtA.setText("");
-						txtA.setForeground(Color.BLACK);
-					}					
+					}	
 				}
 			});
 			txtA.setBounds(58, 18, 340, 28);
 			txtA.setText("Adresses separ\u00E9es d'un \";\"");
 			txtA.setForeground(Color.GRAY);
+//			txtA.addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					if (txtA.getText().equals("Adresses separ\u00E9es d'un \";\"")) {
+//						txtA.setText("");
+//						txtA.setForeground(Color.BLACK);
+//					}					
+//				}
+//			});
 			contentPanel.add(txtA);
 		}
 		
@@ -148,7 +151,8 @@ public class VueMail extends JDialog{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						new EnvoiMail(txtA.getText().split(";"),textArea.getText(),textObjet.getText(),motDePasse);
+						EnvoiMail mail=new EnvoiMail();
+						mail.EnvoyerMail(txtA.getText().split(";"),textArea.getText(),textObjet.getText(),motDePasse,login);
 						JOptionPane.showMessageDialog(null, "Message envoyé!");
 						dispose();
 					}

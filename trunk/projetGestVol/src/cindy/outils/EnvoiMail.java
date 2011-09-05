@@ -1,6 +1,8 @@
 package cindy.outils;
 
 import java.io.IOException;
+
+import com.jscape.inet.smtp.SmtpException;
 import com.jscape.inet.smtpssl.SmtpSsl;
 import com.jscape.inet.email.EmailMessage;
 
@@ -10,11 +12,13 @@ public class EnvoiMail {
 
 	// Cette classe a besoin de la librairie sinetfactory.jar
 
-	public EnvoiMail(String[] ListDest, String cCorps, String cSujet, String mdp) {
+	public EnvoiMail(){
+		
+	}
+	
+	public void EnvoyerMail(String[] ListDest, String cCorps, String cSujet, String mdp,String login) {
 		String EnvoyerA = ""; // un seul Destinataire à la fois
-		// Pour des raisons de simplicité, les informations du mail
-		// chargées de l'envoi sont inscrites en dur.
-		String EnvoieDe = "jcleberre22@gmail.com"; // Login
+		String EnvoieDe = login; // Login
 		String pwd = mdp; // Password
 		for (int i = 0; i < ListDest.length; i++) {
 			// On récupère l'élément et on l'envoie
@@ -60,5 +64,36 @@ public class EnvoiMail {
 		} catch (Exception e) {
 			System.out.println("Une erreur s'est produite : " + e);
 		}
+	}
+	
+	public static boolean verifierAuthentification(String username,String password){
+		SmtpSsl smtp = null;
+
+		
+			// On crée une instance de connexion par SmtpSsl via le port 465
+			smtp = new SmtpSsl("smtp.gmail.com", 465);
+			// On établit une connexion sécurisée
+			try {
+				smtp.connect();
+			} catch (SmtpException e) {
+				new RuntimeException("probleme de connexion au serveur smtp");
+				return false;
+			}
+
+			// les cordonnées du compte mail
+			try {
+				smtp.login(username, password);
+			} catch (SmtpException e) {
+				new RuntimeException("Utilisateur ou mot de passe incorrect");
+				return false;
+			}
+			
+			try {
+				smtp.disconnect();
+			} catch (SmtpException e) {
+				new RuntimeException("problème lors de la deconnection");
+				return false;
+			}
+			return true;
 	}
 }
