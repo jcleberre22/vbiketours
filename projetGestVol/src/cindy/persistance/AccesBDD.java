@@ -8,12 +8,14 @@ import java.sql.Statement;
 import org.apache.log4j.Logger;
 import org.hsqldb.jdbc.JDBCDataSource;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.CannotLoadBeanClassException;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 /**
- * Offrir l'acces a la bdd, sous la forme de singleton.
- * Utilise un bean creer par spring.
+ * Offrir l'acces a la bdd, sous la forme de singleton. Utilise un bean creer
+ * par spring.
+ * 
  * @author JC.leberre
  * @version 1.0 du 19/08/2011
  */
@@ -26,30 +28,32 @@ public final class AccesBDD {
 	private static AccesBDD instance;
 
 	private static String fileCnx = "cindy/persistance/dataSourceBean.xml";
+
 	/**
-	 * interdit l'instanciation de sorte a obliger 
-	 * l'utilisation du singleton.
+	 * interdit l'instanciation de sorte a obliger l'utilisation du singleton.
 	 */
-	private AccesBDD(){
+	private AccesBDD() {
 		getInstanceConnexion();
 	}
 
-	public static AccesBDD getInstance(){
+	public static AccesBDD getInstance() {
 		if (instance == null) {
 			instance = new AccesBDD();
 		}
 		return instance;
 	}
-	/**
-	 * @return l'instance de connexion avec la bdd. 
-	 */
-	public static Connection getInstanceConnexion(){
-		if (cnx == null){
-			BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource(fileCnx));
-			JDBCDataSource dataSource= (JDBCDataSource) beanFactory.getBean("datasource");
 
+	/**
+	 * @return l'instance de connexion avec la bdd.
+	 */
+	public static Connection getInstanceConnexion() {
+		if (cnx == null) {
 			try {
-				cnx =  dataSource.getConnection();
+				BeanFactory beanFactory = new XmlBeanFactory(
+						new ClassPathResource(fileCnx));
+				JDBCDataSource dataSource = (JDBCDataSource) beanFactory
+						.getBean("datasource");
+				cnx = dataSource.getConnection();
 				logger.info("connexion réussi");
 			} catch (SQLException e) {
 				throw new RuntimeException("probleme a l'ouverture de la bdd");
@@ -61,7 +65,7 @@ public final class AccesBDD {
 	/**
 	 * Force l'enregistrement des informations restées en mémoire.
 	 */
-	public static void fermer(){
+	public static void fermer() {
 		try {
 			cnx.close();
 			instance = null;
@@ -82,11 +86,13 @@ public final class AccesBDD {
 
 	/**
 	 * Création d'un statement
+	 * 
 	 * @return la connexion
 	 */
 	public Statement getStatement() {
-		if (cnx == null){
-			throw new RuntimeException("Aucune connexion a la base de données n'est active.");
+		if (cnx == null) {
+			throw new RuntimeException(
+					"Aucune connexion a la base de données n'est active.");
 		}
 		try {
 			return cnx.createStatement();
@@ -94,9 +100,11 @@ public final class AccesBDD {
 			throw new RuntimeException("Impossible d'obtenir un statement!!.");
 		}
 	}
-	
+
 	/**
-	 * Création d'un prepare Statement qui renvoie les parametres SQL de la database.
+	 * Création d'un prepare Statement qui renvoie les parametres SQL de la
+	 * database.
+	 * 
 	 * @param sql
 	 * @return cnx
 	 */
@@ -105,7 +113,9 @@ public final class AccesBDD {
 			return cnx.prepareStatement(sql);
 		} catch (SQLException e) {
 			logger.fatal(e.getMessage());
-			throw new RuntimeException("Probleme a l'obtention du preparedstatement " + sql+ " erreur:"+e.getMessage());
+			throw new RuntimeException(
+					"Probleme a l'obtention du preparedstatement " + sql
+							+ " erreur:" + e.getMessage());
 		}
 	}
 }
