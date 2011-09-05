@@ -53,8 +53,6 @@ public class DAOVol implements IVolPersistant{
 			//executeQuery quand c'est un select
 			ResultSet rs = stmt.executeQuery(requete);
 			
-			System.out.println("Obtention de la liste des vols");
-			
 			while (rs.next()){
 				GregorianCalendar gCDecol=Outils.timestampToGregCal(rs.getTimestamp(4));
 				GregorianCalendar gCAtter=Outils.timestampToGregCal(rs.getTimestamp(5));
