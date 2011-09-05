@@ -93,9 +93,13 @@ public class DAOVol implements IVolPersistant{
 		try{
 			AccesBDD bdd = AccesBDD.getInstance();
 
+			String requete =  "DELETE FROM sortieaerienne WHERE vol=?";
 			String requete1 = "DELETE FROM Vol" + " WHERE idvol=?";
 
-			PreparedStatement prSt1 = bdd.getPrepareStatment(requete1);
+			PreparedStatement prSt1 = bdd.getPrepareStatment(requete);
+			prSt1.setInt(1, param);
+			prSt1.executeUpdate();
+			prSt1 = bdd.getPrepareStatment(requete1);
 			prSt1.setInt(1, param);
 			prSt1.executeUpdate();
 			prSt1.close();
