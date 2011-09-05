@@ -56,6 +56,13 @@ public class VuePrincipale extends JFrame {
 		mnFichier.add(mntmAPropos);
 		
 		JMenuItem mntmQuitter = new JMenuItem("Quitter");
+		mntmQuitter.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();				
+			}
+		});
 		mnFichier.add(mntmQuitter);
 		
 		JMenu mnMessagerie = new JMenu("Messagerie");
