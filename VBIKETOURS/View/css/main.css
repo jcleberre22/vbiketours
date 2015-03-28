@@ -940,6 +940,16 @@ textarea.form-control {
 
 @media (min-width: 768px) and (max-width: 979px) {
 
+/* navigation */
+    .navbar-inverse .navbar-toggle {
+        border-color: #fff;
+    }
+
+    .navbar-inverse .navbar-toggle:hover,
+    .navbar-inverse .navbar-toggle:focus {
+        background-color: transparent;
+    }
+    
 /* home slider  */
     .caption-content h2 {
         font-size: 40px;
@@ -1143,16 +1153,8 @@ textarea.form-control {
     }
 
 /*about*/
-
     #about .welcome-block h3 {
         margin: 0 0 35px;
-    }
-
-/* service */
-
-    .service-item {
-        margin: 0 auto 50px;
-        width: 55%;
     }
 
 /* gallery */
@@ -1171,22 +1173,6 @@ textarea.form-control {
 
     .testimonial-item > div:before {
         bottom: 160px;
-    }
-
-/* social */
-    .social-button li:nth-child(2) {
-        margin: 0 50px;
-    }
-
-    .social-button li a {
-        height: 90px;
-        line-height: 96px;
-        width: 90px;
-    }
-
-/* price */
-    .price-table {
-        margin-bottom: 50px;
     }
 
 /* contact form */

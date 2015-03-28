@@ -6,7 +6,13 @@
 			<div class="sec-title text-center wow animated fadeInDown">
 				<h2> YOUR CART </h2>
 			</div>
-			
+				<?php 
+					if ($cart_empty){
+						echo "your cart is empty";
+					}else {
+						print_r($cart);
+					}
+				?>
 			<div>
 			
 			</div>

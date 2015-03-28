@@ -1,4 +1,4 @@
-<div class="col-xs-9 col-md-6 col-lg-6">
+<div id="booking" class="col-xs-12 col-md-11 col-lg-6">
 	<form method="post" action="Controller/booking_ctl.php">
 		
 		<div id="booking_header">

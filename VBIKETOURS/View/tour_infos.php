@@ -1,5 +1,5 @@
 
-<div id="tour_infos" class="col-xs-9 col-md-6 col-lg-6">
+<div id="tour_infos" class="col-xs-12 col-md-11 col-lg-6">
 	
 	<div id="tour_infos_title" class="col-xs-5 col-md-5 col-lg-5">
 		Fitness : <BR /><BR />

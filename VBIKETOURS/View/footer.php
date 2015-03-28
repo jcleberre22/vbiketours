@@ -14,7 +14,7 @@
 				src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Vbiketours/1468819633364888?fref=ts;width=270&amp;height=235&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=359340147575210"></iframe>
 		</div>
 		
-		<div class="col-lg-3 col-md-3 col-xs-3">
+		<div class="col-lg-3 col-md-4 col-xs-10">
 			<ul class="footer_list">
 				<li>Our Tours</li>
 				<p><br/></p>
@@ -30,7 +30,7 @@
 			</ul>
 		</div>
 		
-		<div class="col-lg-3 col-md-3 col-xs-3">
+		<div class="col-lg-3 col-md-4 col-xs-10">
 					<ul class="footer_list">
 				<li>Our Tours</li>
 				<p><br/></p>
@@ -46,7 +46,7 @@
 			</ul>
 		</div>
 		
-		<div class="col-lg-3 col-md-3 col-xs-3">
+		<div class="col-lg-3 col-md-8 col-xs-10">
 					<ul class="footer_list">
 				<li>Our Tours</li>
 				<p><br/></p>
@@ -67,7 +67,7 @@
 		</div>
 		
 		<div class="col-lg-12 col-md-12 col-xs-12" id="follow_us" >
-		<p><br/><b>Follow Us On</b></p>
+		<br/>Follow Us On
 		<a><img alt="" src=""/></a>
 		</div>
 		
@@ -88,8 +88,6 @@
 <script src="/VBIKETOURS/js/jquery.singlePageNav.min.js"></script>
 <!-- jquery.fancybox.pack -->
 <script src="/VBIKETOURS/js/jquery.fancybox.pack.js"></script>
-<!-- Google Map API -->
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <!-- Owl Carousel -->
 <script src="/VBIKETOURS/js/owl.carousel.min.js"></script>
 <!-- jquery easing -->

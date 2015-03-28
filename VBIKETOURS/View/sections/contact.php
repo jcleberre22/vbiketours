@@ -50,9 +50,3 @@
 	</div>
 </section>
 <!-- end Contact section -->
-
-
-<!-- 	<section id="google-map">
-			<div id="map-canvas" class="wow animated fadeInUp"></div>
-		</section>-->
-
