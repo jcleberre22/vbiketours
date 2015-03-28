@@ -43,6 +43,10 @@
 <link rel="stylesheet" href="/VBIKETOURS/view/css/animate.css">
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="/VBIKETOURS/view/css/main.css">
+<!-- Tours Stylesheet -->
+<link rel="stylesheet" href="/VBIKETOURS/view/css/tour.css">
+<!-- Booking_form Stylesheet -->
+<link rel="stylesheet" href="/VBIKETOURS/view/css/booking_form.css">
 
 <!-- Modernizer Script for old Browsers -->
 <script src="/VBIKETOURS/js/modernizr-2.6.2.min.js"></script>

@@ -1,0 +1,34 @@
+#tour{
+	color: black;
+}
+
+#tour .sec-title h2 {
+	color: gray; 
+}
+
+#tour .sec-title h2:after {
+    border-bottom: 1px solid #FF69B4;
+    content: "";
+    display: block;
+    left: 25%;
+    bottom: 0;
+    position: absolute;
+    width: 50%;
+}
+
+#image_tour{
+	text-align: right;
+}
+
+#image_tour>img {
+	max-width: 500px;
+	max-height: 500px;
+}
+
+#description_tour{
+	text-align: justify;
+}
+
+#tour_infos{
+	background-color: #eee;
+}

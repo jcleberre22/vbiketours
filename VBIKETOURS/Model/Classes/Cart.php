@@ -3,7 +3,6 @@ class Cart {
 	
 /**********ATTRIBUTES***************/
 	
-	private $_id;
 	private $_booking_list;
 	private $_price;
 
@@ -12,20 +11,15 @@ class Cart {
 	
 //  Classic Constructor
 
-	public function __construct($id, $booking_list, $price)
+	public function __construct($booking_list, $price)
 	{
-		$this->_id = set_id($id);
-		$this->_booking_list = set_booking_list($booking_list);
-		$this->_price = set_price($price);
+		$this->_booking_list = $this->set_booking_list($booking_list);
+		$this->_price = $this->set_price($price);
 	}
 
 
 	
 /**********GETTERS***************/
-	
-	public function get_id() {
-		return $this->_id;
-	}
 	
 	public function get_booking_list() {
 		return $this->_booking_list;
@@ -38,9 +32,6 @@ class Cart {
 	
 /**********SETTERS***************/
 	
-	public function set_id($id) {
-		$this->_id = $id;
-	}
 	
 	public function set_booking_list($booking_list) {
 		$this->_booking_list = $booking_list;

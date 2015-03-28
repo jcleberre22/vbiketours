@@ -2,7 +2,7 @@
 include 'header.php';
 include 'sections/slider.php';
 include 'sections/about.php';
-include 'sections/tours.php';
+include 'sections/list_tours.php';
 include 'sections/news.php';
 include 'sections/gallery.php';
 include 'sections/faq.php';
