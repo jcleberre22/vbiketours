@@ -1,9 +1,15 @@
 <!-- tours section -->
-<?php if (isset($_SESSION['msg'])){
-	$booking_msg=$_SESSION['msg'];
-	?>
+<?php
+	if (isset($_SESSION['msg'])){
+		if (($booking_msg=$_SESSION['msg'])!=""){
+?>
+
 <script type="text/javascript">alert("<?php echo $booking_msg; ?>")</script>
-<?php }?>
+
+<?php 
+	$_SESSION['msg']="";
+		}
+	}?>
 <section id="tour">
 	<div class="container">
 		<div class="row">

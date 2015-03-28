@@ -13,8 +13,8 @@ class Cart {
 
 	public function __construct($booking_list, $price)
 	{
-		$this->_booking_list = $this->set_booking_list($booking_list);
-		$this->_price = $this->set_price($price);
+		$this->set_booking_list($booking_list);
+		$this->set_price($price);
 	}
 
 

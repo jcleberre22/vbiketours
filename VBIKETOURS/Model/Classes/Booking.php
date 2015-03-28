@@ -16,12 +16,21 @@ class Booking {
 
 	public function __construct($id, $date, $nb_adults, $nb_childrens, $tour_id, $price)
 	{
-		$this->_id = $this->set_id($id);
-		$this->_date = $this->set_date($date);
-		$this->_nb_adults = $this->set_nb_adults($nb_adults);
-		$this->_nb_childrens = $this->set_nb_childrens($nb_childrens);
-		$this->_tour_id = $this->set_tour_id($tour_id);
-		$this->_price = $this->set_price($price);
+		$this->set_id($id);
+		$this->set_date($date);
+		$this->set_nb_adults($nb_adults);
+		$this->set_nb_childrens($nb_childrens);
+		$this->set_tour_id($tour_id);
+		$this->set_price($price);
+	}
+	
+	public function tostring(){
+		echo $this->_id."<br><br>";
+		echo $this->_date."<br><br>";
+		echo $this->_nb_adults."<br><br>";
+		echo $this->_nb_childrens."<br><br>";
+		echo $this->_tour_id."<br><br>";
+		echo $this->_price."<br><br>";
 	}
 
 	

@@ -21,16 +21,16 @@ class Customer {
 
 // 	public function __construct($id, $country, $first_name, $last_name, $address, $city, $email, $phone, $pickup_location, $additional_infos)
 // 	{
-// 		$this->_id = set_id($id);
-// 		$this->_country = set_country($country);
-// 		$this->_first_name = set_first_name($first_name);
-// 		$this->_last_name = set_last_name($last_name);
-// 		$this->_address = set_address($address);
-// 		$this->_city = set_city($city);
-// 		$this->_email = set_email($email);
-// 		$this->_phone = set_phone($phone);
-// 		$this->_pickup_location = set_pickup_location($pickup_location);
-// 		$this->_additional_infos = set_additional_infos($additional_infos);
+// 		$this-> set_id($id);
+// 		$this-> set_country($country);
+// 		$this-> set_first_name($first_name);
+// 		$this-> set_last_name($last_name);
+// 		$this-> set_address($address);
+// 		$this-> set_city($city);
+// 		$this-> set_email($email);
+// 		$this-> set_phone($phone);
+// 		$this-> set_pickup_location($pickup_location);
+// 		$this-> set_additional_infos($additional_infos);
 // 	}
 
 //  Auto-hydrate Constructor 

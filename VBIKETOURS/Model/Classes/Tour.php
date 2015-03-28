@@ -25,21 +25,21 @@ class Tour {
 
 // 	public function __construct($id, $name, $summary, $description, $fitness, $vehicle, $duration, $style, $route, $nb_passenger_max, $price, $start_time, $validity_start, $validity_end, $picture)
 // 	{
-// 		$this->_id = set_id($id);
-// 		$this->_name = set_name($name);
-// 		$this->_summary = set_summary($summary);
-// 		$this->_description = set_description($description);
-// 		$this->_fitness = set_fitness($fitness);
-// 		$this->_vehicle = set_vehicle($vehicle);
-// 		$this->_duration = set_duration($duration);
-// 		$this->_style = set_style($style);
-// 		$this->_route = set_route($route);
-// 		$this->_nb_passenger_max = set_nb_passenger_max($nb_passenger_max);
-// 		$this->_price = set_price($price);
-// 		$this->_start_time = set_start_time($start_time);
-// 		$this->_validity_start = set_validity_start($validity_start);
-// 		$this->_validity_start = set_validity_start($validity_start);
-// 		$this->_validity_start = set_validity_start($validity_start);
+// 		$this-> set_id($id);
+// 		$this-> set_name($name);
+// 		$this-> set_summary($summary);
+// 		$this-> set_description($description);
+// 		$this-> set_fitness($fitness);
+// 		$this-> set_vehicle($vehicle);
+// 		$this-> set_duration($duration);
+// 		$this-> set_style($style);
+// 		$this-> set_route($route);
+// 		$this-> set_nb_passenger_max($nb_passenger_max);
+// 		$this-> set_price($price);
+// 		$this-> set_start_time($start_time);
+// 		$this-> set_validity_start($validity_start);
+// 		$this-> set_validity_start($validity_start);
+// 		$this-> set_validity_start($validity_start);
 // 	}
 
 //  Auto-hydrate Constructor 
@@ -191,6 +191,6 @@ class Tour {
 	public function set_picture($picture) {
 		$this->_picture = $picture;
 	}
-	
+
 }
 ?>

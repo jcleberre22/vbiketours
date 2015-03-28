@@ -15,11 +15,11 @@ class Order {
 
 // 	public function __construct($id, $customer_id, $payment_type, $cart_id, $payment_succes)
 // 	{
-// 		$this->_id = set_id($id);
-// 		$this->_customer_id = set_customer_id($customer_id);
-// 		$this->_payment_type = set_payment_type($payment_type);
-// 		$this->_cart_id = set_cart_id($cart_id);
-// 		$this->_payment_succes = set_payment_succes($payment_succes);
+// 		$this-> set_id($id);
+// 		$this-> set_customer_id($customer_id);
+// 		$this-> set_payment_type($payment_type);
+// 		$this-> set_cart_id($cart_id);
+// 		$this-> set_payment_succes($payment_succes);
 // 	}
 
 //  Auto-hydrate Constructor 
