@@ -4,7 +4,7 @@
 		<div class="row">
 
 			<div class="sec-title text-center wow animated fadeInDown">
-				<h2>Contact</h2>
+				<h2>Contact us</h2>
 				<p>Leave a Message</p>
 			</div>
 
@@ -33,7 +33,6 @@
 
 			<div class="col-md-5 wow animated fadeInRight">
 				<address class="contact-details">
-					<h3>Contact Us</h3>
 					<p>
 						<i class="fa fa-pencil"></i>VBIKETOURS <span>Adress </span><span>VIETNAM</span>
 					</p>

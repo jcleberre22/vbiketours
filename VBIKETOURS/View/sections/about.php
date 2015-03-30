@@ -9,7 +9,7 @@
 				<div class="message-body">
 					<img src="img/about.jpg" class="pull-left" alt="member">
 					<p>VBIKETOURS was set up at Starbuck coffee in Saigon by the idea
-						of Mr Truong Minh Cang The General Director of Architecture &
+						of Mr Truong Minh Cang The General Director of Architecture &amp;
 						Construction Company and Mr Huynh Thanh Thanh the Tour Guide of
 						Tourist Company. They are founders of VBIKETOURS.Vietnam is small
 						country but we have big population nearly 100 milions peoples and

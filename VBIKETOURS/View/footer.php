@@ -27,7 +27,7 @@
 					<li><a href="index.php#testimonials">Testimonial</a></li>
 					<li><a href="index.php#contact">Contact</a></li>
 					<?php if (isset($_SESSION['cart'])){?>
-					<li><a href="index.php?page=cart">My cart</a></li>
+					<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
 					<?php }?>
 			</ul>
 		</div>
@@ -50,7 +50,7 @@
 		
 		<div class="col-lg-3 col-md-8 col-xs-10">
 					<ul class="footer_list">
-				<li>news</li>
+				<li>News</li>
 				<p><br/></p>
 				<?php
 					foreach ( $tours_list as $tour ) {

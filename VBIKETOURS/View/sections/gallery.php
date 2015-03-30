@@ -12,7 +12,6 @@
 			<ul class="project-wrapper wow animated fadeInUp">
 				<li class="gallery-item"><img src="./img/uploads/slider/1.jpg"
 					class="img-responsive">
-					<figcaption class="mask">image 1</figcaption>
 					<ul class="external">
 						<li><a class="fancybox" title="1" data-fancybox-group="works"
 							href="./img/uploads/slider/1.jpg"><i class="fa fa-search"></i></a></li>
@@ -21,7 +20,6 @@
 
 				<li class="gallery-item"><img src="./img/uploads/slider/2.jpg"
 					class="img-responsive">
-					<figcaption class="mask">image 2</figcaption>
 					<ul class="external">
 						<li><a class="fancybox" title="2" href="./img/uploads/slider/2.jpg"
 							data-fancybox-group="works"><i class="fa fa-search"></i></a></li>
@@ -29,7 +27,6 @@
 
 				<li class="gallery-item"><img src="./img/uploads/slider/3.jpg"
 					class="img-responsive">
-					<figcaption class="mask">image 3</figcaption>
 					<ul class="external">
 						<li><a class="fancybox" title="3" data-fancybox-group="works"
 							href="./img/uploads/slider/3.jpg"><i class="fa fa-search"></i></a></li>
@@ -37,14 +34,12 @@
 
 				<li class="gallery-item"><img src="./img/uploads/slider/4.jpg"
 					class="img-responsive">
-					<figcaption class="mask">image 4</figcaption>
 					<ul class="external">
 						<li><a class="fancybox" title="4" data-fancybox-group="works"
 							href="./img/uploads/slider/4.jpg"><i class="fa fa-search"></i></a></li>
 					</ul></li>
 				<li class="gallery-item"><img src="./img/uploads/slider/5.jpg"
 					class="img-responsive">
-					<figcaption class="mask">image 5</figcaption>
 					<ul class="external">
 						<li><a class="fancybox" title="5" data-fancybox-group="works"
 							href="./img/uploads/slider/5.jpg"><i class="fa fa-search"></i></a></li>
@@ -52,7 +47,6 @@
 					</ul></li>
 				<li class="gallery-item"><img src="./img/uploads/slider/6.jpg"
 					class="img-responsive">
-					<figcaption class="mask">image 6</figcaption>
 					<ul class="external">
 						<li><a class="fancybox" title="6" data-fancybox-group="works"
 							href="./img/uploads/slider/6.jpg"><i class="fa fa-search"></i></a></li>

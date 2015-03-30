@@ -10,11 +10,11 @@ class Order_DAO
 
   public function add(Order $order)
   {
-    $query = $this->_db->prepare('INSERT INTO order SET customer_id = :customer_id, payment_type = :payment_type, cart_id = :cart_id, payment_succes = :payment_succes, vehicle = :vehicle, duration = :duration, style = :style, route = :route, nb_passenger_max = :nb_passenger_max, price = :price, start_time = :start_time, validity_start = :validity_start, validity_end = :validity_end, picture = :picture');
+    $query = $this->_db->prepare('INSERT INTO order SET customer_id = :customer_id, payment_type = :payment_type, cart = :cart, payment_succes = :payment_succes, vehicle = :vehicle, duration = :duration, style = :style, route = :route, nb_passenger_max = :nb_passenger_max, price = :price, start_time = :start_time, validity_start = :validity_start, validity_end = :validity_end, picture = :picture');
 
     $query->bindValue(':customer_id', $order->get_customer_id(), PDO::PARAM_INT);
     $query->bindValue(':payment_type', $order->get_payment_type());
-    $query->bindValue(':cart_id', $order->get_cart_id(), PDO::PARAM_INT);
+    $query->bindValue(':cart', $order->get_cart());
     $query->bindValue(':payment_succes', $order->get_payment_succes());
 
     $query->execute();
@@ -51,11 +51,11 @@ class Order_DAO
 
   public function update(Order $order)
   {
-    $query = $this->_db->prepare('UPDATE order SET customer_id = :customer_id, payment_type = :payment_type, cart_id = :cart_id, payment_succes = :payment_succes WHERE id = :id');
+    $query = $this->_db->prepare('UPDATE order SET customer_id = :customer_id, payment_type = :payment_type, cart = :cart, payment_succes = :payment_succes WHERE id = :id');
 
     $query->bindValue(':customer_id', $order->get_customer_id(), PDO::PARAM_INT);
     $query->bindValue(':payment_type', $order->get_payment_type());
-    $query->bindValue(':cart_id', $order->get_cart_id(), PDO::PARAM_INT);
+    $query->bindValue(':cart', $order->get_cart());
     $query->bindValue(':payment_succes', $order->get_payment_succes());
     $query->bindValue(':id', $order->get_id(), PDO::PARAM_INT);
 

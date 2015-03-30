@@ -52,7 +52,7 @@ a, a:hover, a:focus, .btn:focus {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Open Sans', sans-serif;
-    color: #252525;
+    color: gray;
 }
 
 main > section {
@@ -873,7 +873,7 @@ ul.external li a:hover {
 
 .testimonial-item > div > p{
 	text-align: justify;
-    color: #fff
+    color: #fff;
 }
 
 /*=================================================================

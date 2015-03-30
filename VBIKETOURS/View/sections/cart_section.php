@@ -1,21 +1,20 @@
 <!-- carts section -->
-<?php
-	if (isset($_SESSION['msg'])){
-		if (($booking_msg=$_SESSION['msg'])!=""){
-?>
-
-<script type="text/javascript">alert("<?php echo $booking_msg; ?>")</script>
-
 <?php 
-	$_SESSION['msg']="";
-		}
-	}
+include 'tools/alert_message_session.php'; 
+
+$cart_page=false;
+if ($_GET['page']=='cart'){
+	$cart_page=true;
+}
 ?>
+
 <section id="cart_section">
 	<div class="container">
 		<div class="row">
 			<div class="sec-title text-center wow animated fadeInDown">
-				<h2> YOUR CART </h2>
+				<h2> <?php if (!$cart_page)echo "YOUR ORDER";
+						   else echo "YOUR CART";
+			  ?></h2>
 			</div>
 			
 			<?php if ($cart_empty){ ?>
@@ -26,10 +25,11 @@
 	
 			<?php }else { ?>						
 		<div id="cart" class="col-xs-12 col-md-12 col-lg-offset-1 col-lg-10">
+		
 			<table id="cart_table" class="col-xs-12 col-md-12 col-lg-12">
 			<thead>
 				<tr id="cart_table_header">
-					<th></th>
+					<?php if ($cart_page) echo"<th></th>"; ?>
 					<th></th>
 					<th>Product</th>
 					<th>Price (USD)</th>
@@ -42,8 +42,13 @@
 							$booked_tour=$tour_dao->get($booking->get_tour_id());
 					?>
 					<tr id="cart_table_row">
-						<td id="cart_table_delete" class="cart_table_row"><img id="cart_icon_delete"title="delete" src="img/icons/trash.png"></td>
-						<td id="cart_table_picture" class="cart_table_row"><img id="cart_image_tour" src="img/uploads/tours/<?php echo str_replace(" ", "_",$booked_tour->get_name());?>/<?php echo $booked_tour->get_picture()?>"></td>
+					<?php if ($cart_page) 
+						echo"<td id=\"cart_table_delete\" class=\"cart_table_row\">
+								<img id=\"cart_icon_delete\"title=\"delete\" src=\"img/icons/trash.png\">
+							</td>"; ?>
+						<td id="cart_table_picture" class="cart_table_row">
+							<img id="cart_image_tour" src="img/uploads/tours/<?php echo str_replace(" ", "_",$booked_tour->get_name());?>/<?php echo $booked_tour->get_picture()?>">
+						</td>
 						<td id="cart_table_booking" class="cart_table_row">
 							<?php echo "<br><b>".$booked_tour->get_name()."</b><br><br>";?>
 							<?php echo "Date: ".$booking->get_date()."<br>Start time: ".$booked_tour->get_start_time()."<br><br>";?>
@@ -58,14 +63,16 @@
 					</tbody>
 					<tfoot>
 						<tr id="cart_table_header">
-							<th colspan="1">TOTAL:</th>
-							<th colspan="2"></th>
-							<th id="cart_price" colspan="1"><?php echo $cart->get_price()."$";?></th>
+							<th>TOTAL:</th>
+							<?php if ($cart_page) echo"<th colspan=\"2\"></th>";
+							else echo "<th></th>";?>
+							<th id="cart_price"><?php echo $cart->get_price()."$";?></th>
 						</tr>
 					</tfoot>
 			</table>
 		</div>
-<?php }?>	
+		<?php if ($cart_page) echo "<a href=\"index.php?page=checkout_infos\">Proceed Checkout</a>";		 
+		}?>	
 	</div>
 </div>
 </section>

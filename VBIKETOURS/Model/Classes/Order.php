@@ -6,19 +6,19 @@ class Order {
 	private $_id;
 	private $_customer_id;
 	private $_payment_type;
-	private $_cart_id;
+	private $_cart;
 	private $_payment_succes;
 	
 /**********CONSTRUCTOR***************/
 	
 //  Classic Constructor
 
-// 	public function __construct($id, $customer_id, $payment_type, $cart_id, $payment_succes)
+// 	public function __construct($id, $customer_id, $payment_type, $cart, $payment_succes)
 // 	{
 // 		$this-> set_id($id);
 // 		$this-> set_customer_id($customer_id);
 // 		$this-> set_payment_type($payment_type);
-// 		$this-> set_cart_id($cart_id);
+// 		$this-> set_cart($cart);
 // 		$this-> set_payment_succes($payment_succes);
 // 	}
 
@@ -62,8 +62,8 @@ class Order {
 		return $this->_payment_type;
 	}
 	
-	public function get_cart_id() {
-		return $this->_cart_id;
+	public function get_cart() {
+		return $this->_cart;
 	}
 	
 	public function get_payment_succes() {
@@ -85,8 +85,8 @@ class Order {
 		$this->_payment_type = $payment_type;
 	}
 	
-	public function set_cart_id($cart_id) {
-		$this->_cart_id = $cart_id;
+	public function set_cart($cart) {
+		$this->_cart = $cart;
 	}
 	
 	public function set_payment_succes($payment_succes) {

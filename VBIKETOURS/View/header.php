@@ -26,7 +26,7 @@
 	 ================================================== -->
 
 <!-- Fontawesome Icon font -->
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' type='text/css'>
+<!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' type='text/css'> -->
 <!-- Fontawesome Icon font -->
 <link rel="stylesheet" href="view/css/font-awesome.min.css">
 <!-- bootstrap.min -->
@@ -47,8 +47,11 @@
 <link rel="stylesheet" href="view/css/booking_form.css">
 <!-- Cart Stylesheet -->
 <link rel="stylesheet" href="view/css/cart.css">
+<!-- Cart Stylesheet -->
+<link rel="stylesheet" href="view/css/checkout_infos.css">
 <!-- End CSS
 	 ==================================================== -->
+
 </head>
 <body id="body" onload="_fixNavbarIssue()_">
 
@@ -95,7 +98,7 @@
 					<li><a href="index.php#testimonials">TESTIMONIAL</a></li>
 					<li><a href="index.php#contact">CONTACT</a></li>
 					<?php if (isset($_SESSION['cart'])){?>
-					<li><a href="index.php?page=cart">My cart</a></li>
+					<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
 					<?php }?>
 				</ul>
 			</nav>
