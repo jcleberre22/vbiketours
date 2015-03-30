@@ -16,17 +16,19 @@
 		
 		<div class="col-lg-3 col-md-4 col-xs-10">
 			<ul class="footer_list">
-				<li>Our Tours</li>
-				<p><br/></p>
-				<?php
-					foreach ( $tours_list as $tour ) {
-				?>
-				<li><a href="tour.php?tour_id=<?php echo $tour->get_id() ?>">
-				<?php	
-					echo $tour->get_name () ;
-				?>
-				</a></li>
-				<?php }?>
+				<li>Navigation</li>
+					<p><br/></p>
+					<li><a href="index.php#about">About us</a></li>
+					<li><a href="index.php#tours">Tours</a></li>
+					<li><a href="index.php#news">News</a></li>
+					<li><a href="index.php#gallery">Gallery</a></li>
+					<li><a href="index.php#faq">Faq</a></li>
+					<li><a href="index.php#press">Press</a></li>
+					<li><a href="index.php#testimonials">Testimonial</a></li>
+					<li><a href="index.php#contact">Contact</a></li>
+					<?php if (isset($_SESSION['cart'])){?>
+					<li><a href="index.php?page=cart">My cart</a></li>
+					<?php }?>
 			</ul>
 		</div>
 		
@@ -37,7 +39,7 @@
 				<?php
 					foreach ( $tours_list as $tour ) {
 				?>
-				<li><a href="tour.php?tour_id=<?php echo $tour->get_id() ?>">
+				<li><a href="index.php?page=tour&tour_id=<?php echo $tour->get_id() ?>">
 				<?php	
 					echo $tour->get_name () ;
 				?>
@@ -48,12 +50,12 @@
 		
 		<div class="col-lg-3 col-md-8 col-xs-10">
 					<ul class="footer_list">
-				<li>Our Tours</li>
+				<li>news</li>
 				<p><br/></p>
 				<?php
 					foreach ( $tours_list as $tour ) {
 				?>
-				<li><a href="tour.php?tour_id=<?php echo $tour->get_id() ?>">
+				<li><a href="index.php?page=tour&tour_id=<?php echo $tour->get_id() ?>">
 				<?php	
 					echo $tour->get_name () ;
 				?>
@@ -78,28 +80,38 @@
 
 
 
-<!-- Essential jQuery Plugins
-		================================================== -->
-<!-- Main jQuery -->
-<script src="/VBIKETOURS/js/jquery-1.11.1.min.js"></script>
-<!-- Twitter Bootstrap -->
-<script src="/VBIKETOURS/js/bootstrap.min.js"></script>
+<!-- jQuery Plugins
+	 ================================================== -->
+
+ <!-- Main jQuery -->
+<script src="js/jquery-2.0.2.min.js"></script>
+<!-- Modernizer Script for old Browsers -->
+<script src="js/modernizr-2.6.2.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
 <!-- Single Page Nav -->
-<script src="/VBIKETOURS/js/jquery.singlePageNav.min.js"></script>
+<script src="js/jquery.singlePageNav.min.js"></script>
 <!-- jquery.fancybox.pack -->
-<script src="/VBIKETOURS/js/jquery.fancybox.pack.js"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
 <!-- Owl Carousel -->
-<script src="/VBIKETOURS/js/owl.carousel.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
 <!-- jquery easing -->
-<script src="/VBIKETOURS/js/jquery.easing.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
 <!-- Fullscreen slider -->
-<script src="/VBIKETOURS/js/jquery.slitslider.js"></script>
-<script src="/VBIKETOURS/js/jquery.ba-cond.min.js"></script>
+<script src="js/jquery.slitslider.js"></script>
+<script src="js/jquery.ba-cond.min.js"></script>
 <!-- onscroll animation -->
-<script src="/VBIKETOURS/js/wow.min.js"></script>
+<script src="js/wow.min.js"></script>
 <!-- Custom Functions -->
-<script src="/VBIKETOURS/js/main.js"></script>
+<script src="js/main.js"></script>
 <!-- gallery plugin -->
-<script src="/VBIKETOURS/js/jquery.collagePlus.min.js"></script>
+<script src="js/jquery.collagePlus.min.js"></script>
+<!-- NavBar links fix -->
+<script src="js/navbar_links_fix.js"></script>
+<!-- Parallax -->
+<script src="js/jquery.parallax-1.1.3.js"></script>
+<!-- End jQuery Plugins
+	 ====================================================== -->
+
 </body>
 </html>

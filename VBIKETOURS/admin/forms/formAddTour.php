@@ -17,8 +17,8 @@
 			<BR /> vehicle:				<input id="vehicle" class="checkinput"type="text" name="vehicle" /><?php if (isset($vehicle)){ echo $vehicle;}?><BR />
 			<BR /> duration:			<input id="duration" class="checkinput"type="text" name="duration" /> 
 										<select id="duration_type" name="duration_type">
-											<option>hours</option>
-											<option>days</option>
+											<option selected="selected">Hours</option>
+											<option>Days</option>
 										</select><?php if (isset($duration)){ echo $duration;}?><BR />
 			<BR /> style:				<input id="style" class="checkinput"type="text" name="style" /><?php if (isset($style)){ echo $style;}?><BR />
 			<BR /> route:				<input id="route" class="checkinput"type="text" name="route" /><?php if (isset($route)){ echo $route;}?><BR />

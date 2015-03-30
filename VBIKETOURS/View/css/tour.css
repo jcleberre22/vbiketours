@@ -21,11 +21,20 @@
 }
 
 #image_tour>img {
+	vertical-align: middle;
 	max-width: 500px;
 	max-height: 500px;
 }
 
 #description_tour{
+	margin-top: 30px;
+	max-height: 450px;
+	overflow:auto;
+	text-align: justify;
+}
+
+#summary_tour{
+	max-height: 50px;
 	text-align: justify;
 }
 

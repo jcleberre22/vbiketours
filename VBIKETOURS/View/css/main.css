@@ -32,11 +32,16 @@ iframe {
 }
 
 a {
+	color: #E1197C;
     -webkit-transition: all 0.3s ease-out 0s;
        -moz-transition: all 0.3s ease-out 0s;
         -ms-transition: all 0.3s ease-out 0s;
          -o-transition: all 0.3s ease-out 0s;
             transition: all 0.3s ease-out 0s;
+}
+
+a:hover {
+	color: #FF69B4;
 }
 
 a, a:hover, a:focus, .btn:focus {
@@ -531,7 +536,53 @@ h1.navbar-brand {
 	Tours
 ==================================================================*/
 
+#list_tours {
+	
+}
 
+#tours {
+	height: 400px;
+	margin: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width : 30%;
+}
+
+#tours_name {
+	text-align: center;
+	background-color: #E1197C;
+	height:	50px;
+}
+
+#tours:hover #tours_name {
+	background-color: #FF69B4; 
+}
+
+#tours_summary {
+	
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position:center;
+
+ 	height: 350px;
+}
+
+#tours_summary_overlay {
+	display: none;
+	background-color: rgba(0,0,0,0.5);
+	height: 350px;
+}
+
+#tours>a {
+	color: #FEEC02;
+}
+
+#tours>a:hover {
+	color: #fec80e;
+}
+#tours_summary:hover #tours_summary_overlay {
+	display: block;
+}
 
 /*=================================================================
 	News
@@ -972,6 +1023,11 @@ textarea.form-control {
         margin-bottom: 50px;
     }
 
+/*tours*/
+	#tours {
+	width : 40%;
+}
+
 /* gallery */
     .gallery-item {
         width: 48%;
@@ -1074,7 +1130,11 @@ textarea.form-control {
     #about .welcome-block img {
         margin: 0 25px 15px 0;
     }
-
+    
+/*tours*/
+	#tours {
+	width : 85%;
+}
 
 /*gallery*/
     .gallery-item {
@@ -1129,6 +1189,8 @@ textarea.form-control {
 }
 
 
+
+
 /*============================================================
 	Mobile (Landscape) Design for a width of 480px
 ==============================================================*/
@@ -1156,6 +1218,11 @@ textarea.form-control {
     #about .welcome-block h3 {
         margin: 0 0 35px;
     }
+    
+/*tours*/
+	#tours {
+		width : 85%;
+}
 
 /* gallery */
     .gallery-item {

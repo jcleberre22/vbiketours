@@ -48,7 +48,7 @@ class TourDAO
   public function getList()
   {
     $tours = [];
-    $query = $this->_db->query('SELECT * FROM tour ORDER BY name');
+    $query = $this->_db->query('SELECT * FROM tour ORDER BY id');
 
     while ($datas = $query->fetch(PDO::FETCH_ASSOC))
     {

@@ -38,7 +38,7 @@ class Cart {
 	}
 	
 	public function set_price($price) {
-		$this->_price = $price;
+		$this->_price += $price;
 	}
 		
 }

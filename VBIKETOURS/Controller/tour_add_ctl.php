@@ -25,7 +25,7 @@ require '../tools/classes_auto_load.php';
 	$tour_datas ['route'] = htmlspecialchars ( stripcslashes ( $_POST ['route'] ) );
 	$tour_datas ['nb_passenger_max'] = htmlspecialchars ( stripcslashes ( $_POST ['nb_passenger_max'] ) );
 	$tour_datas ['price'] = htmlspecialchars ( stripcslashes ( $_POST ['price'] ) );
-	$tour_datas ['start_time'] = $_POST ['start_time'];
+	$tour_datas ['start_time'] = htmlspecialchars ( stripcslashes ($_POST ['start_time']." ".$_POST['duration_type'] ) );
 	$tour_datas ['validity_start'] = $_POST ['validity_start'];
 	$tour_datas ['validity_end'] = $_POST ['validity_end'];
 	$tour_datas ['picture'] = htmlspecialchars ( stripcslashes ( $_POST ['picture'] ) );
@@ -36,7 +36,7 @@ require '../tools/classes_auto_load.php';
 		$tour_dao->add ( $tour );
 	} catch ( Exception $e ) {
 		$error = "Database insertion probleme - error: " . $e;
-		header ( 'location: formaddtour_ctl.php?.$error=' . $error );
+		header ( 'location: formaddtour_ctl.php?$error=' . $error );
 		die();
 	}?>
 	<script type="text/javascript">alert("the tour: ".<?php $tour_datas['name'] ?>." was succesfully added to the database.")</script>
