@@ -1,0 +1,58 @@
+#cart_section {
+	padding-top: 140px;
+}
+#cart_table thead {
+	border-style: solid;
+	border-color: grey;
+	border-width: 2px;
+	background-color: #FF69B4;
+	color: #FEEC02;
+}
+
+#cart_table tfoot {
+	border-style: solid;
+	border-color: grey;
+	border-width: 2px;
+	background-color: #FEEC02;
+	color: #000;
+}
+
+#cart_table th, td {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#cart_table_row {
+	border-style: solid;
+	border-color: grey;
+	border-width: 2px;
+	background-color: #eee;
+}
+
+#cart_icon_delete {
+		max-height: 45px;
+		max-width: 45px;	
+}
+
+#cart_icon_delete:hover {
+		max-height: 50px;
+		max-width: 50px;	
+}
+
+#cart_table_price, #cart_table_delete, #cart_table_picture {
+	text-align: center;
+	/* vertical-align: middle; */
+}
+
+#cart_image_tour {
+	max-height: 45%;
+	max-width: 90%;
+}
+
+#cart_price {
+	text-align: center;
+	color: #FF69B4;
+}
+
+
+

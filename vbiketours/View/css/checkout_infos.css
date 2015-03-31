@@ -1,0 +1,31 @@
+#checkout_details {
+	padding-top: 140px;
+}
+
+#checkout_details #cart_section {
+	padding-top: 40px;
+}
+
+#checkout_infos_payment {
+	padding-top: 40px;
+}
+
+#customer_details {
+	min-width: 111px;
+}
+
+.input-text {
+	width:100%;
+}
+
+#countries {
+	width: 100%;
+}
+
+#checkout_infos_submit {
+	margin-left: 40px;
+}
+
+#checkout_place_order {
+	
+}
