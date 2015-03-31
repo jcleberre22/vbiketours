@@ -40,9 +40,8 @@ class TourDAO
     $id = (int) $id;
 
     $query = $this->_db->query('SELECT * FROM tour WHERE id = '.$id);
-    $tours = $query->fetch(PDO::FETCH_ASSOC);
-
-    return new Tour($tours);
+    $tour = $query->fetch(PDO::FETCH_ASSOC);
+    return new Tour($tour);
   }
 
   public function getList()

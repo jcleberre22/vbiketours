@@ -1,9 +1,9 @@
 <!-- carts section -->
 <?php 
-include 'tools/alert_message_session.php'; 
+include 'tools/alert_message.php'; 
 
 $cart_page=false;
-if ($_GET['page']=='cart'){
+if ($page=='cart'){
 	$cart_page=true;
 }
 ?>
@@ -12,19 +12,20 @@ if ($_GET['page']=='cart'){
 	<div class="container">
 		<div class="row">
 			<div class="sec-title text-center wow animated fadeInDown">
-				<h2> <?php if (!$cart_page)echo "YOUR ORDER";
-						   else echo "YOUR CART";
+				<h2> <?php if (!$cart_page) echo "YOUR ORDER";
+						   else 			echo "YOUR CART";
 			  ?></h2>
 			</div>
 			
-			<?php if ($cart_empty){ ?>
+			<?php if (!isset($_SESSION['cart'])){ ?>
 			<div id="cart_empty">				
 				Your cart is empty!<br><br>
 				<a href="index.php">Back to the Main Page</a>
 			</div>
 	
-			<?php }else { ?>						
-		<div id="cart" class="col-xs-12 col-md-12 col-lg-offset-1 col-lg-10">
+			<?php }else { ?>
+			<div >						
+		<div id="cart" class="col-xs-12 col-md-12  col-lg-12">
 		
 			<table id="cart_table" class="col-xs-12 col-md-12 col-lg-12">
 			<thead>
@@ -38,25 +39,25 @@ if ($_GET['page']=='cart'){
 			<tbody>	
 					<?php
 						$boooking_list=$_SESSION['cart']->get_booking_list();						
-						foreach ($boooking_list as $booking){
-							$booked_tour=$tour_dao->get($booking->get_tour_id());
+						foreach ($boooking_list as $bookingOBJ){
+							$booked_tour=$tour_dao->get($bookingOBJ->get_tour_id());
 					?>
 					<tr id="cart_table_row">
-					<?php if ($cart_page) 
-						echo"<td id=\"cart_table_delete\" class=\"cart_table_row\">
-								<img id=\"cart_icon_delete\"title=\"delete\" src=\"img/icons/trash.png\">
-							</td>"; ?>
+					<?php if ($cart_page) {?> 
+						<td id="cart_table_delete" class="cart_table_row">
+								<img id="cart_icon_delete"title="delete" src="img/icons/trash.png">
+						</td><?php }?>
 						<td id="cart_table_picture" class="cart_table_row">
-							<img id="cart_image_tour" src="img/uploads/tours/<?php echo str_replace(" ", "_",$booked_tour->get_name());?>/<?php echo $booked_tour->get_picture()?>">
+							<img id="cart_image_tour" src="img/uploads/tours/<?php echo str_replace(" ", "_", $booked_tour->get_name());?>/<?php echo $booked_tour->get_picture()?>"/>
 						</td>
 						<td id="cart_table_booking" class="cart_table_row">
 							<?php echo "<br><b>".$booked_tour->get_name()."</b><br><br>";?>
-							<?php echo "Date: ".$booking->get_date()."<br>Start time: ".$booked_tour->get_start_time()."<br><br>";?>
-							<?php echo "Adults: ".$booking->get_nb_adults()."<br><br>";?>
-							<?php echo "Childrens: ".$booking->get_nb_childrens()."<br><br>";?>
+							<?php echo "Date: ".$bookingOBJ->get_date()."<br>Start time: ".$booked_tour->get_start_time()."<br><br>";?>
+							<?php echo "Adults: ".$bookingOBJ->get_nb_adults()."<br><br>";?>
+							<?php echo "Childrens: ".$bookingOBJ->get_nb_childrens()."<br><br>";?>
 						</td>
 						<td id="cart_table_price" class="cart_table_row">
-							<?php echo "<br>".$booking->get_price()."$<br>";?>
+							<?php echo "<br>".$bookingOBJ->get_price()."$<br>";?>
 						</td >
 					</tr>
 					<?php }?>
@@ -71,8 +72,19 @@ if ($_GET['page']=='cart'){
 					</tfoot>
 			</table>
 		</div>
-		<?php if ($cart_page) echo "<a href=\"index.php?page=checkout_infos\">Proceed Checkout</a>";		 
-		}?>	
+		<div class="col-xs-12 col-md-12 col-lg-12">
+		<?php if ($cart_page){?>
+		<form method="post" action="index.php?page=checkout_infos">
+<!--		<input id="submit_booking_titre" name="submit_booking_titre" type="hidden" value="<?php //echo "";?>">
+			<input id="submit_booking_titre" name="submit_booking_titre" type="hidden" value="<?php //echo "";?>"> -->
+			<input id="submit_booking_titre" name="submit_booking_titre" type="hidden" value="<?php echo "";?>">
+			<input id="submit_booking_price" name="submit_booking_price" type="hidden" value="<?php echo "";?>">
+			<input id="submit_booking_button" name="submit_booking" type="submit" class="btn-pink col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3" value="Proceed to PayPal">
+		</form>
+		</div>
+		</div>
+		<?php }?>
+<?php }?>
 	</div>
 </div>
 </section>

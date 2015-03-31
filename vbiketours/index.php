@@ -1,4 +1,5 @@
 <?php
+include 'tools/list_folder.php';
 include 'tools/classes_auto_load.php';
 session_start ();
 

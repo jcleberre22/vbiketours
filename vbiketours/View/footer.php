@@ -37,6 +37,8 @@
 				<li>Our Tours</li>
 				<p><br/></p>
 				<?php
+					$tours_list=array();
+					$tours_list=$tour_dao->getList();
 					foreach ( $tours_list as $tour ) {
 				?>
 				<li><a href="index.php?page=tour&tour_id=<?php echo $tour->get_id() ?>">

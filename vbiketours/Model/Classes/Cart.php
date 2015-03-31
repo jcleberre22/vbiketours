@@ -38,8 +38,31 @@ class Cart {
 	}
 	
 	public function set_price($price) {
-		$this->_price += $price;
+		$this->_price = $price;
 	}
-		
+	
+/*******ADD A BOOKING*********/
+	public function add_booking($booking){
+		$this->_booking_list[ $booking->get_id() ] = $booking;
+		$this->add_price($booking->get_price());
+	}
+	
+/*******REMOVE A BOOKING********/
+	public function remove_booking($selected_booking){
+		foreach ($this->_booking_list as $id=>$booking){
+			if ($booking==$selected_booking)
+				$this->_booking_list[$id]=null;
+		}
+	}
+	
+/******ADD A PRICE************/
+	public function add_price($price){	
+		$this->_price+=$price;
+	}
+
+/******REMOVE A PRICE************/
+	public function remove_price($price){
+		$this->_price-=$price;
+	}
 }
 ?>

@@ -7,7 +7,6 @@ Home Slider
 
 		<div class="sl-slider">
 <?php
-
 $directory="img/uploads/slider/";
 $list_img = list_folder($directory);
 

@@ -1,5 +1,5 @@
 <!-- tours section -->
-<?php include 'tools/alert_message_session.php';?>
+<?php include 'tools/alert_message.php'?>
 <section id="tour">
 	<div class="container">
 		<div class="row">

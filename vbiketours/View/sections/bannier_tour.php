@@ -7,7 +7,6 @@ BANNIER TOUR
 
 		<div class="sl-slider">
 <?php
-include 'tools/list_folder.php';
 $directory="img/uploads/slider/";
 $list_img = list_folder($directory);
 

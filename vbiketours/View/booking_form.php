@@ -1,10 +1,10 @@
 <div id="booking" class="col-xs-12 col-md-11 col-lg-6">
-	<form method="post" action="index.php?page=booking">
+	<form method="post" action="index.php?page=cart">
 		
 		<div id="booking_header">
-			<?php 
-				echo "$".$tour->get_price()." per person, childrens get -50%";
-			?>
+	
+			$<?php echo $tour->get_price()?> per person, childrens get -50%
+
 		</div>
 		
 		<div id="booking_box">
@@ -26,8 +26,9 @@
 		<div id="booking_validation">
 			Total :<?php echo " $".$tour->get_price()?>
 		</div>
-		<?php $_SESSION['tour']=$tour;?>
-		<input id="submit_booking" name="submit_booking" type="submit" value="BOOK NOW">
+		<input id="booking_tour_id" name="booking_tour_id" type="hidden" value="<?php echo $tour->get_id();?>">
+		<input id="booking_price" name="booking_price" type="hidden" value="<?php echo $tour->get_price();?>">
+		<input id="submit_booking" name="submit_booking" type="submit" class=" btn-pink col-xs-12 col-sm-offset-8 col-sm-4 col-md-offset-8 col-md-4 col-lg-offset-8 col-lg-4" value="BOOK NOW">
 		
 	</form>
 </div>
