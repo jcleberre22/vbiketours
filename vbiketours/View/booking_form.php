@@ -1,5 +1,5 @@
 <div id="booking" class="col-xs-12 col-md-11 col-lg-6">
-	<form method="post" action="Controller/booking_ctl.php">
+	<form method="post" action="index.php?page=booking">
 		
 		<div id="booking_header">
 			<?php 

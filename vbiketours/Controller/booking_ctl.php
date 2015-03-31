@@ -1,9 +1,5 @@
 <?php
 	
-	include $_SERVER['DOCUMENT_ROOT'].'vbiketours/tools/classes_auto_load.php';
-	
-	session_start();
-	
 	//get the values from the form	
 	$booking_date=$_POST['booking_date'];
 	$booking_nb_adults=$_POST['booking_nb_adults'];
