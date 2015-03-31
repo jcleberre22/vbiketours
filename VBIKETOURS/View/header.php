@@ -81,7 +81,7 @@
 
 				<!-- logo -->
 				<p class="navbar-brand">
-					<a href="index.php#home-slider"><img src="img/logo.png"></a>
+					<a href="index.php#"><img src="img/logo.png"></a>
 				</p>
 				<!-- /logo -->
 			</div>
@@ -89,16 +89,17 @@
 			<!-- main nav -->
 			<nav class="collapse navbar-collapse navbar-right" role="navigation">
 				<ul id="nav" class="nav navbar-nav">
-					<li><a href="index.php#about">ABOUT US</a></li>
-					<li><a href="index.php#tours">TOURS</a></li>
-					<li><a href="index.php#news">NEWS</a></li>
-					<li><a href="index.php#gallery">GALLERY</a></li>
-					<li><a href="index.php#faq">FAQ</a></li>
-					<li><a href="index.php#press">PRESS</a></li>
-					<li><a href="index.php#testimonials">TESTIMONIAL</a></li>
-					<li><a href="index.php#contact">CONTACT</a></li>
+					<li style="visibility:hidden;"><a href="#" ></a></li>
+					<li><a href="index.php#about" <?php if ($page!='welcome')echo "class=\"external\"";?>>ABOUT US</a></li>
+					<li><a href="index.php#tours_section" <?php if ($page!='welcome')echo "class=\"external\"";?>>TOURS</a></li>
+					<li><a href="index.php#news" <?php if ($page!='welcome')echo "class=\"external\"";?>>NEWS</a></li>
+					<li><a href="index.php#gallery" <?php if ($page!='welcome')echo "class=\"external\"";?>>GALLERY</a></li>
+					<li><a href="index.php#faq" <?php if ($page!='welcome')echo "class=\"external\"";?>>FAQ</a></li>
+					<li><a href="index.php#press" <?php if ($page!='welcome')echo "class=\"external\"";?>>PRESS</a></li>
+					<li><a href="index.php#testimonials" <?php if ($page!='welcome')echo "class=\"external\"";?>>TESTIMONIAL</a></li>
+					<li><a href="index.php#contact" <?php if ($page!='welcome')echo "class=\"external\"";?>>CONTACT</a></li>
 					<?php if (isset($_SESSION['cart'])){?>
-					<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
+					<li><a href="index.php?page=cart#cart_section" <?php if ($page!='cart')echo "class=\"external\"";?>>My cart (<span class="blink" <?php if ($page=='cart')echo "style=\"color: #FEEC02;\"";?>><?php echo count($_SESSION['cart']->get_booking_list());?></span>)</a></li>
 					<?php }?>
 				</ul>
 			</nav>

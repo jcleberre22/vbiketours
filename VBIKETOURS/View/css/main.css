@@ -45,9 +45,11 @@ a:hover {
 }
 
 a, a:hover, a:focus, .btn:focus {
-    text-decoration: none;
+	text-decoration:inherit;
     outline: none;
 }
+
+
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -64,6 +66,13 @@ main > section {
     border: 0;
     position: relative;
     text-transform: uppercase;
+}
+
+.blink {
+	color: #E1197C;
+	-webkit-animation: blink 1s steps(5, start) infinite;
+	-moz-animation: blink 1s steps(5, start) infinite;
+	animation: blink 1s steps(5, start) infinite;
 }
 
 .btn-pink {
@@ -240,22 +249,6 @@ main > section {
   width: 3px;
 }
 
-@-webkit-keyframes charge{
-    0%{box-shadow: inset 0px 0px 0px #2E2E2E;}
-    100%{box-shadow: inset 60px 0px 0px #2E2E2E;}
-}
-
-@-moz-keyframes charge{
-    0%{box-shadow: inset 0px 0px 0px #2E2E2E;}
-    100%{box-shadow: inset 60px 0px 0px #2E2E2E;}
-}
-
-@keyframes charge{
-    0%{box-shadow: inset 0px 0px 0px #2E2E2E;}
-    100%{box-shadow: inset 60px 0px 0px #2E2E2E;}
-}
-
-
 /*===========================================
 	Header
 ===========================================*/
@@ -268,7 +261,6 @@ main > section {
             transition: all 0.8s ease 0s;
 
     background-color: #2E2E2E;
-/*  box-shadow: 0 1px 4px rgba(0, 0, 0, 0); */
     padding: 5px 0;
 }
 
@@ -285,15 +277,37 @@ h1.navbar-brand {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #fff;
+    color: #FEEC02;
     font-size: 15px;
     text-transform: uppercase;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: yellow;
+    font-size: 20px;
+}
+
+.navbar-inverse .navbar-nav > li > a.active {
+    color: #E1197C;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.navbar-inverse .navbar-nav > li > a.active:hover {
+    color: #FF69B4;
+    font-size: 20px;
 }
 
 .navbar-brand{
 	padding: 0 15px 15px 0;
 }
 
+/* .navbar-brand:hover > a > img:hover {
+	-webkit-animation: blink 1s steps(5, start) infinite;
+	-moz-animation: blink 1s steps(5, start) infinite;
+	animation: blink 1s steps(5, start) infinite;
+}
+ */
 
 /*=================================================================
 	Home Slider
@@ -737,7 +751,7 @@ ul.external li {
 
 ul.external li a {
     background-color: rgba(255, 255, 255, 0.9);
-    color: #818181;
+    color: #E1197C;
     display: block;
     padding: 10px 18px 13px;
     
@@ -749,7 +763,7 @@ ul.external li a {
 }
 
 ul.external li a:hover {
-    background-color: #009EE3;
+    background-color: #FF69B4;
     color: #fff;
 }
 

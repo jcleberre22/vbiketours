@@ -91,7 +91,7 @@ $(document).ready(function(){
 		offset: jQuery('#nav').outerHeight(),
 		filter: ':not(.external)',
 		speed: 2000,
-		currentClass: 'current',
+		currentClass: 'active',
 		easing: 'easeInOutExpo',
 		updateHash: true,
 		beforeStart: function() {
@@ -110,6 +110,41 @@ $(document).ready(function(){
             $(".navbar-brand a").css("color","inherit");
             $("#navigation").addClass("animated-header");
         }
+    });
+    
+    //navbar active on click
+    $('.navbar li').click(function(e) {
+        $('.navbar li.active').removeClass('active');
+        var $this = $(this);
+        if (!$this.hasClass('active')) {
+            $this.addClass('active');
+        }
+        e.preventDefault();
+    });
+    
+    //navbar active on scroll
+    $(function(){
+        var sections = {},
+            _height  = $(window).height(),
+            i        = 0;
+
+        // Grab positions of our sections 
+        $('.section').each(function(){
+            sections[this.name] = $(this).offset().top;
+        });
+
+        $(document).scroll(function(){
+            var pos = $(this).scrollTop();
+
+            // Look in the sections object and see if any section is viewable on the screen. 
+            // If two are viewable, the lower one will be the active one. 
+            for(i in sections){
+                if(sections[i] > pos && sections[i] < pos + _height){
+                    $('a').removeClass('active');
+                    $('#nav_' + i).addClass('active');
+                }  
+            }
+        });
     });
 	
 	/* ========================================================================= */
