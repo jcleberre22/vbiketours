@@ -1,0 +1,40 @@
+#booking{
+
+}
+
+#booking_header{
+	background-color: #2E2E2E;
+	color: #FF69B4;
+	margin-bottom: 10px;
+}
+
+#booking_box{
+	border-color: #FF69B4;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#booking_date{
+	margin-left: 65px;
+	height: 26px;
+}
+
+#booking_nb_adults{
+	margin-left: 25px;
+}
+
+#booking_nb_childrens{
+	margin-left: 3px;
+}
+
+#booking_validation{
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #eee;
+	margin-bottom: 10px;
+	padding: 10px;
+	color: red;
+}
