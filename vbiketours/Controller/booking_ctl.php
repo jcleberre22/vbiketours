@@ -1,6 +1,6 @@
 <?php
 	
-	include $_SERVER['DOCUMENT_ROOT'].'VBIKETOURS/tools/classes_auto_load.php';
+	include $_SERVER['DOCUMENT_ROOT'].'vbiketours/tools/classes_auto_load.php';
 	
 	session_start();
 	
