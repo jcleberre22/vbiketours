@@ -56,11 +56,11 @@
 <body id="body" onload="_fixNavbarIssue()_">
 
 	<!-- preloader -->
-<!-- 	<div id="preloader"> -->
-<!-- 		<div class="loader-box"> -->
-<!-- 			<div class="battery"></div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<div id="preloader">
+		<div class="loader-box">
+			<div class="battery"></div>
+		</div>
+	</div>
 	<!-- end preloader -->
 
 	<!--
