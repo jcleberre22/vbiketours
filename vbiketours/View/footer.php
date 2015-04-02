@@ -109,8 +109,6 @@
 <script src="js/main.js"></script>
 <!-- gallery plugin -->
 <script src="js/jquery.collagePlus.min.js"></script>
-<!-- NavBar links fix -->
-<script src="js/navbar_links_fix.js"></script>
 <!-- Parallax -->
 <script src="js/jquery.parallax-1.1.3.js"></script>
 <!-- End jQuery Plugins

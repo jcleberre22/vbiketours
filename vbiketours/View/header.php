@@ -53,7 +53,7 @@
 	 ==================================================== -->
 
 </head>
-<body id="body" onload="_fixNavbarIssue()_">
+<body id="body">
 
 	<!-- preloader -->
 	<div id="preloader">
