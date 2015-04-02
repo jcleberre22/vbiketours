@@ -1,11 +1,12 @@
 <!-- carts section -->
 <?php 
-include 'tools/alert_message.php'; 
 
 $cart_page=false;
+
 if ($page=='cart'){
 	$cart_page=true;
 }
+
 ?>
 
 <section id="cart_section">
@@ -17,7 +18,7 @@ if ($page=='cart'){
 			  ?></h2>
 			</div>
 			
-			<?php if (!isset($_SESSION['cart'])){ ?>
+			<?php if (!isset($cart)){ ?>
 			<div id="cart_empty">				
 				Your cart is empty!<br><br>
 				<a href="index.php">Back to the Main Page</a>
@@ -38,14 +39,16 @@ if ($page=='cart'){
 			</thead>
 			<tbody>	
 					<?php
-						$boooking_list=$_SESSION['cart']->get_booking_list();						
+						$boooking_list=$cart->get_booking_list();						
 						foreach ($boooking_list as $bookingOBJ){
 							$booked_tour=$tour_dao->get($bookingOBJ->get_tour_id());
 					?>
 					<tr id="cart_table_row">
 					<?php if ($cart_page) {?> 
 						<td id="cart_table_delete" class="cart_table_row">
+							<a href="index.php?page=cart&action=delete&booking_id=<?php echo $bookingOBJ->get_id();?>">
 								<img id="cart_icon_delete"title="delete" src="img/icons/trash.png">
+							</a>
 						</td><?php }?>
 						<td id="cart_table_picture" class="cart_table_row">
 							<img id="cart_image_tour" src="img/uploads/tours/<?php echo str_replace(" ", "_", $booked_tour->get_name());?>/<?php echo $booked_tour->get_picture()?>"/>

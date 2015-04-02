@@ -55,7 +55,7 @@
 </head>
 <body id="body" onload="_fixNavbarIssue()_">
 
-	<!-- preloader -->
+	<!-- preloader 
 	<div id="preloader">
 		<div class="loader-box">
 			<div class="battery"></div>

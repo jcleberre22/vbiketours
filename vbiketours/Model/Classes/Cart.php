@@ -48,13 +48,34 @@ class Cart {
 	}
 	
 /*******REMOVE A BOOKING********/
-	public function remove_booking($selected_booking){
-		foreach ($this->_booking_list as $id=>$booking){
-			if ($booking==$selected_booking)
-				$this->_booking_list[$id]=null;
+	public function remove_booking($booking_id){
+		$cart_empty=false;
+		$tmp=array();
+		$removed=false;
+		//read through the list
+		foreach ($this->_booking_list as $id => $booking){
+			//if the booking is found
+			if ($id == $booking_id){
+				//ask to remove
+				$this->remove_price($booking->get_price());
+				$removed=true;
+			}else{
+				$new_id=$id;
+				if ($removed) $new_id--;
+				$booking->set_id($new_id);
+				$tmp[$new_id]=$booking;
+			}
 		}
+		$this->_booking_list=$tmp;
+		
+		//if the cart is empty return true 
+		if (!isset($this->_booking_list[0])){
+			$cart_empty=true;
+		}				
+		//return false
+		return $cart_empty;
 	}
-	
+		
 /******ADD A PRICE************/
 	public function add_price($price){	
 		$this->_price+=$price;

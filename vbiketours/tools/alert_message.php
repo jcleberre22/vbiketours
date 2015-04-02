@@ -1,7 +1,9 @@
 <!-- if there is a message -->
-<?php if (isset($_GET['msg'])){ ?>
+<?php if (isset($_SESSION['msg'])){ ?>
 
 	<!-- open a popup with the message -->
-	<script type="text/javascript"> alert("<?php echo $booking_msg; ?>") </script>
+	<script type="text/javascript"> alert("<?php echo $_SESSION['msg']; ?>") </script>
 	
-<?php } ?>
+<?php 
+unset($_SESSION['msg']);
+} ?>

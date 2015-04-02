@@ -1,5 +1,5 @@
 <div id="booking" class="col-xs-12 col-md-11 col-lg-6">
-	<form method="post" action="index.php?page=cart">
+	<form method="post" action="index.php?page=cart&action=add">
 		
 		<div id="booking_header">
 	
