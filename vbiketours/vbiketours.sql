@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2015 at 08:23 AM
+-- Generation Time: Apr 02, 2015 at 03:25 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -31,15 +31,29 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `country` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `first_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `address_1` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `address_2` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `state` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `post_code` int(11) NOT NULL,
   `email` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `pickup_location` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `additional_infos` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `country`, `first_name`, `last_name`, `address_1`, `address_2`, `city`, `state`, `post_code`, `email`, `phone`, `pickup_location`, `additional_infos`) VALUES
+(1, 'VN', 'sdg', 'sdgwb', 'jsdgjfdgj', 'gjfxgjfxj', 'sgd', 'wxcbxcvnvcx', 12345, 'jfcc', 'rdj', 'cjk', 'cgk'),
+(2, 'VN', 'sdg', 'dhssdh', 'wsdbwdb', 'wxbvwcb', 'wvncvxcbwxb', 'wxcbxcvnvcx', 12345, 'fgjdghdj@shsh', 'hfjdgk', 'fh', 'wb'),
+(3, 'VN', 'sdg', 'dhssdh', 'wsdbwdb', 'wxbvwcb', 'wvncvxcbwxb', 'wxcbxcvnvcx', 12345, 'fgjdghdj@shsh', 'hfjdgk', 'fh', 'wb'),
+(4, 'VN', '', '', '', '', '', '', 12345, 'hj@jhk', '0123456789', '', ''),
+(5, 'VN', '', '', '', '', '', '', 0, 'fgjdghdj@shsh.com', '', '', '');
 
 -- --------------------------------------------------------
 
