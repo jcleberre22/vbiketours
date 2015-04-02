@@ -38,7 +38,7 @@ foreach ( $list_img as $image ) {
 											<option><?php echo $image; ?></option>
 <?php }?>
 										</select> or upload a new picture: <input class="checkfile" type="file"><?php if (isset($picture)){ echo $picture;}?><BR />
-			<BR /> 						<input id="validate" name="validate" type="submit" value="Add the tour" />
+			<BR /> 						<input id="add_tour_submit" name="add_tour_submit" type="submit" value="Add the tour" class="btn-pink" />
 		</p>
 	</form>
 </body>

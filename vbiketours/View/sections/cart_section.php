@@ -77,13 +77,7 @@ if ($page=='cart'){
 		</div>
 		<div class="col-xs-12 col-md-12 col-lg-12">
 		<?php if ($cart_page){?>
-		<form method="post" action="index.php?page=checkout_infos">
-<!--		<input id="submit_cart_titre" name="submit_cart_titre" type="hidden" value="<?php //echo "";?>">
-			<input id="submit_cart_titre" name="submit_cart_titre" type="hidden" value="<?php //echo "";?>"> -->
-			<input id="submit_cart_titre" name="submit_cart_titre" type="hidden" value="<?php echo "";?>">
-			<input id="submit_cart_price" name="submit_cart_price" type="hidden" value="<?php echo "";?>">
-			<input id="submit_cart_button" name="submit_cart" type="submit" class="btn-pink col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3" value="Proceed to PayPal">
-		</form>
+			<a href="index.php?page=checkout_infos"><div><button id="submit_cart_button" name="submit_cart" type="submit" class="btn-pink btn-effect col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3">Proceed to PayPal</button></div></a>
 		</div>
 		</div>
 		<?php }?>

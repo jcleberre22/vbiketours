@@ -1,18 +1,16 @@
 <?php
-$directory="Model/Classes/";
-$paths[1]="/vbiketours/$directory";
-$paths[2]="/vbiketours/$directory";
-$classes=list_folder($directory);
+$paths[0]=$_SERVER['DOCUMENT_ROOT']."/vbiketours/Model/Classes/DAO/";
+$paths[1]=$_SERVER['DOCUMENT_ROOT']."/vbiketours/Model/Classes/";
 
 foreach ($paths as $path){
-	$classes=list_folder($directory);
+	$classes=array_diff(scandir($path), array('..', '.','DAO'));
 	foreach ($classes as $class)
 		loadClass($path, $class);
 }
 
 function loadClass($path,$class)
 {
-  include_once $_SERVER['DOCUMENT_ROOT'].$path.$class; // include the class
+  include_once $path.$class; // include the class
 }
 
 //spl_autoload_register('loadClass'); // Record function loadClass into the autoload register

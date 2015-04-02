@@ -37,6 +37,7 @@
 				<li>Our Tours</li>
 				<p><br/></p>
 				<?php
+					$tour_dao = new TourDAO($db);
 					$tours_list=array();
 					$tours_list=$tour_dao->getList();
 					foreach ( $tours_list as $tour ) {
