@@ -1,6 +1,6 @@
 <?php
 $tour_dao = new TourDAO ( $db );
-
+$msg="";
 if (! isset ( $_POST ['submit_booking'] )) {
 	
 	if (isset ( $_GET ['action'] ) && $_GET ['action'] == "delete") {
@@ -18,11 +18,10 @@ if (! isset ( $_POST ['submit_booking'] )) {
 	if (isset ( $_GET ['action'] ) && $_GET ['action'] == "add") {
 		
 		// get booking values from the form
-		$booking_date = $_POST ['booking_date'];
-		$booking_nb_adults = $_POST ['booking_nb_adults'];
-		$booking_nb_childrens = $_POST ['booking_nb_childrens'];
-		$booking_tour_id = $_POST ['booking_tour_id'];
-		$booking_price = $_POST ['booking_price'];
+		if(isset($_POST['submit_booking'])){
+			foreach ($_POST as $input => $value){
+				$$input = $value;
+			}
 		
 		// if there is no cart in the session yet
 		if (! isset ( $_SESSION ['cart'] )) {
@@ -36,7 +35,6 @@ if (! isset ( $_POST ['submit_booking'] )) {
 			// create a new Cart
 			$cart = new Cart ( $cart_booking_list, $cart_price );
 			$msg = "the booking was added to your cart!";
-			$_SESSION ['msg'] = $msg;
 			// if there is already a cart in the session
 		} else {
 			$cart = $_SESSION ['cart'];
@@ -51,24 +49,23 @@ if (! isset ( $_POST ['submit_booking'] )) {
 					
 					// send the error message and go to the cart page
 					$msg = "this booking is already in your cart!";
-					$_SESSION ['msg'] = $msg;
 					header ( 'location: index.php?page=tour&tour_id=' . $booking->get_tour_id () );
 					die (); // end of script
 				}
 			}
 			$msg = "the booking was added to your cart!";
-			$_SESSION ['msg'] = $msg;
 		}
 		// add the booking to the cart
 		$cart->add_booking ( $booking );
+		}
 	}
 }
 
-// save the cart in the session
+// save and the message and the cart in the session
+$_SESSION ['msg'] = $msg;
 $_SESSION ['cart'] = $cart;
-//print_r($cart);
 
-// send confirmation message and go to the cart page
+// go to the cart page
 
 include 'View/cart.php';
 include 'tools/alert_message.php';

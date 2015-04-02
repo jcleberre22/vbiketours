@@ -104,7 +104,7 @@
 					</ul>
 				
 					<div id="checkout_infos_submit">		
-							<input type="submit" name="checkout_place_order" id="checkout_place_order" class="btn-pink" value="Proceed to Paypal" data-value="Place order" />
+							<input type="submit" name="checkout_infos_submit" id="checkout_infos_submit" class="btn-pink" value="Proceed to Paypal" data-value="infos_submit" />
 					</div>
 			</div>
 		</form>

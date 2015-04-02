@@ -78,11 +78,11 @@ if ($page=='cart'){
 		<div class="col-xs-12 col-md-12 col-lg-12">
 		<?php if ($cart_page){?>
 		<form method="post" action="index.php?page=checkout_infos">
-<!--		<input id="submit_booking_titre" name="submit_booking_titre" type="hidden" value="<?php //echo "";?>">
-			<input id="submit_booking_titre" name="submit_booking_titre" type="hidden" value="<?php //echo "";?>"> -->
-			<input id="submit_booking_titre" name="submit_booking_titre" type="hidden" value="<?php echo "";?>">
-			<input id="submit_booking_price" name="submit_booking_price" type="hidden" value="<?php echo "";?>">
-			<input id="submit_booking_button" name="submit_booking" type="submit" class="btn-pink col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3" value="Proceed to PayPal">
+<!--		<input id="submit_cart_titre" name="submit_cart_titre" type="hidden" value="<?php //echo "";?>">
+			<input id="submit_cart_titre" name="submit_cart_titre" type="hidden" value="<?php //echo "";?>"> -->
+			<input id="submit_cart_titre" name="submit_cart_titre" type="hidden" value="<?php echo "";?>">
+			<input id="submit_cart_price" name="submit_cart_price" type="hidden" value="<?php echo "";?>">
+			<input id="submit_cart_button" name="submit_cart" type="submit" class="btn-pink col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3" value="Proceed to PayPal">
 		</form>
 		</div>
 		</div>
