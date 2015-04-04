@@ -97,7 +97,9 @@
 				</p>
 			</div>		
 			<div id="checkout_infos_submit">
-				<button id="checkout_infos_submit" name="checkout_infos_submit" type="submit" class="btn-pink btn-effect col-xs-12 col-md-4">Proceed to PayPal</button>
+				<button id="checkout_infos_submit" name="checkout_infos_submit" type="submit" class="btn-pink btn-effect col-xs-12 col-md-4">
+					<?php echo $order_type;?>
+				</button>
 			</div>
 		</div>
 	</form>

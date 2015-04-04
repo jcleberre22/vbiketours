@@ -559,8 +559,10 @@ h1.navbar-brand {
 
 #tours_name {
 	text-align: center;
+	text-transform: uppercase;
 	background-color: #E1197C;
-	height: 50px; 
+	height: 50px;
+	padding: 5px; 
 }
 
 #tours:hover #tours_name {

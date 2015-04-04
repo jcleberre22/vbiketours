@@ -8,9 +8,10 @@
 				<div class="sec-title text-center wow animated fadeInDown">
 					<h2>PRESS</h2>
 				</div>
-
-							THE PRESS SECTION
-
+					<div style="text-align: center;">
+						<img alt="" src="img/construction.jpg"><br>
+						!!! SECTION UNDER CONSTRUCTION, COMING SOON !!!
+					</div>
 			</div>
 		</div>
 

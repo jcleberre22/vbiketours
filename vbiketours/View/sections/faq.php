@@ -8,9 +8,10 @@
 				<div class="sec-title text-center wow animated fadeInDown">
 					<h2>FREQUENTS ASKED QUESTIONS</h2>
 				</div>
-
-							THE FAQ SECTION
-
+					<div style="text-align: center;">
+						<img alt="" src="img/construction.jpg"><br>
+						!!! SECTION UNDER CONSTRUCTION, COMING SOON !!!
+					</div>
 			</div>
 		</div>
 	</div>
