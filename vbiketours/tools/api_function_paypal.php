@@ -11,9 +11,9 @@ function build_url_paypal() {
 	$api_paypal = 'https://api-3t.sandbox.paypal.com/nvp?'; // Website of PayPal API
 	$version = 57.0; // API version
 	
-	$user = '';
-	$pass = '';
-	$signature = '';
+	$user = 'vbiketourstest-facilitator_api1.gmail.com';
+	$pass = 'GM8CCLH84K3HTK9Z';
+	$signature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31ALj55S82pTPPwNAB2TRZ4MSzPsiB';
 	
 	$api_paypal = $api_paypal . 'VERSION=' . $version . '&USER=' . $user . '&PWD=' . $pass . '&SIGNATURE=' . $signature; // Add all parameters
 	

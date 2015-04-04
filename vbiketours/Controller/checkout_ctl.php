@@ -48,8 +48,31 @@ $order_dao = new OrderDAO($db);
 			else
 				echo "pb!";
 			
+
+			/*$list_booking=$cart->get_booking_list ();
+			$tourDAO=new TourDAO();
+			$last_item = count($list_booking)-1;
+			foreach ($list_booking as $item => $booking){
+				$tour_id=$booking->get_tour_id();
+				$tour=$tourDAO->get($tour_id);
+				$tour->get_name();
+				if ($item != $last_item)
+					$description .= $tour." - ";
+				else 
+					$description .= $tour;
+			}
+			*/
 		}		
-		include 'View/checkout.php';
+	//	include 'tools/payment.php';
+	if ($payment_type = "full")
+		include 'view/checkout.php';
+	else {
+		
+		//TODO send email 
+		include 'view/reservation.php';
+		
+	}
+	
 	}else {
 	header('location: index.php');
 }

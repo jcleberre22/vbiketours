@@ -78,7 +78,7 @@
 			<div id="checkout_infos_payment" class="col-md-12 col-sm-12 col-xs-12">			
 				<input id="payment_method_paypal"	type="radio" class="input-radio" name="payment_method" value="paypal" checked='checked'	data-order_button_text="Proceed to PayPal" />
 				<label for="payment_method_paypal">PayPal 
-				<img src="/img/icons/paypal.png" alt="PayPal Acceptance Mark" />
+				<img src="img/icons/paypal.png" alt="PayPal Acceptance Mark" />
 				<a href="https://www.paypal.com/en/webapps/mpp/paypal-popup" class="about_paypal"
 				   onclick="javascript:window.open('https://www.paypal.com/en/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
 				   title="What is PayPal?">What is PayPal?

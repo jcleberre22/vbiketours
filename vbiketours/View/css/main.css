@@ -592,7 +592,7 @@ h1.navbar-brand {
 #tours>a:hover {
 	color: #fec80e;
 }
-#tours_summary:hover #tours_summary_overlay {
+#tours:hover #tours_summary_overlay {
 	display: block;
 }
 
