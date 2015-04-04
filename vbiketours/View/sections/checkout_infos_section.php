@@ -86,19 +86,14 @@
 			</label>
 			<div class="payment_box payment_method_paypal">
 				<p>
-					<strong>Please be sure to click 
-						<img width="120" src="img/paypal_button.jpg" alt="PayPal Checkout Button"/>
-						button on the paypal confirmation page after the operation. 
-						<a href="img/paypal_help.jpg">(Click to View Picture)</a>
-					</strong><br>
-					So you could view your booking details.If you have any trouble for your paypal payment,
+					If you have any trouble for your paypal payment,
 					please send us an email at <br> ( <a href="mailto:mail@vbiketours.com">mail@vbiketours.com</a> ), 
 					we&#8217;ll contact you shortly to confirm your booking.
 				</p>
 			</div>		
 			<div id="checkout_infos_submit">
 				<button id="checkout_infos_submit" name="checkout_infos_submit" type="submit" class="btn-pink btn-effect col-xs-12 col-md-4">
-					<?php echo $order_type;?>
+					<?php $order_type="Proceed to PayPal"; echo $order_type;?>
 				</button>
 			</div>
 		</div>
