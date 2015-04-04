@@ -96,6 +96,14 @@
 					<?php $order_type="Proceed to PayPal"; echo $order_type;?>
 				</button>
 			</div>
+			<div  class="col-xs-12 col-md-12 col-lg-12">
+				<p>For the tests on PayPal sandbox (development API) use the followings identifiants:<br><br></p>
+				<p>Login:    vbiketourstest-buyer@gmail.com<br>
+				Password: 123vb123
+				
+				</p>
+				
+			</div>
 		</div>
 	</form>
 </div>
