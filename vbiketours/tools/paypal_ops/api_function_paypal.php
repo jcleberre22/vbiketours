@@ -1,19 +1,14 @@
 <?php
 
-/******  TESTS  ******/
-$paypal_server = "https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=";
-/**
- * **** PRODUCTION *****
- */
-// $paypal_server = "https://www.paypal.com/webscr&cmd=_express-checkout&token=";
+ $paypal_server = "https://www.paypal.com/webscr&cmd=_express-checkout&token=";
 
 function build_url_paypal() {
-	$api_paypal = 'https://api-3t.sandbox.paypal.com/nvp?'; // Website of PayPal API
+	$api_paypal = 'https://api-3t.paypal.com/nvp?'; // Website of PayPal API
 	$version = 121; // API version
 	
-	$user = 'vbiketourstest-facilitator_api1.gmail.com';
-	$pass = 'GM8CCLH84K3HTK9Z';
-	$signature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31ALj55S82pTPPwNAB2TRZ4MSzPsiB';
+	$user = 'vbiketours@gmail.com';
+	$pass = ' ';
+	$signature = ' ';
 	
 	$api_paypal = $api_paypal . 'VERSION=' . $version . '&USER=' . $user . '&PWD=' . $pass . '&SIGNATURE=' . $signature; // Add all parameters
 	

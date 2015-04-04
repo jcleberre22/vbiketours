@@ -11,7 +11,6 @@ $order_dao = new OrderDAO($db);
 
 			$order_datas=array();
 			$order_datas['id'] = count($order_dao->getList())+1;
-			print_r($order_dao->getList());echo "<br><br>";
 			$order_datas['cart'] = serialize($cart) ;
 
 			$customer_datas['customer_id'] = count($customer_dao->getList())+1;
@@ -33,15 +32,15 @@ $order_dao = new OrderDAO($db);
 
 			echo "<br><br><br><br><br><br>";
 
-			print_r($customer_datas);echo "<br><br>";
+
 			$customer = new Customer($customer_datas);
 			print_r($customer);echo "<br><br>";
 			$customer_dao -> add($customer);
-
+			
+			$order_datas['payment_succes'] = 0;
 			$order_datas['customer_id'] = $customer->get_customer_id();
-			print_r($order_datas);echo "<br><br>";
 			$order = new Order($order_datas);
-			$order->set_payment_succes(0);
+			echo "<pre>";
 			print_r($order);echo "<br><br>";
 			if($order_dao->add($order)) 	
 				echo "added";
@@ -49,23 +48,24 @@ $order_dao = new OrderDAO($db);
 				echo "pb!";
 			
 
-			/*$list_booking=$cart->get_booking_list ();
-			$tourDAO=new TourDAO();
+			$list_booking = $cart->get_booking_list ();
+			$tourDAO = new TourDAO($db);
 			$last_item = count($list_booking)-1;
+			$description="";
 			foreach ($list_booking as $item => $booking){
 				$tour_id=$booking->get_tour_id();
 				$tour=$tourDAO->get($tour_id);
-				$tour->get_name();
+
 				if ($item != $last_item)
-					$description .= $tour." - ";
+					$description .= $tour->get_name()." - ";
 				else 
-					$description .= $tour;
+					$description .= $tour->get_name();
 			}
-			*/
+			
 		}		
-	//	include 'tools/payment.php';
+
 	if ($payment_type = "full")
-		include 'view/checkout.php';
+		include 'tools/payment.php';
 	else {
 		
 		//TODO send email 

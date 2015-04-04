@@ -9,18 +9,21 @@ class OrderDAO{
 
   public function add(Order $order)
   {
+  	$e=new ErrorException();
   	try {
-  		$query = $this->_db->prepare('INSERT INTO order SET cart = :cart, payment_type = :payment_type, payment_method = :payment_method, payment_succes = :payment_succes, customer_id = :customer_id');
-  		
-  		$query->bindValue(':cart', $order->get_cart());
-  		$query->bindValue(':payment_type', $order->get_payment_type());
-  		$query->bindValue(':payment_method', $order->get_payment_method());
-  		$query->bindValue(':payment_succes', $order->get_payment_succes());
-  		$query->bindValue(':customer_id', $order->get_customer_id(), PDO::PARAM_INT);
-  		
-  		$query->execute();
-  		return true;
-  	} catch (Exception $e) {
+  		$req="INSERT INTO `order` VALUES (' ','".$order->get_cart()."','".$order->get_payment_type()."','".$order->get_payment_method()."','".$order->get_payment_succes()."','".$order->get_customer_id()."');";
+  		$test = $this->_db->query($req);
+//   		$query->bindValue(':cart', $order->get_cart());
+//   		$query->bindValue(':payment_type', $order->get_payment_type());
+//   		$query->bindValue(':payment_method', $order->get_payment_method());
+//   		$query->bindValue(':payment_succes', $order->get_payment_succes());
+//   		$query->bindValue(':customer_id', $order->get_customer_id(), PDO::PARAM_INT);
+//   		echo $query->debugDumpParams();
+  	
+ // 		$test=$query->execute();
+ // 		print_r($test->errorinfo());
+  		return $test;
+  	} catch (ErrorException $e) {
   		echo 'adding failed, error: '.$e->getmessage();
   		return false;
   	}
@@ -46,7 +49,7 @@ class OrderDAO{
   {
     $orders = [];
     
-    $query = $this->_db->query('SELECT * FROM order ORDER BY customer_id');
+    $query = $this->_db->query('SELECT * FROM `order` ORDER BY customer_id');
 	if($query!=null){
     while ($datas = $query->fetch(PDO::FETCH_ASSOC))
     {

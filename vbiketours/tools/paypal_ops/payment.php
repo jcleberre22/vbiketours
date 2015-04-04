@@ -3,13 +3,13 @@ include_once("tools/api_function_paypal.php");
 
 $request = build_url_paypal();
 $request = $request."&METHOD=SetExpressCheckout".
-			"&CANCELURL=".urlencode("http://127.0.0.1/vbiketours/index.php?page=paypal_cancel").
-			"&RETURNURL=".urlencode("http://127.0.0.1/vbiketours/index.php?page=paypal_success").
+			"&CANCELURL=".urlencode("http://vbiketours.com/vbiketours/index.php?page=paypal_cancel").
+			"&RETURNURL=".urlencode("http://vbiketours.com/vbiketours/index.php?page=paypal_succes").
 			"&AMT=".$cart->get_price().
 			"&CURRENCYCODE=USD".
 			"&DESC=".urlencode($description).
 			"&LOCALECODE=US".
-			"&HDRIMG=".urlencode("http://127.0.0.1/vbiketours/img/logo.png");
+			"&HDRIMG=".urlencode("http://vbiketours.com/vbiketours/img/logo.png");
 
 $ch = curl_init($request);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -27,7 +27,7 @@ else{
 	
 	if ($list_param_paypal['ACK'] == 'Success')
 	{
-		header("Location: https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=".$list_param_paypal['TOKEN']);
+		header("Location: https://www.paypal.com/webscr&cmd=_express-checkout&token=".$list_param_paypal['TOKEN']);
 		exit();
 	}
 	else {
