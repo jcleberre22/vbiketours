@@ -76,7 +76,7 @@ main > section {
 }
 
 .btn-pink {
-    background-color: #FF69B4;
+    background-color: #E1197C;
     box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
     padding: 15px 55px;
     color: #fff;
@@ -127,7 +127,7 @@ main > section {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #E1197C;
+	background: #FF69B4;
 	
 	-webkit-transform: scaleX(0);
 	   -moz-transform: scaleX(0);
@@ -164,11 +164,11 @@ main > section {
 	   -moz-transform: scaleX(1);
 	    -ms-transform: scaleX(1);
 			transform: scaleX(1);
-			background-color: #E1197C;
+			background-color: #FF69B4;
 }
 
 .btn-effect:hover:after, .btn-effect:focus:after, .btn-effect:active:after {
-			background-color: #FF69B4;
+			background-color: #E1197C;
 }
 
 .sec-title {
@@ -187,10 +187,10 @@ main > section {
     border-bottom: 1px solid #FF69B4;
     content: "";
     display: block;
-    left: 45%;
+    left: 25%;
     bottom: 0;
     position: absolute;
-    width: 115px;
+    width: 50%;
 }
 
 .parallax {
@@ -551,41 +551,38 @@ h1.navbar-brand {
 	Tours
 ==================================================================*/
 
-#list_tours {
-	
-}
-
 #tours {
 	height: 400px;
-	margin: 15px;
-	padding-left: 0px;
-	padding-right: 0px;
-	width : 30%;
+	margin-top:10px;
+	padding: 10px;
 }
 
 #tours_name {
 	text-align: center;
 	background-color: #E1197C;
-	height:	50px;
+	height: 50px; 
 }
 
 #tours:hover #tours_name {
-	background-color: #FF69B4; 
+	background-color: #FF69B4;
 }
 
 #tours_summary {
 	
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position:center;
-
+	background-size: 100%;
+		background-color: #808080;
+	background-position: center;
  	height: 350px;
+ 	padding: 0;
 }
 
 #tours_summary_overlay {
 	display: none;
 	background-color: rgba(0,0,0,0.5);
 	height: 350px;
+	text-align: center;
+	padding: 20px;
 }
 
 #tours>a {
@@ -598,6 +595,8 @@ h1.navbar-brand {
 #tours_summary:hover #tours_summary_overlay {
 	display: block;
 }
+
+
 
 /*=================================================================
 	News
@@ -949,325 +948,62 @@ textarea.form-control {
 }
 
 #fb_frame{
-	border: none;
-	overflow: hidden;
-	width: 270px;
+	width: 185px;
 	height: 258px;
 }
 
 #footer .footer_list{
 	 list-style-type: none;
+	 text-align: center;
 }
 
-#separator :after{
-    border-bottom: 1px solid #FF69B4;
-    content: "";
-    display: block;
-    left: 10%;
-    bottom: 0;
-    position: absolute;
-    width: 80%;
+#footer-social{
+	width: 50%;
+	margin-left: 25%;
 }
 
-#follow_us {
-	left: 45%;
-	width: 15%;
+.footer-social ul {
+	padding: 30px;
+	text-align: center;
+}
+
+.footer-social ul li {
+    display: inline-block;
+    margin: 0 30px;
+    text-align: center;
 }
 
 /*===========================================================*/ 
-/*	Responsive Styles										 */
+/*	Additionnal Responsive Styles							 */
 /*===========================================================*/
 
 /*============================================================
-	For Small Desktop
+	BOOTSRAP XS (WIDTH= MAX: 767 PX) (smartphones)
 ==============================================================*/
+@media only (max-width: 767px) {
 
-@media (min-width: 980px) and (max-width: 1150px) {
-
-/*about*/
-    #about .welcome-block img {
-        margin-bottom: 30px;
-    }
-
-/* gallery */
-    figcaption.mask {
-        bottom: -151px;
-    }
-
-    .testimonial-item > div:after {
-        bottom: -40px;
-    }
-    
-    .collapse{
-    	visibility: hidden;
-    }
+	
 }
-
 
 /*============================================================
-	Tablet (Portrait) Design for a width of 768px
+	BOOTSRAP SM (WIDTH= MIN: 768 - MAX: 991 PX) (tablets)
 ==============================================================*/
+@media only (min-width: 768px) and (max-width: 991px) {
 
-@media (min-width: 768px) and (max-width: 979px) {
-
-/* navigation */
-    .navbar-inverse .navbar-toggle {
-        border-color: #fff;
-    }
-
-    .navbar-inverse .navbar-toggle:hover,
-    .navbar-inverse .navbar-toggle:focus {
-        background-color: transparent;
-    }
-    
-/* home slider  */
-    .caption-content h2 {
-        font-size: 40px;
-    }
-
-    .caption-content p {
-        font-size: 25px;
-    }
-
-    .caption-content strong {
-        font-size: 45px;
-    }
-
-/* about */
-    .recent-works {
-        margin-bottom: 50px;
-    }
-
-    .service-item {
-        margin-bottom: 50px;
-    }
-
-/*tours*/
-	#tours {
-	width : 40%;
+	
 }
-
-/* gallery */
-    .gallery-item {
-        width: 48%;
-    }
-
-/* testimonial */
-    .testimonial-item {
-        width: 100%;
-    }
-
-    .testimonial-item {
-        width: 80%;
-    }
-
-    .testimonial-item > div:after {
-        bottom: -35px;
-    }
-
-/* price */
-    .price-table {
-        margin-bottom: 50px;
-    }
-
-/* contact form */
-    .contact-form {
-        margin-bottom: 50px;
-    }
-}
-
 
 /*============================================================
-	Mobile (Portrait) Design for a width of 320px
+	BOOTSRAP MD (WIDTH= MIN: 992 - MAX: 1199 PX) (landscape)
 ==============================================================*/
+@media only (min-width: 768px) and (max-width: 991px) {
 
-@media only screen and (max-width: 767px) {
-
-    body {
-        font-size: 14px;
-    }
-
-    .parallax {
-        background-position: centet tip !important;
-    }
-
-    .sec-title h2 {
-        font-size: 25px;
-    }
-
-    .sec-title h2:after {
-        left: 30%;
-    }
-
-/*navigation*/
-    .navbar-inverse .navbar-toggle {
-        border-color: #fff;
-    }
-
-    .navbar-inverse .navbar-toggle:hover,
-    .navbar-inverse .navbar-toggle:focus {
-        background-color: transparent;
-    }
-
-/* slider */
-    .caption-content h2 {
-        font-size: 18px;
-    }
-
-    .caption-content > span {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    .caption-content p {
-        font-size: 16px;
-        margin-bottom: 30px;
-    }
-
-    .caption-content strong {
-        font-size: 22px;
-    }
-
-/* about */
-    .recent-works {
-        margin-bottom: 85px;
-    }
-
-    #about h3 {
-        font-size: 18px;
-        margin: 0 0 35px !important;
-    }
-
-    #about .owl-buttons {
-        margin-top: 20px;
-    }
-
-    #about .message-body {
-        margin-bottom: 45px;
-    }
-
-    #about .welcome-block img {
-        margin: 0 25px 15px 0;
-    }
-    
-/*tours*/
-	#tours {
-	width : 85%;
+	
 }
-
-/*gallery*/
-    .gallery-item {
-        margin: 0 auto 10px;
-        font-size: 14px;
-        width: 280px;
-    }
-
-    figcaption.mask {
-        bottom: -107px;
-        color: #fff;
-        padding: 15px;
-    }
-
-/* lightbox */
-    .fancybox-title h3 {
-        font-size: 20px;
-    }
-
-    .fancybox-title p {
-        font-size: 14px;
-    }
-
-/* testimonial */
-    .testimonial-item {
-        width: 95%;
-    }
-
-    .testimonial-item > div:before,
-    .testimonial-item > div:after {
-        background-image: none;
-    }
-
-    .testimonial-item > div > span {
-        margin: 30px 0 20px;
-    }
-
-
-/* contact form */
-    .contact-form {
-        margin-bottom: 50px;
-    }
-
-/* footer */
-    .footer-content {
-        width: 100%;
-    }
-
-    .footer-social ul li {
-        margin: 0 7px;
-    }
-}
-
-
-
-
 /*============================================================
-	Mobile (Landscape) Design for a width of 480px
+	BOOTSRAP LG (WIDTH= MIN: 1200 PX)	(Large Screens)
 ==============================================================*/
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-
-    .sec-title h2:after {
-        left: 38%;
-    }
-
-/* home slider */
-    .caption-content h2 {
-        font-size: 35px;
-    }
-
-    .caption-content p {
-        font-size: 25px;
-    }
-
-    .caption-content strong {
-        font-size: 35px;
-    }
-
-/*about*/
-    #about .welcome-block h3 {
-        margin: 0 0 35px;
-    }
-    
-/*tours*/
-	#tours {
-		width : 85%;
-}
-
-/* gallery */
-    .gallery-item {
-        width: 48%;
-    }
-
-    figcaption.mask {
-        bottom: -132px;
-    }
-
-/* testimonial */
-    .testimonial-item {
-        width: 80%;
-    }
-
-    .testimonial-item > div:before {
-        bottom: 160px;
-    }
-
-/* contact form */
-    .contact-form {
-        margin-bottom: 50px;
-    }
-
-/* footer */
-    .footer-content {
-        width: 380px;
-    }
+@media only (min-width: 768px) and (max-width: 991px) {
+	
+	
 }

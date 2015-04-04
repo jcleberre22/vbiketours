@@ -10,17 +10,20 @@
 			<div id="list_tours" class="col-xs-12 col-md-12 col-lg-12">
 			
 			<?php foreach ( $tours_list as $tour ) {?>
-				<div id="tours" class="col-xs-12 col-md-6 col-lg-3">
+				<div id="tours" class="col-xs-12 col-md-6 col-lg-4">
+ 					
  					<a href="index.php?page=tour&tour_id=<?php echo $tour->get_id() ?>">
- 						<div id="tours_name">
+ 						<div id="tours_name" class="col-xs-12 col-md-12 col-lg-12">
 							<?php echo $tour->get_name () . '<BR/><BR/>'; ?>
  						</div>
- 						<div id="tours_summary" style="background-image: url(./<?php echo "img/uploads/tours/".str_replace(" ", "_",$tour->get_name())."/".$tour->get_picture();?>)">	
+ 					
+ 						<div id="tours_summary" class="col-xs-12 col-md-12 col-lg-12" style="background-image: url(./<?php echo "img/uploads/tours/".str_replace(" ", "_",$tour->get_name())."/".$tour->get_picture();?>)">	
 						 	<div id="tours_summary_overlay">
 								<?php echo $tour->get_summary () . '<BR/><BR/>'; ?>
  							</div>
  						</div>
  					</a>
+ 					
 				</div>
 				<?php }?>
 			</div>

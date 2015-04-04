@@ -22,8 +22,7 @@
 
 #image_tour>img {
 	vertical-align: middle;
-	max-width: 500px;
-	max-height: 500px;
+	max-width: 100%;
 }
 
 #description_tour{

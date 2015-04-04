@@ -2,39 +2,17 @@
 </main>
 <!-- Footer -->
 <footer id="footer">
+<section>
 <div class="container">
 	<div class="row" >
 
 		<div class="sec-title text-center wow animated fadeInDown">
 			<h2>SITE MAP</h2>
 		</div>
-
-		<div class="col-lg-3 col-md-3 col-xs-3">
-			<iframe id=fb_frame
-				src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Vbiketours/1468819633364888?fref=ts;width=270&amp;height=235&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=359340147575210"></iframe>
-		</div>
 		
-		<div class="col-lg-3 col-md-4 col-xs-10">
-			<ul class="footer_list">
-				<li>Navigation</li>
-					<p><br/></p>
-					<li><a href="index.php#about">About us</a></li>
-					<li><a href="index.php#tours">Tours</a></li>
-					<li><a href="index.php#news">News</a></li>
-					<li><a href="index.php#gallery">Gallery</a></li>
-					<li><a href="index.php#faq">Faq</a></li>
-					<li><a href="index.php#press">Press</a></li>
-					<li><a href="index.php#testimonials">Testimonial</a></li>
-					<li><a href="index.php#contact">Contact</a></li>
-					<?php if (isset($_SESSION['cart'])){?>
-					<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
-					<?php }?>
-			</ul>
-		</div>
-		
-		<div class="col-lg-3 col-md-4 col-xs-10">
+		<div id="tourlinks" class="col-lg-4 col-md-6 col-xs-12">
 					<ul class="footer_list">
-				<li>Our Tours</li>
+				<li style="text-decoration: underline;">Our Tours</li>
 				<p><br/></p>
 				<?php
 					$tour_dao = new TourDAO($db);
@@ -51,9 +29,9 @@
 			</ul>
 		</div>
 		
-		<div class="col-lg-3 col-md-8 col-xs-10">
+		<div id="navlinks"class="col-lg-4 col-md-6 col-xs-12">
 					<ul class="footer_list">
-				<li>News</li>
+				<li style="text-decoration: underline;">News</li>
 				<p><br/></p>
 				<?php
 					foreach ( $tours_list as $tour ) {
@@ -66,18 +44,44 @@
 				<?php }?>
 			</ul>
 		</div>
-		
-		<div id="separator" class="col-lg-12 col-md-12 col-xs-12">
-		<p><br/></p>
+					
+		<div id="navlinks"class="col-lg-4 col-md-6 col-xs-12">
+			<ul class="footer_list">
+				<li style="text-decoration: underline;">Navigation</li>
+					<p><br/></p>
+					<li><a href="index.php#about">About us</a></li>
+					<li><a href="index.php#tours">Tours</a></li>
+					<li><a href="index.php#news">News</a></li>
+					<li><a href="index.php#gallery">Gallery</a></li>
+					<li><a href="index.php#faq">Faq</a></li>
+					<li><a href="index.php#press">Press</a></li>
+					<li><a href="index.php#testimonials">Testimonial</a></li>
+					<li><a href="index.php#contact">Contact</a></li>
+					<?php if (isset($_SESSION['cart'])){?>
+					<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
+					<?php }?>
+			</ul>
 		</div>
-		
-		<div class="col-lg-12 col-md-12 col-xs-12" id="follow_us" >
-		<br/>Follow Us On
-		<a><img alt="" src=""/></a>
-		</div>
-		
 	</div>
 </div>
+</section>
+
+<section>		
+		<div class="sec-title text-center wow animated fadeInDown">
+			<h2> Follow Us On</h2>
+		</div>
+		
+		<div id="footer-social" class="footer-social">
+			<ul class="footer_list">
+				<li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
+				<li class="wow animated zoomIn" data-wow-delay="0.3s"><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
+				<li class="wow animated zoomIn" data-wow-delay="0.6s"><a href="#"><i class="fa fa-skype fa-3x"></i></a></li>
+				<li class="wow animated zoomIn" data-wow-delay="0.9s"><a href="#"><i class="fa fa-dribbble fa-3x"></i></a></li>
+				<li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
+			</ul>
+		</div>
+		
+</section>
 </footer>
 <!-- end Footer -->
 

@@ -1,5 +1,5 @@
 <?php
-class Customer_DAO
+class CustomerDAO
 {
   private $_db; // PDO instance
 
@@ -38,24 +38,24 @@ class Customer_DAO
     $id = (int) $id;
 
     $query = $this->_db->query('SELECT * FROM customer WHERE id = '.$id);
-    $customers = $query->fetch(PDO::FETCH_ASSOC);
-
-    return new Customer($customers);
+    $customer_details = $query->fetch(PDO::FETCH_ASSOC);
+    return new Customer($customer_details);
   }
 
   public function getList()
   {
     $customers = [];
-
     $query = $this->_db->query('SELECT * FROM customer ORDER BY country');
-
+    
+    if($query!=null){
     while ($datas = $query->fetch(PDO::FETCH_ASSOC))
     {
       $customers[] = new Customer($datas);
     }
-
+    }
     return $customers;
   }
+ 
 
   public function update(Customer $customer)
   {

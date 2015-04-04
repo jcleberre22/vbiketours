@@ -55,7 +55,7 @@
 </head>
 <body id="body">
 
-	<!-- preloader -->
+	<!-- preloader 
 	<div id="preloader">
 		<div class="loader-box">
 			<div class="battery"></div>
@@ -89,7 +89,7 @@
 			<!-- main nav -->
 			<nav class="collapse navbar-collapse navbar-right" role="navigation">
 				<ul id="nav" class="nav navbar-nav">
-					<li style="visibility:hidden;"><a href="#" ></a></li>
+					<li class="hidden"><a href="#" ></a></li>
 					<li><a href="index.php#about" <?php if ($page!='welcome')echo "class=\"external\"";?>>ABOUT US</a></li>
 					<li><a href="index.php#tours_section" <?php if ($page!='welcome')echo "class=\"external\"";?>>TOURS</a></li>
 					<li><a href="index.php#news" <?php if ($page!='welcome')echo "class=\"external\"";?>>NEWS</a></li>

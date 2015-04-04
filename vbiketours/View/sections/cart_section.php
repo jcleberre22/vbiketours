@@ -77,7 +77,7 @@ if ($page=='cart'){
 		</div>
 		<div class="col-xs-12 col-md-12 col-lg-12">
 		<?php if ($cart_page){?>
-			<a href="index.php?page=checkout_infos"><div><button id="submit_cart_button" name="submit_cart" type="submit" class="btn-pink btn-effect col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3">Proceed to PayPal</button></div></a>
+			<a href="index.php?page=checkout_infos"><div><button id="submit_cart_button" name="submit_cart" type="submit" class="btn-pink btn-effect col-xs-12 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3">Proceed to Checkout</button></div></a>
 		</div>
 		</div>
 		<?php }?>

@@ -63,11 +63,11 @@
 				<h3>Payment Option</h3>
 				<ul class="payment_options_list">
 					<li id='payment-option-full' class="payment_option payment_option_full">
-						<input id='pay-full-amount' name='payment-radio' type='radio' checked='checked' class='input-radio'/>
+						<input id='pay-full-amount' name='payment_type' type='radio' checked='checked' class='input-radio' value="full"/>
 						<label for='pay-full-amount'>Pay full amount now </label>					
 					</li>
 					<li id='payment-option-cash'class="payment_option payment_option_cash">
-						<input id='pay-cash' name='payment-radio' type='radio' class='input-radio'/>
+						<input id='pay-cash' name='payment_type' type='radio' class='input-radio' value="cash"/>
 							<label for='pay-cash'>Pay in cash on the day of the tour</label>
 					</li>
 				</ul>
@@ -97,7 +97,7 @@
 				</p>
 			</div>		
 			<div id="checkout_infos_submit">
-				<button id="checkout_infos_submit" name="checkout_infos_submit" type="submit" class="btn-pink btn-effect">Proceed to PayPal</button>
+				<button id="checkout_infos_submit" name="checkout_infos_submit" type="submit" class="btn-pink btn-effect col-xs-12 col-md-4">Proceed to PayPal</button>
 			</div>
 		</div>
 	</form>

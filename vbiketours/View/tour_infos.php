@@ -19,8 +19,11 @@
 			echo $tour->get_duration () . "<BR/><BR/>";
 			echo $tour->get_style () . "<BR/><BR/>";
 			echo $tour->get_route () . "<BR/><BR/>";
+			if ($tour->get_nb_passenger_max ()!=0)
 			echo $tour->get_nb_passenger_max () . "<BR/><BR/>";
-			echo $tour->get_price () . "<BR/><BR/>";
+			else 
+				echo "Unlimited<BR/><BR/>";
+			echo $tour->get_price () . " $<BR/><BR/>";
 			echo $tour->get_validity_start () . " - " . $tour->get_validity_end () . "<BR/><BR/>";
 		?>				
 	</div>

@@ -6,11 +6,12 @@
 				<h2>CHECKOUT</h2>
 			</div>
 			<?php 
-			print_r($customer);
-			echo "<br><br>";
-			foreach ($customer_datas as $property => $value){
-				echo $property.": ".$value."<br><br>";
-			}
+// 			$cust_tab = new ArrayObject($customer, 2);
+			
+// 			print_r($cust_tab);
+// 			foreach ( $cust_tab as $property => $value){
+// 				echo $property.": ".$value."<br><br>";
+// 			}
 			
 			?>
 		</div>
