@@ -1,3 +1,4 @@
+
 <!-- Contact section -->
 <section id="contact">
 	<div class="container">
@@ -9,8 +10,8 @@
 			</div>
 
 
-			<div class="col-md-7 contact-form wow animated fadeInLeft">
-				<form action="#" method="post">
+			<div id="contact_form" class="contact-form wow animated fadeInLeft col-xs-12 col-md-8 col-lg-8">
+				<form action="index.php?page=send_mail" method="post">
 					<div class="input-field">
 						<input type="text" name="name" class="form-control"
 							placeholder="Your Name...">
@@ -27,21 +28,31 @@
 						<textarea name="message" class="form-control"
 							placeholder="Messages..."></textarea>
 					</div>
-					<button type="submit" id="submit" class="btn btn-pink btn-effect">Send</button>
+					<button type="submit" id="submit_contact" name="submit_contact" class="btn btn-pink btn-effect">Send</button>
 				</form>
 			</div>
 
-			<div class="col-md-5 wow animated fadeInRight">
+			<div id="contact_details" class="wow animated fadeInRight col-xs-12 col-md-4 col-lg-4">
 				<address class="contact-details">
-					<p>
-						<i class="fa fa-pencil"></i>VBIKETOURS <span>Adress </span><span>VIETNAM</span>
+					<p style="padding-bottom: 10px">
+						<i class="fa fa-pencil"></i>
+
+						Address: <br>
+						VBIKETOURS<br>
+						150, Nguyen Cu Trinh<br>
+						Quan 1<br>
+						Ho Chi Minh<br>
+						VIETNAM												
 					</p>
-					<br>
 					<p>
-						<i class="fa fa-phone"></i>Phone: 09000000
+						<i class="fa fa-phone"></i>
+						Phone: <br>  
+							Hotline   090 3 378 266<br>
+  							Landline      08 66 85 23 66<br>
 					</p>
 					<p>
-						<i class="fa fa-envelope"></i>email@email.com
+						<i class="fa fa-envelope"></i>
+							Mail:<br>vbiketourstest@gmail.com<br>
 					</p>
 				</address>
 			</div>

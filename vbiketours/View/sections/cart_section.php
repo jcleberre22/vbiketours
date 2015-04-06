@@ -57,7 +57,7 @@ if ($page=='cart'){
 							<?php echo "<br><b>".$booked_tour->get_name()."</b><br><br>";?>
 							<?php echo "Date: ".$bookingOBJ->get_date()."<br>Start time: ".$booked_tour->get_start_time()."<br><br>";?>
 							<?php echo "Adults: ".$bookingOBJ->get_nb_adults()."<br><br>";?>
-							<?php echo "Childrens: ".$bookingOBJ->get_nb_childrens()."<br><br>";?>
+							<?php echo "Children: ".$bookingOBJ->get_nb_children()."<br><br>";?>
 						</td>
 						<td id="cart_table_price" class="cart_table_row">
 							<?php echo "<br>".$bookingOBJ->get_price()."$<br>";?>

@@ -6,7 +6,7 @@ class Booking {
 	private $_id;
 	private $_date;
 	private $_nb_adults;
-	private $_nb_childrens;
+	private $_nb_children;
 	private $_tour_id;
 	private $_price;
 	
@@ -14,12 +14,12 @@ class Booking {
 	
 //  Classic Constructor
 
-	public function __construct($id, $date, $nb_adults, $nb_childrens, $tour_id, $price)
+	public function __construct($id, $date, $nb_adults, $nb_children, $tour_id, $price)
 	{
 		$this->set_id($id);
 		$this->set_date($date);
 		$this->set_nb_adults($nb_adults);
-		$this->set_nb_childrens($nb_childrens);
+		$this->set_nb_children($nb_children);
 		$this->set_tour_id($tour_id);
 		$this->set_price($price);
 	}
@@ -28,7 +28,7 @@ class Booking {
 		echo $this->_id."<br><br>";
 		echo $this->_date."<br><br>";
 		echo $this->_nb_adults."<br><br>";
-		echo $this->_nb_childrens."<br><br>";
+		echo $this->_nb_children."<br><br>";
 		echo $this->_tour_id."<br><br>";
 		echo $this->_price."<br><br>";
 	}
@@ -48,8 +48,8 @@ class Booking {
 		return $this->_nb_adults;
 	}
 	
-	public function get_nb_childrens() {
-		return $this->_nb_childrens;
+	public function get_nb_children() {
+		return $this->_nb_children;
 	}
 	
 	public function get_tour_id() {
@@ -74,8 +74,8 @@ class Booking {
 		$this->_nb_adults = $nb_adults;
 	}
 	
-	public function set_nb_childrens($nb_childrens) {
-		$this->_nb_childrens = $nb_childrens;
+	public function set_nb_children($nb_children) {
+		$this->_nb_children = $nb_children;
 	}
 	
 	public function set_tour_id($tour_id) {
@@ -83,7 +83,7 @@ class Booking {
 	}
 	
 	public function set_price($price) {
-		$booking_price=($price*$this->_nb_adults)+($price*$this->_nb_childrens*self::CHILDREN_PROMOTION);
+		$booking_price=($price*$this->_nb_adults)+($price*$this->_nb_children*self::CHILDREN_PROMOTION);
 		$this->_price = $booking_price;
 	}
 }

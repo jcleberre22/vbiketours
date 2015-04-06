@@ -3,8 +3,10 @@ Home Slider
 ==================================== -->
 
 <section id="home-slider">
-	<div id="slider" class="sl-slider-wrapper">
 
+<noscript> <div style="display:none"> </noscript>
+	
+	<div id="slider" class="sl-slider-wrapper">
 		<div class="sl-slider">
 <?php
 $directory="img/uploads/slider/";
@@ -16,7 +18,7 @@ foreach ( $list_img as $image ) {
 				data-slice1-rotation="-25" data-slice2-rotation="-25"
 				data-slice1-scale="2" data-slice2-scale="2">
 
-				<div class="bg-img" style="background-image: url(./<?php echo $directory; echo $image;?>);"></div>
+				<div class="bg-img" style="height:100%; background-image: url(./<?php echo $directory; echo $image;?>);"></div>
 
 				<div class="slide-caption">
 					<div class="caption-content">
@@ -29,6 +31,9 @@ foreach ( $list_img as $image ) {
 <?php }?>
 		</div>
 	</div>
+
+	<noscript></div><div class="sl-slider-wrapper" style="background-image: url(./img/uploads/slider/1.jpg);"> </noscript>
+	
 </section>
 
 <!--

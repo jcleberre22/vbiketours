@@ -87,7 +87,7 @@
 			<div class="payment_box payment_method_paypal">
 				<p>
 					If you have any trouble for your paypal payment,
-					please send us an email at <br> ( <a href="mailto:mail@vbiketours.com">mail@vbiketours.com</a> ), 
+					please send us an email at <br> ( <a href="index.php#contact">vbiketourstest@gmail.com</a> ), 
 					we&#8217;ll contact you shortly to confirm your booking.
 				</p>
 			</div>		
@@ -95,8 +95,8 @@
 				<button id="checkout_infos_submit" name="checkout_infos_submit" type="submit" class="btn-pink btn-effect col-xs-12 col-md-4">
 					<?php $order_type="Proceed to PayPal"; echo $order_type;?>
 				</button>
-			</div>
-			<div  class="col-xs-12 col-md-12 col-lg-12">
+			</div><br>
+			<div><br><br>
 				<p>For the tests on PayPal sandbox (development API) use the followings identifiants:<br><br></p>
 				<p>Login:    vbiketourstest-buyer@gmail.com<br>
 				Password: 123vb123

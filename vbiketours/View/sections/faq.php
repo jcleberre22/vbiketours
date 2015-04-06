@@ -9,7 +9,7 @@
 					<h2>FREQUENTS ASKED QUESTIONS</h2>
 				</div>
 					<div style="text-align: center;">
-						<img alt="" src="img/construction.jpg"><br>
+						<img alt="" src="img/construction.png"><br>
 						!!! SECTION UNDER CONSTRUCTION, COMING SOON !!!
 					</div>
 			</div>

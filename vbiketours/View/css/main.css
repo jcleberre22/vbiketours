@@ -173,6 +173,7 @@ main > section {
 
 .sec-title {
     margin-bottom: 50px;
+    padding: 0 15px;
 }
 
 .sec-title h2 {
@@ -200,6 +201,9 @@ main > section {
     background-size: cover;
 }
 
+.noscript{
+	display: none;
+}
 
 /*===========================================
 	Preloader
@@ -912,6 +916,16 @@ ul.external li a:hover {
 textarea.form-control {
     width: 100%;
     height: 165px;
+    padding-bottom: 15px;
+}
+
+#contact_form{
+	padding-left:5%;
+	padding-bottom: 15px;
+}
+
+#contact_details{
+	padding-left:5%;
 }
 
 .contact-details h3 {
@@ -941,22 +955,25 @@ textarea.form-control {
 
 #footer {
     background-color: #2E2E2E;
-    padding: 70px 0;
+    padding: 40px 0 40px;
     color: #fff;
+}
+
+#footer .links{
+	padding-bottom: 15px;
+}
+
+#site_map_section {
+	padding-bottom: 70px;
 }
 
 #footer .sec-title h2{
     color: #fff;
 }
 
-#fb_frame{
-	width: 185px;
-	height: 258px;
-}
-
-#footer .footer_list{
-	 list-style-type: none;
-	 text-align: center;
+#footer li{
+	list-style-type: none;
+	text-align: center;
 }
 
 #footer-social{
@@ -965,7 +982,7 @@ textarea.form-control {
 }
 
 .footer-social ul {
-	padding: 30px;
+	padding: 0 30px;
 	text-align: center;
 }
 
@@ -982,15 +999,24 @@ textarea.form-control {
 /*============================================================
 	BOOTSRAP XS (WIDTH= MAX: 767 PX) (smartphones)
 ==============================================================*/
-@media only (max-width: 767px) {
-
+@media all and (max-width: 767px) {
+	.footer-social ul {
+		margin-left: -50px;
+	}
 	
+	#contact p {
+	text-align: center;
+	}
+	
+	#submit_contact{
+		width: 100%;
+	}
 }
 
 /*============================================================
 	BOOTSRAP SM (WIDTH= MIN: 768 - MAX: 991 PX) (tablets)
 ==============================================================*/
-@media only (min-width: 768px) and (max-width: 991px) {
+@media all and (min-width: 768px) and (max-width: 991px) {
 
 	
 }
@@ -998,14 +1024,14 @@ textarea.form-control {
 /*============================================================
 	BOOTSRAP MD (WIDTH= MIN: 992 - MAX: 1199 PX) (landscape)
 ==============================================================*/
-@media only (min-width: 768px) and (max-width: 991px) {
+@media all and (min-width: 768px) and (max-width: 991px) {
 
 	
 }
 /*============================================================
 	BOOTSRAP LG (WIDTH= MIN: 1200 PX)	(Large Screens)
 ==============================================================*/
-@media only (min-width: 768px) and (max-width: 991px) {
+@media all and (min-width: 768px) and (max-width: 991px) {
 	
 	
 }

@@ -3,8 +3,10 @@ BANNIER TOUR
 ==================================== -->
 
 <section id="home-slider">
-	<div id="slider" class="sl-slider-wrapper">
 
+<noscript> <div style="display:none"> </noscript>
+	
+	<div id="slider" class="sl-slider-wrapper">
 		<div class="sl-slider">
 <?php
 $directory="img/uploads/slider/";
@@ -29,6 +31,9 @@ foreach ( $list_img as $image ) {
 <?php }?>
 		</div>
 	</div>
+
+	<noscript></div><div class="sl-slider-wrapper" style="background-image: url(./img/uploads/slider/1.jpg);"> </noscript>
+	
 </section>
 
 <!--
