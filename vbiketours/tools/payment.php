@@ -19,7 +19,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $result_paypal = curl_exec($ch);
 
 if (!$result_paypal)
-	$error_msg = "error: ".curl_error($ch);
+	echo $msg = $_SESSION['msg'] = "error: ".curl_error($ch);
 
 else{
 
@@ -31,8 +31,9 @@ else{
 		exit();
 	}
 	else {
-		$error_msg = "Communication error with PayPal Server. ".$list_param_paypal['L_SHORTMESSAGE0']." ".$list_param_paypal['L_LONGMESSAGE0'];
+		echo $msg = $_SESSION['msg'] = "Communication error with PayPal Server. ".$list_param_paypal['L_SHORTMESSAGE0']." ".$list_param_paypal['L_LONGMESSAGE0'];
 	}
 }
 curl_close($ch);
+
 ?>

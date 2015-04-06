@@ -18,14 +18,5 @@ require '../tools/classes_auto_load.php';
 		$error = "Database insertion probleme - error: " . $e;
 		header ( 'location: formaddtour_ctl.php?$error=' . $error );
 		die();
-	}?>
-	<script type="text/javascript">alert("the tour: ".<?php $tour_datas['name'] ?>." was succesfully added to the database.")</script>
-	<?php
-	//header ( 'location: formaddtour_ctl.php');
-// }
-// }else{
-// 	$error="gros probleme";
-// 	header ( 'location: formaddtour_ctl.php?.$error=' . $error );
-// 	die();
-// }
+	}
 ?>
