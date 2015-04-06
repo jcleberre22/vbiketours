@@ -2,7 +2,7 @@
 </main>
 <!-- Footer -->
 <footer id="footer">
-<section>
+<section id="site_map_section">
 <div class="container">
 	<div class="row" >
 
@@ -10,8 +10,8 @@
 			<h2>SITE MAP</h2>
 		</div>
 		
-		<div id="tourlinks" class="col-lg-4 col-md-6 col-xs-12">
-					<ul class="footer_list">
+		<div id="tourlinks" class="links col-lg-4 col-md-4 col-xs-12">
+
 				<li style="text-decoration: underline;">Our Tours</li>
 				<p><br/></p>
 				<?php
@@ -26,11 +26,29 @@
 				?>
 				</a></li>
 				<?php }?>
-			</ul>
+
 		</div>
 		
-		<div id="navlinks"class="col-lg-4 col-md-6 col-xs-12">
-					<ul class="footer_list">
+		<div id="navlinks"class="links col-lg-4 col-md-4 col-xs-12">
+
+			<li style="text-decoration: underline;">Navigation</li>
+			<p><br/></p>
+			<li><a href="index.php#about">About us</a></li>
+			<li><a href="index.php#tours">Tours</a></li>
+			<li><a href="index.php#news">News</a></li>
+			<li><a href="index.php#gallery">Gallery</a></li>
+			<li><a href="index.php#faq">Faq</a></li>
+			<li><a href="index.php#press">Press</a></li>
+			<li><a href="index.php#testimonials">Testimonial</a></li>
+			<li><a href="index.php#contact">Contact</a></li>
+			<?php if (isset($_SESSION['cart'])){?>
+			<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
+			<?php }?>
+
+		</div>
+		
+		<div id="newslinks"class="links col-lg-4 col-md-4 col-xs-12">
+
 				<li style="text-decoration: underline;">News</li>
 				<p><br/></p>
 				<?php
@@ -42,26 +60,9 @@
 				?>
 				</a></li>
 				<?php }?>
-			</ul>
+
 		</div>
 					
-		<div id="navlinks"class="col-lg-4 col-md-6 col-xs-12">
-			<ul class="footer_list">
-				<li style="text-decoration: underline;">Navigation</li>
-					<p><br/></p>
-					<li><a href="index.php#about">About us</a></li>
-					<li><a href="index.php#tours">Tours</a></li>
-					<li><a href="index.php#news">News</a></li>
-					<li><a href="index.php#gallery">Gallery</a></li>
-					<li><a href="index.php#faq">Faq</a></li>
-					<li><a href="index.php#press">Press</a></li>
-					<li><a href="index.php#testimonials">Testimonial</a></li>
-					<li><a href="index.php#contact">Contact</a></li>
-					<?php if (isset($_SESSION['cart'])){?>
-					<li><a href="index.php?page=cart">My cart (<?php echo count($_SESSION['cart']->get_booking_list());?>)</a></li>
-					<?php }?>
-			</ul>
-		</div>
 	</div>
 </div>
 </section>

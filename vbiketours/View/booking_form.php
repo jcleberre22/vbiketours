@@ -3,7 +3,7 @@
 		
 		<div id="booking_header">
 	
-			$<?php echo $tour->get_price()?> per person, childrens get -50%
+			$<?php echo $tour->get_price()?> per person, children get -50%
 
 		</div>
 		
@@ -14,10 +14,10 @@
 				<?php for ($nb_pers = 1; $nb_pers <= 50; $nb_pers ++){?>
 				<option><?php echo $nb_pers;?></option><?php }?>
 			</select><br><br>
-			Number of childrens:
-			<select id="booking_nb_childrens" name="booking_nb_childrens">
+			Number of children:
+			<select id="booking_nb_children" name="booking_nb_children">
 				<?php for ($nb_child = 0; $nb_child <= 50; $nb_child ++){?>
-				<option><?php echo $nb_child;?></option><?php }?>
+				<option <?php if ($nb_child==0){?>selected="selected"<?php }?>><?php echo $nb_child;?></option><?php }?>
 			</select>
 			&nbsp;(under 10 years old)
 			<br>
