@@ -49,19 +49,35 @@
 <link rel="stylesheet" href="view/css/cart.css">
 <!-- Cart Stylesheet -->
 <link rel="stylesheet" href="view/css/checkout_infos.css">
+<!-- Faq Accordion -->
+<link rel="stylesheet" href="view/css/jquery-ui.css">
+
+<link rel="stylesheet" href="view/css/bootstrap-formhelpers.min.css" >
 <!-- End CSS
 	 ==================================================== -->
+	 
+ <link rel="stylesheet" href="view/css/jquery-ui.css">
+<!-- JQUERY
+	 ================================================== -->
+<script src="js/jquery-2.0.2.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/accordion.js"></script>
 
+<!-- End CSS
+	 ==================================================== -->
+	 
 </head>
 <body id="body">
 
-	<!-- preloader 
-	<div id="preloader">
-		<div class="loader-box">
-			<div class="battery"></div>
-		</div>
-	</div>
-	<!-- end preloader -->
+<noscript> <div style="display:none"> </noscript>
+<!-- preloader -->
+<div id="preloader">
+<div class="loader-box">
+<div class="battery"></div>
+</div>
+</div>
+<noscript></div></noscript>
+<!-- end preloader -->
 
 	<!--
         Fixed Navigation

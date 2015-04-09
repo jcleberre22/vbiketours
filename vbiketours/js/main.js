@@ -204,6 +204,19 @@ $(document).ready(function(){
 		}
 	});
 	
+	$( "#payment-option-cash" ).click(function() {
+		$( "#sandbox_infos" ).hide();
+		$( "#checkout_infos_payment" ).hide();
+		$( "#confirm" ).show();
+		$( "#proceed" ).hide();
+	});
+	$( "#payment-option-full" ).click(function() {
+		$( "#sandbox_infos" ).show();
+		$( "#checkout_infos_payment" ).show();
+		$( "#proceed" ).show();
+		$( "#confirm" ).hide();
+	});
+	
 });
 
 var wow = new WOW ({
@@ -212,3 +225,4 @@ var wow = new WOW ({
 });
 wow.init();
 
+	

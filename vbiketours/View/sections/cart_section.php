@@ -45,21 +45,21 @@ if ($page=='cart'){
 					?>
 					<tr id="cart_table_row">
 					<?php if ($cart_page) {?> 
-						<td id="cart_table_delete" class="cart_table_row">
+						<td id="cart_table_delete">
 							<a href="index.php?page=cart&action=delete&booking_id=<?php echo $bookingOBJ->get_id();?>">
 								<img id="cart_icon_delete"title="delete" src="img/icons/trash.png">
 							</a>
 						</td><?php }?>
-						<td id="cart_table_picture" class="cart_table_row">
+						<td id="cart_table_picture">
 							<img id="cart_image_tour" src="img/uploads/tours/<?php echo str_replace(" ", "_", $booked_tour->get_name());?>/<?php echo $booked_tour->get_picture()?>"/>
 						</td>
-						<td id="cart_table_booking" class="cart_table_row">
+						<td id="cart_table_booking">
 							<?php echo "<br><b>".$booked_tour->get_name()."</b><br><br>";?>
-							<?php echo "Date: ".$bookingOBJ->get_date()."<br>Start time: ".$booked_tour->get_start_time()."<br><br>";?>
+							<?php echo "Date: ".$bookingOBJ->get_date()."<br><br>Start time: ".$booked_tour->get_start_time()."<br><br>";?>
 							<?php echo "Adults: ".$bookingOBJ->get_nb_adults()."<br><br>";?>
 							<?php echo "Children: ".$bookingOBJ->get_nb_children()."<br><br>";?>
 						</td>
-						<td id="cart_table_price" class="cart_table_row">
+						<td id="cart_table_price">
 							<?php echo "<br>".$bookingOBJ->get_price()."$<br>";?>
 						</td >
 					</tr>

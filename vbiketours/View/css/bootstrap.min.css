@@ -1111,12 +1111,12 @@ input, button, select, textarea {
 }
 
 a {
-	color: #337ab7;
+	color: #FEEC02;
 	text-decoration: none
 }
 
 a:hover, a:focus {
-	color: #23527c;
+	color: #FEEC02;
 	text-decoration: underline
 }
 

@@ -15,7 +15,7 @@ if (!$result_paypal) {
 }else{
 	include 'view/paypal_after_success.php';
 	$list_param_paypal = get_paypal_parameters($result_paypal);
-
+		unset($_SESSION['cart']);
 		curl_close($ch);
 		echo "<pre>";
 		print_r($list_param_paypal);

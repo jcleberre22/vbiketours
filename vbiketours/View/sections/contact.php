@@ -34,7 +34,7 @@
 
 			<div id="contact_details" class="wow animated fadeInRight col-xs-12 col-md-4 col-lg-4">
 				<address class="contact-details">
-					<p style="padding-bottom: 10px">
+					<p class="col-xs-5 col-md-12 col-lg-12" style="padding-bottom: 5px">
 						<i class="fa fa-pencil"></i>
 
 						Address: <br>
@@ -44,15 +44,16 @@
 						Ho Chi Minh<br>
 						VIETNAM												
 					</p>
-					<p>
+					<p class="col-xs-7 col-md-12 col-lg-12" style="padding-bottom: 5px">
 						<i class="fa fa-phone"></i>
 						Phone: <br>  
-							Hotline   090 3 378 266<br>
-  							Landline      08 66 85 23 66<br>
+						Hotline   090 3 378 266<br>
+  						Landline      08 66 85 23 66<br>
 					</p>
-					<p>
+					<p class="col-xs-7 col-md-12 col-lg-12">
 						<i class="fa fa-envelope"></i>
-							Mail:<br>vbiketourstest@gmail.com<br>
+						Mail:<br>
+						vbiketourstest@gmail.com<br>
 					</p>
 				</address>
 			</div>

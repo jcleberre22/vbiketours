@@ -3,7 +3,6 @@ include_once("tools/api_function_paypal.php");
 
 $token = $_GET['token'];
 $payer = $_GET['PayerID'];
-$order_dao = new OrderDAO($db);
 $request = build_url_paypal();
 $request = $request."&METHOD=DoExpressCheckoutPayment".
 			"&TOKEN=".htmlentities($token, ENT_QUOTES).
@@ -29,11 +28,10 @@ else{
 	if (isset($list_param_paypal['ACK'])){
 		if ($list_param_paypal['ACK'] == 'Success'){
 			curl_close($ch);
-			echo "<pre>";
-			print_r($list_param_paypal);
-			echo "</pre>";
-			
-			
+			$tour_dao= new TourDAO($db);
+			$cart=$_SESSION['cart'];
+			$order=$_SESSION['order'];
+			$description=$_SESSION['description'];
 			include 'view/paypal_success.php';
 			die();
 		
@@ -41,9 +39,11 @@ else{
 			if (isset($list_param_paypal['L_SHORTMESSAGE0']) && isset($list_param_paypal['L_LONGMESSAGE0']))
 				$msg=$_SESSION['msg']= "Communication error with PayPal Server. ".$list_param_paypal['L_SHORTMESSAGE0']." ".$list_param_paypal['L_LONGMESSAGE0'];			
 		}
+	}else{
+		header('location: index.php?page=paypal_cancel');
 	}
 	curl_close($ch);
-	//header('location: index.php?page=paypal_cancel');
+
 }
 
 

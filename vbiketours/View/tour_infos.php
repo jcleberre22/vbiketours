@@ -1,31 +1,53 @@
 
 <div id="tour_infos" class="col-xs-12 col-md-11 col-lg-6">
-	
-	<div id="tour_infos_title" class="col-xs-5 col-md-5 col-lg-5">
-		Fitness : <BR /><BR />
-		Vehicle : <BR /><BR />
-		Duration : <BR /><BR />
-		Style : <BR /><BR />
-		Route: <BR /><BR />
-		Maximum Passengers : <BR /><BR />
-		Price : <BR /><BR />
-		Validity : <BR />
-	</div>
 
-	<div id="tour_infos_values" class="col-xs-7 col-md-7 col-lg-7">
-		<?php
-			echo $tour->get_fitness () . "<BR/><BR/>";
-			echo $tour->get_vehicle () . "<BR/><BR/>";
-			echo $tour->get_duration () . "<BR/><BR/>";
-			echo $tour->get_style () . "<BR/><BR/>";
-			echo $tour->get_route () . "<BR/><BR/>";
-			if ($tour->get_nb_passenger_max ()!=0)
-			echo $tour->get_nb_passenger_max () . "<BR/><BR/>";
-			else 
-				echo "Unlimited<BR/><BR/>";
-			echo $tour->get_price () . " $<BR/><BR/>";
-			echo $tour->get_validity_start () . " - " . $tour->get_validity_end () . "<BR/><BR/>";
-		?>				
-	</div>
+	<div>
+		<table id="table_infos_tour" class="table table-bordered">
+			<thead>
+				<th colspan="2">Tour start at <?php echo $tour->get_start_time();?></th>
+			</thead>
 
+			<tbody>
+				<tr>
+					<td>Fitness :</td>
+					<td><?php echo $tour->get_fitness ();?></td>
+				</tr>
+				<tr>
+					<td>Vehicle :</td>
+					<td><?php echo $tour->get_vehicle ();?></td>
+				</tr>
+				<tr>
+					<td>Duration :</td>
+					<td><?php echo $tour->get_duration ();?></td>
+				</tr>
+				<tr>
+					<td>Route:</td>
+					<td><?php echo $tour->get_route ();?></td>
+				</tr>
+				<tr>
+					<td>Maximum Passengers :</td>
+					<td><?php
+					
+					if ($tour->get_nb_passenger_max () != 0)
+						echo $tour->get_nb_passenger_max ();
+					else
+						echo "Unlimited";?>
+					
+					</td>
+				</tr>
+				<tr>
+					<td>Style :</td>
+					<td><?php echo $tour->get_style ();?></td>
+				</tr>
+				<tr>
+					<td>Price :</td>
+					<td><?php echo "$".$tour->get_price ();?></td>
+				</tr>
+				<tr>
+					<td>Validity :</td>
+					<td><?php echo $tour->get_validity_start () . " - " . $tour->get_validity_end ();?></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

@@ -2,7 +2,25 @@
 </main>
 <!-- Footer -->
 <footer id="footer">
-<section id="site_map_section">
+
+<section id="follow_us_section">
+		<div class="container">
+			<div class="row" >
+				<div class="sec-title text-center wow animated fadeInDown">
+					<h2> Follow Us On</h2>
+				</div>
+		
+				<div id="footer-social" class="footer-social">
+					<ul class="footer_list">
+						<li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
+						<li class="wow animated zoomIn" data-wow-delay="0.4s"><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
+						<li class="wow animated zoomIn" data-wow-delay="0.8s"><a href="#"><i class="fa fa-skype fa-3x"></i></a></li>
+						<li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
+				</ul>
+			</div>		
+</section>
+
+<section id="site_map_section" class="parallax">
 <div class="container">
 	<div class="row" >
 
@@ -12,7 +30,7 @@
 		
 		<div id="tourlinks" class="links col-lg-4 col-md-4 col-xs-12">
 
-				<li style="text-decoration: underline;">Our Tours</li>
+				<li><a href="index.php#tours_section" style="text-decoration: underline; color: #feec02;">Our Tours</a></li>
 				<p><br/></p>
 				<?php
 					$tour_dao = new TourDAO($db);
@@ -31,10 +49,10 @@
 		
 		<div id="navlinks"class="links col-lg-4 col-md-4 col-xs-12">
 
-			<li style="text-decoration: underline;">Navigation</li>
+			<li><a href="#" style="text-decoration: underline; color: #feec02;">Navigation</a></li>
 			<p><br/></p>
 			<li><a href="index.php#about">About us</a></li>
-			<li><a href="index.php#tours">Tours</a></li>
+			<li><a href="index.php#tours_section">Tours</a></li>
 			<li><a href="index.php#news">News</a></li>
 			<li><a href="index.php#gallery">Gallery</a></li>
 			<li><a href="index.php#faq">Faq</a></li>
@@ -49,7 +67,7 @@
 		
 		<div id="newslinks"class="links col-lg-4 col-md-4 col-xs-12">
 
-				<li style="text-decoration: underline;">News</li>
+				<li><a href="index.php#news" style="text-decoration: underline; color: #feec02;">News</a></li>
 				<p><br/></p>
 				<?php
 					foreach ( $tours_list as $tour ) {
@@ -67,22 +85,6 @@
 </div>
 </section>
 
-<section>		
-		<div class="sec-title text-center wow animated fadeInDown">
-			<h2> Follow Us On</h2>
-		</div>
-		
-		<div id="footer-social" class="footer-social">
-			<ul class="footer_list">
-				<li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
-				<li class="wow animated zoomIn" data-wow-delay="0.3s"><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
-				<li class="wow animated zoomIn" data-wow-delay="0.6s"><a href="#"><i class="fa fa-skype fa-3x"></i></a></li>
-				<li class="wow animated zoomIn" data-wow-delay="0.9s"><a href="#"><i class="fa fa-dribbble fa-3x"></i></a></li>
-				<li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
-			</ul>
-		</div>
-		
-</section>
 </footer>
 <!-- end Footer -->
 
@@ -91,8 +93,6 @@
 <!-- jQuery Plugins
 	 ================================================== -->
 
- <!-- Main jQuery -->
-<script src="js/jquery-2.0.2.min.js"></script>
 <!-- Modernizer Script for old Browsers -->
 <script src="js/modernizr-2.6.2.min.js"></script>
 <!-- Bootstrap -->
@@ -116,6 +116,9 @@
 <script src="js/jquery.collagePlus.min.js"></script>
 <!-- Parallax -->
 <script src="js/jquery.parallax-1.1.3.js"></script>
+
+<script src="js/bootstrap-formhelpers.min.js"></script>
+
 <!-- End jQuery Plugins
 	 ====================================================== -->
 

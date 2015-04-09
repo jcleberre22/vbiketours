@@ -1,13 +1,10 @@
-#tour{
-	color: black;
-}
 
 #tour .sec-title h2 {
-	color: gray; 
+	color: #E1197C; 
 }
 
 #tour .sec-title h2:after {
-    border-bottom: 1px solid #FF69B4;
+    border-bottom: 1px solid #FEEC02;
     content: "";
     display: block;
     left: 25%;
@@ -16,6 +13,8 @@
     width: 50%;
 }
 
+
+
 #image_tour{
 	text-align: center;
 }
@@ -23,11 +22,14 @@
 #image_tour>img {
 	vertical-align: middle;
 	max-width: 100%;
+	margin-bottom: 30px;
+	max-height: 450px;
 }
 
 #description_tour{
 	margin-top: 30px;
-	max-height: 450px;
+	margin-bottom: 30px;
+	height: 450px;
 	overflow:auto;
 	text-align: justify;
 }
@@ -35,8 +37,21 @@
 #summary_tour{
 	max-height: 50px;
 	text-align: justify;
+	color: #FFF;
 }
 
-#tour_infos{
+#tour .table-responsive{
+	
+}
+
+#tour th{
+	background-color: #2e2e2e;
+}
+
+#tour td{
 	background-color: #eee;
+}
+
+#table_infos_tour th {
+	color: yellow!important;
 }

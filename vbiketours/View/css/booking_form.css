@@ -14,16 +14,15 @@
 }
 
 #booking_date{
-	margin-left: 65px;
-	height: 26px;
+	height: 31px;
 }
 
 #booking_nb_adults{
-	margin-left: 32px;
+
 }
 
 #booking_nb_children{
-	margin-left: 18px;
+
 }
 
 #booking_validation{
@@ -34,4 +33,16 @@
 	margin-bottom: 10px;
 	padding: 10px;
 	color: red;
+}
+
+#table_booking_tour th{
+	color: #FF69B4;
+}
+
+#table_booking_tour td{
+	padding: 23px;
+}
+
+#validation_booking{
+	color: yellow!important;
 }

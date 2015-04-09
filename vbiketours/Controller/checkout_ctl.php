@@ -40,14 +40,11 @@ $order_dao = new OrderDAO($db);
 			$order_datas['payment_succes'] = 0;
 			$order_datas['customer_id'] = $customer->get_customer_id();
 			$order = new Order($order_datas);
-			echo "<pre>";
-			print_r($order);echo "<br><br>";
-			if($order_dao->add($order)) 	
-				echo "added";
-			else
-				echo "pb!";
-			
+			$_SESSION['order']=$order;
+			$_SESSION['description']=$description;
 
+			$order_dao->add($order);
+			
 			$list_booking = $cart->get_booking_list ();
 			$tourDAO = new TourDAO($db);
 			$last_item = count($list_booking)-1;
@@ -64,12 +61,11 @@ $order_dao = new OrderDAO($db);
 			
 		}		
 
-	if ($payment_type = "full")
+	if ($payment_type == "full")
 		include 'tools/payment.php';
 	else {
 		
-		//TODO send email 
-		include 'view/reservation.php';
+		header('location: index.php?page=reservation');
 		
 	}
 	

@@ -56,7 +56,9 @@ if (! isset ( $_POST ['submit_booking'] )) {
 					// send the error message and go to the cart page
 					$msg = "this booking is already in your cart!";
 					$_SESSION ['msg'] = $msg;
-					header ( 'location: index.php?page=tour&tour_id=' . $booking->get_tour_id () );
+					//header ( 'location: index.php?page=tour&tour_id=' . $booking->get_tour_id () );
+					include 'View/cart.php';
+					include 'tools/alert_message.php';
 					die (); // end of script
 				}
 			}

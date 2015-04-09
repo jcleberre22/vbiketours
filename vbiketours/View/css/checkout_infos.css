@@ -2,6 +2,34 @@
 	padding-top: 140px;
 }
 
+#checkout_details h3{
+	margin: 0 0 30px;
+    padding-bottom: 10px;
+    position: relative;
+    text-transform: uppercase;
+    color: #E1197C;
+}
+
+#checkout_details h3:before{
+	    border-bottom: 1px solid #FEEC02;
+    content: "";
+    display: block;
+
+    bottom: 0;
+
+    width: 100%;
+}
+
+#checkout_details h3:after{
+	    border-bottom: 1px solid #FEEC02;
+    content: "";
+    display: block;
+
+    bottom: 0;
+
+    width: 100%;
+}
+
 #checkout_details #cart_section {
 	padding-top: 40px;
 }
@@ -24,4 +52,26 @@
 
 #checkout_infos_submit {
 	margin-top: 10px;
+}
+
+#checkout_details li{
+	list-style: none;
+}
+
+#checkout_details .input-number,.input-email,.input-tel, select{
+	width: 100%;
+}
+
+#checkout_details a.bfh-selectbox-toggle.form-control{
+	height: 31px;
+	color:black;
+}
+
+#checkout_details .bfh-selectbox-options{
+	max-width: 325px;;
+	
+}
+
+#checkout_details .bfh-selectbox-filter.form-control{
+	height: 31px;
 }

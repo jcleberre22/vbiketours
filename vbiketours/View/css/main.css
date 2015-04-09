@@ -12,11 +12,11 @@
 /* =================================== */
 
 body {
-    background-color: #fff;
+    background-color: #b6b6b6;
     font-family: 'Open Sans', sans-serif;
     line-height: 24px;
-    font-size: 16px;
-    color: #818181;
+    font-size: 18px;
+    color: #515151;
 }
 
 figure, p, address {
@@ -54,7 +54,7 @@ a, a:hover, a:focus, .btn:focus {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Open Sans', sans-serif;
-    color: gray;
+    color: #2e2e2e;
 }
 
 main > section {
@@ -79,7 +79,7 @@ main > section {
     background-color: #E1197C;
     box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
     padding: 15px 55px;
-    color: #fff;
+    color: #FEEC02;
     line-height: 15px;
 }
 
@@ -156,7 +156,7 @@ main > section {
 }
 
 .btn-effect:hover, .btn-effect:focus, .btn-effect:active {
-	color: #fff;
+	color: yellow;
 }
 
 .btn-effect:hover:before, .btn-effect:focus:before, .btn-effect:active:before {
@@ -182,10 +182,11 @@ main > section {
     padding-bottom: 30px;
     position: relative;
     text-transform: uppercase;
+    color: #E1197C;
 }
 
 .sec-title h2:after {
-    border-bottom: 1px solid #FF69B4;
+    border-bottom: 1px solid #FEEC02;
     content: "";
     display: block;
     left: 25%;
@@ -199,6 +200,13 @@ main > section {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.parallax h2 {
+ color: #FEEC02;
+}
+.parallax h2:after {
+ border-bottom: 1px solid #E1197C;
 }
 
 .noscript{
@@ -476,14 +484,14 @@ h1.navbar-brand {
 }
 
 .fancybox-next span {
-    background: url("../../img/right.png") no-repeat scroll center center #009ee3;
+    background: url("../../img/right.png") no-repeat scroll center center #ff69b4;
     height: 50px;
     width: 50px;
     right: 0;
 }
 
 .fancybox-prev span {
-    background: url("../../img/left.png") no-repeat scroll center center #009ee3;
+    background: url("../../img/left.png") no-repeat scroll center center #ff69b4;
     height: 50px;
     width: 50px;
     left: 0;
@@ -505,8 +513,7 @@ h1.navbar-brand {
 }
 
 #about h2 {
-    color: #fff;
-     margin: 0 0 65px;
+    margin: 0 0 65px;
     text-transform: uppercase;
 }
 
@@ -518,7 +525,7 @@ h1.navbar-brand {
 }
 
 #about .message-body {
-    font-size: 16px;
+    font-size: 20px;
     text-align: justify;
     line-height: 20px;
     margin-bottom: 70px;
@@ -571,13 +578,14 @@ h1.navbar-brand {
 
 #tours:hover #tours_name {
 	background-color: #FF69B4;
+	color: yellow;
 }
 
 #tours_summary {
 	
 	background-repeat: no-repeat;
 	background-size: 100%;
-		background-color: #808080;
+	background-color: #808080;
 	background-position: center;
  	height: 350px;
  	padding: 0;
@@ -589,19 +597,16 @@ h1.navbar-brand {
 	height: 350px;
 	text-align: center;
 	padding: 20px;
+	color:#fff
 }
 
 #tours>a {
 	color: #FEEC02;
 }
 
-#tours>a:hover {
-	color: #fec80e;
-}
 #tours:hover #tours_summary_overlay {
 	display: block;
 }
-
 
 
 /*=================================================================
@@ -611,14 +616,6 @@ h1.navbar-brand {
     background-image: url(../../img/news.jpg);
     padding: 0;
     color: #fff;
-}
-
-#news .sec-title h2 {
-    color: #fff;
-}
-
-#news .sec-title h2:after {
-    border-bottom: 1px solid #FF69B4;
 }
 
 #news .overlay {
@@ -805,21 +802,35 @@ ul.external li a:hover {
 #faq {
     background-image: url(../../img/faq.jpg);
     padding: 0;
-    color: #fff;
-}
-
-#faq .sec-title h2 {
-    color: #fff !important;
-}
-
-#faq .sec-title h2:after {
-    border-bottom: 1px solid #FF69B4;
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
 }
 
 #faq .overlay {
     background-color: rgba(0,0,0, 0.5);
     padding: 70px 0 40px;
 }
+
+#faq h3.ui-accordion-header-active{
+	background-color: #2e2e2e;
+	color: #E1197C;
+}
+
+#faq h3{
+	background-color: #2e2e2e;
+	color: #FEEC02;
+	border-color: grey;
+}
+
+#faq h3.ui-accordion-header-active{
+	outline-color:  yellow;
+}
+
+#faq div.ui-accordion-content{
+	background-color: grey;
+	border-color: grey;
+	color: #FFF
+}
+
 
 /*=================================================================
 	Press
@@ -836,14 +847,7 @@ ul.external li a:hover {
     background-image: url(../../img/bg1.jpg);
     padding: 0;
     color: #fff;
-}
-
-#testimonials .sec-title h2 {
-    color: #fff !important;
-}
-
-#testimonials .sec-title h2:after {
-    border-bottom: 1px solid #FF69B4;
+    font-size: 20px;
 }
 
 #testimonials .overlay {
@@ -873,9 +877,8 @@ ul.external li a:hover {
 .testimonial-item > div:before {
     background-image: url("../../img/icons/quotes.png");
     background-repeat: no-repeat;
-    bottom: 210px;
     height: 33px;
-    left: -45px;
+    right: 102%;
     position: absolute;
     width: 45px;
 }
@@ -886,14 +889,15 @@ ul.external li a:hover {
     background-repeat: no-repeat;
     height: 33px;
     position: absolute;
-    right: -30px;
+    left: 102%;
     width: 45px;
-    top: 200px;
+    bottom: 0px;
 }
 
 .testimonial-item > div > p{
 	text-align: justify;
     color: #fff;
+    font-size: 16;
 }
 
 /*=================================================================
@@ -963,12 +967,8 @@ textarea.form-control {
 	padding-bottom: 15px;
 }
 
-#site_map_section {
+#follow_us_section {
 	padding-bottom: 70px;
-}
-
-#footer .sec-title h2{
-    color: #fff;
 }
 
 #footer li{
@@ -1000,9 +1000,6 @@ textarea.form-control {
 	BOOTSRAP XS (WIDTH= MAX: 767 PX) (smartphones)
 ==============================================================*/
 @media all and (max-width: 767px) {
-	.footer-social ul {
-		margin-left: -50px;
-	}
 	
 	#contact p {
 	text-align: center;

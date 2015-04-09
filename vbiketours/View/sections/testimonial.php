@@ -11,6 +11,7 @@
 
 				<div id="testimonial" class=" wow animated fadeInUp">
 					<div class="testimonial-item text-center">
+
 						<div class="clearfix">
 							<p>Saigon has nearly 5 million motorbikes and a 100,000 cars, all
 								who are crazy and would be banned from driving in the UK. So its
@@ -26,6 +27,7 @@
 								tour of Saigon was definitely the best and most memorable. Just
 								do it!</p>
 						</div>
+						
 					</div>
 				</div>
 

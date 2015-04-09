@@ -9,7 +9,7 @@ function read_more($string, $nbchar){
 		$stringCut = substr($string, 0, $nbchar);
 
 		// make sure it ends in a word
-		$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
+		$string = substr($stringCut, 0, strrpos($stringCut, ' '))." ...";
 	}
 	return $string;
 }
