@@ -1,3 +1,3 @@
 <?php
-include "view/paypal_cancel.php";
+include "View/paypal_cancel.php";
 ?>

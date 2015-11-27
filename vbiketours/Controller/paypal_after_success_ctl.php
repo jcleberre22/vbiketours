@@ -13,7 +13,7 @@ $result_paypal = curl_exec($ch);
 if (!$result_paypal) {
 	{echo "<p>Error</p><p>".curl_error($ch)."</p>";}
 }else{
-	include 'view/paypal_after_success.php';
+	include 'View/paypal_after_success.php';
 	$list_param_paypal = get_paypal_parameters($result_paypal);
 		unset($_SESSION['cart']);
 		curl_close($ch);

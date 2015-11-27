@@ -28,35 +28,35 @@
 <!-- Fontawesome Icon font -->
 <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' type='text/css'> -->
 <!-- Fontawesome Icon font -->
-<link rel="stylesheet" href="view/css/font-awesome.min.css">
+<link rel="stylesheet" href="View/css/font-awesome.min.css">
 <!-- bootstrap.min -->
-<link rel="stylesheet" href="view/css/jquery.fancybox.css">
+<link rel="stylesheet" href="View/css/jquery.fancybox.css">
 <!-- bootstrap.min -->
-<link rel="stylesheet" href="view/css/bootstrap.min.css">
+<link rel="stylesheet" href="View/css/bootstrap.min.css">
 <!-- bootstrap.min -->
-<link rel="stylesheet" href="view/css/owl.carousel.css">
+<link rel="stylesheet" href="View/css/owl.carousel.css">
 <!-- bootstrap.min -->
-<link rel="stylesheet" href="view/css/slit-slider.css">
+<link rel="stylesheet" href="View/css/slit-slider.css">
 <!-- bootstrap.min -->
-<link rel="stylesheet" href="view/css/animate.css">
+<link rel="stylesheet" href="View/css/animate.css">
 <!-- Main Stylesheet -->
-<link rel="stylesheet" href="view/css/main.css">
+<link rel="stylesheet" href="View/css/main.css">
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="view/css/tour.css">
+<link rel="stylesheet" href="View/css/tour.css">
 <!-- Booking_form Stylesheet -->
-<link rel="stylesheet" href="view/css/booking_form.css">
+<link rel="stylesheet" href="View/css/booking_form.css">
 <!-- Cart Stylesheet -->
-<link rel="stylesheet" href="view/css/cart.css">
+<link rel="stylesheet" href="View/css/cart.css">
 <!-- Cart Stylesheet -->
-<link rel="stylesheet" href="view/css/checkout_infos.css">
+<link rel="stylesheet" href="View/css/checkout_infos.css">
 <!-- Faq Accordion -->
-<link rel="stylesheet" href="view/css/jquery-ui.css">
+<link rel="stylesheet" href="View/css/jquery-ui.css">
 
-<link rel="stylesheet" href="view/css/bootstrap-formhelpers.min.css" >
+<link rel="stylesheet" href="View/css/bootstrap-formhelpers.min.css" >
 <!-- End CSS
 	 ==================================================== -->
 	 
- <link rel="stylesheet" href="view/css/jquery-ui.css">
+ <link rel="stylesheet" href="View/css/jquery-ui.css">
 <!-- JQUERY
 	 ================================================== -->
 <script src="js/jquery-2.0.2.min.js"></script>

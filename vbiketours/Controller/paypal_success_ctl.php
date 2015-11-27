@@ -32,7 +32,7 @@ else{
 			$cart=$_SESSION['cart'];
 			$order=$_SESSION['order'];
 			$description=$_SESSION['description'];
-			include 'view/paypal_success.php';
+			include 'View/paypal_success.php';
 			die();
 		
 		}else {

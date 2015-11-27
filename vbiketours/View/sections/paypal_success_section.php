@@ -7,7 +7,7 @@
 	<div style="text-align: center;">
 	All the informations for your order are now completed!<br><br>
 	Do you want to confirm the payment for the following order?
-	<?php include 'view/sections/cart_section.php';?>
+	<?php include 'View/sections/cart_section.php';?>
 	<div class="col-xs-12" style="margin-top: 15px;">
 	<div class="col-xs-12 col-md-6">
 		<a  href="index.php?page=paypal_after_success&token=<?php echo $_GET['token'];?>" >
