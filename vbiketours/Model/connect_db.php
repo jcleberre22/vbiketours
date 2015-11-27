@@ -3,7 +3,7 @@
 
 try
 {
-	$db = new PDO('mysql:host=mysql55-29.perso;dbname=jcleberrvlbdd;charset=utf8', 'jcleberrvlbdd', 'Qbikes22');
+	$db = new PDO('mysql:host=localhost;dbname=vbiketours;charset=utf8', 'root', '');
 }
 catch (Exception $e)
 {
